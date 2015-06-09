@@ -1,0 +1,32 @@
+{
+  "file_suffixes" :
+    {
+      "hdbprocedure" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.procedure", "plugin_version" : "0.1.0" }
+      ,
+      "hdbscalarfunction" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.scalarfunction", "plugin_version" : "0.1.0" }
+      ,
+      "hdbtablefunction" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.tablefunction", "plugin_version" : "0.1.0" }
+      ,
+      "hdbtabletype" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.tabletype", "plugin_version" : "0.1.0" }
+      ,
+      "hdbdropcreatetable" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.dropcreatetable", "plugin_version" : "0.1.0" }
+      ,
+      "hdbsqlview" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.sqlview", "plugin_version" : "0.1.0" }
+      ,
+      "hdbsynonym" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.synonym", "plugin_version" : "0.1.0" }
+      ,
+      "hdbdd" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.db.cds", "plugin_version" : "0.0.1" }
+      ,
+      "txt" :
+        { "plugin_name" : "com.sap.hana.hdi.buildplugin.di.copyonly", "plugin_version" : "0.1.0" }
+    }
+}
+

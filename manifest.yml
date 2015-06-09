@@ -1,0 +1,9 @@
+---
+applications:
+- name: shine-polyglot-db
+  path: db
+  memory: 256M
+  buildpack: git://github.wdf.sap.corp/xs2/hdi-deploy-buildpack.git
+  no-route: true
+  services:
+    - shine-hdi-container

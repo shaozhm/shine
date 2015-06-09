@@ -1,0 +1,5 @@
+{
+    "name":      "com.sap.xs2.refapps",
+    "cascade":   false,
+    "subfolder": "append"
+}
