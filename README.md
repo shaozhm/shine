@@ -1,2 +1,2 @@
-SHINE Polyglot App
-====================
+SHINE Polyglot app
+================

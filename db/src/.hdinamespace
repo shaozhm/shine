@@ -1,5 +1,5 @@
 {
-    "name":      "com.sap.xs2.refapps",
+    "name":      "sap.hana.democontent.epm.data",
     "cascade":   false,
     "subfolder": "append"
 }
