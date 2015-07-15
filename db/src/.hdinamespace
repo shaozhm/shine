@@ -1,5 +1,4 @@
 {
-    "name":      "sap.hana.democontent.epm.data",
-    "cascade":   false,
+    "name":      "sap.hana.democontent.epm",
     "subfolder": "append"
 }
