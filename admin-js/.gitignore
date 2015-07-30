@@ -1,0 +1,6 @@
+node_modules
+hanaenv_*.sh
+npm-debug.log
+util/hanaenv_*.sh
+*.swp
+*.swo

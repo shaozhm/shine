@@ -6,3 +6,10 @@ applications:
   no-route: true
   services:
     - shine-hdi-container
+
+- name: shine-polyglot-admin-backend
+  host: shine-polyglot-admin-backend
+  path: admin-js
+  memory: 512M
+  services:
+    - shine-hdi-container

@@ -1,0 +1,24 @@
+{
+  "name": "shine-admin-nodejs-backend",
+  "description": "Nodejs based Data Generator / Admin Dashboard backend",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "async": "latest",
+    "cds": "git://github.wdf.sap.corp/xs2/node-cds.git",
+    "express": "^4.12.0",
+    "extend": "^2.0.0",
+    "xs-hdb-connection": "git://github.wdf.sap.corp/xs2/node-xs-hdb-connection.git",
+    "node-xs2sec-middleware": "git://github.wdf.sap.corp/xs2/node-xs2sec-middleware.git",
+    "passport": "^0.2.1",
+    "winston": "^1.0.0",
+    "xs2sec": "git://github.wdf.sap.corp/xs2/node-xs2sec.git#v0.0.8",
+    "xsenv": "git://github.wdf.sap.corp/xs2/node-xsenv.git"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
