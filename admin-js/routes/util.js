@@ -14,7 +14,7 @@ module.exports = {
                             + '" select * from "sap.hana.democontent.epm.data.shadow::'
                             + shadowTable + '"';
                 client.exec(query, function(error1, response1){
-                    callback(error1, response1, res, origTable + " reset successfully");
+                    callback(error1, response1, res, origTable + " reloaded successfully");
                 });
             }
     });

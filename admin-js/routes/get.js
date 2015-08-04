@@ -115,9 +115,12 @@ router.get('/get/tablesize', function (req, res) {
                 console.log(error);
                 res.end(error.message);
             } else {
-
+                var combinedArray = [];
+                for (var i = 0; i < result.length; i++) {
+                    combinedArray.push(result[i][0]);
+                }
                 res.writeHead(200, {'Content-Type' : 'application/json'});
-                res.end(JSON.stringify(result));
+                res.end(JSON.stringify(combinedArray));
             }
         }
     );    

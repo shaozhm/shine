@@ -13,3 +13,16 @@ applications:
   memory: 512M
   services:
     - shine-hdi-container
+
+- name: shine-polyglot-admin
+  host: shine-polyglot-admin
+  path: admin-ui
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"admin-backend", "url":"http://shine-polyglot-admin-backend.cfapps.neo.ondemand.com"},
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+      ]
+  services:
+    - uaa

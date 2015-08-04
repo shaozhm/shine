@@ -15,7 +15,7 @@ router.get('/replicate/sales', function (req, res) {
         var tableSize = response[0].RECORD_COUNT;
         console.log("table size " + tableSize);
         var query = 'insert into "sap.hana.democontent.epm.data::SO.Header" '
-                    + 'SELECT '
+                    + 'SELECT TOP 1000 '
                     + "(\"SALESORDERID\" + " + tableSize + ') AS "SALESORDERID",'
                     + ' "HISTORY.CREATEDBY.EMPLOYEEID",	"HISTORY.CREATEDAT",'
                     + ' "HISTORY.CHANGEDBY.EMPLOYEEID",	"HISTORY.CHANGEDAT",'
@@ -33,7 +33,8 @@ router.get('/replicate/sales', function (req, res) {
                         + ' "SALESORDERITEM", "PRODUCT.PRODUCTID", "NOTEID",'
                         + ' "CURRENCY", "GROSSAMOUNT", "NETAMOUNT", "TAXAMOUNT",'
                         + ' "ITEMATPSTATUS", "OPITEMPOS", "QUANTITY", "QUANTITYUNIT",'
-                        + ' "DELIVERYDATE" FROM "sap.hana.democontent.epm.data.shadow::SOShadow.Item"';
+                        + ' "DELIVERYDATE" FROM "sap.hana.democontent.epm.data.shadow::SOShadow.Item"'
+                        + ' WHERE "SALESORDERID" < 500001000';
                 client.exec(query, function(error, response) {
                     util.callback(error, response, res,
                                 "Sales orders replicated successfully, records added: " + salesOrdersAdded);            
