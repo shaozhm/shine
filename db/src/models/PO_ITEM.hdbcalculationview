@@ -30,6 +30,7 @@
         <viewAttribute id="QUANTITYUNIT"/>
         <viewAttribute id="DELIVERYDATE"/>
         <viewAttribute id="NAMEID"/>
+        <viewAttribute id="CATEGORY"/>
       </viewAttributes>
       <calculatedViewAttributes/>
       <input node="#sap.hana.democontent.epm.data::PO.Item">
@@ -46,6 +47,7 @@
       </input>
       <input node="#sap.hana.democontent.epm.data::MD.Products">
         <mapping xsi:type="Calculation:AttributeMapping" target="NAMEID" source="NAMEID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRODUCTID" source="PRODUCTID"/>
       </input>
       <joinAttribute name="PRODUCT_PRODUCTID"/>
@@ -63,6 +65,7 @@
         <viewAttribute id="PURCHASEORDERID"/>
         <viewAttribute id="TAXAMOUNT"/>
         <viewAttribute id="ProductName"/>
+        <viewAttribute id="CATEGORY"/>
         <viewAttribute hidden="true" id="JOIN$NAMEID$TEXTID"/>
       </viewAttributes>
       <calculatedViewAttributes/>
@@ -77,6 +80,7 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="PURCHASEORDERITEM" source="PURCHASEORDERITEM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PURCHASEORDERID" source="PURCHASEORDERID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="TAXAMOUNT" source="TAXAMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NAMEID$TEXTID" source="NAMEID"/>
       </input>
       <input node="#sap.hana.democontent.epm.data::Util.Texts">
@@ -131,6 +135,10 @@
       <attribute id="DELIVERYDATE" order="11" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DELIVERYDATE"/>
         <keyMapping columnObjectName="Join_2" columnName="DELIVERYDATE"/>
+      </attribute>
+      <attribute id="CATEGORY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="CATEGORY"/>
+        <keyMapping columnObjectName="Join_2" columnName="CATEGORY"/>
       </attribute>
     </attributes>
     <calculatedAttributes/>

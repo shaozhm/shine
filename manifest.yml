@@ -26,3 +26,27 @@ applications:
       ]
   services:
     - uaa
+
+- name: shine-polyglot-odata
+  host: shine-polyglot-odata
+  memory: 256M
+  path: odata/target/shine-polyglot-odata.war
+  buildpack: git://github.wdf.sap.corp/xs2-java/xs2javabuildpack.git
+  services:
+    - shine-hdi-container
+  env:
+    SERVICE_TO_JNDI_NAME_MAPPING: >
+      {"shine-hdi-container":"jdbc/DefaultDB"}
+
+- name: shine-polyglot-purchase
+  host: shine-polyglot-purchase
+  path: purchase-ui
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"purchase-backend", "url":"http://shine-polyglot-odata.cfapps.neo.ondemand.com/"},
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+      ]
+  services:
+    - uaa
