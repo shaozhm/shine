@@ -1,4 +1,8 @@
 SHINE Polyglot app
 ================
-Prerequisites
-    Execute mvn clean install command to build the odata application before deployment. 
+
+## Prerequisites
+Execute the following command to build the odata application before deployment. 
+```
+mvn clean install
+```
