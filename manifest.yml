@@ -46,6 +46,21 @@ applications:
     destinations: >
       [
         {"name":"purchase-backend", "url":"http://shine-polyglot-odata.cfapps.neo.ondemand.com/"},
+        {"name":"purchase-xs-backend", "url":"http://shine-polyglot-xsjs.cfapps.neo.ondemand.com/"},
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+      ]
+  services:
+    - uaa
+
+- name: shine-polyglot-sales
+  host: shine-polyglot-sales
+  path: sales-ui
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"sales-backend", "url":"http://shine-polyglot-odata.cfapps.neo.ondemand.com/"},
+        {"name":"sales-xs-backend", "url":"http://shine-polyglot-xsjs.cfapps.neo.ondemand.com/"},
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
       ]
   services:
