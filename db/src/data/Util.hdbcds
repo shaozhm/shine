@@ -19,7 +19,7 @@ context Util {
         key  TEXTID: EPM.BusinessKey;
         LANGUAGE: EPM.ABAPLanguage;
         ISOLANGUAGE: EPM.ISOLanguageT;
-        @SearchIndex.text: { enabled: true, name: 'FTI_TEXT', storeOriginalContent: true, async: true}
+        @SearchIndex.text: { enabled: true, storeOriginalContent: true, async: true}
         TEXT: EPM.VLString null;     
     };
         
@@ -83,14 +83,14 @@ context Util {
 
   @Search.searchable: true 
     Define View textsView As Select From Util.Texts as B {
- 
+    
     B.TEXTID,
     B.LANGUAGE,
     B.ISOLANGUAGE,
-    
+    @Search.defaultSearchElement: true 
     B.TEXT
  
  //SP09 requirement - Order By Clause
- }order by B.TEXTID;
+ } order by B.TEXTID;
   
 };

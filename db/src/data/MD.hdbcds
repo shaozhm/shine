@@ -160,7 +160,8 @@ Type HistT {
     Define View texts As Select From Util.Texts as B {
      B.TEXTID,
      B.LANGUAGE,
-     B.ISOLANGUAGE,    
+     B.ISOLANGUAGE,  
+    @Search.defaultSearchElement: true      
      B.TEXT
   }; 
   
