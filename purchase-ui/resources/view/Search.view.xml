@@ -17,7 +17,7 @@
                             </sap.ui.commons.layout:MatrixLayoutCell>
                             <sap.ui.commons.layout:MatrixLayoutCell>
                                 <sap.ui.commons.layout:content>
-                                    <sap.ui.commons:SearchField id="filterBy" enabled="false" enableClear="true" enableFilterMode="true" width="400px" startSuggestion="1" maxSuggestionItems="50" suggest="loadFilter" search="setFilter"></sap.ui.commons:SearchField>
+                                    <sap.ui.commons:SearchField id="filterBy" enableClear="true" enableFilterMode="true" width="400px" startSuggestion="1" maxSuggestionItems="50" suggest="loadFilter" search="setFilter"></sap.ui.commons:SearchField>
                                 </sap.ui.commons.layout:content>
                             </sap.ui.commons.layout:MatrixLayoutCell>
                         </sap.ui.commons.layout:cells>

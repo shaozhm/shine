@@ -8,8 +8,8 @@
         <sap.ui.table:toolbar>
             <sap.ui.commons:Toolbar id="tb1" design="Standard" standalone="false">
                 <sap.ui.commons:items>
-                    <sap.ui.commons:Button id="btnNew" text="{i18n>new}" tooltip="{i18n>create}" press="onTBPress"></sap.ui.commons:Button>
-                    <sap.ui.commons:Button id="btnEdit" text="{i18n>edit}" tooltip="{i18n>t_edit}" press="onTBPress"></sap.ui.commons:Button>
+                    <sap.ui.commons:Button id="btnNew" text="{i18n>new}" tooltip="{i18n>create}" enabled="false" press="onTBPress"></sap.ui.commons:Button>
+                    <sap.ui.commons:Button id="btnEdit" text="{i18n>edit}" tooltip="{i18n>t_edit}" enabled="false" press="onTBPress"></sap.ui.commons:Button>
                     <sap.ui.commons:Button id="btnDelete" text="{i18n>delete}" tooltip="{i18n>t_delete}" press="onTBPress"></sap.ui.commons:Button>
                     <sap.ui.commons:MenuButton id="btnMenu" text="{i18n>actions}" tooltip="{i18n>t_actions}" itemSelected = "onMenuSelected">
                         <sap.ui.commons:menu>
@@ -23,7 +23,7 @@
                     </sap.ui.commons:MenuButton>
                     <sap.ui.commons:ToolbarSeparator design="Standard"></sap.ui.commons:ToolbarSeparator>
                     <sap.ui.commons:Button id="btnExcel" text="{i18n>excel}" tooltip="{i18n>t_excel}" press="onTBPress"></sap.ui.commons:Button>
-                    <sap.ui.commons:Button id="btnZip" text="{i18n>zip}" tooltip="{i18n>t_zip}" press="onTBPress"></sap.ui.commons:Button>
+                    <sap.ui.commons:Button id="btnZip" text="{i18n>zip}" tooltip="{i18n>t_zip}" enabled="false" press="onTBPress"></sap.ui.commons:Button>
                     <sap.ui.commons:Button class="helpButton" text="?" data:tileDialog="2" press="openTileDialog"></sap.ui.commons:Button>
                 </sap.ui.commons:items>
             </sap.ui.commons:Toolbar>

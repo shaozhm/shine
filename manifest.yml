@@ -13,6 +13,7 @@ applications:
   memory: 512M
   services:
     - shine-hdi-container
+    - uaa-refapps
 
 - name: shine-polyglot-admin
   host: shine-polyglot-admin
@@ -25,7 +26,7 @@ applications:
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
       ]
   services:
-    - uaa
+    - uaa-refapps
 
 - name: shine-polyglot-odata
   host: shine-polyglot-odata
@@ -34,9 +35,21 @@ applications:
   buildpack: git://github.wdf.sap.corp/xs2-java/xs2javabuildpack.git
   services:
     - shine-hdi-container
+    - uaa-refapps
   env:
     SERVICE_TO_JNDI_NAME_MAPPING: >
       {"shine-hdi-container":"jdbc/DefaultDB"}
+
+- name: shine-polyglot-xsjs
+  host: shine-polyglot-xsjs
+  memory: 256M
+  path: xsjs
+  services:
+    - shine-hdi-container
+    - uaa-refapps
+  env:
+    HANA_SERVICE_NAME: shine-hdi-container
+    UAA_SERVICE_NAME: uaa-refapps
 
 - name: shine-polyglot-purchase
   host: shine-polyglot-purchase
@@ -50,7 +63,7 @@ applications:
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
       ]
   services:
-    - uaa
+    - uaa-refapps
 
 - name: shine-polyglot-sales
   host: shine-polyglot-sales
@@ -64,4 +77,4 @@ applications:
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
       ]
   services:
-    - uaa
+    - uaa-refapps

@@ -51,11 +51,11 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Search", {
                 break;
             case 'Product ID':
             case 'Produkt':
-                gFilterAttribute = 'PRODUCTID';
+                gFilterAttribute = 'PRODUCT_PRODUCTID';
                 break;
             case 'Product Name':
             case 'Produkt Benennung':
-                gFilterAttribute = 'PRODUCTNAME';
+                gFilterAttribute = 'ProductName';
                 break;
             case 'Product Description':
             case 'Produktbeschreibung':
@@ -130,7 +130,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Search", {
 
     loadFilter: function(oEvent) {
         gSearchParam = oEvent.getParameter("value");
-        var aUrl = '/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=filter' + '&query=' + escape(oEvent.getParameter("value")) + '&page=1&start=0&limit=25';
+        var aUrl = '/sap/hana/democontent/epm/xs/poWorklistQuery.xsjs?cmd=filter' + '&query=' + escape(oEvent.getParameter("value")) + '&page=1&start=0&limit=25';
         jQuery.ajax({
             url: aUrl,
             method: 'GET',

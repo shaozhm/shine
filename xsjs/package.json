@@ -1,0 +1,16 @@
+{
+  "name": "shine-polyglot-xsjs",
+  "description": "The Shine Demo Application based on XSJS",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "xsenv": "git://github.wdf.sap.corp/xs2/node-xsenv.git#v0.3.1",
+    "xsjs": "git://github.wdf.sap.corp/xs2/xsjs.git#v0.4.0"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "scripts": {
+    "start": "node shine.js"
+  }
+}
