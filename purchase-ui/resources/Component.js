@@ -4,7 +4,7 @@ sap.ui.core.UIComponent.extend("shine.democontent.epm.poworklist.Component",{
    metadata : {
        name : "SHINE - POWorklist",
        version : "10",
-       includes : ["css/style.css","js/global.js"],
+       includes : ["js/global.js"],
        dependencies : {
            libs : ["sap.ui.ux3","sap.ui.commons","sap.ui.table"],
            components : []

@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "index.html",
+  "welcomeFile": "soWorklist.html",
   "sendWelcomeFileRedirect": "true",
   "routes": [
 	{
@@ -9,12 +9,13 @@
     },
     {
       "source": "/sap/hana/democontent/epm/services/",
-      "destination": "purchase-backend"
+      "destination": "sales-backend"
     },
     {
       "source": "/sap/hana/democontent/epm/xs/",
-      "destination": "purchase-xs-backend"
+      "destination": "sales-xs-backend"
     }
-  ]
+  ],
+  "authenticationMethod": "none"
   
 }
