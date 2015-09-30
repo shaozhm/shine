@@ -17,7 +17,6 @@ context UtilShadow {
         key  TEXTID: EPM.BusinessKey;
         LANGUAGE: EPM.ABAPLanguage;
         ISOLANGUAGE: EPM.ISOLanguageT;
-        @SearchIndex.text: { enabled: true, name: 'FTI_TEXT', storeOriginalContent: true, async: true}
         TEXT: EPM.VLString null;     
     };
         

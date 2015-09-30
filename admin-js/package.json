@@ -4,16 +4,15 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "async": "latest",
-    "cds": "git://github.wdf.sap.corp/xs2/node-cds.git#0.2.0",
-    "express": "^4.12.0",
-    "extend": "^2.0.0",
-    "xs-hdb-connection": "git://github.wdf.sap.corp/xs2/node-xs-hdb-connection.git",
-    "node-xs2sec-middleware": "git://github.wdf.sap.corp/xs2/node-xs2sec-middleware.git",
-    "passport": "^0.2.1",
-    "winston": "^1.0.0",
-    "xs2sec": "git://github.wdf.sap.corp/xs2/node-xs2sec.git#v0.1.1",
-    "xsenv": "git://github.wdf.sap.corp/xs2/node-xsenv.git#v0.3.0"
+    "async": "1.4.2",
+    "sap-cds": "1.0.0",
+    "express": "4.12.0",
+    "extend": "2.0.0",
+    "sap-hdb-connection": "0.5.2",
+    "passport": "0.2.1",
+    "winston": "1.0.0",
+    "sap-xssec": "0.2.1",
+    "xsenv": "0.3.3"
   },
   "engines": {
     "node": ">=0.10.x"

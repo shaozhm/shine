@@ -19,7 +19,6 @@ context Util {
         key  TEXTID: EPM.BusinessKey;
         LANGUAGE: EPM.ABAPLanguage;
         ISOLANGUAGE: EPM.ISOLanguageT;
-        @SearchIndex.text: { enabled: true, storeOriginalContent: true, async: true}
         TEXT: EPM.VLString null;     
     };
         

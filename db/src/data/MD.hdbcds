@@ -74,7 +74,6 @@ Type HistT {
     Entity Products {
         key  PRODUCTID: EPM.BusinessKey; 
 		TYPECODE: String(2);
-		@SearchIndex.text: { enabled: true, name: 'FTI_CATEGORY', storeOriginalContent: true, async: true}
 		CATEGORY: EPM.SString;
         HISTORY: HistT;
         NAMEID: EPM.BusinessKey;
@@ -155,30 +154,4 @@ Type HistT {
 //		SUM(PO_ORDERS."Amount") as "POGrossAmount"
 //   } group by PRODUCTID, PO_ORDERS."CurrencyCode";
 
-        
-   @Search.searchable: true 
-    Define View texts As Select From Util.Texts as B {
-     B.TEXTID,
-     B.LANGUAGE,
-     B.ISOLANGUAGE,  
-    @Search.defaultSearchElement: true      
-     B.TEXT
-  }; 
-  
-@Search.searchable: true
-  Define View productTexts As Select From Products as A
-  mixin {
-			T		: association[1] to texts on A.NAMEID = T.TEXTID;
-		} 
-  into
-  {
-		@EnterpriseSearch.key : true
-		A.PRODUCTID,
-		@EnterpriseSearch.usageMode: [ #AUTO_FACET ]
-		@Search.defaultSearchElement : true
-		A.CATEGORY,
-		@EnterpriseSearch.highlighted : {enabled : true}
-		@Search.defaultSearchElement : true
-        T.TEXT
-	};	                    
- }; 
+}; 

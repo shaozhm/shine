@@ -1,10 +1,10 @@
 {
   "name": "deploy",
   "dependencies": {
-    "deploy": "git://github.wdf.sap.corp/xs2/hdideploy.js"
+    "sap-hdi-deploy": "0.6.0"
   },
   "private": true,
   "scripts": {
-    "start": "node node_modules/node-hdi-deploy/deploy.js"
+    "start": "node node_modules/sap-hdi-deploy/deploy.js"
   }
 }
