@@ -1,0 +1,20 @@
+{
+  "welcomeFile": "index.html",
+  "sendWelcomeFileRedirect": "true",
+  "routes": [
+	{
+      "source": "/sap/ui5/1(.*)",
+      "target": "$1",
+      "destination": "ui5"
+    },
+    {
+      "source": "/sap/hana/democontent/epm/services/",
+      "destination": "xsjs-backend"
+    },
+    {
+      "source": "/get/url",
+      "destination": "ui-router"
+    }
+  ]
+  
+}

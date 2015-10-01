@@ -46,8 +46,29 @@ applications:
   env:
     destinations: >
       [
-        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-polyglot-odata.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
+        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-polyglot-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
       ]
   services:
     - uaa-refapps
+    
+- name: shine-polyglot-launchpad
+  host: [c/d/i-user]-shine-polyglot-launchpad
+  path: launchpad
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-polyglot-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+      ]
+  services:
+    - uaa-refapps
+
+- name: shine-polyglot-ui-router
+  host: [c/d/i-user]-shine-polyglot-ui-router
+  path: ui-router
+  memory: 256M
+  env:
+    ADMIN_UI: http://[c/d/i-user]-shine-polyglot-admin.cfapps.neo.ondemand.com
+    PURCHASE_UI: http://[c/d/i-user]-shine-polyglot-purchase.cfapps.neo.ondemand.com

@@ -8,7 +8,7 @@ mvn clean install
 ```
 
 For the following apps a local node installation has to be done to load the SAP specific node modules.
-db, admin-ui, admin-js
+db, admin-ui, admin-js, purchase-ui, ui-router, launchpad, xsjs
 For example for db folder, execute the following commands
 ```
 cd db
