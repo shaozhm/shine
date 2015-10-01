@@ -8,8 +8,10 @@ mvn clean install
 ```
 
 For the following apps a local node installation has to be done to load the SAP specific node modules.
+
 db, admin-ui, admin-js, purchase-ui, ui-router, launchpad, xsjs
-For example for db folder, execute the following commands
+
+For example "db" folder, execute the following commands
 ```
 cd db
 npm install
@@ -17,6 +19,12 @@ npm install
 
 Also please replace [c/d/i-user] with your id in the manifest.yml before pushing the application.
 
+
+##Create a service for the HDI container
+
+```
+cf create-service hana hdi-shared shine-hdi-container
+```
 
 ##Create a service for the UAA
 
