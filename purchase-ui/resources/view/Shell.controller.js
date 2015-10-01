@@ -48,7 +48,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Shell", {
     },
 
     getSessionInfo: function(oController, oUserTxt) {
-        var aUrl = '/sap/hana/democontent/epm/xs/poWorklistQuery.xsjs?cmd=getSessionInfo';
+        var aUrl = '/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=getSessionInfo';
 
         jQuery.ajax({
             url: aUrl,

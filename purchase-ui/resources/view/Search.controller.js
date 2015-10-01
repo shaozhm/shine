@@ -130,7 +130,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Search", {
 
     loadFilter: function(oEvent) {
         gSearchParam = oEvent.getParameter("value");
-        var aUrl = '/sap/hana/democontent/epm/xs/poWorklistQuery.xsjs?cmd=filter' + '&query=' + escape(oEvent.getParameter("value")) + '&page=1&start=0&limit=25';
+        var aUrl = '/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=filter' + '&query=' + escape(oEvent.getParameter("value")) + '&page=1&start=0&limit=25';
         jQuery.ajax({
             url: aUrl,
             method: 'GET',

@@ -22,6 +22,7 @@ function getMessage(messageClass, messageNumber, p1, p2, p3, p4) {
 
     if (messageText === '') {
         lang = 'en';
+        pstmt = conn.prepareStatement(query);
         pstmt.setString(1, messageClass);
         pstmt.setString(2, messageNumber);
         pstmt.setString(3, lang);

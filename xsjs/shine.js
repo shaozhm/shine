@@ -1,13 +1,10 @@
 'use strict';
 
-var xsjs = require('xsjs');
-var xsenv = require('xsenv');
+var xsjs = require('sap-xsjs');
+var xsenv = require('sap-xsenv');
 var port = process.env.PORT || 3000;
 
-var options = xsenv.getServices({
-  hana: process.env.HANA_SERVICE_NAME,
-  uaa: process.env.UAA_SERVICE_NAME
-});
+var options = xsenv.getServices({hana:{tag:'hana'}, uaa:{name:process.env.UAA_SERVICE_NAME}});
 console.log(JSON.stringify(options));
 
 xsjs(options).listen(port);

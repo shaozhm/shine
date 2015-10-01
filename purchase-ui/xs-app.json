@@ -9,11 +9,7 @@
     },
     {
       "source": "/sap/hana/democontent/epm/services/",
-      "destination": "purchase-backend"
-    },
-    {
-      "source": "/sap/hana/democontent/epm/xs/",
-      "destination": "purchase-xs-backend"
+      "destination": "xsjs-backend"
     }
   ]
   

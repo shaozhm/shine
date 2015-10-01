@@ -21,14 +21,14 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
         //Excel Download
         if (oEvent.getSource() === this.byId("btnExcel")) {
             // xsjs will handle the content type and download will trigger automatically
-            window.open("/sap/hana/democontent/epm/xs/poWorklistQuery.xsjs?cmd=Excel");
+            window.open("/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=Excel");
             return;
         }
 
       //Zip Functionality
 		 if (oEvent.getSource() === this.byId("btnZip")){
 			 // xsjs will handle the content type and download will trigger automatically
-			 window.open("/sap/hana/democontent/epm/xs/poWorklistQuery.xsjs?cmd=Zip");
+			 window.open("/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=Zip");
 			 return;
 		 }
 		 
@@ -94,7 +94,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
     //Delete Confirmation Dialog Results
     deleteConfirm: function(bResult, oController, poId) {
         if (bResult) {
-            var aUrl = '/sap/hana/democontent/epm/xs/poWorklistUpdate.xsjs?cmd=delete' + '&PurchaseOrderId=' + escape(poId);
+            var aUrl = '/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs?cmd=delete' + '&PurchaseOrderId=' + escape(poId);
             jQuery.ajax({
                 url: aUrl,
                 method: 'GET',
@@ -110,7 +110,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
     //Approve Confirmation Dialog Results
     approvalConfirm: function(bResult, oController, poId, action) {
         if (bResult) {
-            var aUrl = '/sap/hana/democontent/epm/xs/poWorklistUpdate.xsjs?cmd=approval' + '&PurchaseOrderId=' + escape(poId) + '&Action=' + escape(action);
+            var aUrl = '/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs?cmd=approval' + '&PurchaseOrderId=' + escape(poId) + '&Action=' + escape(action);
             jQuery.ajax({
                 url: aUrl,
                 method: 'GET',

@@ -75,7 +75,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Detail", {
     setGroupBy: function(oEvent, oController) {
         var groupBy = oEvent.oSource.getSelectedItemId();
         groupBy  = /[^-]*$/.exec(groupBy)[0];
-        var aUrl = '/sap/hana/democontent/epm/xs/poWorklistQuery.xsjs?cmd=getTotalOrders' + '&groupby=' + escape(groupBy) + '&currency=USD&filterterms=';
+        var aUrl = '/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=getTotalOrders' + '&groupby=' + escape(groupBy) + '&currency=USD&filterterms=';
 
         jQuery.ajax({
             url: aUrl,

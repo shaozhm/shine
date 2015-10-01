@@ -1,10 +1,11 @@
-$.import("sap.hana.democontent.epm.xs", "messages");
-var MESSAGES = $.sap.hana.democontent.epm.xs.messages;
-$.import("sap.hana.democontent.epm.xs", "session");
-var SESSIONINFO = $.sap.hana.democontent.epm.xs.session;
+$.import("sap.hana.democontent.epm.services", "messages");
+var MESSAGES = $.sap.hana.democontent.epm.services.messages;
+$.import("sap.hana.democontent.epm.services", "session");
+var SESSIONINFO = $.sap.hana.democontent.epm.services.session;
 
 function getFilter() {
     function createFilterEntry(rs, attribute, obj) {
+        console.log("add " + rs.getNString(1) + " " + attribute + " obj " + obj);
         return {
             "terms": rs.getNString(1),
             "attribute": attribute,

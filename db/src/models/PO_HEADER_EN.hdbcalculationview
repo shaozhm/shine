@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.hana.democontent.epm.models::PO_HEADER_EN" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.hana.democontent.epm.models::PO_HEADER_EN" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
 <descriptions defaultDescription="PO_HEADER_EN"/>
 <localVariables/>
 <variableMappings/>
@@ -19,8 +19,8 @@
   <DataSource id="sap.hana.democontent.epm.data::PO.Header" type="DATA_BASE_TABLE">
     <resourceUri>sap.hana.democontent.epm.data::PO.Header</resourceUri>
   </DataSource>
-  <DataSource id="sap.hana.democontent.epm.data::MD.BusinessPartner" type="DATA_BASE_TABLE">
-    <resourceUri>sap.hana.democontent.epm.data::MD.BusinessPartner</resourceUri>
+  <DataSource id="BUYER" type="CALCULATION_VIEW">
+    <resourceUri>sap.hana.democontent.epm.models::BUYER</resourceUri>
   </DataSource>
   <DataSource id="PO_ITEM" type="CALCULATION_VIEW">
     <resourceUri>sap.hana.democontent.epm.models::PO_ITEM</resourceUri>
@@ -305,6 +305,7 @@
       <viewAttribute id="CONFIRMSTATUSDESC"/>
       <viewAttribute id="LIFECYCLESTATUSDESC"/>
       <viewAttribute id="ORDERINGSTATUSDESC"/>
+      <viewAttribute id="CITY"/>
       <viewAttribute id="COMPANYNAME"/>
       <viewAttribute id="LEGALFORM"/>
     </viewAttributes>
@@ -331,7 +332,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="LIFECYCLESTATUSDESC" source="LIFECYCLESTATUSDESC"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ORDERINGSTATUSDESC" source="ORDERINGSTATUSDESC"/>
     </input>
-    <input node="#sap.hana.democontent.epm.data::MD.BusinessPartner">
+    <input node="#BUYER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYNAME" source="COMPANYNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LEGALFORM" source="LEGALFORM"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_PARTNERID" source="PARTNERID"/>
@@ -360,13 +362,15 @@
       <viewAttribute id="CONFIRMSTATUSDESC"/>
       <viewAttribute id="LIFECYCLESTATUSDESC"/>
       <viewAttribute id="ORDERINGSTATUSDESC"/>
-      <viewAttribute id="COMPANYNAME"/>
-      <viewAttribute id="LEGALFORM"/>
       <viewAttribute id="PRODUCT_PRODUCTID"/>
       <viewAttribute id="PURCHASEORDERITEM"/>
       <viewAttribute id="ProductName"/>
     
       <viewAttribute id="CATEGORY"/>
+    
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="COMPANYNAME"/>
+      <viewAttribute id="LEGALFORM"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="#Join_5">
@@ -390,6 +394,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CONFIRMSTATUSDESC" source="CONFIRMSTATUSDESC"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LIFECYCLESTATUSDESC" source="LIFECYCLESTATUSDESC"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ORDERINGSTATUSDESC" source="ORDERINGSTATUSDESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYNAME" source="COMPANYNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LEGALFORM" source="LEGALFORM"/>
     </input>
@@ -485,30 +490,35 @@
       <descriptions defaultDescription="ORDERINGSTATUSDESC"/>
       <keyMapping columnObjectName="Join_6" columnName="ORDERINGSTATUSDESC"/>
     </attribute>
-    <attribute id="COMPANYNAME" order="21" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="COMPANYNAME"/>
-      <keyMapping columnObjectName="Join_6" columnName="COMPANYNAME"/>
-    </attribute>
-    <attribute id="LEGALFORM" order="22" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="LEGALFORM"/>
-      <keyMapping columnObjectName="Join_6" columnName="LEGALFORM"/>
-    </attribute>
-    <attribute id="PRODUCT_PRODUCTID" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PRODUCT_PRODUCTID" order="21" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PRODUCT_PRODUCTID"/>
       <keyMapping columnObjectName="Join_6" columnName="PRODUCT_PRODUCTID"/>
     </attribute>
-    <attribute id="PURCHASEORDERITEM" order="24" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PURCHASEORDERITEM" order="22" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PURCHASEORDERITEM"/>
       <keyMapping columnObjectName="Join_6" columnName="PURCHASEORDERITEM"/>
     </attribute>
-    <attribute id="ProductName" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ProductName" order="23" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ProductName"/>
       <keyMapping columnObjectName="Join_6" columnName="ProductName"/>
     </attribute>
   
-    <attribute id="CATEGORY" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CATEGORY" order="24" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CATEGORY"/>
       <keyMapping columnObjectName="Join_6" columnName="CATEGORY"/>
+    </attribute>
+  
+    <attribute id="CITY" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Join_6" columnName="CITY"/>
+    </attribute>
+    <attribute id="COMPANYNAME" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANYNAME"/>
+      <keyMapping columnObjectName="Join_6" columnName="COMPANYNAME"/>
+    </attribute>
+    <attribute id="LEGALFORM" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LEGALFORM"/>
+      <keyMapping columnObjectName="Join_6" columnName="LEGALFORM"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
