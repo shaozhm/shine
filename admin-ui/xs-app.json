@@ -17,7 +17,8 @@
     },
     {
       "source": "/replicate",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "shine-polyglot-admin.DataGenerator"
     }
   ]
   
