@@ -1,5 +1,5 @@
+.hdi
 node_modules
-npm-debug.log
-sql_trace.js
-logs
-temp
+node
+target
+etc
