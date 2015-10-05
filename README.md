@@ -1,4 +1,4 @@
-SHINE Polyglot app
+SHINE 2.0.0
 ================
 
 ## Prerequisites
