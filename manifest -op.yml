@@ -1,0 +1,73 @@
+---
+applications:
+- name: shine-db
+  path: db
+  memory: 256M
+  no-route: true
+  services:
+    - shine-hdi-container
+
+- name: shine-admin-backend
+  port: 49030
+  path: admin-js
+  memory: 512M
+  services:
+    - shine-hdi-container
+    - uaa-refapps
+
+- name: shine-admin
+  path: admin-ui
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"admin-backend", "url":"http://localhost:49030", "forwardAuthToken": true},
+        {"name":"ui5", "url":"https://sapui5.netweaver.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+      ]
+  services:
+    - uaa-refapps
+
+- name: shine-xsjs
+  port: 49040
+  memory: 256M
+  path: xsjs
+  services:
+    - shine-hdi-container
+    - uaa-refapps
+  env:
+    HANA_SERVICE_NAME: shine-hdi-container
+    UAA_SERVICE_NAME: uaa-refapps
+
+- name: shine-purchase
+  path: purchase-ui
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"xsjs-backend", "url":"http://localhost:49040", "forwardAuthToken": true},
+        {"name":"ui5", "url":"https://sapui5.netweaver.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+      ]
+  services:
+    - uaa-refapps
+    
+- name: shine-launchpad
+  host: [c/d/i-user]-shine-launchpad
+  path: launchpad
+  memory: 768M
+  env:
+    destinations: >
+      [
+        {"name":"xsjs-backend", "url":"http://localhost:49040/", "forwardAuthToken": true},
+        {"name":"ui-router", "url":"http://localhost:49050/", "forwardAuthToken": true},
+        {"name":"ui5", "url":"https://sapui5.netweaver.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+      ]
+  services:
+    - uaa-refapps
+
+- name: shine-ui-router
+  port: 49050
+  path: ui-router
+  memory: 256M
+  env:
+    ADMIN_UI: http://localhost:49030
+    PURCHASE_UI: http://localhost:49040
