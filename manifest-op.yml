@@ -8,7 +8,7 @@ applications:
     - shine-hdi-container
 
 - name: shine-admin-backend
-  port: [dg-port]
+  port: 49010
   path: admin-js
   memory: 512M
   services:
@@ -16,20 +16,20 @@ applications:
     - uaa-refapps
 
 - name: shine-admin
-  port: [admin-ui-port]
+  port: 49020
   path: admin-ui
   memory: 768M
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://[hostname]:[dg-port]", "forwardAuthToken": true},
+        {"name":"admin-backend", "url":"http://mo-63b26cdd4.mo.sap.corp:49010", "forwardAuthToken": true},
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
       ]
   services:
     - uaa-refapps
 
 - name: shine-xsjs
-  port: [xsjs-port]
+  port: 49030
   memory: 256M
   path: xsjs
   services:
@@ -40,13 +40,13 @@ applications:
     UAA_SERVICE_NAME: uaa-refapps
 
 - name: shine-purchase
-  port: [purchase-ui-port]
+  port: 49040
   path: purchase-ui
   memory: 768M
   env:
     destinations: >
       [
-        {"name":"xsjs-backend", "url":"http://[hostname]:[xsjs-port]", "forwardAuthToken": true},
+        {"name":"xsjs-backend", "url":"http://mo-63b26cdd4.mo.sap.corp:49030", "forwardAuthToken": true},
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
       ]
   services:
@@ -58,17 +58,17 @@ applications:
   env:
     destinations: >
       [
-        {"name":"xsjs-backend", "url":"http://[hostname]:[xsjs-port]", "forwardAuthToken": true},
-        {"name":"ui-router", "url":"http://[hostname]:[router-port]", "forwardAuthToken": true},
+        {"name":"xsjs-backend", "url":"http://mo-63b26cdd4.mo.sap.corp:49030", "forwardAuthToken": true},
+        {"name":"ui-router", "url":"http://mo-63b26cdd4.mo.sap.corp:49050", "forwardAuthToken": true},
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
       ]
   services:
     - uaa-refapps
 
 - name: shine-ui-router
-  port: [router-port]
+  port: 49050
   path: ui-router
   memory: 256M
   env:
-    ADMIN_UI: http://[hostname]:[admin-ui-port]
-    PURCHASE_UI: http://[hostname]:[purchase-ui-port]
+    ADMIN_UI: http://mo-63b26cdd4.mo.sap.corp:49020
+    PURCHASE_UI: http://mo-63b26cdd4.mo.sap.corp:49040
