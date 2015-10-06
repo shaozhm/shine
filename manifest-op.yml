@@ -51,7 +51,6 @@ applications:
     - uaa-refapps
     
 - name: shine-launchpad
-  host: [c/d/i-user]-shine-launchpad
   path: launchpad
   memory: 768M
   env:
