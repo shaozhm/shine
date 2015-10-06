@@ -80,6 +80,12 @@ modules:
           name: xsjs
           url: ~{url}
           forwardAuthToken: true
+      - name: routes
+        group: destinations
+        properties:
+          name: routes
+          url: ~{url}
+          forwardAuthToken: true    
       - name: ui5
         group: destinations
         properties:
