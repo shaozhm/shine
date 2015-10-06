@@ -22,7 +22,7 @@ applications:
     destinations: >
       [
         {"name":"admin-backend", "url":"http://localhost:49030", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.netweaver.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
       ]
   services:
     - uaa-refapps
@@ -45,7 +45,7 @@ applications:
     destinations: >
       [
         {"name":"xsjs-backend", "url":"http://localhost:49040", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.netweaver.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
       ]
   services:
     - uaa-refapps
@@ -58,7 +58,7 @@ applications:
       [
         {"name":"xsjs-backend", "url":"http://localhost:49040/", "forwardAuthToken": true},
         {"name":"ui-router", "url":"http://localhost:49050/", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.netweaver.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
       ]
   services:
     - uaa-refapps
