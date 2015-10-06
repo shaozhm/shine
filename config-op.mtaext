@@ -2,11 +2,12 @@ _schema-version: "2.0.0"
 ID: com.sap.refapps.shine.config1 
 extends: com.sap.refapps.shine
 
-target-platforms: ["XSA-INITIAL"]
+target-platforms: ["initial initial"]
 
 modules:
   - name: shine-admin-ui
     parameters:
+      port: 52010
       memory: 128M
     requires:
       - name: ui5
@@ -16,11 +17,13 @@ modules:
 
   - name: shine-admin-js
     parameters:
+      port: 52020
       memory: 512M
       instances: 1
       
   - name: shine-purchase-ui
     parameters:
+      port: 52030
       memory: 128M
     requires:
       - name: ui5
@@ -30,11 +33,13 @@ modules:
 
   - name: shine-xsjs
     parameters:
+      port: 52040
       memory: 512M
       instances: 1
 
   - name: shine-launchpad
     parameters:
+      port: 52050
       memory: 128M
     requires:
       - name: ui5
@@ -44,5 +49,9 @@ modules:
 
   - name: shine-ui-router
     parameters:
+      port: 52060
       memory: 128M
       instances: 1
+    properties: 
+      ADMIN_UI: http://mo-bb91deedb.mo.sap.corp:52010
+      PURCHASE_UI: http://mo-bb91deedb.mo.sap.corp:52030

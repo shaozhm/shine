@@ -11,8 +11,8 @@ modules:
       - name: admin-js
         group: destinations
         properties:
-          name: js
-          url: ~{url1}
+          name: admin-backend
+          url: ~{url}
           forwardAuthToken: true
       - name: ui5
         group: destinations
@@ -28,7 +28,7 @@ modules:
     provides: 
       - name: admin-js
         properties:
-          url1: "http://${default-uri}"
+          url: "http://${default-uri}"
     requires:
       - name: uaa-refapps
       - name: shine-hdi-container
@@ -44,8 +44,8 @@ modules:
       - name: purchase-xsjs
         group: destinations
         properties:
-          name: xsjs
-          url: ~{url2}
+          name: xsjs-backend
+          url: ~{url}
           forwardAuthToken: true
       - name: ui5
         group: destinations
@@ -58,10 +58,13 @@ modules:
   - name: shine-xsjs
     type: javascript.nodejs
     path: xsjs/
+    properties: 
+      HANA_SERVICE_NAME: shine-hdi-container
+      UAA_SERVICE_NAME: uaa-refapps
     provides: 
       - name: purchase-xsjs
         properties:
-          url2: "http://${default-uri}"
+          url: "http://${default-uri}"
     requires:
       - name: uaa-refapps
       - name: shine-hdi-container
@@ -77,13 +80,13 @@ modules:
       - name: purchase-xsjs
         group: destinations
         properties:
-          name: xsjs
+          name: xsjs-backend
           url: ~{url}
           forwardAuthToken: true
       - name: routes
         group: destinations
         properties:
-          name: routes
+          name: ui-router
           url: ~{url}
           forwardAuthToken: true    
       - name: ui5
@@ -97,11 +100,13 @@ modules:
   - name: shine-ui-router
     type: javascript.nodejs
     path: ui-router/
+    properties: 
+      ADMIN_UI:
+      PURCHASE_UI:
     provides: 
       - name: routes
         properties:
-          ADMIN_UI: ~{url1}
-          PURCHASE_UI: ~{url2} 
+          url: "http://${default-uri}"
     parameters:
       host: ${user}-shine-ui-router
       
@@ -117,7 +122,7 @@ resources:
   - name: uaa-refapps
     type: com.sap.xs.uaa
     parameters:
-     config_path:xs-security.json
+     config_path: xs-security.json
     
   - name: ui5
     properties:
