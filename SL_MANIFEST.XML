@@ -1,18 +1,1 @@
-<software-component-version formatVersion="1.0" schemaVersion="1.0">
-	<software-component-version-key>
-		<name>XSAC_SHINE</name>
-		<version>0</version>
-		<vendor>sap.com</vendor>
-	</software-component-version-key>
-	<caption/>
-	<sp>
-		<sp-key>
-			<name>1</name>
-			<sp-level>1</sp-level>
-			<vendor>sap.com</vendor>
-		</sp-key>
-		<patch-level>0</patch-level>
-	</sp>
-	<creation-date-time>2015-07-10T09:29:29.697Z</creation-date-time>
-	<runtime-type>XSART</runtime-type>
-</software-component-version>
+<?xml version="1.0" encoding="utf-8"?><software-component-version formatVersion="1.0" schemaVersion="1.0"><software-component-version-key><PPMS-ID>73555000100200004293</PPMS-ID><name>XSAC_SHINE</name><version>1</version><vendor>sap.com</vendor></software-component-version-key><caption>SAP Hana Demo Model for XS Advanced 1.0</caption><runtime-type>XSART</runtime-type></software-component-version>
