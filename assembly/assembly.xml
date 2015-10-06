@@ -28,6 +28,16 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
+		<fileSet>
+            <directory>../admin-js</directory>
+            <outputDirectory>admin-js</outputDirectory>
+            <excludes>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
         <fileSet>
             <directory>../admin-ui</directory>
             <outputDirectory>admin-ui</outputDirectory>
@@ -41,16 +51,6 @@
 		 <fileSet>
             <directory>../purchase-ui</directory>
             <outputDirectory>purchase-ui</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-            </excludes>
-        </fileSet>
-		<fileSet>
-            <directory>../ui-router</directory>
-            <outputDirectory>ui-router</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
