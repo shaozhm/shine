@@ -53,6 +53,7 @@ applications:
     - uaa-refapps
     
 - name: shine-launchpad
+  port: 49060
   path: launchpad
   memory: 768M
   env:
