@@ -60,6 +60,7 @@ applications:
     destinations: >
       [
         {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
+        {"name":"ui-router", "url":"http://[c/d/i-user]-shine-ui-router.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
         {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
       ]
   services:
