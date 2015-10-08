@@ -1,0 +1,5 @@
+
+rules:
+- Branch: master
+  attributes: 
+      prepareDeployPackage: true

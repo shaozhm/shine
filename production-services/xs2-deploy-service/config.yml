@@ -1,0 +1,16 @@
+rules:
+  - Branch: master
+    attributes:
+      deployUser: bootstrap
+      deploySpace: initial
+      deployApi: http://xs2target.mo.sap.corp:9999
+      deployOrg: initial
+      deployMethod: deploy
+      deployMtaExtCsv: "config-op.mtaext"
+      deployPassword: |
+        fvYzHdOe/xl+WtPQQaNsW4otIXOT4+9FkLzlSCvLNaUVChq1M/SGXfq2X25gVQhI
+        IKTPztJLVaRcqvtGhyqxg4+rAaJ2GexD+/A1NmDrF71jXIgCdXg+0ZqlbL2DVh4W
+        PheG5jfJtnuBlSNz2aGS8mv3WArnJ9g1DoTIuSEO7DinBg6uQfpMyhy8nJx6i7gR
+        kVfLf6a7SKuS9AXJ9esCpRZ2BLxfXtaCtzI1T/c8hgU21EqZcUmf0ArbEnR2l3Lk
+        CZSeoVr73ZutQ/nBWP9zKo/hMIuEJSxirb7e0arzhRCSDS23vvTP0FExVepa9AEM
+        t+GneJuE5pPeyYtnWTKOzA==

@@ -1,0 +1,17 @@
+{
+  "name": "shine-xsjs",
+  "description": "The Shine Demo Application based on XSJS",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "sap-xsenv":"1.0.0",
+    "sap-xsjs": "1.0.0",
+    "clone":"1.0.2"
+  },
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "scripts": {
+    "start": "node shine.js"
+  }
+}
