@@ -1,5 +1,5 @@
 SHINE 2.0.0
-================
+================ 
 
 ## Prerequisites
 Execute the following command to build the odata application before deployment. 
