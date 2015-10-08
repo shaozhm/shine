@@ -1,5 +1,4 @@
-
 rules:
 - Branch: master
   attributes: 
-      prepareDeployPackage: true
+    prepareDeployPackage: true
