@@ -1,5 +1,5 @@
 DO_NOT_SHOW=Do not show this again
-TITLE=SHINE (SAP HANA Interactive Education) for XSA
+TITLE=SHINE (SAP HANA Interactive Education) for SAP HANA XS Advanced Model
 OK_BUTTON=OK
 INTRODUCTION=Introduction
 WHATS_NEW=What's New With SHINE 2.0.0
@@ -28,11 +28,11 @@ UI5_SEARCH=Full-text Search with SAPUI5, ODATA, and CDS
 JOBSCHEDULING=Runtime Job Scheduling
 ETAGSXSODATA=ETags and Null values in XSOData
 
-SHINE_INTRO=SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build native SAP HANA applications. The demo application, delivered with SAP HANA in a special delivery unit(DU), comes complete with sample data and design-time developer objects for the application's database tables, data views, stored procedures, OData, and user interface.
+SHINE_INTRO=SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA Extended Application Services Advanced Model. This demo application is delivered as a package which contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 SHINE_WHATS_NEW=<ul><li>Micro services based architecture</li><li>XSOData served from node based XSJS library</li><li>All database artifacts using HDI</li></ul>
 SHINE_WHATS_NEW_PREV=<ul><li>ETags and Null values in XSOData</li><li>Migration from $.db to $.hdb and XSDS in services</li><li>XSJS features - Multipart Message handling, Text Access API, XML parsing</li><li>Table type definition in Procedures</li></ul>
 
-TILE_DESC_DG=<div>The demo application defines a set of tables, along with a basic set of initial data that comes in a set of CSV files. For example, the sales orders table begins with 1,000 records. </br><ul><li>This application provides the tools for generating additional sales and purchase order records, as well as reloading the master data tables.</li><li>The records can also be distributed over a period of time using the Time based Data Generator</li><li>The complete application data can also be reset using this module.</li></ul></div>
+TILE_DESC_DG=<div>The demo application defines a set of tables, along with a basic set of initial data that comes in a set of CSV files. For example, the sales orders table begins with 1,000 records. </br><ul><li>This application provides the tools for generating additional sales and purchase order records, as well as reloading the master data tables.</li><li>The complete application data can also be reset using this module.</li></ul></div>
 TILE_DESC_PO=<div>This UI illustrates a comprehensive Purchase Order Worklist which can act as a complete interface for a Purchase Department Head.</br><ul><li>There is a list of Purchase Orders and upon selection of a particular order, the general data and Purchase Order items related to the purchase order are listed in separate tabs.</li><li>He can perform Actions like Delete, Accept or Reject on these Purchase Orders and export the data to excel</li><li>He can perform search for the Purchase Orders based on different attribute like Company Name,Product ID,etc</li></ul></div>
 TILE_DESC_SO=<div>This UI illustrates a Sales Order Worklist where you can create and delete Sales Orders.</br><ul><li>The Details tab provides a type of PO Worklist where all the Sales Orders are listed.</li><li>By selecting a Sales Order, you can view its details.</li><li>This tab also provides a feature for creating Sales Orders using XSJS.</li></ul></div>
 TILE_DESC_SD=<div>This UI illustrates a comprehensive dashboard concept for a Sales Manager that contains several charts based on the OData models constructed in the demo content.</br><ul><li>The Overview tab contains all the sales specific charts based on Region/Country/Discount per region.</li><li>The Product Reports tab contains charts that provide sales information categorized by product.</li><li>The Details tab provides a type of PO Worklist where all the Sales Orders are listed.</li><li>By selecting a Sales Order, you can view its details.</li><li>This tab also provides a feature for creating Sales Orders using XSJS.</li></ul></div>
