@@ -196,6 +196,7 @@
                      <param>${project.build.directory}</param>
                    </mtaSourceDirs>
                    <targetDir>${project.build.directory}</targetDir>
+				   <overwrite>true</overwrite>
                 </configuration>
                 <executions>
                    <execution>
