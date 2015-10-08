@@ -84,7 +84,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
    onHelpOpen: function(){
 	   var view = this.getView();
        view._bDialog = sap.ui.xmlfragment(
-           "sap.hana.democontent.epm.admin.ui.view.tileDialog", this // associate controller with the fragment
+           "sap.hana.democontent.epm.admin.view.tileDialog", this // associate controller with the fragment
        );
        view._bDialog.addStyleClass("sapUiSizeCompact");
        view.addDependent(this._bDialog);

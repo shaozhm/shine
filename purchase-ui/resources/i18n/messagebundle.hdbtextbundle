@@ -98,12 +98,12 @@ OK=OK
 
 SEARCH_HELP_DESC=<div>As a Purchase Department Head I like to search the Purchase orders based on the following:</br><ul><li>Purchase Order ID</li><li>Company Name</li><li>Partner City</li><li>Product Category</li><li>Product Name</li><li>Product ID</li><li>Product Description</li></ul>Here we want to demonstrate how Search can be  implemented across attributes.</div>
 SEARCH_HELP_MODEL=poWorklistQuery.xsjs
-SEARCH_HELP_UI=<div><ul><li><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/poworklist/view/Search.view.xml' target='_blank'>Search.view.xml</a></li><li><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/poworklist/view/Search.controller.js' target='_blank'>Search.controller.js</a></li></ul>
+SEARCH_HELP_UI=<div><ul><li>Search.view.xml</li><li>Search.controller.js</li></ul>
 
 SEARCH_HELP_MODEL_PATH=sap/hana/democontent/epm/services/poWorklistQuery.xsjs
 
 ACTIONS_EXPORT=Take Actions and Export PurchaseOrders
-ACTIONS_EXPORT_DESC=<div>This table displays all the PurchaseOrders records. You can Accept or Reject the Purchaseorders by clicking on the Actions menu item. You can also select a PurchaseOrder and click on Delete button to remove it from the database.<p>Here you can also export the list of PurchaseOrders as an Excel/Zip by clicking on Export as Excel/Export as Zip button. Check /sap/hana/democontent/epm/services/poWorklistQuery.xsjs for the implementation</p></div>
-ACTIONS_EXPORT_UI=<div><ul><li><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/poworklist/view/Table.view.xml' target='_blank'>Table.view.xml</a></li><li><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/poworklist/view/Table.controller.js' target='_blank'>Table.controller.js</a></li></ul>
+ACTIONS_EXPORT_DESC=<div>This table displays all the PurchaseOrders records. You can Accept or Reject the Purchaseorders by clicking on the Actions menu item. You can also select a PurchaseOrder and click on Delete button to remove it from the database.<p>Here you can also export the list of PurchaseOrders as an Excel/Zip by clicking on Export as Excel/Export as Zip button. Check xsjs/lib/sap/hana/democontent/epm/services/poWorklistQuery.xsjs for the implementation</p></div>
+ACTIONS_EXPORT_UI=<div><ul><li>Table.view.xml</li><li>Table.controller.js</li></ul>
 ACTIONS_EXPORT_MODEL=poWorklist.xsodata
-ACTIONS_EXPORT_MODEL_PATH=sap/hana/democontent/epm/services/poWorklist.xsodata
+ACTIONS_EXPORT_MODEL_PATH=xsjs/lib/sap/hana/democontent/epm/services/poWorklist.xsodata

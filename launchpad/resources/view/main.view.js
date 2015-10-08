@@ -76,7 +76,7 @@ sap.ui.jsview("view.main", {
 
         var titleLabel = new sap.m.Label({
             design: sap.m.LabelDesign.Bold,
-            text: 'SHINE (SAP HANA Interactive Education)'
+            text: 'SHINE (SAP HANA Interactive Education) for SAP HANA XS Advanced Model'
         });
 
         var page = new sap.m.Page("home", {

@@ -67,7 +67,7 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
 		for( var i = 0; i < myJSON.length; i++)
 	     {
 		    var mConfig = this.getModel("config");
-            mConfig.setProperty("/UserName", myJSON[i].CURRENT_USER);
+            mConfig.setProperty("/UserName", myJSON[i].APPLICATION_USER);
 	     }
 	},
 	mainModelInit: function(){

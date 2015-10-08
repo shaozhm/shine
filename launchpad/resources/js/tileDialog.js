@@ -184,21 +184,8 @@ sap.account.TileDialog.prototype.open = function(tileID) {
     // 		text : getUIFolders(tileID),
     // 		design : sap.ui.commons.TextViewDesign.Standard,
     // 	});
-    oTextView = new sap.ui.commons.Link({
-        text: getUIFolders(tileID),
-        tooltip: getUIFolders(tileID),
-        press: function() {
-            //var relativeUrl = getUIFolders(tileID);
-            // remove slash if prefixed
-            //if (relativeUrl.indexOf('/') == 0) {
-            //    relativeUrl = relativeUrl.substr(1);
-            //}
-            // remove slash if suffixed
-            //if (relativeUrl.lastIndexOf('/') == (relativeUrl.length - 1)) {
-            //    relativeUrl = relativeUrl.substr(0, relativeUrl.length - 1);
-           // }
-            //window.open('/sap/hana/ide/editor/index.html?startURI=' + relativeUrl);
-        }
+    oTextView = new sap.ui.commons.TextView({
+        text: getUIFolders(tileID)
     });
     oCell.addContent(oTextView);
     oRow.addCell(oCell);

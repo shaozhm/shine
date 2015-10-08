@@ -70,25 +70,8 @@ sap.account.TileDialog = function(oFrameController,helpID) {
         hAlign: sap.ui.commons.layout.HAlign.Left,
         width: '100%'
     });
-    oTextView = new sap.ui.commons.Link({
-        text: getModel(helpID),
-        press: function(oEvent) {
-            var relativeUrl;
-            if(oEvent.getSource().getText() === oBundle.getText("SEARCH_HELP_MODEL")){
-                relativeUrl = oBundle.getText("SEARCH_HELP_MODEL_PATH");
-            }else{
-                relativeUrl = oBundle.getText("ACTIONS_EXPORT_MODEL_PATH");
-            }
-            // remove slash if prefixed
-            if (relativeUrl.indexOf('/') === 0) {
-                relativeUrl = relativeUrl.substr(1);
-            }
-            // remove slash if suffixed
-            if (relativeUrl.lastIndexOf('/') == (relativeUrl.length - 1)) {
-                relativeUrl = relativeUrl.substr(0, relativeUrl.length - 1);
-            }
-            window.open('/sap/hana/ide/editor/index.html?startURI=' + relativeUrl);
-        }
+    oTextView = new sap.ui.commons.TextView({
+        text: getModel(helpID)
     });
     oCell.addContent(oTextView);
     oRow.addCell(oCell);
