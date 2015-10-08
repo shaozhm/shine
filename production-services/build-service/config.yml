@@ -1,4 +1,4 @@
-rules:
+branches:
 - Branch: master
   attributes: 
     prepareDeployPackage: true
