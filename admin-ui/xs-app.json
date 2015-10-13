@@ -16,7 +16,7 @@
       "destination": "admin-backend"
     },
     {
-      "source": "/replicate",
+      "source": "/",
       "destination": "admin-backend",
       "scope": "shine-admin.DataGenerator"
     }

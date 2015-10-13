@@ -4,7 +4,7 @@
    <parent>
 	   <groupId>com.sap.refapps</groupId>
 		<artifactId>shine</artifactId>
-		<version>2.0.0-SNAPSHOT</version>
+		<version>1.11.0-SNAPSHOT</version>
 	</parent>
     <artifactId>shine-assembly</artifactId>
     <packaging>pom</packaging>
@@ -167,7 +167,7 @@
                             <target>
                                 <copy 
                                     file="${project.build.directory}/shine-assembly-${project.version}-mta.jar" 
-                                    tofile="${project.build.directory}/shine-assembly-${project.version}.mtar" />
+                                    tofile="${project.build.directory}/xsac-shine-${project.version}.mtar" />
                             </target>
                         </configuration>
                     </execution>
@@ -188,14 +188,15 @@
                 </executions>
             </plugin>
 			 <plugin>
-                <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
+                 <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
                 <artifactId>alm-prod-assembler-maven-plugin</artifactId>
-                <version>0.5.0</version>
+                <version>0.8.0</version>
                 <configuration>
                    <mtaSourceDirs>
                      <param>${project.build.directory}</param>
                    </mtaSourceDirs>
                    <targetDir>${project.build.directory}</targetDir>
+				   <resultZip>${project.build.directory}/xsac-shine-SCA-${project.version}.zip</resultZip>
 				   <overwrite>true</overwrite>
                 </configuration>
                 <executions>
@@ -208,12 +209,12 @@
                   </execution>
                 </executions>
             </plugin>
-            <plugin>
+           <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>attach-mtar</id>
+                        <id>attach-distribution</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>attach-artifact</goal>
@@ -221,8 +222,12 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>${project.build.directory}/shine-assembly-${project.version}.mtar</file>
+                                    <file>${project.build.directory}/xsac-shine-${project.version}.mtar</file>
                                     <type>mtar</type>
+                                </artifact>
+                                <artifact>
+                                    <file>${project.build.directory}/xsac-shine-SCA-${project.version}.zip</file>
+                                    <type>zip</type>
                                 </artifact>
                             </artifacts>
                         </configuration>
