@@ -31,4 +31,4 @@ cf create-service hana hdi-shared shine-hdi-container
 ```
 cf create-service sap-login default uaa-refapps -c xs-security.json
 ```
-Create group and assign role to the required users here: https://sap-login-test.cfapps.neo.ondemand.com. Use https://wiki.wdf.sap.corp/wiki/display/xs2/Authorization+with+Scopes+for+XS2+Monsoon+Readymade for reference
+Create group and assign role to the required users here: https://sap-login-test.cfapps.neo.ondemand.com. Use https://wiki.wdf.sap.corp/wiki/display/xs2/Authorization+with+Scopes+for+XS2+Monsoon+Readymade for reference.
