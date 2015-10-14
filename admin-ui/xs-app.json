@@ -1,23 +1,30 @@
 {
   "welcomeFile": "index.html",
-  "sendWelcomeFileRedirect": "true",
   "routes": [
     {
       "source": "/sap/ui5/1(.*)",
       "target": "$1",
-      "destination": "ui5"
+      "localDir": "sapui5",
+      "scope": "shine-admin.DataGenerator"
     },
     {
       "source": "/get",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "shine-admin.DataGenerator"
     },
     {
       "source": "/reset",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "shine-admin.DataGenerator"
     },
     {
-      "source": "/",
+      "source": "/replicate",
       "destination": "admin-backend",
+      "scope": "shine-admin.DataGenerator"
+    },
+    {
+      "source": "^/(.*)",
+      "localDir": "resources",
       "scope": "shine-admin.DataGenerator"
     }
   ]

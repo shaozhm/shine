@@ -5,11 +5,15 @@
 	{
       "source": "/sap/ui5/1(.*)",
       "target": "$1",
-      "destination": "ui5"
+      "localDir": "sapui5"
     },
     {
       "source": "/sap/hana/democontent/epm/services/",
       "destination": "xsjs-backend"
+    },
+    {
+      "source": "^/(.*)",
+      "localDir": "resources"
     }
   ]
   

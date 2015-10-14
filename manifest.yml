@@ -22,8 +22,7 @@ applications:
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://[c/d/i-user]-shine-admin-backend.cfapps.neo.ondemand.com", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+        {"name":"admin-backend", "url":"http://[c/d/i-user]-shine-admin-backend.cfapps.neo.ondemand.com", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
@@ -46,8 +45,7 @@ applications:
   env:
     destinations: >
       [
-        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
@@ -60,8 +58,7 @@ applications:
     destinations: >
       [
         {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
-        {"name":"ui-router", "url":"http://[c/d/i-user]-shine-ui-router.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com"}
+        {"name":"ui-router", "url":"http://[c/d/i-user]-shine-ui-router.cfapps.neo.ondemand.com/", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
