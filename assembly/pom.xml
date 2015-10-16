@@ -190,7 +190,7 @@
 			 <plugin>
                  <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
                 <artifactId>alm-prod-assembler-maven-plugin</artifactId>
-                <version>0.8.0</version>
+                <version>0.9.0</version>
                 <configuration>
                    <mtaSourceDirs>
                      <param>${project.build.directory}</param>
