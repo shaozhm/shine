@@ -18,7 +18,7 @@ modules:
   - name: shine-admin-js
     parameters:
       port: 52020
-      memory: 512M
+      memory: 128M
       instances: 1
       
   - name: shine-purchase-ui
@@ -34,7 +34,7 @@ modules:
   - name: shine-xsjs
     parameters:
       port: 52040
-      memory: 512M
+      memory: 128M
       instances: 1
 
   - name: shine-launchpad
