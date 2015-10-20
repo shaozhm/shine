@@ -3,7 +3,7 @@ rules:
     attributes:
       deployUser: xsmaster
       deploySpace: initial
-      deployApi: http://mo-ee79db595.mo.sap.corp:9999
+      deployApi: http://mo-ee79db595.mo.sap.corp:30029
       deployOrg: initial
       deployMethod: deploy
       deployMtaExtCsv: "config-op.mtaext"
