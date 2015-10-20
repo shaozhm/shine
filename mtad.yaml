@@ -13,12 +13,7 @@ modules:
         properties:
           name: admin-backend
           url: ~{url}
-          forwardAuthToken: true
-      - name: ui5
-        group: destinations
-        properties:
-          name: ui5
-          url: ~{url}    
+          forwardAuthToken: true 
     parameters:
         host: ${user}-shine-admin
         
@@ -46,12 +41,7 @@ modules:
         properties:
           name: xsjs-backend
           url: ~{url}
-          forwardAuthToken: true
-      - name: ui5
-        group: destinations
-        properties:
-          name: ui5
-          url: ~{url}      
+          forwardAuthToken: true    
     parameters:
         host: ${user}-shine-purchase
         
@@ -88,12 +78,7 @@ modules:
         properties:
           name: ui-router
           url: ~{url}
-          forwardAuthToken: true    
-      - name: ui5
-        group: destinations
-        properties:
-          name: ui5
-          url: ~{url}      
+          forwardAuthToken: true       
     parameters:
         host: ${user}-shine-launchpad    
       
@@ -123,7 +108,3 @@ resources:
     type: com.sap.xs.uaa
     parameters:
      config_path: xs-security.json
-    
-  - name: ui5
-    properties:
-      url: "https://sapui5.hana.ondemand.com"
