@@ -1,16 +1,16 @@
 rules:
   - Branch: master
     attributes:
-      deployUser: bootstrap
+      deployUser: xsmaster
       deploySpace: initial
-      deployApi: http://xs2target.mo.sap.corp:9999
+      deployApi: http://mo-ee79db595.mo.sap.corp:9999
       deployOrg: initial
       deployMethod: deploy
       deployMtaExtCsv: "config-op.mtaext"
       deployPassword: |
-        fvYzHdOe/xl+WtPQQaNsW4otIXOT4+9FkLzlSCvLNaUVChq1M/SGXfq2X25gVQhI
-        IKTPztJLVaRcqvtGhyqxg4+rAaJ2GexD+/A1NmDrF71jXIgCdXg+0ZqlbL2DVh4W
-        PheG5jfJtnuBlSNz2aGS8mv3WArnJ9g1DoTIuSEO7DinBg6uQfpMyhy8nJx6i7gR
-        kVfLf6a7SKuS9AXJ9esCpRZ2BLxfXtaCtzI1T/c8hgU21EqZcUmf0ArbEnR2l3Lk
-        CZSeoVr73ZutQ/nBWP9zKo/hMIuEJSxirb7e0arzhRCSDS23vvTP0FExVepa9AEM
-        t+GneJuE5pPeyYtnWTKOzA==
+        Sd6j64nezP89ppQrObmToO89TrKv8oyGybw/Zcj6z/s8IOZGPV2YF+H4cMolHL+g
+        slxNcKbaZfWrhkLSjQ/rHtTTPP07LI519Hy0YWaiscIhH6TaX/6/uw659uE9LWYe
+        eAR5EknTvrJllTdvfpQn0CWhDCVbAlDWxrfWxg78IQMUQ1sKUMXPbm2CJmrTlvrd
+        9DH6NW29r3ZVvu8jHKOpgGa5nBrybA2sN0rcD765dsicgg7yFRY3Tix1cTYbto/8
+        vAq00q/20O9iWeaIakm6KTFpJD2SCGCoBcgxl0fY9WBzBYosLzhYQ8J9y8uyM9fK
+        ckfwE/N2HuDuoSN0gFMzUg==
