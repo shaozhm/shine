@@ -22,8 +22,7 @@ applications:
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://mo-63b26cdd4.mo.sap.corp:49010", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+        {"name":"admin-backend", "url":"http://mo-ee79db595.mo.sap.corp:49010", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
@@ -46,8 +45,7 @@ applications:
   env:
     destinations: >
       [
-        {"name":"xsjs-backend", "url":"http://mo-63b26cdd4.mo.sap.corp:49030", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+        {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
@@ -59,9 +57,8 @@ applications:
   env:
     destinations: >
       [
-        {"name":"xsjs-backend", "url":"http://mo-63b26cdd4.mo.sap.corp:49030", "forwardAuthToken": true},
-        {"name":"ui-router", "url":"http://mo-63b26cdd4.mo.sap.corp:49050", "forwardAuthToken": true},
-        {"name":"ui5", "url":"https://sapui5.hana.ondemand.com","proxyHost":"proxy", "proxyPort":"8080"}
+        {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true},
+        {"name":"ui-router", "url":"http://mo-ee79db595.mo.sap.corp:49050", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
@@ -71,5 +68,5 @@ applications:
   path: ui-router
   memory: 256M
   env:
-    ADMIN_UI: http://mo-63b26cdd4.mo.sap.corp:49020
-    PURCHASE_UI: http://mo-63b26cdd4.mo.sap.corp:49040
+    ADMIN_UI: http://mo-ee79db595.mo.sap.corp:49020
+    PURCHASE_UI: http://mo-ee79db595.mo.sap.corp:49040
