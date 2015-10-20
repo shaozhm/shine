@@ -53,5 +53,5 @@ modules:
       memory: 128M
       instances: 1
     properties: 
-      ADMIN_UI: http://mo-bb91deedb.mo.sap.corp:52010
-      PURCHASE_UI: http://mo-bb91deedb.mo.sap.corp:52030
+      ADMIN_UI: http://mo-ee79db595.mo.sap.corp:52010
+      PURCHASE_UI: http://mo-ee79db595.mo.sap.corp:52030
