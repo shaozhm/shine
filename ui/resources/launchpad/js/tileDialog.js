@@ -8,28 +8,10 @@ sap.account.TileDialog.prototype.getHrefLocation = function(tileID) {
     var url = '';
     switch (tileID) {
         case 1:
-            $.ajax({
-                    url :"/get/url/admin",
-                    success : function(response){
-                        url = response.url;
-                    },
-                    error : function(){
-                         
-                    },
-                    async : false
-                });
+            url = "../admin-ui/index.html";
             break;
         case 2:
-            $.ajax({
-                    url :"/get/url/poworklist",
-                    success : function(response){
-                        url = response.url;
-                    },
-                    error : function(){
-                         
-                    },
-                    async : false
-                });
+            url = "../purchase-ui/index.html";
             break;
    }
    return url;

@@ -15,14 +15,15 @@ applications:
     - shine-hdi-container
     - uaa-refapps
 
-- name: shine-admin
-  host: [c/d/i-user]-shine-admin
-  path: admin-ui
+- name: shine-ui
+  host: [c/d/i-user]-shine-ui
+  path: ui
   memory: 768M
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://[c/d/i-user]-shine-admin-backend.cfapps.neo.ondemand.com", "forwardAuthToken": true}
+        {"name":"admin-backend", "url":"http://[c/d/i-user]-shine-admin-backend.cfapps.neo.ondemand.com", "forwardAuthToken": true},
+        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true}        
       ]
   services:
     - uaa-refapps
@@ -37,36 +38,3 @@ applications:
   env:
     HANA_SERVICE_NAME: shine-hdi-container
     UAA_SERVICE_NAME: uaa-refapps
-
-- name: shine-purchase
-  host: [c/d/i-user]-shine-purchase
-  path: purchase-ui
-  memory: 768M
-  env:
-    destinations: >
-      [
-        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true}
-      ]
-  services:
-    - uaa-refapps
-    
-- name: shine-launchpad
-  host: [c/d/i-user]-shine-launchpad
-  path: launchpad
-  memory: 768M
-  env:
-    destinations: >
-      [
-        {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true},
-        {"name":"ui-router", "url":"http://[c/d/i-user]-shine-ui-router.cfapps.neo.ondemand.com/", "forwardAuthToken": true}
-      ]
-  services:
-    - uaa-refapps
-
-- name: shine-ui-router
-  host: [c/d/i-user]-shine-ui-router
-  path: ui-router
-  memory: 256M
-  env:
-    ADMIN_UI: http://[c/d/i-user]-shine-admin.cfapps.neo.ondemand.com
-    PURCHASE_UI: http://[c/d/i-user]-shine-purchase.cfapps.neo.ondemand.com

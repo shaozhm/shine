@@ -1,9 +1,0 @@
-{
-  "name": "purchase-ui-approuter",
-  "dependencies": {
-    "approuter": "0.4.0"
-  },
-  "scripts": {
-    "start": "node node_modules/approuter/approuter.js"
-  }
-}
