@@ -2,11 +2,8 @@ namespace sap.hana.democontent.epm.data;
 
 using sap.hana.democontent.epm.data::EPM;
 
-
-
 context Util {
 
-@Catalog.tableType : #COLUMN 
     Entity Constants {
         key  DOMAIN: String(30);
         key  FIXEDVALUE: String(30);
@@ -14,7 +11,6 @@ context Util {
         DESCRIPTION: EPM.MString;     
     };
 
-@Catalog.tableType : #COLUMN 
     Entity Texts {
         key  TEXTID: EPM.BusinessKey;
         LANGUAGE: EPM.ABAPLanguage;
@@ -22,7 +18,6 @@ context Util {
         TEXT: EPM.VLString null;     
     };
         
-@Catalog.tableType : #COLUMN 
     Entity Messages {
         key  MESSAGECLASS: String(20);
         key  MESSAGENUMBER: String(3);
@@ -31,7 +26,6 @@ context Util {
         TEXT: LargeString null;      
     };
 
-@Catalog.tableType : #COLUMN 
     Entity SSCOOKIE {
         key  SESSIONID: String(32);
         key  NAME: String(30);
@@ -40,7 +34,6 @@ context Util {
         DATA: LargeString;      
     };
     
-@Catalog.tableType : #COLUMN 
     Entity Notes {
         key  NOTEID: EPM.BusinessKey;
         LINKID: EPM.BusinessKey;
@@ -50,7 +43,6 @@ context Util {
         THUMBNAIL: EPM.LString;      
     };   
     
-@Catalog.tableType : #COLUMN 
     Entity Attachments {
         key  NOTEID: EPM.BusinessKey;
         LINKID: EPM.BusinessKey;        
