@@ -27,7 +27,6 @@ Type ValidityT {
         ENDDATE : SDate;
       };    
 
-  @Catalog.tableType : #COLUMN 
     Entity MapKeys {
         key  KEYID: String(10);
         APP_ID: String(50);
