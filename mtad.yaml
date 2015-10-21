@@ -3,7 +3,7 @@ ID: com.sap.refapps.shine
 version: 1.1.0
 
 modules:
-  - name: shine-admin-ui
+  - name: shine-ui
     type: javascript.nodejs
     path: admin-ui/
     requires:
@@ -14,8 +14,14 @@ modules:
           name: admin-backend
           url: ~{url}
           forwardAuthToken: true 
+      - name: purchase-xsjs
+        group: destinations
+        properties:
+          name: xsjs-backend
+          url: ~{url}
+          forwardAuthToken: true 
     parameters:
-        host: ${user}-shine-admin
+        host: ${user}-shine-ui
         
   - name: shine-admin-js
     type: javascript.nodejs
@@ -31,20 +37,6 @@ modules:
     parameters:
       host: ${user}-shine-admin-backend
       
-  - name: shine-purchase-ui
-    type: javascript.nodejs
-    path: purchase-ui/
-    requires:
-      - name: uaa-refapps
-      - name: purchase-xsjs
-        group: destinations
-        properties:
-          name: xsjs-backend
-          url: ~{url}
-          forwardAuthToken: true    
-    parameters:
-        host: ${user}-shine-purchase
-        
   - name: shine-xsjs
     type: javascript.nodejs
     path: xsjs/
@@ -61,39 +53,6 @@ modules:
       - name: shine-db
     parameters:
       host: ${user}-shine-xsjs
-      
-  - name: shine-launchpad
-    type: javascript.nodejs
-    path: launchpad/
-    requires:
-      - name: uaa-refapps
-      - name: purchase-xsjs
-        group: destinations
-        properties:
-          name: xsjs-backend
-          url: ~{url}
-          forwardAuthToken: true
-      - name: routes
-        group: destinations
-        properties:
-          name: ui-router
-          url: ~{url}
-          forwardAuthToken: true       
-    parameters:
-        host: ${user}-shine-launchpad    
-      
-  - name: shine-ui-router
-    type: javascript.nodejs
-    path: ui-router/
-    properties: 
-      ADMIN_UI:
-      PURCHASE_UI:
-    provides: 
-      - name: routes
-        properties:
-          url: "http://${default-uri}"
-    parameters:
-      host: ${user}-shine-ui-router
       
   - name: shine-db
     type: com.sap.xs.hdi

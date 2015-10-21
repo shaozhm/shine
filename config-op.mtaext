@@ -5,7 +5,7 @@ extends: com.sap.refapps.shine
 target-platforms: ["initial initial"]
 
 modules:
-  - name: shine-admin-ui
+  - name: shine-ui
     parameters:
       port: 52010
       memory: 128M
@@ -20,38 +20,9 @@ modules:
       port: 52020
       memory: 128M
       instances: 1
-      
-  - name: shine-purchase-ui
-    parameters:
-      port: 52030
-      memory: 128M
-    requires:
-      - name: ui5
-        properties:
-          proxyHost: proxy.wdf.sap.corp
-          proxyPort: "8080"
 
   - name: shine-xsjs
     parameters:
-      port: 52040
+      port: 52030
       memory: 128M
       instances: 1
-
-  - name: shine-launchpad
-    parameters:
-      port: 52050
-      memory: 128M
-    requires:
-      - name: ui5
-        properties:
-          proxyHost: proxy.wdf.sap.corp
-          proxyPort: "8080"
-
-  - name: shine-ui-router
-    parameters:
-      port: 52060
-      memory: 128M
-      instances: 1
-    properties: 
-      ADMIN_UI: http://mo-ee79db595.mo.sap.corp:52010
-      PURCHASE_UI: http://mo-ee79db595.mo.sap.corp:52030

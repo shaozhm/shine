@@ -22,10 +22,7 @@
 	</distributionManagement>
 
    <modules>
-		<module>launchpad</module>
-        <module>admin-ui</module>
-		<module>purchase-ui</module>
-		<module>ui-router</module>
+		<module>ui</module>
         <module>admin-js</module>
 		<module>xsjs</module>
         <module>db</module>
