@@ -1,6 +1,6 @@
 _schema-version: "2.0.0"
 ID: com.sap.refapps.shine
-version: 1.11.0
+version: 1.1.0
 
 modules:
   - name: shine-admin-ui
