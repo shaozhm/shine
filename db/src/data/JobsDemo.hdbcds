@@ -4,13 +4,12 @@ using sap.hana.democontent.epm.data::EPM.Source;
  
 
 context JobsDemo {
- 	 @Catalog.tableType: #COLUMN
+ 
      Entity Details {
      	key TIME: UTCTimestamp;
      	SOURCE: Source;
      };	
      
-     @Catalog.tableType: #COLUMN
      Entity RuntimeSchedules {
      	key NAME: hana.VARCHAR(40);
      	ID: Integer;
