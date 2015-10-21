@@ -6,7 +6,6 @@ using sap.hana.democontent.epm.data::MD;
 
 context MDShadow {
 
-@Catalog.tableType : #COLUMN 
     Entity Addresses {
         key  ADDRESSID: EPM.BusinessKey;
         CITY: EPM.SString;
@@ -21,7 +20,6 @@ context MDShadow {
         LONGITUDE: Double; 
     };
     
-@Catalog.tableType : #COLUMN 
     Entity BusinessPartner {
         key  PARTNERID: EPM.BusinessKey;
         PARTNERROLE: String(3); //Business Partner Role
@@ -36,7 +34,6 @@ context MDShadow {
         CURRENCY: EPM.CurrencyT;
     };
   
-@Catalog.tableType : #COLUMN 
     Entity Employees {
         key  EMPLOYEEID: EPM.BusinessKey;
         NAME: MD.NameT null;
@@ -55,7 +52,6 @@ context MDShadow {
         EMPLOYEEPICURL: EPM.LString;
     };
 
-@Catalog.tableType : #COLUMN 
     Entity Products {
         key  PRODUCTID: EPM.BusinessKey; 
 		TYPECODE: String(2);
