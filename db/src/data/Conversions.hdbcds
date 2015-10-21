@@ -8,7 +8,6 @@ context Conversions {
    type MandtT: String(3);
  
  
-@Catalog.tableType : #COLUMN 
     Entity T006 {
         key  MANDT: MandtT;
         key  MSEHI: String(3);
@@ -35,7 +34,6 @@ context Conversions {
 	    PRESS_UNIT: String(3);  
     };
     
-@Catalog.tableType : #COLUMN 
     Entity T006A {
         key  MANDT: MandtT;
         key  SPRAS: EPM.ABAPLanguage;
@@ -46,7 +44,6 @@ context Conversions {
 	    MSEHL: String(30) null;
     };
 
-@Catalog.tableType : #COLUMN 
     Entity TCURC {
         key  MANDT: MandtT;
 		key  WAERS: EPM.CurrencyT;
@@ -56,7 +53,6 @@ context Conversions {
 		XPRIMARY: String(1);
     };
   
-@Catalog.tableType : #COLUMN 
     Entity TCURF {
         key  MANDT: MandtT;
 		key  KURST: String(4);
@@ -69,7 +65,6 @@ context Conversions {
 		ABWGA: String(8);
     };
        
-@Catalog.tableType : #COLUMN 
     Entity TCURN {
         key  MANDT: MandtT;
 		key  FCURR: EPM.CurrencyT;
@@ -78,7 +73,6 @@ context Conversions {
 		NOTATION: String(1);
     };
 
-@Catalog.tableType : #COLUMN 
     Entity TCURR {
         key  MANDT: MandtT;
 		key  KURST: String(4);        
@@ -90,7 +84,6 @@ context Conversions {
 		TFACT: Decimal(9,0);
     };
    
-@Catalog.tableType : #COLUMN    
     Entity TCURT {
         key  MANDT: MandtT;
         key  SPRAS: EPM.ABAPLanguage;
@@ -99,7 +92,6 @@ context Conversions {
 		KTEXT: String(15) null;
     };
     
-@Catalog.tableType : #COLUMN 
     Entity TCURV {
         key  MANDT: MandtT;
 		key  KURST: String(4);        
@@ -112,7 +104,6 @@ context Conversions {
 		XEURO: String(1);
     };
      
-@Catalog.tableType : #COLUMN    
     Entity TCURW {
         key  MANDT: MandtT;
         key  SPRAS: EPM.ABAPLanguage;
@@ -120,7 +111,6 @@ context Conversions {
 		CURVW: String(40);
     };
      
-@Catalog.tableType : #COLUMN    
     Entity TCURX {
         key  CURRKEY: EPM.CurrencyT;
 		CURRDEC: Integer;

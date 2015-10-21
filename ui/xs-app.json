@@ -1,11 +1,14 @@
 {
-  "welcomeFile": "index.html",
+  "welcomeFile": "launchpad/index.html",
   "routes": [
-    {
+	{
       "source": "/sap/ui5/1(.*)",
       "target": "$1",
-      "localDir": "sapui5",
-      "scope": "shine-admin.DataGenerator"
+      "localDir": "sapui5"
+    },
+    {
+      "source": "/sap/hana/democontent/epm/services/",
+      "destination": "xsjs-backend"
     },
     {
       "source": "/get",
@@ -23,10 +26,13 @@
       "scope": "shine-admin.DataGenerator"
     },
     {
-      "source": "^/(.*)",
+      "source": "^/admin-ui/(.*)",
       "localDir": "resources",
       "scope": "shine-admin.DataGenerator"
+    },
+    {
+      "source": "^/(.*)",
+      "localDir": "resources"
     }
   ]
-  
 }

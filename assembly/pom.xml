@@ -4,7 +4,7 @@
    <parent>
 	   <groupId>com.sap.refapps</groupId>
 		<artifactId>shine</artifactId>
-		<version>1.11.0-SNAPSHOT</version>
+		<version>1.1.0-SNAPSHOT</version>
 	</parent>
     <artifactId>shine-assembly</artifactId>
     <packaging>pom</packaging>
@@ -12,25 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-launchpad</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-admin-ui</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-		<dependency>
-            <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-purchase-ui</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-ui-router</artifactId>
+            <artifactId>shine-ui</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
@@ -79,31 +61,10 @@
                                 </manifest>
                                 <manifestSections>
                                     <manifestSection>
-                                        <name>launchpad/</name>
+                                        <name>ui/</name>
                                         <manifestEntries>
                                             <Content-Type>text/directory</Content-Type>
-                                            <MTA-Module>shine-launchpad</MTA-Module>
-                                        </manifestEntries>
-                                    </manifestSection>
-                                    <manifestSection>
-                                        <name>admin-ui/</name>
-                                        <manifestEntries>
-                                            <Content-Type>text/directory</Content-Type>
-                                            <MTA-Module>shine-admin-ui</MTA-Module>
-                                        </manifestEntries>
-                                    </manifestSection>
-									<manifestSection>
-                                        <name>purchase-ui/</name>
-                                        <manifestEntries>
-                                            <Content-Type>text/directory</Content-Type>
-                                            <MTA-Module>shine-purchase-ui</MTA-Module>
-                                        </manifestEntries>
-                                    </manifestSection> 
-									<manifestSection>
-                                        <name>ui-router/</name>
-                                        <manifestEntries>
-                                            <Content-Type>text/directory</Content-Type>
-                                            <MTA-Module>shine-ui-router</MTA-Module>
+                                            <MTA-Module>shine-ui</MTA-Module>
                                         </manifestEntries>
                                     </manifestSection>
 									<manifestSection>

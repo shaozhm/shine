@@ -7,7 +7,7 @@ applications:
   services:
     - shine-hdi-container
 
-- name: shine-admin-backend
+ - name: shine-admin-backend
   port: 49010
   path: admin-js
   memory: 512M
@@ -15,14 +15,15 @@ applications:
     - shine-hdi-container
     - uaa-refapps
 
-- name: shine-admin
+- name: shine-ui
   port: 49020
-  path: admin-ui
+  path: ui
   memory: 768M
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://mo-ee79db595.mo.sap.corp:49010", "forwardAuthToken": true}
+        {"name":"admin-backend", "url":"http://mo-ee79db595.mo.sap.corp:49010", "forwardAuthToken": true},
+        {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps
@@ -37,36 +38,3 @@ applications:
   env:
     HANA_SERVICE_NAME: shine-hdi-container
     UAA_SERVICE_NAME: uaa-refapps
-
-- name: shine-purchase
-  port: 49040
-  path: purchase-ui
-  memory: 768M
-  env:
-    destinations: >
-      [
-        {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true}
-      ]
-  services:
-    - uaa-refapps
-    
-- name: shine-launchpad
-  port: 49060
-  path: launchpad
-  memory: 768M
-  env:
-    destinations: >
-      [
-        {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true},
-        {"name":"ui-router", "url":"http://mo-ee79db595.mo.sap.corp:49050", "forwardAuthToken": true}
-      ]
-  services:
-    - uaa-refapps
-
-- name: shine-ui-router
-  port: 49050
-  path: ui-router
-  memory: 256M
-  env:
-    ADMIN_UI: http://mo-ee79db595.mo.sap.corp:49020
-    PURCHASE_UI: http://mo-ee79db595.mo.sap.corp:49040

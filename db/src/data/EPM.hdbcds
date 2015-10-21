@@ -21,15 +21,12 @@ type StatusT: String(1);
 type ABAPDate: String(8);
 //SP09 requirement - Multi File Support
 type Source: String(30);
-//SP09 requirement - User Defined Annotations
-annotation MyAnnotation1: String(40);
 
 Type ValidityT {
         STARTDATE : SDate; 
         ENDDATE : SDate;
       };    
 
-  @Catalog.tableType : #COLUMN 
     Entity MapKeys {
         key  KEYID: String(10);
         APP_ID: String(50);

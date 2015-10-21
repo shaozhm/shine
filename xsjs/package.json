@@ -4,9 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "sap-xsenv":"1.0.0",
-    "sap-xsjs": "1.0.0",
-    "clone":"1.0.2"
+    "sap-xsenv":"1.0.1",
+    "sap-xsjs": "1.1.5"
   },
   "engines": {
     "node": ">=0.10.x"
