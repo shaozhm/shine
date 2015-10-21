@@ -9,11 +9,6 @@ modules:
     parameters:
       port: 52010
       memory: 128M
-    requires:
-      - name: ui5
-        properties:
-          proxyHost: proxy.wdf.sap.corp
-          proxyPort: "8080"
 
   - name: shine-admin-js
     parameters:
