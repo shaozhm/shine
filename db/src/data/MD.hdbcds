@@ -21,7 +21,6 @@ Type HistT {
       };
  type SexT : String(1);
  
-@Catalog.tableType : #COLUMN 
     Entity Addresses {
         key  ADDRESSID: EPM.BusinessKey;
         CITY: EPM.SString;
@@ -36,7 +35,6 @@ Type HistT {
         LONGITUDE: Double; 
     };
     
-@Catalog.tableType : #COLUMN 
     Entity BusinessPartner {
         key  PARTNERID: EPM.BusinessKey;
         PARTNERROLE: String(3); //Business Partner Role
@@ -51,7 +49,6 @@ Type HistT {
         CURRENCY: EPM.CurrencyT;
     };
   
-@Catalog.tableType : #COLUMN 
     Entity Employees {
         key  EMPLOYEEID: EPM.BusinessKey;
         NAME: NameT null;
@@ -70,7 +67,6 @@ Type HistT {
         EMPLOYEEPICURL: EPM.LString;
     };
 
-@Catalog.tableType : #COLUMN 
     Entity Products {
         key  PRODUCTID: EPM.BusinessKey; 
 		TYPECODE: String(2);
@@ -93,7 +89,6 @@ Type HistT {
 
     };
 
- @Catalog.tableType: #COLUMN
     Entity productLog{
      key PRODUCTID: String(10);
      key LOGID: Integer;
