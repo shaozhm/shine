@@ -5,13 +5,13 @@
   "private": true,
   "dependencies": {
     "async": "1.4.0",
-    "sap-cds": "1.0.0",
+    "sap-cds": "1.0.2",
     "express": "4.12.3",
     "extend": "2.0.1",
-    "sap-hdb-connection": "0.5.2",
+    "sap-hdb-connection": "1.0.0",
     "passport": "0.2.1",
     "winston": "1.0.0",
-    "sap-xssec": "0.2.1",
+    "sap-xssec": "0.2.4",
     "xsenv": "0.3.3"
   },
   "engines": {
