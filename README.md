@@ -1,4 +1,4 @@
-SHINE 2.0.0
+SHINE XSA 1.1.0
 ================
 
 ## Prerequisites
@@ -9,7 +9,7 @@ mvn clean install
 
 For the following apps a local node installation has to be done to load the SAP specific node modules.
 
-db, admin-ui, admin-js, purchase-ui, ui-router, launchpad, xsjs
+db, ui, admin-js, xsjs
 
 For example "db" folder, execute the following commands
 ```
@@ -20,9 +20,8 @@ npm install
 Copy the sapui5 zip from this location http://nexus:8081/nexus/service/local/repositories/replication-walldorf.milestones.build.ios.proxy/content/com/sap/ui5/sapui5/1.30.7/sapui5-1.30.7-static.zip
 and copy the contents to the following directories
 ```
-admin-ui\sapui5
-launchpad\sapui5
-purchase-ui\sapui5
+ui\sapui5
+
 ```
 
 Also please replace [c/d/i-user] with your id in the manifest.yml before pushing the application.

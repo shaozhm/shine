@@ -2,7 +2,7 @@ _schema-version: "2.0.0"
 ID: com.sap.refapps.shine.config1 
 extends: com.sap.refapps.shine
 
-target-platforms: ["initial initial"]
+target-platforms: ["OrganizationName PROD"]
 
 modules:
   - name: shine-ui
