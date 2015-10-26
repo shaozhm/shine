@@ -5,7 +5,6 @@ using sap.hana.democontent.epm.data::EPM;
 
 context User {
 
-@Catalog.tableType: #COLUMN
      Entity Details {
      	key PERS_NO: String(10);
      	FIRSTNAME: EPM.SString;

@@ -6,7 +6,6 @@ using sap.hana.democontent.epm.data::MD;
 
 context PO {
 
-@Catalog.tableType : #COLUMN 
     Entity Header {
         key  PURCHASEORDERID: EPM.BusinessKey;
         ITEMS: Association[*] to Item on ITEMS.PURCHASEORDERID = PURCHASEORDERID;
@@ -24,8 +23,6 @@ context PO {
         INVOICINGSTATUS: EPM.StatusT;
     };
 
-
-@Catalog.tableType : #COLUMN 
     Entity Item {
         key  PURCHASEORDERID: EPM.BusinessKey;
         key  PURCHASEORDERITEM: EPM.BusinessKey;

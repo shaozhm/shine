@@ -6,7 +6,6 @@ using sap.hana.democontent.epm.data::MD;
 
 context SO {
 
-@Catalog.tableType : #COLUMN 
     Entity Header {
         key  SALESORDERID: EPM.BusinessKey;
         ITEMS: Association[*] to Item on ITEMS.SALESORDERID = SALESORDERID;
@@ -22,7 +21,6 @@ context SO {
         DELIVERYSTATUS: EPM.StatusT;
     };
 
-@Catalog.tableType : #COLUMN 
     Entity Item {
         key  SALESORDERID: EPM.BusinessKey;
         key  SALESORDERITEM: EPM.BusinessKey;
@@ -40,7 +38,6 @@ context SO {
 		DELIVERYDATE: EPM.SDate;
     };
  
-@Catalog.tableType : #COLUMN 
     Entity Filter {
         key  MODEL: String(30);
         key  COLNAME: String(8);

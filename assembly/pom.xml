@@ -3,34 +3,34 @@
     <modelVersion>4.0.0</modelVersion>
    <parent>
 	   <groupId>com.sap.refapps</groupId>
-		<artifactId>shine</artifactId>
+		<artifactId>sap-xsac-shine</artifactId>
 		<version>1.1.0-SNAPSHOT</version>
 	</parent>
-    <artifactId>shine-assembly</artifactId>
+    <artifactId>sap-xsac-shine-assembly</artifactId>
     <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-ui</artifactId>
+            <artifactId>sap-xsac-shine-ui</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
 		<dependency>
             <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-admin-js</artifactId>
+            <artifactId>sap-xsac-shine-admin-js</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-xsjs</artifactId>
+            <artifactId>sap-xsac-shine-xsjs</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
 		<dependency>
             <groupId>com.sap.refapps</groupId>
-            <artifactId>shine-db</artifactId>
+            <artifactId>sap-xsac-shine-db</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
@@ -127,8 +127,8 @@
                         <configuration>
                             <target>
                                 <copy 
-                                    file="${project.build.directory}/shine-assembly-${project.version}-mta.jar" 
-                                    tofile="${project.build.directory}/xsac-shine-${project.version}.mtar" />
+                                    file="${project.build.directory}/sap-xsac-shine-assembly-${project.version}-mta.jar" 
+                                    tofile="${project.build.directory}/sap-xsac-shine-${project.version}.mtar" />
                             </target>
                         </configuration>
                     </execution>
@@ -157,7 +157,7 @@
                      <param>${project.build.directory}</param>
                    </mtaSourceDirs>
                    <targetDir>${project.build.directory}</targetDir>
-				   <resultZip>${project.build.directory}/xsac-shine-SCA-${project.version}.zip</resultZip>
+				   <resultZip>${project.build.directory}/sap-xsac-shine-${project.version}.zip</resultZip>
 				   <overwrite>true</overwrite>
                 </configuration>
                 <executions>
@@ -183,11 +183,11 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>${project.build.directory}/xsac-shine-${project.version}.mtar</file>
+                                    <file>${project.build.directory}/sap-xsac-shine-${project.version}.mtar</file>
                                     <type>mtar</type>
                                 </artifact>
                                 <artifact>
-                                    <file>${project.build.directory}/xsac-shine-SCA-${project.version}.zip</file>
+                                    <file>${project.build.directory}/sap-xsac-shine-${project.version}.zip</file>
                                     <type>zip</type>
                                 </artifact>
                             </artifacts>
