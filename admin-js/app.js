@@ -6,7 +6,7 @@ var passport = require('passport');
 var sap_hdb_conn = require('sap-hdb-connection');
 var routes = require('./routes/index');
 var winston = require('winston');
-var xsenv = require('sap-xsenv');
+var xsenv = require('xsenv');
 
 var PORT = process.env.PORT || 3000;
 var app = express();
