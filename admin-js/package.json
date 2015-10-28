@@ -12,7 +12,7 @@
     "passport": "0.2.1",
     "winston": "1.0.0",
     "sap-xssec": "0.2.5",
-    "xsenv": "0.3.3"
+    "sap-xsenv": "1.0.1"
   },
   "engines": {
     "node": ">=0.10.x"
