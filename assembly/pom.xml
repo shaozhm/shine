@@ -118,6 +118,10 @@
                         <id>delete-cfignore</id>
                         <phase>none</phase>
                     </execution>
+					<execution>
+                        <id>filter-metadata</id>
+                        <phase>none</phase>
+                    </execution>
                     <execution>
                         <id>copy-jar-to-mtar</id>
                         <phase>package</phase>
