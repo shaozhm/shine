@@ -42,16 +42,20 @@ Create group and assign role to the required users here: https://sap-login-test.
 
 ## On Premise deployment
 ```
+
 mvn clean install
+
 xs install assembly/target/sap-xsac-shine-1.1.0.zip
+
 ```
-1.From HANA Studio connect to the HANA system and create a restricted user SHINE_USER
+
+1. From HANA Studio connect to the HANA system and create a restricted user SHINE_USER
 2. Uncheck the checkbox Disable ODBC/JDBC access
 3. Assign role RESTRICTED_USER_JDBC_ACCESS to the user
 4. Assign user parameters 
 	XS_RC_XS_AUTHORIZATION_ADMIN: XS_AUTHORIZATION_ADMIN
 	XS_RC_XS_CONTROLLER_ADMIN: XS_CONTROLLER_ADMIN
-5 After the deployment of the SHINE App login to uaa-security/ XS Admin App
+5.  After the deployment of the SHINE App login to uaa-security/ XS Admin App
 6. Cick on Role Builder tile and Search for Application shine-admin and Select Role Admin by click on Checkbox
 7. Click Configure Role Collection button.
 8. Click on + button to create a Role Collection
@@ -60,6 +64,6 @@ xs install assembly/target/sap-xsac-shine-1.1.0.zip
 11. In the Popoup Select Application Name: Shne-Admin, Template Name: Admin and Application Role: Admin.
 12. Click on Ok and then Save button
 13. Go back to HANA Studio and create a User Parameter  XS_RC_SHINE_ADMIN:SHINE_ADMIN
-15. Launch the url for shine_ui app and login with SHINE_USER
+14. Launch the url for shine_ui app and login with SHINE_USER
 
 

@@ -155,7 +155,6 @@
 			 <plugin>
                  <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
                 <artifactId>alm-prod-assembler-maven-plugin</artifactId>
-                <version>1.4.1</version>
                 <configuration>
                    <mtaSourceDirs>
                      <param>${project.build.directory}</param>
