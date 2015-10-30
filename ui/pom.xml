@@ -2,8 +2,8 @@
 <modelVersion>4.0.0</modelVersion>
 <parent>
     <groupId>com.sap.refapps</groupId>
-    <artifactId>sap-xsac-shine</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <artifactId>sap-xsac-shine-parent</artifactId>
+    <version>1.1.1</version>
 </parent>
 <artifactId>sap-xsac-shine-ui</artifactId>
 <packaging>pom</packaging>
@@ -38,11 +38,9 @@
                                                 resources/sap/fiori/**, 
                                                 resources/sap/landvisz/**, 
                                                 resources/sap/portal/**, 
-                                                resources/sap/suite/**, 
                                                 resources/sap/ushell/**, 
                                                 resources/sap/uxap/**, 
-                                                resources/sap/ui/richtexteditor/**, 
-                                                resources/sap/ui/suite/**, 
+                                                resources/sap/ui/richtexteditor/**,  
                                                 resources/sap/ui/rta/**, 
                                                 resources/sap/ui/fl/**, 
                                                 resources/sap/ui/vbm/**

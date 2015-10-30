@@ -29,7 +29,7 @@ modules:
     provides: 
       - name: admin-js
         properties:
-          url: "http://${default-uri}"
+          url: "${default-url}"
     requires:
       - name: uaa-refapps
       - name: shine-hdi-container
@@ -46,7 +46,7 @@ modules:
     provides: 
       - name: purchase-xsjs
         properties:
-          url: "http://${default-uri}"
+          url: "${default-url}"
     requires:
       - name: uaa-refapps
       - name: shine-hdi-container

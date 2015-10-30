@@ -6,7 +6,7 @@ var passport = require('passport');
 var sap_hdb_conn = require('sap-hdb-connection');
 var routes = require('./routes/index');
 var winston = require('winston');
-var xsenv = require('xsenv');
+var xsenv = require('sap-xsenv');
 
 var PORT = process.env.PORT || 3000;
 var app = express();
@@ -19,7 +19,7 @@ winston.level = process.env.winston_level || 'error';
  * The default UAA credentials can be overriden
  * by defining a user defined service called 'uaa'.
  */
-passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices().uaa));
+passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
 
 
 //use passport for authentication
