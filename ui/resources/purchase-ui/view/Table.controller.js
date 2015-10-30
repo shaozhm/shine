@@ -192,5 +192,15 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
         var oTileDialog = new sap.account.TileDialog(this,iData);
         this.getView().addDependent(oTileDialog);
         oTileDialog.open();
+    },
+
+    onAfterRendering: function(oEvent) {
+	var oController = this;
+	var oModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/poWorklist.xsodata/", true);
+	var oSHTable = sap.ui.getCore().byId("idShellView--po_table_view--poTable");
+	oModel.attachRequestCompleted(function() {
+		oController.onBindingChange(oController);
+	});
+	oSHTable.setModel(oModel);
     }
 });

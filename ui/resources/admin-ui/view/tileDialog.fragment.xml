@@ -17,28 +17,10 @@
 				</CustomListItem>		
 				<CustomListItem>
 					<l:VerticalLayout>
-					<Text text="{i18n>cb2a}" class="dialogTextColor" />
-					<Text text="{i18n>cbt2a}" />
-				</l:VerticalLayout>
-				</CustomListItem>	
-				<CustomListItem>
-					<l:VerticalLayout>
-					<Text text="{i18n>cb3}" class="dialogTextColor" />
-					<Text text="{i18n>cbt3}" />
-				</l:VerticalLayout>
-				</CustomListItem>	
-				<CustomListItem>
-					<l:VerticalLayout>
 					<Text text="{i18n>cb4}" class="dialogTextColor" />
 					<Text text="{i18n>cbt4}" />
 				</l:VerticalLayout>
 				</CustomListItem>		
-				<CustomListItem>
-					<l:VerticalLayout>
-					<Text text="{i18n>cb5}" class="dialogTextColor" />
-					<Text text="{i18n>cbt5}" />
-				</l:VerticalLayout>
-				</CustomListItem>															
 			</List>
 		</content>
 		<endButton>
