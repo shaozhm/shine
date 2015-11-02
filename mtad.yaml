@@ -64,6 +64,6 @@ resources:
     type: com.sap.xs.hdi-container
     
   - name: uaa-refapps
-    type: com.sap.xs.uaa
+    type: com.sap.xs.uaa-space
     parameters:
      config_path: xs-security.json
