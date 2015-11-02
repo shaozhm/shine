@@ -64,6 +64,6 @@ xs install assembly/target/sap-xsac-shine-1.1.0.zip
 11. In the Popoup Select Application Name: Shne-Admin, Template Name: Admin and Application Role: Admin.
 12. Click on Ok and then Save button
 13. Go back to HANA Studio and create a User Parameter  XS_RC_SHINE_ADMIN:SHINE_ADMIN
-14. Launch the url for shine_ui app and login with SHINE_USER
+14. Launch the url for shine_ui app service and login with SHINE_USER
 
 
