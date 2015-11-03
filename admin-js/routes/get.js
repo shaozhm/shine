@@ -128,17 +128,7 @@ router.get('/get/tablesize', function (req, res) {
 });
 
 router.get('/get/sessioninfo', function (req, res) {
-    var client = req.db;
-    client.exec("SELECT TOP 1 CURRENT_USER, SESSION_USER, SESSION_CONTEXT('XS_APPLICATIONUSER') as APPLICATION_USER FROM dummy",
-        function(error, response) {
-            if (error) {
-                res.writeHead(500, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(error));
-            } else {
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(response));
-            }
-    });
+    res.status(200).json(req.user);
 });
 
 module.exports = router;

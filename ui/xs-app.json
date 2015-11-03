@@ -1,5 +1,8 @@
 {
   "welcomeFile": "launchpad/index.html",
+  "logout":  {
+      "logoutEndpoint":  "/logout"
+  },
   "routes": [
 	{
       "source": "/sap/ui5/1(.*)",
