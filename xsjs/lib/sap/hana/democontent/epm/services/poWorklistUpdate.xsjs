@@ -5,6 +5,7 @@ var MESSAGES = $.sap.hana.democontent.epm.services.messages;
 function deletePO() {
     var body = '';
     var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    purchaseOrderID = purchaseOrderID.replace("'", "");
     if (purchaseOrderID === null) {
         $.response.status = $.net.http.BAD_REQUEST;
         $.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '012'));
@@ -154,6 +155,7 @@ function deletePO() {
 function approvePO() {
     var body = '';
     var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    purchaseOrderID = purchaseOrderID.replace("'", "");
     if (purchaseOrderID === null) {
         $.response.status = $.net.http.BAD_REQUEST;
         $.response.setBody(MESSAGES.getMessage('SEPM_POWRK', '012')); // No

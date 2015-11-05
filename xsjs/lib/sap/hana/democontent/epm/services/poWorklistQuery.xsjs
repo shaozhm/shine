@@ -15,6 +15,7 @@ function getFilter() {
 
     var body = '';
     var terms = $.request.parameters.get('query');
+    terms.replace("'", "");
     var termList = terms.split(" ");
     var termStr = "";
     var i;
@@ -123,7 +124,9 @@ function getTotalOrders() {
 
     var body = '';
     var ivGroupBy = $.request.parameters.get('groupby');
+    ivGroupBy = ivGroupBy.replace("'", "");
     var ivCurrency = $.request.parameters.get('currency');
+    ivCurrency = ivCurrency.replace("'", "");
     var list = [];
 
     switch (ivGroupBy) {

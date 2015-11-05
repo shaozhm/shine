@@ -128,7 +128,7 @@ router.get('/get/tablesize', function (req, res) {
 });
 
 router.get('/get/sessioninfo', function (req, res) {
-    res.status(200).json(req.user);
+    res.status(200).json(encodeURI(req.user));
 });
 
 module.exports = router;
