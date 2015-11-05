@@ -19,7 +19,7 @@ function getFilter() {
     var termList = terms.split(" ");
     var termStr = "";
     var i;
-    for (i = 0; i < termList.length; i++) {
+    for (i = 0; i < termList.length && i < 50; i++) {
         termStr += termList[i].replace(/\s+/g, '') + "* ";
     }
     terms = termStr;
