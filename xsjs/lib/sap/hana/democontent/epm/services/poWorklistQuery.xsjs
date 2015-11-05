@@ -14,8 +14,7 @@ function getFilter() {
     }
 
     var body = '';
-    var terms = $.request.parameters.get('query');
-    terms.replace("'", "");
+    var terms = $.request.parameters.get('query').replace("'", "");
     var termList = terms.split(" ");
     var termStr = "";
     var i;
