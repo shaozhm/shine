@@ -55,11 +55,11 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
 	getSessionInfo: function(){
 		var aUrl = '/get/sessioninfo';
 	    this.onLoadSession(
-	    		JSON.parse(decodeURI(jQuery.ajax({
+	    		JSON.parse(jQuery.ajax({
 	    		       url: aUrl,
 	    		       method: 'GET',
 	    		       dataType: 'json',
-	    		       async: false}).responseText)));
+	    		       async: false}).responseText));
    
 	},
 	
