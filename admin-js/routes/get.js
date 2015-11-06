@@ -128,7 +128,8 @@ router.get('/get/tablesize', function (req, res) {
 });
 
 router.get('/get/sessioninfo', function (req, res) {
-    res.status(200).json(encodeURI(req.user));
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify({userEncoded: encodeURI(JSON.stringify(req.user))}));
 });
 
 module.exports = router;
