@@ -65,7 +65,7 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
 	
 	onLoadSession: function(myJSON){
             var mConfig = this.getModel("config");
-            mConfig.setProperty("/UserName", decodeURI(myJSON.userEncoded).id);
+            mConfig.setProperty("/UserName", decodeURI(decodeURI(myJSON.userEncoded)).id);
 	},
 	mainModelInit: function(){
 		var model = new sap.ui.model.json.JSONModel({});
