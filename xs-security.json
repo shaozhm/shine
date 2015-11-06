@@ -1,5 +1,5 @@
 {
-    "xsappname": "shine-admin",
+    "xsappname": "shine",
     "scopes": [
         {
             "name": "$XSAPPNAME.Display",
