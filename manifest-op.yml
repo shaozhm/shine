@@ -7,7 +7,7 @@ applications:
   services:
     - shine-hdi-container
 
- - name: shine-admin-backend
+- name: shine-admin-backend
   port: 49010
   path: admin-js
   memory: 512M
