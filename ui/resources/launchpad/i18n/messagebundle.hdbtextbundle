@@ -1,4 +1,3 @@
-DO_NOT_SHOW=Do not show this again
 TITLE=SHINE (SAP HANA Interactive Education) for SAP HANA XS Advanced Model
 OK_BUTTON=OK
 INTRODUCTION=Introduction
@@ -86,7 +85,7 @@ TILE_UI_FOLDER_UI5SEARCH=/sap/hana/democontent/epm/ui5search/ui
 TILE_UI_FOLDER_JOBSCHEDULING=/sap/hana/democontent/epm/jobscheduling/ui/
 TILE_UI_FOLDER_ETAGSXSODATA=/sap/hana/democontent/epm/etagsxsodata/ui/
 
-TILE_PERMS_DG=<div>User should have Admin role to access this Application.</div>
+TILE_PERMS_DG=<div><font color="red">To access the Data Generator, User should create Role Collection SHINE_ADMIN and assign Admin role to it and the assign SHINE_ADMIN Role Collection to User</font>.</div>
 TILE_PERMS_PO=<div>None.</div>
 TILE_PERMS_SO=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.</div>
 TILE_PERMS_SD=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.</div>
