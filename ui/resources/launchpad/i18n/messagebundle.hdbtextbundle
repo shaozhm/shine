@@ -86,7 +86,7 @@ TILE_UI_FOLDER_UI5SEARCH=/sap/hana/democontent/epm/ui5search/ui
 TILE_UI_FOLDER_JOBSCHEDULING=/sap/hana/democontent/epm/jobscheduling/ui/
 TILE_UI_FOLDER_ETAGSXSODATA=/sap/hana/democontent/epm/etagsxsodata/ui/
 
-TILE_PERMS_DG=<div><font color="red">To access the Data Generator <ul><li>User should create Role Collection SHINE_ADMIN </li><li>Assign Admin role to Role Collection SHINE_ADMIN</li><li>Assign SHINE_ADMIN Role Collection to User</li></ul>.Refer to SHINE documentation for steps</font>.</div>
+TILE_PERMS_DG=<div><font color="red">To access the Data Generator <ul><li>User should create Role Collection SHINE_ADMIN </li><li>Assign Admin role to Role Collection SHINE_ADMIN</li><li>Assign SHINE_ADMIN Role Collection to User</li></ul> Refer to SHINE documentation for steps</font>.</div>
 TILE_PERMS_PO=<div>None.</div>
 TILE_PERMS_SO=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.</div>
 TILE_PERMS_SD=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.</div>
