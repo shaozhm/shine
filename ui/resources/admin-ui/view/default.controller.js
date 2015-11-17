@@ -367,7 +367,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                error: function(jqXHR, textStatus, errorThrown) {
                    onError(jqXHR.status, oBundle.getText("cb1"));
                },
-               async: true
+               async: false
            });
         }
    },

@@ -13,7 +13,7 @@ applications:
   memory: 512M
   services:
     - shine-hdi-container
-    - uaa-refapps
+    - uaa-shine
 
 - name: shine-ui
   host: [c/d/i-user]-shine-ui
@@ -26,7 +26,7 @@ applications:
         {"name":"xsjs-backend", "url":"http://[c/d/i-user]-shine-xsjs.cfapps.neo.ondemand.com/", "forwardAuthToken": true}        
       ]
   services:
-    - uaa-refapps
+    - uaa-shine
 
 - name: shine-xsjs
   host: [c/d/i-user]-shine-xsjs
@@ -34,7 +34,7 @@ applications:
   path: xsjs
   services:
     - shine-hdi-container
-    - uaa-refapps
+    - uaa-shine
   env:
     HANA_SERVICE_NAME: shine-hdi-container
-    UAA_SERVICE_NAME: uaa-refapps
+    UAA_SERVICE_NAME: uaa-shine

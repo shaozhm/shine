@@ -13,7 +13,7 @@ applications:
   memory: 512M
   services:
     - shine-hdi-container
-    - uaa-refapps
+    - uaa-shine
 
 - name: shine-ui
   port: 49020
@@ -26,7 +26,7 @@ applications:
         {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true}
       ]
   services:
-    - uaa-refapps
+    - uaa-shine
 
 - name: shine-xsjs
   port: 49030
@@ -34,7 +34,7 @@ applications:
   path: xsjs
   services:
     - shine-hdi-container
-    - uaa-refapps
+    - uaa-shine
   env:
     HANA_SERVICE_NAME: shine-hdi-container
-    UAA_SERVICE_NAME: uaa-refapps
+    UAA_SERVICE_NAME: uaa-shine
