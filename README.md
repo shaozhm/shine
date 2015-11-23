@@ -1,4 +1,4 @@
-SHINE XSA 1.1.3
+SHINE XSA 1.1.4
 ================
 
 ## Prerequisites
