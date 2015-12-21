@@ -1,4 +1,4 @@
-SHINE XSA 1.1.4
+SHINE XSA 1.1.5
 ================
 
 ## Prerequisites
@@ -45,7 +45,7 @@ Create group and assign role to the required users here: https://sap-login-test.
 
 mvn clean install
 
-xs install assembly/target/sap-xsac-shine-1.1.0.zip
+xs install assembly/target/sap-xsac-shine-1.5.0.zip
 
 ```
 
