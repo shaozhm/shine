@@ -14,7 +14,7 @@
     "sap-xsenv": "1.1.0"
   },
   "engines": {
-    "node": ">=0.10.x"
+    "node": "~0.12"
   },
   "scripts": {
     "start": "node app.js"
