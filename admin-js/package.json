@@ -1,13 +1,8 @@
 {
-  "name": "admin-js",
+  "name": "shine-admin-nodejs-backend",
   "description": "Nodejs based Data Generator / Admin Dashboard backend",
   "version": "1.1.5",
-  "main": "",
-  "scripts": {
-    "start": "node app.js",
-    "stop": ""
-  },
-  "files": [],
+  "private": true,
   "dependencies": {
     "async": "1.4.0",
     "sap-cds": "1.0.5",
@@ -18,5 +13,10 @@
     "sap-xssec": "0.2.6",
     "sap-xsenv": "1.1.2"
   },
-  "devDependencies": {}
+  "engines": {
+    "node": "~0.12"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
 }

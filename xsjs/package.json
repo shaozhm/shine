@@ -1,16 +1,16 @@
 {
-  "name": "xsjs",
+  "name": "shine-xsjs",
   "description": "The Purchase Order Worklist backend implementation in XSJS",
   "version": "1.1.5",
-  "main": "",
-  "scripts": {
-    "start": "node shine.js",
-    "stop": ""
-  },
-  "files": [],
+  "private": true,
   "dependencies": {
-    "sap-xsenv": "1.1.2",
+    "sap-xsenv":"1.1.2",
     "sap-xsjs": "1.2.5"
   },
-  "devDependencies": {}
+  "engines": {
+    "node": "~0.12"
+  },
+  "scripts": {
+    "start": "node shine.js"
+  }
 }
