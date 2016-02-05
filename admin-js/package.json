@@ -10,7 +10,7 @@
     "sap-hdb-connection": "1.0.4",
     "passport": "0.2.1",
     "winston": "1.0.0",
-    "sap-xssec": "0.2.6",
+    "sap-xssec": "0.5.3",
     "sap-xsenv": "1.1.2"
   },
   "engines": {
