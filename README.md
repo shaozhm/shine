@@ -23,31 +23,35 @@ The xsac_monitoring should be installed before launching the application. For st
 
 
 
-##Create a service for the HDI container 
-
-This step is optional and required only if you want to deploy app via xs push  
-```
-xs create-service hana hdi-shared shine-hdi-container
-```
-
-##Create a service for the UAA
-This step is optional and required only if you want to deploy app via xs push
-```
-xs create-service sap-login default uaa-refapps -c xs-security.json
-```
 
 ## On Premise deployment
 
-###Deployment via Product Installer
-```
-xs install sap-xsac-shine-1.1.5.zip
-```
+
 ####Deployment via push
 Edit manifest-op.yml file. Replace <xsa-host> in line 25 and 26 with the host details of XSA system
-
+Create a service for the HANA HDI container
+```
+xs create-service hana hdi-shared shine-hdi-container
+```
+Create a service for the UAA
+```
+ xs create-service sap-login default uaa-refapps -c xs-security.json
+```
+Push the application
 ```
 xs push -f manifest-op.yml
 ```
+
+###Deployment via Product Installer
+ The latest miltestone can be downloaded from [here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/refapps/sap-xsac-shine/) or do a maven build of the sources 
+```
+mvn clean install -s cfg/settings.xml
+```
+Install the SCV.
+```
+xs install sap-xsac-shine-<version>.zip
+```
+
 1. From HANA Studio connect to the HANA system and create a user SHINE_USER
 2. Assign below for in the user parameters tab
 	- `XS_RC_XS_AUTHORIZATION_ADMIN: XS_AUTHORIZATION_ADMIN`  
