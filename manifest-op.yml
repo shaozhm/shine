@@ -22,8 +22,8 @@ applications:
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://mo-ee79db595.mo.sap.corp:49010", "forwardAuthToken": true},
-        {"name":"xsjs-backend", "url":"http://mo-ee79db595.mo.sap.corp:49030", "forwardAuthToken": true}
+        {"name":"admin-backend", "url":"http://<xsa-host>:49010", "forwardAuthToken": true},
+        {"name":"xsjs-backend", "url":"http://<xsa-host>:49030", "forwardAuthToken": true}
       ]
   services:
     - uaa-refapps

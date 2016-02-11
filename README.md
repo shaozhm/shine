@@ -15,8 +15,11 @@ The application consists of the following packages:
 
 - ui - This package contains the user interface for the SHINE Launchpad, Data Generator, and Purchase Order Worklist applications implemented in SAP UI5.
 
+
+SHINE for XSA documentation can be found [here](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
+
 ## Prerequisites
-The xsac_monitoring should be installed before launching the application
+The xsac_monitoring should be installed before launching the application. For steps to install xsac_monitoring refer to Chapter 2.2.1 of [SHINE for XSA document](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
 
 
 
@@ -34,12 +37,19 @@ xs create-service sap-login default uaa-refapps -c xs-security.json
 ```
 
 ## On Premise deployment
+
+###Deployment via Product Installer
 ```
 xs install sap-xsac-shine-1.1.5.zip
 ```
+####Deployment via push
+Edit manifest-op.yml file. Replace <xsa-host> in line 25 and 26 with the host details of XSA system
 
+```
+xs push -f manifest-op.yml
+```
 1. From HANA Studio connect to the HANA system and create a user SHINE_USER
-2. Assign user parameters 
+2. Assign below for in the user parameters tab
 	- `XS_RC_XS_AUTHORIZATION_ADMIN: XS_AUTHORIZATION_ADMIN`  
 	- `XS_RC_XS_CONTROLLER_USER: XS_CONTROLLER_USER`
 3. After the deployment of the SHINE App login to xsac_monitoring app
@@ -52,3 +62,6 @@ xs install sap-xsac-shine-1.1.5.zip
 10. Click on Ok and then Save button
 11. Go back to HANA Studio and create a User Parameter  XS_RC_SHINE_ADMIN:SHINE_ADMIN
 12. Launch the url for shine_ui app service and login with SHINE_USER
+
+##More
+Refer to [SHINE for XSA documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
