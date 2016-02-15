@@ -1,16 +1,18 @@
 rules:
   - Branch: master
     attributes:
-      deployUser: xsmaster
-      deploySpace: initial
-      deployApi: http://mo-ee79db595.mo.sap.corp:30029
-      deployOrg: initial
+      deployUser: DEVX_TECH_USER
+      deploySpace: PROD
+      deployApi: https://mo-33f723125.mo.sap.corp:30030
+      deployOrg: myorg
       deployMethod: deploy
-      deployMtaExtCsv: "config-op.mtaext"
+      deployManifest: "manifest-test.yml"
       deployPassword: |
-        Sd6j64nezP89ppQrObmToO89TrKv8oyGybw/Zcj6z/s8IOZGPV2YF+H4cMolHL+g
-        slxNcKbaZfWrhkLSjQ/rHtTTPP07LI519Hy0YWaiscIhH6TaX/6/uw659uE9LWYe
-        eAR5EknTvrJllTdvfpQn0CWhDCVbAlDWxrfWxg78IQMUQ1sKUMXPbm2CJmrTlvrd
-        9DH6NW29r3ZVvu8jHKOpgGa5nBrybA2sN0rcD765dsicgg7yFRY3Tix1cTYbto/8
-        vAq00q/20O9iWeaIakm6KTFpJD2SCGCoBcgxl0fY9WBzBYosLzhYQ8J9y8uyM9fK
-        ckfwE/N2HuDuoSN0gFMzUg==
+        bmCTUAk01Y5Qut9rxYYt/0Hm7dizpsdAD9Y0KT41iAGm5k/vJOG3GUCm2q85+D5H
+        xcaBhuFLwMwnSQYd5QZwOGGV/csAjkXU6PZBNPgAt/EdY4c3Wah4sb7CsaXyUmAO
+        CPoKzNupxxIL4euI/+/1scTmE7RJfrFCWpnSnpk0VbxAhPdq9T0+It5c8W77c/0G
+        Y64boZ4uOUVo1dZTSLBFEzQK2pvuSlHL+ekJhU2yLTWRMc6JueviNC0EHbf62I+s
+        TGy9DsfY2wpIBUn3GZ7964rx4fjQwJ0R3sGIIvKk1CfeQprF2VfY5kaisOftyOOl
+        jdadRHsZIqZm7Ym9zfiEGQ==
+
+
