@@ -53,7 +53,7 @@ xs install sap-xsac-shine-<version>.zip
 ```
 
 1. From HANA Studio connect to the HANA system and create a user SHINE_USER
-2. Assign below for in the user parameters tab
+2. Assign below Role Collections for the SHINE_USER in the user parameters tab
 	- `XS_RC_XS_AUTHORIZATION_ADMIN: XS_AUTHORIZATION_ADMIN`  
 	- `XS_RC_XS_CONTROLLER_USER: XS_CONTROLLER_USER`
 3. After the deployment of the SHINE App login to xsac_monitoring app
