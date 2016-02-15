@@ -35,7 +35,7 @@ xs create-service hana hdi-shared shine-hdi-container
 ```
 Create a service for the UAA
 ```
- xs create-service sap-login default uaa-refapps -c xs-security.json
+ xs create-service xsuaa default uaa-refapps -c xs-security.json
 ```
 Push the application
 ```
