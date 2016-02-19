@@ -46,7 +46,7 @@ function getFilter() {
         pstmt.close();
 
         // Business Partner City
-        query = 'SELECT "CITY" FROM "sap.hana.democontent.epm.functions::get_buyer_city"(?)';
+        query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR("CITY") FROM "sap.hana.democontent.epm.models::BUYER" ' + ' WHERE CONTAINS("CITY",?)';
         pstmt = conn.prepareStatement(query);
         pstmt.setString(1, terms);
         rs = pstmt.executeQuery();
@@ -117,8 +117,8 @@ function getFilter() {
 function getTotalOrders() {
     function createTotalEntry(rs) {
         return {
-            "name": rs.getNString(1),
-            "value": rs.getDecimal(2)
+            "name": rs.GROUP1,
+            "value": rs.AMOUNT1
         };
     }
 
@@ -126,17 +126,17 @@ function getTotalOrders() {
     var ivGroupBy = $.request.parameters.get('groupby');
     ivGroupBy = ivGroupBy.replace("'", "");
     var ivCurrency = $.request.parameters.get('currency');
-    ivCurrency = ivCurrency.replace("'", "");
+    ivCurrency = ivCurrency.replace("'", ""); 
     var list = [];
 
     switch (ivGroupBy) {
-        case "PARTNERCOMPANYNAME":
+        case "COMPANYNAME":
             break;
-        case "PRODUCTCATEGORY":
+        case "CATEGORY":
             break;
-        case "PARTNERCITY":
+        case "CITY":
             break;
-        case "PARTNERPOSTALCODE":
+        case "POSTALCODE":
             break;
         case "PRODUCTID":
             break;
@@ -148,7 +148,7 @@ function getTotalOrders() {
 
     }
     if (ivCurrency === null) {
-        ivCurrency = "USD";
+        ivCurrency = "EUR";
     }
     ivCurrency = ivCurrency.substring(0, 3);
 
@@ -158,18 +158,18 @@ function getTotalOrders() {
     if (CheckUpperCase.test(ivCurrency) === true) {
         try {
             // not able to add Currency as prepared statement using setString so adding it in query directly
-            var query = 'SELECT top 5 ' + ivGroupBy + ', SUM("CONVGROSSAMOUNT") FROM "sap.hana.democontent.epm.models::AN_PURCHASE_COMMON_CURRENCY"' + ' (\'PLACEHOLDER\' = (\'$$IP_O_TARGET_CURRENCY$$\', \'' + ivCurrency + '\')) group by ' + ivGroupBy + ' order by sum("CONVGROSSAMOUNT") desc';
+            var query = 'SELECT TOP 5 ' + ivGroupBy + ' AS GROUP1, SUM("CONVGROSSAMOUNT") AS AMOUNT1 FROM "sap.hana.democontent.epm.models::PURCHASE_COMMON_CURRENCY"' + ' (\'PLACEHOLDER\' = (\'$$IP_O_TARGET_CURRENCY$$\', \'' + ivCurrency + '\')) group by ' + ivGroupBy + ' order by sum("CONVGROSSAMOUNT") desc';
             $.trace.debug(query);
-            var conn = $.db.getConnection();
-            var pstmt = conn.prepareStatement(query);
-            var rs = pstmt.executeQuery();
+            var conn = $.hdb.getConnection();
+            var rs = conn.executeQuery(query);
+            var i;
 
-            while (rs.next()) {
-                list.push(createTotalEntry(rs));
+            for (i = 0; i < rs.length; i++) {
+                list.push(createTotalEntry(rs[i]));
             }
 
-            rs.close();
-            pstmt.close();
+            conn.close();
+
         } catch (e) {
             $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
             $.response.setBody(e.message);
