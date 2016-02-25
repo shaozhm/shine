@@ -7,10 +7,18 @@ applications:
   services:
     - shine-hdi-container
 
-- name: shine-admin-backend
+- name: shine-admin-js
   port: 49010
   path: admin-js
   memory: 512M
+  services:
+    - shine-hdi-container
+    - uaa-refapps
+
+- name: shine-xsjs
+  port: 49030
+  memory: 256M
+  path: xsjs
   services:
     - shine-hdi-container
     - uaa-refapps
@@ -28,13 +36,6 @@ applications:
   services:
     - uaa-refapps
 
-- name: shine-xsjs
-  port: 49030
-  memory: 256M
-  path: xsjs
-  services:
-    - shine-hdi-container
-    - uaa-refapps
   env:
     HANA_SERVICE_NAME: shine-hdi-container
     UAA_SERVICE_NAME: uaa-refapps

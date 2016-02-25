@@ -46,7 +46,7 @@ function getFilter() {
         pstmt.close();
 
         // Business Partner City
-        query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR("CITY") FROM "sap.hana.democontent.epm.models::BUYER" ' + ' WHERE CONTAINS("CITY",?)';
+        query = 'SELECT "CITY" FROM "sap.hana.democontent.epm.functions::get_buyer_city"(?)';
         pstmt = conn.prepareStatement(query);
         pstmt.setString(1, terms);
         rs = pstmt.executeQuery();
