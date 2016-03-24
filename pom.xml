@@ -17,7 +17,8 @@
 		<module>ui</module>
         <module>admin-js</module>
 		<module>xsjs</module>
-        <module>db</module>
+		<module>jobs-js</module>
+		<module>db</module>
         <module>assembly</module>
     </modules>
 </project>
