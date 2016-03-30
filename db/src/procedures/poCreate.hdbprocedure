@@ -1,5 +1,5 @@
 PROCEDURE "sap.hana.democontent.epm.procedures::poCreate" (
-	IN im_po_details "sap.hana.democontent.epm.data::PO.Item",
+	IN im_po_details "sap.hana.democontent.epm.data::PO.POView",
 	OUT ex_error  "sap.hana.democontent.epm.data::Procedures.tt_errors" ) 
 	LANGUAGE SQLSCRIPT
 	SQL SECURITY INVOKER AS
@@ -19,8 +19,8 @@ declare lv_date string;
 declare lv_price DECIMAL(15,2);
 declare lv_val string;
 
-select PURCHASEORDERID,"PRODUCT.PRODUCTID",CURRENCY,QUANTITY,DELIVERYDATE
-     into lv_purchaseorderid,lv_productid,  
+select PURCHASEORDERID,PRODUCTID,PARTNERID,CURRENCY,QUANTITY,DELIVERYDATE
+     into lv_purchaseorderid,lv_productid,lv_partnerid,  
           lv_currency,lv_quantity,lv_date
                       from :im_po_details;
                       
@@ -41,7 +41,7 @@ else
                       
 
     insert into "sap.hana.democontent.epm.data::PO.Header" 
-             values(lv_purchaseorderid,'33',CURRENT_DATE,'33',CURRENT_DATE,'','100000000',lv_currency,lv_grossamount,lv_netamount,
+             values(lv_purchaseorderid,'33',CURRENT_DATE,'33',CURRENT_DATE,'',lv_partnerid,lv_currency,lv_grossamount,lv_netamount,
              		lv_taxamount,'N','I','I','I','I');
          			
 	insert into "sap.hana.democontent.epm.data::PO.Item" 

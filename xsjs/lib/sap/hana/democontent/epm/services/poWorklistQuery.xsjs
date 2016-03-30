@@ -106,6 +106,7 @@ function getFilter() {
      
     } catch (e) {
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+        $.response.contentType = 'text/plain; charset=UTF-8';
         $.response.setBody(e.message);
         $.trace.error("Exception raised:" + e.message);
         return;
@@ -147,6 +148,7 @@ function getTotalOrders() {
         default:
             $.trace.error("HTTP:BAD_REQUEST" + $.net.http.BAD_REQUEST);
             $.response.status = $.net.http.BAD_REQUEST;
+            $.response.contentType = 'text/plain; charset=UTF-8';
             $.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '000', ivGroupBy));
             return;
 
@@ -168,13 +170,13 @@ function getTotalOrders() {
             var rs = conn.executeQuery(query);
 
 
-            for (i = 0; i < rs.length; i++) {
+            for (var i = 0; i < rs.length; i++) {
                 list.push(createTotalEntry(rs[i]));
              }
 
             conn.close();
         } catch (e) {
-           
+            $.response.contentType = 'text/plain; charset=UTF-8';
             $.response.setBody(e.message);
             $.trace.error("Exception raised:" + e.message);
             return;
@@ -222,6 +224,7 @@ function downloadExcel() {
     } catch (e) {
       
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+        $.response.contentType = 'text/plain; charset=UTF-8';
         $.response.setBody(e.message);
         $.trace.error("Exception raised:" + e.message);
         return;
@@ -270,6 +273,7 @@ function downloadZip() {
 
     } catch (e) {
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+        $.response.contentType = 'text/plain; charset=UTF-8';
         $.response.setBody(e.message);
         $.trace.error("Exception raised:" + e.message);
         return;
@@ -297,5 +301,6 @@ switch (aCmd) {
     default:
         $.trace.error("Error:INTERNAL SERVER ERROR" + $.net.http.INTERNAL_SERVER_ERROR);
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+        $.response.contentType = 'text/plain; charset=UTF-8';
         $.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '002', aCmd));
 }

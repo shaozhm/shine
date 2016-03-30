@@ -31,8 +31,6 @@ applications:
     - shine-hdi-container
     - uaa-refapps
     - scheduler-refapps
-  env:
-    shineuiurl: "http://<xsa-host>:49020"
 
 - name: shine-ui
   port: 49020
