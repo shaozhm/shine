@@ -6,6 +6,10 @@ modules:
   - name: shine-ui
     type: javascript.nodejs
     path: ui/
+    provides: 
+      - name: ui
+        properties:
+          ui-url: "${default-url}"
     requires:
       - name: uaa-refapps
       - name: admin-js
@@ -20,6 +24,12 @@ modules:
           name: xsjs-backend
           url: ~{url}
           forwardAuthToken: true 
+      - name: jobs
+        group: destinations
+        properties:
+          name: jobs-backend
+          url: ~{url}
+          forwardAuthToken: true
         
   - name: shine-admin-js
     type: javascript.nodejs
@@ -48,6 +58,22 @@ modules:
       - name: shine-hdi-container
       - name: shine-db
       
+  - name: shine-jobs-js
+    type: javascript.nodejs
+    path: jobs-js/
+    provides: 
+      - name: jobs
+        properties:
+          url: "${default-url}"
+    requires:
+      - name: shine-hdi-container
+      - name: uaa-refapps
+      - name: scheduler-refapps
+      - name: shine-db
+      - name: ui
+        properties:
+          shineuiurl: ~{ui-url}
+      
   - name: shine-db
     type: com.sap.xs.hdi
     requires:
@@ -56,6 +82,9 @@ modules:
 resources:
   - name: shine-hdi-container
     type: com.sap.xs.hdi-container
+    
+  - name: scheduler-refapps
+    type: com.sap.xs.job-scheduler
     
   - name: uaa-refapps
     type: com.sap.xs.uaa

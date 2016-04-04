@@ -48,6 +48,16 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
+		<fileSet>
+            <directory>../jobs-js</directory>
+            <outputDirectory>jobs-js</outputDirectory>
+            <excludes>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
         <fileSet>
             <directory>../db</directory>
             <outputDirectory>db</outputDirectory>
@@ -60,4 +70,3 @@
         </fileSet>
     </fileSets>
 </assembly>
-

@@ -61,10 +61,21 @@ sap.ui.jsview("view.main", {
         poTile.addStyleClass('templateTileClass');
         poTile.addStyleClass('poClass');
 
-        var items = [
-            adminTile, poTile
-        ];
+        var jobTile = new sap.m.StandardTile({
+            icon: "sap-icon://time-entry-request",
+            info: sap.app.i18n.getText("JOBSCHEDULING"),
+            infoState: "None",
+            removable: false,
+            press: function(oEvent) {
+                view.handlePress(oController, 3);
+            }
+        });
+        jobTile.addStyleClass('templateTileClass');
+        jobTile.addStyleClass('jobschedulingClass');
 
+        var items = [
+            adminTile, poTile, jobTile
+        ];
         // create tile container
         var tileContainer = new sap.m.TileContainer({
             tileDelete: function(evt) {

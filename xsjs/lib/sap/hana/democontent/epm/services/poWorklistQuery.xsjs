@@ -5,6 +5,7 @@ var SESSIONINFO = $.sap.hana.democontent.epm.services.session;
 
 function getFilter() {
     function createFilterEntry(rs, attribute, obj) {
+       
         console.log("add " + rs.getNString(1) + " " + attribute + " obj " + obj);
         return {
             "terms": rs.getNString(1),
@@ -15,7 +16,7 @@ function getFilter() {
 
     var body = '';
     var terms = $.request.parameters.get('query');
-    terms = terms.replace("'", "");
+    
     var termList = terms.split(" ");
     var termStr = "";
     var i;
@@ -44,9 +45,9 @@ function getFilter() {
 
         rs.close();
         pstmt.close();
-
+      
         // Business Partner City
-        query = 'SELECT "CITY" FROM "sap.hana.democontent.epm.functions::get_buyer_city"(?)';
+         query = 'SELECT "CITY" FROM "sap.hana.democontent.epm.functions::get_buyer_city"(?)';
         pstmt = conn.prepareStatement(query);
         pstmt.setString(1, terms);
         rs = pstmt.executeQuery();
@@ -97,14 +98,17 @@ function getFilter() {
             list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
                 '002'), "purchaseOrder"));
         }
-
+        
         rs.close();
         pstmt.close();
 
         conn.close();
+     
     } catch (e) {
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(e.message);
+        $.response.contentType = 'text/plain; charset=UTF-8';
+         $.response.setBody("Search failed due to an internal server error. Check logs for details");
+        $.trace.error("Exception raised:" + e.message);
         return;
     }
     body = JSON.stringify(list);
@@ -124,9 +128,9 @@ function getTotalOrders() {
 
     var body = '';
     var ivGroupBy = $.request.parameters.get('groupby');
-    ivGroupBy = ivGroupBy.replace("'", "");
+   
     var ivCurrency = $.request.parameters.get('currency');
-    ivCurrency = ivCurrency.replace("'", ""); 
+   
     var list = [];
 
     switch (ivGroupBy) {
@@ -142,7 +146,9 @@ function getTotalOrders() {
             break;
 
         default:
+            $.trace.error("HTTP:BAD_REQUEST" + $.net.http.BAD_REQUEST);
             $.response.status = $.net.http.BAD_REQUEST;
+            $.response.contentType = 'text/plain; charset=UTF-8';
             $.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '000', ivGroupBy));
             return;
 
@@ -158,21 +164,21 @@ function getTotalOrders() {
     if (CheckUpperCase.test(ivCurrency) === true) {
         try {
             // not able to add Currency as prepared statement using setString so adding it in query directly
-            var query = 'SELECT TOP 5 ' + ivGroupBy + ' AS GROUP1, SUM("CONVGROSSAMOUNT") AS AMOUNT1 FROM "sap.hana.democontent.epm.models::PURCHASE_COMMON_CURRENCY"' + ' (\'PLACEHOLDER\' = (\'$$IP_O_TARGET_CURRENCY$$\', \'' + ivCurrency + '\')) group by ' + ivGroupBy + ' order by sum("CONVGROSSAMOUNT") desc';
+           var query = 'SELECT TOP 5 ' + ivGroupBy + ' AS GROUP1, SUM("CONVGROSSAMOUNT") AS AMOUNT1 FROM "sap.hana.democontent.epm.models::PURCHASE_COMMON_CURRENCY"' + ' (\'PLACEHOLDER\' = (\'$$IP_O_TARGET_CURRENCY$$\', \'' + ivCurrency + '\')) group by ' + ivGroupBy + ' order by sum("CONVGROSSAMOUNT") desc';
             $.trace.debug(query);
             var conn = $.hdb.getConnection();
             var rs = conn.executeQuery(query);
-            var i;
 
-            for (i = 0; i < rs.length; i++) {
+
+            for (var i = 0; i < rs.length; i++) {
                 list.push(createTotalEntry(rs[i]));
-            }
+             }
 
             conn.close();
-
         } catch (e) {
-            $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+            $.response.contentType = 'text/plain; charset=UTF-8';
             $.response.setBody(e.message);
+            $.trace.error("Exception raised:" + e.message);
             return;
         }
 
@@ -185,6 +191,7 @@ function getTotalOrders() {
         $.response.status = $.net.http.OK;
 
     } else {
+        $.trace.error("HTTP:BAD_REQUEST" + $.net.http.BAD_REQUEST);
         $.response.status = $.net.http.BAD_REQUEST;
         $.response.setBody(MESSAGES.getMessage('SEPM_BOR_MESSAGES', '053', encodeURI(ivCurrency)));
         return;
@@ -215,8 +222,11 @@ function downloadExcel() {
             body += rs[i].PurchaseOrderId + "\t" + rs[i].PartnerId + "\t" + rs[i].CompanyName + "\t" + rs[i].CreatedByLoginName + "\t" + rs[i].CreatedAt + "\t" + rs[i].GrossAmount + "\n";
         }
     } catch (e) {
+      
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(e.message);
+        $.response.contentType = 'text/plain; charset=UTF-8';
+       $.response.setBody("Excel download Failed.Check logs for details.");
+        $.trace.error("Exception raised:" + e.message);
         return;
     }
 
@@ -263,7 +273,9 @@ function downloadZip() {
 
     } catch (e) {
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(e.message);
+        $.response.contentType = 'text/plain; charset=UTF-8';
+         $.response.setBody("Zipping data Failed. Check logs for details.");
+        $.trace.error("Exception raised:" + e.message);
         return;
     }
 }
@@ -287,6 +299,8 @@ switch (aCmd) {
         SESSIONINFO.fillSessionInfo();
         break;
     default:
+        $.trace.error("Error:INTERNAL SERVER ERROR" + $.net.http.INTERNAL_SERVER_ERROR);
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+        $.response.contentType = 'text/plain; charset=UTF-8';
         $.response.setBody(MESSAGES.getMessage('SEPM_ADMIN', '002', aCmd));
 }

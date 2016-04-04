@@ -28,6 +28,12 @@
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
+         <dependency>
+            <groupId>com.sap.refapps</groupId>
+            <artifactId>sap-xsac-shine-jobs-js</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
 		<dependency>
             <groupId>com.sap.refapps</groupId>
             <artifactId>sap-xsac-shine-db</artifactId>
@@ -79,6 +85,13 @@
                                         <manifestEntries>
                                             <Content-Type>text/directory</Content-Type>
                                             <MTA-Module>shine-xsjs</MTA-Module>
+                                        </manifestEntries>
+                                    </manifestSection> 
+                                    <manifestSection>
+                                        <name>jobs-js/</name>
+                                        <manifestEntries>
+                                            <Content-Type>text/directory</Content-Type>
+                                            <MTA-Module>shine-jobs-js</MTA-Module>
                                         </manifestEntries>
                                     </manifestSection> 
                                     <manifestSection>
