@@ -16,7 +16,7 @@ function getFilter() {
 
     var body = '';
     var terms = $.request.parameters.get('query');
-    terms = terms.replace("'", "");
+    
     var termList = terms.split(" ");
     var termStr = "";
     var i;
@@ -107,7 +107,7 @@ function getFilter() {
     } catch (e) {
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
         $.response.contentType = 'text/plain; charset=UTF-8';
-        $.response.setBody(e.message);
+         $.response.setBody("Search failed due to an internal server error. Check logs for details");
         $.trace.error("Exception raised:" + e.message);
         return;
     }
@@ -128,9 +128,9 @@ function getTotalOrders() {
 
     var body = '';
     var ivGroupBy = $.request.parameters.get('groupby');
-    ivGroupBy = ivGroupBy.replace("'", "");
+   
     var ivCurrency = $.request.parameters.get('currency');
-    ivCurrency = ivCurrency.replace("'", "");
+   
     var list = [];
 
     switch (ivGroupBy) {
@@ -225,7 +225,7 @@ function downloadExcel() {
       
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
         $.response.contentType = 'text/plain; charset=UTF-8';
-        $.response.setBody(e.message);
+       $.response.setBody("Excel download Failed.Check logs for details.");
         $.trace.error("Exception raised:" + e.message);
         return;
     }
@@ -274,7 +274,7 @@ function downloadZip() {
     } catch (e) {
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
         $.response.contentType = 'text/plain; charset=UTF-8';
-        $.response.setBody(e.message);
+         $.response.setBody("Zipping data Failed. Check logs for details.");
         $.trace.error("Exception raised:" + e.message);
         return;
     }

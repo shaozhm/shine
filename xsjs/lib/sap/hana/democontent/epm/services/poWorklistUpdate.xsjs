@@ -4,7 +4,14 @@ var MESSAGES = $.sap.hana.democontent.epm.services.messages;
 
 function deletePO() {
     var body = '';
-    var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    // var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    console.log("info  "+ $.request.body.asString());
+    var obj = $.request.body.asString();
+    console.log("body "+obj);
+    var map = JSON.parse(obj);
+    console.log("map "+map);
+    var purchaseOrderID = map.payload[0].purchaseOrderId;
+     console.log("info  "+ purchaseOrderID);
     purchaseOrderID = purchaseOrderID.replace("'", "");
     if (purchaseOrderID === null) {
         $.trace.error("Error:BAD_REQUEST" + $.net.http.BAD_REQUEST);
@@ -27,7 +34,7 @@ function deletePO() {
     } catch (e) {
         $.trace.error("Exception Raised" + e.message);
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(e.message);
+        $.response.setBody("Deletion of Purchase Order failed. Check logs for details");
         return;
     }
 
@@ -152,7 +159,7 @@ function deletePO() {
     } catch (error) {
         $.trace.error("INTERNAL SERVER ERROR" + error.message);
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(error.message);
+        $.response.setBody("Lifecycle Update Failed. Check logs for details");
         return;
     }
 
@@ -166,7 +173,14 @@ function deletePO() {
 
 function approvePO() {
     var body = '';
-    var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    var obj = $.request.body.asString();
+    console.log("body "+obj);
+    var map = JSON.parse(obj);
+    console.log("map "+map);
+    var purchaseOrderID = map.payload[0].purchaseOrderId;
+    var action = map.payload[1].Action;
+    console.log("key "+purchaseOrderID+ "action "+action);
+    // var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
     purchaseOrderID = purchaseOrderID.replace("'", "");
     if (purchaseOrderID === null) {
         $.trace.error( MESSAGES.getMessage('SEPM_POWRK', '012'));
@@ -177,7 +191,7 @@ function approvePO() {
         // specified
         return;
     }
-    var action = $.request.parameters.get('Action');
+    // var action = $.request.parameters.get('Action');
     if (action === null) {
         $.trace.error( MESSAGES.getMessage('SEPM_POWRK', '022'));
         $.response.status = $.net.http.BAD_REQUEST;
@@ -219,7 +233,7 @@ function approvePO() {
     } catch (e) {
         $.trace.error("INTERNAL SERVER ERROR" + e.message);
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(e.message);
+        $.response.setBody("Approval of Purchase Order failed. Check logs for details");
         return;
     }
 
@@ -350,7 +364,7 @@ function approvePO() {
     } catch (error) {
         $.trace.error("INTERNAL SERVER ERROR" + error.message);
         $.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-        $.response.setBody(error.message);
+        	$.response.setBody("Updation of approval status failed. Check logs for details");
         return;
     }
 

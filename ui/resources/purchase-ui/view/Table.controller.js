@@ -267,6 +267,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 	//Delete Confirmation Dialog Results
 	deleteConfirm: function(bResult, oController, poId) {
 		if (bResult) {
+				var payload = {"payload":[{"purchaseOrderId":escape(poId)}]};
 			var xsrf_token;
 			$.ajax({
 				type: "GET",
@@ -280,14 +281,15 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 					xsrf_token = request.getResponseHeader('x-csrf-token');
 				}
 			});
-			var aUrl = '/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs?cmd=delete' + '&PurchaseOrderId=' + escape(poId);
+			var aUrl = '/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs?cmd=delete';
 			jQuery.ajax({
 				url: aUrl,
-				method: 'GET',
+				method: 'POST',
 				headers: {
 				'x-csrf-token': xsrf_token
 				},
-				dataType: 'text',
+				data: JSON.stringify(payload),
+				 contentType: "application/json",
 				success: function(myTxt) {
 					oController.onDeleteSuccess(myTxt, oController);
 				},
@@ -299,6 +301,8 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 	//Approve Confirmation Dialog Results
 	approvalConfirm: function(bResult, oController, poId, action) {
 		if (bResult) {
+			var payload = {"payload":[{"purchaseOrderId":escape(poId)},
+							{"Action":escape(action)}]};
 				var xsrf_token;
 			$.ajax({
 				type: "GET",
@@ -312,15 +316,15 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 					xsrf_token = request.getResponseHeader('x-csrf-token');
 				}
 			});
-			var aUrl = '/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs?cmd=approval' + '&PurchaseOrderId=' + escape(poId) + '&Action=' +
-				escape(action);
+			var aUrl = '/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs?cmd=approval';
 			jQuery.ajax({
 				url: aUrl,
 				headers: {
 				'x-csrf-token': xsrf_token
 				},
-				method: 'GET',
-				dataType: 'text',
+				method: 'POST',
+				data: JSON.stringify(payload),
+				 contentType: "application/json",
 				success: function(myTxt) {
 					oController.onApprovalSuccess(myTxt, oController, action);
 				},
@@ -357,7 +361,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 				oBundle.getText("error_action"));
 			return;
 		} else {
-			sap.ui.commons.MessageBox.show(jqXHR.statusText,
+			sap.ui.commons.MessageBox.show(decodeURI(jqXHR.responseText),
 				"ERROR",
 				oBundle.getText("error_action"));
 			return;

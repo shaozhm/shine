@@ -2,7 +2,7 @@
 	<l:MatrixLayout height="90%" id="createJobLayout" width="90%" backgroundDesign="Fill1">
 		<l:MatrixLayoutRow>
 			<l:MatrixLayoutCell colSpan="3">
-				<Toolbar height="3rem"  class="sapMH4FontSize">
+				<Toolbar height="3rem" class="sapMH4FontSize">
 					<Text text="Job - Creation and Schedule" class="sapMH4FontSize"/>
 				</Toolbar>
 			</l:MatrixLayoutCell>
@@ -44,9 +44,9 @@
 				<TimePicker id="startTimeField" tooltip="{i18n&gt;starttimetooltip}" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" width="24%" change="checkValue"/>
 			</l:MatrixLayoutCell>
 			<l:MatrixLayoutCell>
-				<sap.ui.commons:Label  text="{i18n&gt;enddate}" width="30%"/>
+				<sap.ui.commons:Label text="{i18n&gt;enddate}" width="30%"/>
 				<DatePicker design="Bold" id="endDateField" tooltip="{i18n&gt;enddatetooltip}" displayFormat="yyy-MM-dd" valueFormat="yyy-MM-dd" width="30%" change="checkValue"/>
-				<TimePicker id="endTimeField" tooltip="{i18n&gt;endtimetooltip}"  displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"  width="24%" change="checkValue"/>
+				<TimePicker id="endTimeField" tooltip="{i18n&gt;endtimetooltip}" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" width="24%" change="checkValue"/>
 			</l:MatrixLayoutCell>
 		</l:MatrixLayoutRow>
 			<l:MatrixLayoutRow>
@@ -66,11 +66,6 @@
 			</l:MatrixLayoutCell>
 		</l:MatrixLayoutRow>
 		<l:MatrixLayoutRow>
-			<l:MatrixLayoutCell  colSpan="3">
-				<sap.ui.commons:TextView text=""/>
-			</l:MatrixLayoutCell>
-		</l:MatrixLayoutRow>
-		<l:MatrixLayoutRow>
 			<l:MatrixLayoutCell colSpan="3">
 				<sap.ui.commons:TextView text=""/>
 			</l:MatrixLayoutCell>
@@ -81,8 +76,13 @@
 			</l:MatrixLayoutCell>
 		</l:MatrixLayoutRow>
 		<l:MatrixLayoutRow>
-			<l:MatrixLayoutCell  colSpan="3">
-				<Toolbar height="3rem" >
+			<l:MatrixLayoutCell colSpan="3">
+				<sap.ui.commons:TextView text=""/>
+			</l:MatrixLayoutCell>
+		</l:MatrixLayoutRow>
+		<l:MatrixLayoutRow>
+			<l:MatrixLayoutCell colSpan="3">
+				<Toolbar height="3rem">
 					<Text text="Jobs" class="sapMH4FontSize"/>
 				</Toolbar>
 			</l:MatrixLayoutCell>
@@ -110,22 +110,6 @@
 							</sap.ui.table:label>
 							<sap.ui.table:template>
 								<sap.ui.commons:TextView text="{JobName}"/>
-							</sap.ui.table:template>
-						</sap.ui.table:Column>
-							<sap.ui.table:Column >
-							<sap.ui.table:label>
-								<sap.ui.commons:Label requiredAtBegin="false" text="{i18n&gt;starttime}"/>
-							</sap.ui.table:label>
-							<sap.ui.table:template>
-								<sap.ui.commons:TextView text="{StartTime}"/>
-							</sap.ui.table:template>
-						</sap.ui.table:Column>
-							<sap.ui.table:Column >
-							<sap.ui.table:label>
-								<sap.ui.commons:Label requiredAtBegin="false" text="{i18n&gt;endtime}"/>
-							</sap.ui.table:label>
-							<sap.ui.table:template>
-								<sap.ui.commons:TextView text="{EndTime}"/>
 							</sap.ui.table:template>
 						</sap.ui.table:Column>
 					</sap.ui.table:columns>

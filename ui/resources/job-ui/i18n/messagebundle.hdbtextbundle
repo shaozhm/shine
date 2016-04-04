@@ -1,6 +1,6 @@
 #New jobscheduler
 MANAGEJOBS=Manage Jobs
-JOBACTIONLOG=Job Action Logs
+JOBACTIONLOG=Job Trigger Logs
 jobid=Job Id
 jobname=Job Name
 jobdescription=Description
@@ -13,6 +13,7 @@ endtime=End Time
 username=User Name
 password=Password
 timestamp=Time Stamp
+triggerId=Trigger Id
 new=Create & Schedule Job
 delete=Delete all Jobs
 deleteLogs=Delete
