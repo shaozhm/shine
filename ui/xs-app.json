@@ -9,15 +9,15 @@
 	}, {
 		"source": "/get/(.*)",
 		"destination": "admin-backend",
-		"scope": "shine-admin.DataGenerator"
+		"scope": "$XSAPPNAME.DataGenerator"
 	}, {
 		"source": "/reset/(.*)",
 		"destination": "admin-backend",
-		"scope": "shine-admin.DataGenerator"
+		"scope": "$XSAPPNAME.DataGenerator"
 	}, {
 		"source": "/replicate/(.*)",
 		"destination": "admin-backend",
-		"scope": "shine-admin.DataGenerator"
+		"scope": "$XSAPPNAME.DataGenerator"
 	}, {
 		"source": "/jobs/(.*)",
 		"destination": "jobs-backend"
@@ -31,7 +31,7 @@
 	},{
 		"source": "^/admin-ui/(.*)",
 		"localDir": "resources",
-		"scope": "shine-admin.DataGenerator"
+		"scope": "$XSAPPNAME.DataGenerator"
 	}, {
 		"source": "^/(.*)",
 		"localDir": "resources"

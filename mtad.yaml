@@ -87,6 +87,6 @@ resources:
     type: com.sap.xs.job-scheduler
     
   - name: uaa-refapps
-    type: com.sap.xs.uaa
+    type: com.sap.xs.uaa-space
     parameters:
      config-path: xs-security.json
