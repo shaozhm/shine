@@ -39,11 +39,11 @@ router.post('/schedules/createjobschedule', function(req, res) {
 			"active": true,
 			"startTime": {
 				"date": startTime,
-				"format": "YYYY-MM-DD HH:mm:ss"
+				"format": "YYYY-MM-DD HH:mm:ss Z"
 			},
 			"endTime": {
 				"date": endTime,
-				"format": "YYYY-MM-DD HH:mm:ss"
+				"format": "YYYY-MM-DD HH:mm:ss Z"
 			}
 		}]
 	};
