@@ -11,12 +11,30 @@ winston.level = process.env.winston_level || 'error'
 router.post('/schedules/createjobschedule', function(req, res) {
 	logger = req.loggingContext.getLogger("/schedules/createjobschedule");
 	logger.error('info' + req.body);
-	var jname = req.body.jobname;
-	var description = req.body.jobname;
+var jname = req.body.jobname;
+	if(!(util.isAlphaNumeric(jname))){
+		throw new Error("Invalid Job Name");
+	}
+	var description = req.body.description;
+	if(!(util.isAlphaNumeric(description))){
+		throw new Error("Invalid Job Description");
+	}
 	var juser = req.body.user;
+	if(juser==null || juser===undefined || juser===""){
+		throw new Error("Invalid Job User");
+	}
 	var startTime = req.body.starttime;
+	if(!(util.isValidDate(startTime))){
+		throw new Error("Invalid Start Time");
+	}
 	var endTime = req.body.endtime;
+	if(!(util.isValidDate(endTime))){
+		throw new Error("Invalid End Time");
+	}
 	var cron = req.body.cron;
+	if(cron==null || cron===undefined || cron===""){
+		throw new Error("Invalid Job User");
+	}
 	var jobid;
 	var options = util.appconfig();
 	var appUrl = process.env.shineuiurl;
