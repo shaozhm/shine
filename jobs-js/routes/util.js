@@ -24,5 +24,30 @@ module.exports = {
     		password: services.password,
     		baseURL: services.url
 		};
+	},
+	isAlphaNumeric: function(str) {
+		var code, i, len;
+		for (i = 0, len = str.length; i < len; i++) {
+			code = str.charCodeAt(i);
+			if (!(code > 47 && code < 58) && // numeric (0-9)
+				!(code > 64 && code < 91) && // upper alpha (A-Z)
+				!(code > 96 && code < 123)) { // lower alpha (a-z)
+				return false;
+			}
+		}
+		return true;
+	},
+
+	isValidDate: function(date) {
+		console.log("date"+date);
+		var timestamp = Date.parse(date);
+		console.log("timsestamp"+timestamp);
+		if (isNaN(timestamp) === true) {
+			return false;
+		}
+		// if(timestamp === "NaN"){
+		// 	return false;
+		// }
+		return true;
 	}
 };
