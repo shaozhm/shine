@@ -132,9 +132,10 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			type: "POST",
 			url: "/sap/hana/democontent/epm/services/poCreate.xsodata/purchaseDetails",
 			headers: {
-				'x-csrf-token': xsrf_token
+				'x-csrf-token': xsrf_token,
+				'Accept': "application/json",
+				'Content-Type': "application/json"
 			},
-			contentType: "application/json",
 			data: JSON.stringify(item),
 			dataType: "json",
 			success: function(data) {
