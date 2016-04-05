@@ -217,7 +217,7 @@ router.delete('/schedules/deletejobschedules/:jobid', function(req, res) {
 										"Content-Type": "application/json"
 									});
 									res.end(JSON.stringify({
-										"message": "Job with name" + jobName + " deleted"
+										"message": "Job with name " + jobName + " deleted"
 									}));
 								}
 							});
