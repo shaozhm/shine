@@ -27,7 +27,7 @@
                     <sap.ui.commons:Label text="{i18n&gt;timestamp}" requiredAtBegin="false"/>
                 </sap.ui.table:label>
                  <sap.ui.table:template>
-                    <sap.ui.commons:TextView text="{TimeStamp}"/>
+                    <sap.ui.commons:TextView  text="{path:'TimeStamp' , formatter:'UTIL.formatTimeStamp'}"/>
                 </sap.ui.table:template>
             </sap.ui.table:Column>
         </sap.ui.table:columns>
