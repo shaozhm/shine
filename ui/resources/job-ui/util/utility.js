@@ -21,3 +21,10 @@ UTIL.formatUTCDateTime = function(dateTime) {
 	
 	
 };
+
+UTIL.formatTimeStamp = function(value) {
+	var strDateTime = value;
+	var myDate = new Date(strDateTime);
+	myDate.toString().replace("/GMT.*$/","");
+	return myDate;
+};
