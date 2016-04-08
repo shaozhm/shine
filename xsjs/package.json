@@ -5,7 +5,7 @@
 	"private": true,
 	"dependencies": {
 		"sap-xsenv": "1.2.1",
-		"sap-xsjs": "1.6.1",
+		"sap-xsjs": "1.6.2",
 		"sap-xsodata" : "0.6.0"
 	},
 	"engines": {
