@@ -10,15 +10,15 @@
 
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.7</version>
     <packaging>pom</packaging>
 	
    <modules>
-		<module>ui</module>
+	    <module>ui</module>
         <module>admin-js</module>
 		<module>xsjs</module>
 		<module>jobs-js</module>
 		<module>db</module>
         <module>assembly</module>
     </modules>
-</project>
+</project> 
