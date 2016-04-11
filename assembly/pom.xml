@@ -4,7 +4,7 @@
    <parent>
 	   <groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-		<version>1.1.1</version>
+		 <version>1.1.6</version>
 	</parent>
     <artifactId>sap-xsac-shine</artifactId>
     <packaging>pom</packaging>
@@ -25,6 +25,12 @@
         <dependency>
             <groupId>com.sap.refapps</groupId>
             <artifactId>sap-xsac-shine-xsjs</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+         <dependency>
+            <groupId>com.sap.refapps</groupId>
+            <artifactId>sap-xsac-shine-jobs-js</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
         </dependency>
@@ -79,6 +85,13 @@
                                         <manifestEntries>
                                             <Content-Type>text/directory</Content-Type>
                                             <MTA-Module>shine-xsjs</MTA-Module>
+                                        </manifestEntries>
+                                    </manifestSection> 
+                                    <manifestSection>
+                                        <name>jobs-js/</name>
+                                        <manifestEntries>
+                                            <Content-Type>text/directory</Content-Type>
+                                            <MTA-Module>shine-jobs-js</MTA-Module>
                                         </manifestEntries>
                                     </manifestSection> 
                                     <manifestSection>
@@ -155,6 +168,7 @@
 			 <plugin>
                  <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
                 <artifactId>alm-prod-assembler-maven-plugin</artifactId>
+                <version>1.4.1</version>
                 <configuration>
                    <mtaSourceDirs>
                      <param>${project.build.directory}</param>

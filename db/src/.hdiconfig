@@ -44,18 +44,6 @@
           "plugin_name"   : "com.sap.hana.di.cds",
           "plugin_version": "11.1.0"
         },
-        "hdbscalarfunction": {
-            "plugin_name": "com.sap.hana.di.scalarfunction",
-            "plugin_version": "11.1.0"
-        },
-        "hdbtablefunction": {
-            "plugin_name": "com.sap.hana.di.tablefunction",
-            "plugin_version": "11.1.0"
-        },
-        "hdbhadoopmrjob": {
-            "plugin_name": "com.sap.hana.di.hadoopmrjob",
-            "plugin_version": "11.1.0"
-        },
         "hdbtabletype": {
             "plugin_name": "com.sap.hana.di.tabletype",
             "plugin_version": "11.1.0"
@@ -83,6 +71,10 @@
         "txt": {
             "plugin_name": "com.sap.hana.di.copyonly",
             "plugin_version": "11.1.0"
-        }
+        },
+		"hdbfunction" : {
+			"plugin_name" : "com.sap.hana.di.function",
+			"plugin_version": "11.1.0"
+		}
     }
 }

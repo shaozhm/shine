@@ -1,12 +1,18 @@
-﻿var express = require('express');
+var express = require('express');
 var async = require('async');
 var cds = require('sap-cds');
 var router = express.Router();
 var winston = require('winston');
 var util = require('./util');
+var logging = require('sap-logging');
+var appContext = logging.createAppContext();
+var logger;
 
 winston.level = process.env.winston_level || 'error'
 router.get('/get/tablesize', function (req, res) {
+    var reqContext = appContext.createRequestContext(req);
+    logger = reqContext.getLogger("/get/tablesize");
+    	
     var client = req.db;
     var tableDict = [{
 		"tableName": "MD.Addresses",
@@ -112,7 +118,8 @@ router.get('/get/tablesize', function (req, res) {
         function(error, result) {
             if (error) {
                 res.writeHead(500, {'Content-Type' : 'text/plain'});
-                console.log(error);
+                //console.log(error);
+                logger.info(error);
                 res.end(error.message);
             } else {
                 var combinedArray = [];
@@ -128,17 +135,8 @@ router.get('/get/tablesize', function (req, res) {
 });
 
 router.get('/get/sessioninfo', function (req, res) {
-    var client = req.db;
-    client.exec("SELECT TOP 1 CURRENT_USER, SESSION_USER, SESSION_CONTEXT('XS_APPLICATIONUSER') as APPLICATION_USER FROM dummy",
-        function(error, response) {
-            if (error) {
-                res.writeHead(500, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(error));
-            } else {
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(response));
-            }
-    });
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify({userEncoded: encodeURI(JSON.stringify(req.user))}));
 });
 
 module.exports = router;

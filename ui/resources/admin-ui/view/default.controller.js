@@ -287,7 +287,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                         error: function(jqXHR, textStatus, errorThrown) {
                             onError(jqXHR.status, oBundle.getText("cb1"));
                         },
-                        async: true
+                        async: false
                     });
                 }
                 for (var j = 0; j < poRequired; j++) {
@@ -316,7 +316,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                         error: function(jqXHR, textStatus, errorThrown) {
                             onError(jqXHR.status, oBundle.getText("cb1"));
                         },
-                        async: true
+                        async: false
                     });
                 }
            }
@@ -367,7 +367,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                error: function(jqXHR, textStatus, errorThrown) {
                    onError(jqXHR.status, oBundle.getText("cb1"));
                },
-               async: true
+               async: false
            });
         }
    },
@@ -616,14 +616,6 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 
 function onLoadSizes(myJSON) {
 
-    // var data = [];
-    // for (var i = 0; i < myJSON.entries.length; i++) {
-        // data[i] = {
-            // label: myJSON.entries[i].name,
-            // table_size: myJSON.entries[i].table_size,
-            // record_count: myJSON.entries[i].record_count
-        // };
-    // }
     
     var oBarModel = sap.ui.getCore().getModel("chart");
     oBarModel.setData({
