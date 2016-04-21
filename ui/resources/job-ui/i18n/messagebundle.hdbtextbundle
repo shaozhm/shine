@@ -31,5 +31,5 @@ endtimetooltip=Enter End Time
 usernametooltip=Enter User Name
 passwordtooltip=Enter Password
 crontooltip=Enter Schedule for the job
-deleteJob=Delete Job
+deleteJob=Delete Schedule
 uiKeyMapper=jobname:__xmlview0--jobNameTextField,description:__xmlview0--jobDescriptionTextField,cron:__xmlview0--xsCronInput,starttime:__xmlview0--startDateField,endtime:__xmlview0--endDateField,user:__xmlview0--userName,password:__xmlview0--password
