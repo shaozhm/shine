@@ -89,7 +89,7 @@
 		</l:MatrixLayoutRow>
 		<l:MatrixLayoutRow>
 			<l:MatrixLayoutCell colSpan="3">
-				<sap.ui.commons:Button enabled="true" id="btnDeleteJob" press="onButtonPress" text="{i18n&gt;deleteJob}"/>
+				<sap.ui.commons:Button enabled="true" id="btnDeleteJob" press="onButtonPress" text="{i18n&gt;deleteJob}" tooltip="Delete Job Schedule"/>
 			</l:MatrixLayoutCell>
 		</l:MatrixLayoutRow>
 		<l:MatrixLayoutRow>
