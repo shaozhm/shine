@@ -1,7 +1,7 @@
 {
 	"name": "shine-admin-js-backend",
 	"description": "Nodejs based Data Generator / Admin Dashboard backend",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"private": true,
 	"dependencies": {
 		"async": "1.4.0",
