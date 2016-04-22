@@ -16,7 +16,7 @@ var jname = req.body.jobname;
 		throw new Error("Invalid Job Name");
 	}
 	var description = req.body.description;
-	if(!(util.isAlphaNumeric(description))){
+	if(!(util.isAlphaNumericAndSpace(description))){
 		throw new Error("Invalid Job Description");
 	}
 	var juser = req.body.user;
