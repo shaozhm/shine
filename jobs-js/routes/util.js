@@ -37,6 +37,19 @@ module.exports = {
 		}
 		return true;
 	},
+	
+	isAlphaNumericAndSpace: function(str) {
+		 var res = str.match(/^[a-z\d\-_\s]+$/i);
+		 if(res)
+		 {
+		 	return true ;
+		 }
+		 else
+		 {
+		 	return false ;
+		 }
+		
+	},
 
 	isValidDate: function(date) {
 		console.log("date"+date);
