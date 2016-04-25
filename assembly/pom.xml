@@ -179,7 +179,10 @@
                         <configuration>
                             <mtaSourceDirs>
                                  <param>${project.build.directory}</param>    
-                            </mtaSourceDirs>                          
+                            </mtaSourceDirs>  
+							<targtDir>		
+							<param>${project.build.directory}/sca/</param> 
+							</targtDir>
                         </configuration>   
                   </execution>
                 </executions>
