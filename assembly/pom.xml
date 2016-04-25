@@ -168,22 +168,19 @@
 			 <plugin>
                  <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
                 <artifactId>alm-prod-assembler-maven-plugin</artifactId>
-                <version>1.4.1</version>
-                <configuration>
-                   <mtaSourceDirs>
-                     <param>${project.build.directory}</param>
-                   </mtaSourceDirs>
-                   <targetDir>${project.build.directory}</targetDir>
-				   <resultZip>${project.build.directory}/sap-xsac-shine-${project.version}.zip</resultZip>
-				   <overwrite>true</overwrite>
-                </configuration>
-                <executions>
+                <version>1.8.14</version>
+                 <executions>
                    <execution>
-                        <id>create-SCA</id>
+                        <id>assemble</id>
                         <phase>package</phase>
                         <goals>
                             <goal>assemble</goal>
                         </goals>
+                        <configuration>
+                            <mtaSourceDirs>
+                                 <param>./mta_a</param>    
+                            </mtaSourceDirs>                          
+                        </configuration>   
                   </execution>
                 </executions>
             </plugin>
