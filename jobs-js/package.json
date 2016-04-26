@@ -5,7 +5,7 @@
 	"private": true,
 	"dependencies": {
 		"body-parser": "1.13.2",
-		"sap-cds": "1.0.8",
+		"sap-cds": "1.0.10",
 		"express": "4.12.3",
 		"sap-hdbext": "2.0.4",
 		"passport": "0.2.1",
