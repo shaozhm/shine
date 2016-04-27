@@ -4,6 +4,10 @@
 		"logoutEndpoint": "/logout"
 	},
 	"routes": [{
+      		"source": "/sap/ui5/1(.*)",
+      		"target": "$1",
+      		"localDir": "sapui5"
+    	}, {
 		"source": "/sap/hana/democontent/epm/services/",
 		"destination": "xsjs-backend"
 	}, {
