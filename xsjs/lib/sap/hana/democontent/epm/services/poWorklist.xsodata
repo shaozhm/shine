@@ -5,5 +5,12 @@ service namespace "sap.hana.democontent.epm"  {
    "sap.hana.democontent.epm.models::PO_ITEM" as "PurchaseOrderItem" keys ("PURCHASEORDERID","PURCHASEORDERITEM");
    
    "sap.hana.democontent.epm.data::PO.HeaderView" as "PurchaseOrderHeader" keys("PurchaseOrderId");
+   navigates (     
+        " PurchaseOrder_PurchaseOrderItem" as "PurchaseOrderItems " from principal);
+
+   association "PurchaseOrder_PurchaseOrderItem"
+      principal "PurchaseOrderHeader "("PurchaseOrderId") multiplicity "*"
+      dependent " PurchaseOrderItem "("PurchaseOrderId") multiplicity "1";
+
 }
 
