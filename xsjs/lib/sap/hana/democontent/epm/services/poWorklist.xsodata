@@ -9,8 +9,8 @@ service namespace "sap.hana.democontent.epm"  {
         " PurchaseOrder_PurchaseOrderItem" as "PurchaseOrderItems " from principal);
 
    association "PurchaseOrder_PurchaseOrderItem"
-      principal "PurchaseOrderHeader "("PurchaseOrderId") multiplicity "*"
-      dependent " PurchaseOrderItem "("PurchaseOrderId") multiplicity "1";
+      principal "PurchaseOrderHeader "("PurchaseOrderId") multiplicity "1"
+      dependent " PurchaseOrderItem "("PurchaseOrderId") multiplicity "*";
 
 }
 
