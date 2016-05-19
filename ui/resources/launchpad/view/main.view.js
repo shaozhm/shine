@@ -72,9 +72,16 @@ sap.ui.jsview("view.main", {
         });
         jobTile.addStyleClass('templateTileClass');
         jobTile.addStyleClass('jobschedulingClass');
-
+        
+        var oLink1 = new sap.ui.commons.Link({
+	    text: "Source code",
+	    tooltip: "Click to download Source code",
+	    
+		});
+	    oLink1.setHref("/epm.zip");
+       
         var items = [
-            adminTile, poTile, jobTile
+            adminTile, poTile, jobTile 
         ];
         // create tile container
         var tileContainer = new sap.m.TileContainer({
@@ -84,6 +91,11 @@ sap.ui.jsview("view.main", {
             },
             tiles: items
         });
+        
+        //var sourcezip = "Click to download the source code";
+        //var result = str.link("/epm.zip");
+        
+        
 
         var titleLabel = new sap.m.Label({
             design: sap.m.LabelDesign.Bold,
@@ -100,9 +112,21 @@ sap.ui.jsview("view.main", {
                         src: 'images/SAPLogo.gif',
                     }),
                     // label
-                    titleLabel
+		
+                 titleLabel
+                ],
+ contentRight: [ 
+		 new sap.m.Button({
+      			icon : "sap-icon://attachment-zip-file",
+			tooltip: "Click to download the source code",
+     			press : function (evt){
+  					   sap.m.URLHelper.redirect("../target/sap-xsac-shine-src-1.1.9-code.zip", true); 
+     					      }
+     				     })
                 ]
-            }),
+
+            }),             
+          
             content: [tileContainer],
             enableScrolling: false
         });
