@@ -6,7 +6,7 @@ rules:
       deployApi: https://mo-6fa335e64.mo.sap.corp:30030
       deployOrg: myorg
       deployMethod: deploy
-      deployManifest: "manifest-test.yml"
+      deployManifest: "manifest-op.yml"
       deployPassword: |
         UyySs293eyLkIysjXAm8BfKozZXvaHJFAEWUPZwFSCc2SoYCnWfGdNHMp7+Jqe1F
         CQQ4eHHhGfAQqEV4+qcoSZEvAaPSPmUwIE0QEw0LRcr1apEOQbhkAXknz8QLM+Pz
