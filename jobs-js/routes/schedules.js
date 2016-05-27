@@ -37,7 +37,7 @@ var jname = req.body.jobname;
 	}
 	var jobid;
 	var options = util.appconfig();
-	var appUrl = process.env.shineuiurl;
+	var appUrl = req.body.appurl;
 	var client = req.db;
 	var scheduleId;
 	var dePwd = new Buffer(req.body.password, 'base64');
@@ -45,7 +45,7 @@ var jname = req.body.jobname;
 	var myJob = {
 		"name": jname,
 		"description": description,
-		"action": appUrl + "/jobactivity/create",
+		"action": appUrl,
 		"active": false,
 		"httpMethod": "POST",
 		"schedules": [{

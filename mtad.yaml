@@ -70,9 +70,6 @@ modules:
       - name: uaa-refapps
       - name: scheduler-refapps
       - name: shine-db
-      - name: ui
-        properties:
-          shineuiurl: ~{ui-url}
       
   - name: shine-db
     type: com.sap.xs.hdi
