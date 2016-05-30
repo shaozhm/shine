@@ -87,6 +87,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 				item[id] = value;
 			}
             item.password= window.btoa(item.password);
+			item.appurl = "https://"+window.location.hostname+":"+window.location.port+"/jobactivity/create";
 			var xsrf_token;
 			$.ajax({
 				type: "GET",
