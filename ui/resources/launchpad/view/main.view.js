@@ -120,7 +120,7 @@ sap.ui.jsview("view.main", {
       			icon : "sap-icon://attachment-zip-file",
 			tooltip: "Click to download the source code",
      			press : function (evt){
-  					   sap.m.URLHelper.redirect("../target/sap-xsac-shine-src-1.1.9-code.zip", true); 
+  					   sap.m.URLHelper.redirect("../target/sap-xsac-shine-src-code.zip", true); 
      					      }
      				     })
                 ]
