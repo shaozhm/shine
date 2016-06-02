@@ -66,10 +66,10 @@
             </excludes>
         </fileSet>
         <fileSet>
-            <directory>../src</directory>
-            <outputDirectory>ui/resources</outputDirectory>
+            <directory>../src/target</directory>
+            <outputDirectory>ui/resources/source</outputDirectory>
             <includes>
-                <include>**/*.zip</include>
+                <include>sap-xsac-shine-src-code.zip</include>
             </includes>
         </fileSet>
     </fileSets>
