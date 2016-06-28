@@ -6,4 +6,7 @@ service namespace "sap.hana.democontent.epm"  {
    
    "sap.hana.democontent.epm.data::PO.HeaderView" as "PurchaseOrderHeader" keys("PurchaseOrderId");
 }
+settings {
+    metadata cache-control "max-age= 604800";
+}
 
