@@ -1,89 +1,96 @@
 _schema-version: "2.0.0"
 ID: XSAC_SHINE
-version: 1.1.12
+version: 1.1.13
 
 modules:
-  - name: shine-ui
+  - name: shine-web
     type: javascript.nodejs
-    path: ui/
+    path: web/
     provides: 
-      - name: ui
+      - name: web
         properties:
           ui-url: "${default-url}"
     requires:
-      - name: uaa-refapps
-      - name: admin-js
+      - name: shine-uaa
+      - name: core-js
         group: destinations
         properties:
-          name: admin-backend
+          name: core-backend
           url: ~{url}
           forwardAuthToken: true 
-      - name: purchase-xsjs
+      - name: user-js
         group: destinations
         properties:
-          name: xsjs-backend
-          url: ~{url}
-          forwardAuthToken: true 
-      - name: jobs
-        group: destinations
-        properties:
-          name: jobs-backend
+          name: user-backend
           url: ~{url}
           forwardAuthToken: true
+      - name: uaa 
+        group: destinations 
+        properties: 
+           name: uaa 
+           url: ~{url} 
+           forwardAuthToken: true 
+
+    parameters: 
+       host: web 
+       register-service-url: true 
+       service-name: web 
+       service-url: "${default-url}"
         
-  - name: shine-admin-js
+  - name: shine-core-js
     type: javascript.nodejs
-    path: admin-js/
+    path: core-js/
     provides: 
-      - name: admin-js
+      - name: core-js
         properties:
           url: "${default-url}"
-    requires:
-      - name: uaa-refapps
-      - name: shine-hdi-container
-      - name: shine-db
-      
-  - name: shine-xsjs
-    type: javascript.nodejs
-    path: xsjs/
     properties: 
-      HANA_SERVICE_NAME: shine-hdi-container
-      UAA_SERVICE_NAME: uaa-refapps
-    provides: 
-      - name: purchase-xsjs
-        properties:
-          url: "${default-url}"
+      HANA_SERVICE_NAME: shine-container
+      UAA_SERVICE_NAME: shine-uaa
     requires:
-      - name: uaa-refapps
-      - name: shine-hdi-container
-      - name: shine-db
+      - name: shine-uaa
+      - name: shine-container
+      - name: core-db
       
-  - name: shine-jobs-js
+  - name: shine-user-js
     type: javascript.nodejs
-    path: jobs-js/
+    path: user-js/
     provides: 
-      - name: jobs
+      - name: user-js
         properties:
           url: "${default-url}"
     requires:
-      - name: shine-hdi-container
-      - name: uaa-refapps
-      - name: scheduler-refapps
-      - name: shine-db
+      - name: shine-uaa
+      - name: shine-scheduler
+      - name: user-db
+      - name: shine-user-container
       
-  - name: shine-db
+  - name: core-db
     type: com.sap.xs.hdi
     requires:
-      - name: shine-hdi-container
+      - name: shine-container
+      
+  - name: user-db
+    type: hdb
+    path: user-db
+    requires:
+     - name: shine-user-container
 
 resources:
-  - name: shine-hdi-container
+  - name: shine-container
     type: com.sap.xs.hdi-container
     
-  - name: scheduler-refapps
+  - name: shine-user-container
+    type: com.sap.xs.hdi-container
+    
+  - name: shine-scheduler
     type: com.sap.xs.job-scheduler
     
-  - name: uaa-refapps
+  - name: shine-uaa
     type: com.sap.xs.uaa-space
     parameters:
      config-path: xs-security.json
+  
+  - name: uaa 
+    properties: 
+      url: "${xs-auth-url}"

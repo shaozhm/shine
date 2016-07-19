@@ -1,51 +1,41 @@
 ---
 applications:
-- name: shine-db
+- name: core-db
   path: db
   memory: 256M
   no-route: true
   services:
     - shine-hdi-container
 
-- name: shine-admin-js
+- name: shine-core-js
   port: 49010
-  path: admin-js
+  path: core-js
   memory: 512M
   services:
-    - shine-hdi-container
+    - shine-container
     - uaa-refapps
 
-- name: shine-xsjs
-  port: 49030
-  memory: 256M
-  path: xsjs
-  services:
-    - shine-hdi-container
-    - uaa-refapps
-
-- name: shine-jobs-js
+- name: shine-user-js
   port: 49040
   memory: 256M
-  path: jobs-js/
+  path: user-js/
   services:
-    - shine-hdi-container
-    - uaa-refapps
-    - scheduler-refapps
+    - shine-user-conatiner
+    - shine-uaa
+    - shine-scheduler
 
-- name: shine-ui
+- name: shine-web
   port: 49020
-  path: ui
+  path: web
   memory: 768M
   env:
     destinations: >
       [
-        {"name":"admin-backend", "url":"http://<xsa-host>:49010", "forwardAuthToken": true},
-        {"name":"xsjs-backend", "url":"http://<xsa-host>:49030", "forwardAuthToken": true},
-        {"name":"jobs-backend", "url":"http://<xsa-host>:49040", "forwardAuthToken": true}
+        {"name":"core-backend", "url":"http://<xsa-host>:49010", "forwardAuthToken": true},
+        {"name":"user-backend", "url":"http://<xsa-host>:49040", "forwardAuthToken": true}
       ]
   services:
-    - uaa-refapps
-    - scheduler-refapps
+    - shine-uaa
   env:
-    HANA_SERVICE_NAME: shine-hdi-container
-    UAA_SERVICE_NAME: uaa-refapps
+    HANA_SERVICE_NAME: shine-container
+    UAA_SERVICE_NAME: shine-uaa

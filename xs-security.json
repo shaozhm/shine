@@ -12,6 +12,12 @@
 	}, {
 		"name": "$XSAPPNAME.DataGenerator",
 		"description": "data generator"
+	},{
+		"name": "xs_authorization.read",
+		"description": "Read authorization information from UAA"
+	}, {
+		"name": "xs_authorization.write",
+		"description": "Write authorization information to UAA"
 	}],
 	"role-templates": [{
 		"name": "Admin",

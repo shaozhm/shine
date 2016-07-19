@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-		<version>1.1.12</version>
+		<version>1.1.13</version>
 	</parent>
 	<artifactId>sap-xsac-shine</artifactId>
 	<packaging>pom</packaging>
@@ -12,31 +12,31 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-ui</artifactId>
+			<artifactId>sap-xsac-shine-web</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-admin-js</artifactId>
+			<artifactId>sap-xsac-shine-core-js</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-xsjs</artifactId>
+			<artifactId>sap-xsac-shine-user-js</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-jobs-js</artifactId>
+			<artifactId>sap-xsac-shine-core-db</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-db</artifactId>
+			<artifactId>sap-xsac-shine-user-db</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
@@ -67,45 +67,45 @@
 								</manifest>
 								<manifestSections>
 									<manifestSection>
-										<name>ui/</name>
+										<name>web/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-ui</MTA-Module>
+											<MTA-Module>shine-web</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>admin-js/</name>
+										<name>shine-js/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-admin-js</MTA-Module>
+											<MTA-Module>shine-core-js</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>xsjs/</name>
+										<name>user-js/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-xsjs</MTA-Module>
+											<MTA-Module>shine-user-js</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>jobs-js/</name>
+										<name>shine-db/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-jobs-js</MTA-Module>
+											<MTA-Module>shine-core-db</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>db/</name>
+										<name>user-db/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-db</MTA-Module>
+											<MTA-Module>shine-user-db</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
 										<name>xs-security.json</name>
 										<manifestEntries>
 											<Content-Type>application/json</Content-Type>
-											<MTA-Resource>uaa-refapps</MTA-Resource>
+											<MTA-Resource>shine-uaa</MTA-Resource>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>

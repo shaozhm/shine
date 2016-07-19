@@ -1,0 +1,14 @@
+TRIGGER "sap.hana.democontent.epm.procedures::add_insert_to_log"
+    AFTER INSERT ON 
+    "sap.hana.democontent.epm.data::Product.Products" 
+    REFERENCING NEW ROW newrow FOR EACH ROW
+ BEGIN
+
+  INSERT INTO "sap.hana.democontent.epm.data::Product.ProductLog" 
+           VALUES(:newrow."PRODUCTID",
+              (select IFNULL(MAX(logid), 0) + 1 from
+				  "sap.hana.democontent.epm.data::Product.ProductLog" where productid = :newrow.PRODUCTID), 
+                  now(), 
+                  CURRENT_USER,
+                  :newrow."PRODUCTID" || ' has been created');
+ END;

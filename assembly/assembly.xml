@@ -16,8 +16,8 @@
     </files>
     <fileSets>
         <fileSet>
-            <directory>../ui</directory>
-            <outputDirectory>ui</outputDirectory>
+            <directory>../web</directory>
+            <outputDirectory>web</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -26,8 +26,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../admin-js</directory>
-            <outputDirectory>admin-js</outputDirectory>
+            <directory>../core-js</directory>
+            <outputDirectory>core-js</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -36,18 +36,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../xsjs</directory>
-            <outputDirectory>xsjs</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-            </excludes>
-        </fileSet>
-		<fileSet>
-            <directory>../jobs-js</directory>
-            <outputDirectory>jobs-js</outputDirectory>
+            <directory>../user-js</directory>
+            <outputDirectory>user-js</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -56,8 +46,18 @@
             </excludes>
         </fileSet>
         <fileSet>
-            <directory>../db</directory>
-            <outputDirectory>db</outputDirectory>
+            <directory>../core-db</directory>
+            <outputDirectory>core-db</outputDirectory>
+            <excludes>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
+		<fileSet>
+            <directory>../user-db</directory>
+            <outputDirectory>user-db</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -66,10 +66,10 @@
             </excludes>
         </fileSet>
         <fileSet>
-            <directory>../src/target</directory>
-            <outputDirectory>ui/resources/source</outputDirectory>
+            <directory>../src</directory>
+            <outputDirectory>web/resources</outputDirectory>
             <includes>
-                <include>sap-xsac-shine-src-code.zip</include>
+                <include>**/*.zip</include>
             </includes>
         </fileSet>
     </fileSets>

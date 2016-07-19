@@ -23,8 +23,8 @@
     </files>
     <fileSets>
         <fileSet>
-            <directory>../ui</directory>
-            <outputDirectory>ui</outputDirectory>
+            <directory>../web</directory>
+            <outputDirectory>web</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
@@ -35,8 +35,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../admin-js</directory>
-            <outputDirectory>admin-js</outputDirectory>
+            <directory>../core-js</directory>
+            <outputDirectory>core-js</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
@@ -47,8 +47,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../xsjs</directory>
-            <outputDirectory>xsjs</outputDirectory>
+            <directory>../user-js</directory>
+            <outputDirectory>user-js</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
@@ -56,13 +56,11 @@
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
-				<exclude>.jshintrc</exclude>
-				<exclude>.npmignore</exclude>
             </excludes>
         </fileSet>
-		<fileSet>
-            <directory>../jobs-js</directory>
-            <outputDirectory>jobs-js</outputDirectory>
+         <fileSet>
+            <directory>../core-db</directory>
+            <outputDirectory>core-db</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
@@ -73,15 +71,13 @@
             </excludes>
         </fileSet>
         <fileSet>
-            <directory>../db</directory>
-            <outputDirectory>db</outputDirectory>
+            <directory>../user-db</directory>
+            <outputDirectory>user-db</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-				<exclude>.cfignore</exclude>
             </excludes>
         </fileSet>
     </fileSets>
