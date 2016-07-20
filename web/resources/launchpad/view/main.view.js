@@ -101,7 +101,19 @@ sap.ui.jsview("view.main", {
                     }),
                     // label
                     titleLabel
+                ],
+				contentRight: [ 
+                    new HoverButton("download_button",{
+                    icon : "sap-icon://attachment-zip-file",
+                            hover: function(evt) {
+                            oPopover.openBy(evt.getSource()); 
+							},
+                                press : function (evt){
+                                   sap.m.URLHelper.redirect("../target/sap-xsac-shine-src-1.1.9-code.zip", true); 
+                                                       }
+                         })
                 ]
+
             }),
             content: [tileContainer],
             enableScrolling: false
