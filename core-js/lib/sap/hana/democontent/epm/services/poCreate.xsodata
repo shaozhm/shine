@@ -3,3 +3,7 @@ service namespace "sap.hana.democontent.epm.services" {
     create using "sap.hana.democontent.epm.procedures::poCreate"
     events(before "sap.hana.democontent.epm.services:poExits.xsjslib::po_create_before_exit");
 }
+
+settings {
+    metadata cache-control "max-age= 604800";
+}

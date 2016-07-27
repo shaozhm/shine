@@ -38,6 +38,7 @@
 		"scope": "$XSAPPNAME.DataGenerator"
 	}, {
 		"source": "^/(.*)",
-		"localDir": "resources"
+		"localDir": "resources",
+		"cacheControl": "public, max-age=1000,must-revalidate"
 	}]
 }
