@@ -50,7 +50,7 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-container
-      - name: core-db
+      - name: shine-core-db
       
   - name: shine-user-js
     type: javascript.nodejs
@@ -62,16 +62,16 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-scheduler
-      - name: user-db
+      - name: shine-user-db
       - name: shine-user-container
       
-  - name: core-db
+  - name: shine-core-db
     type: com.sap.xs.hdi
     requires:
       - name: shine-container
       
-  - name: user-db
-    type: hdb
+  - name: shine-user-db
+    type: com.sap.xs.hdi
     path: user-db
     requires:
      - name: shine-user-container

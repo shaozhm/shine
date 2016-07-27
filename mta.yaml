@@ -50,7 +50,7 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-container
-      - name: core-db
+      - name: shine-core-db
 
   - name: shine-user-js
     type: nodejs
@@ -62,11 +62,11 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-scheduler
-      - name: user-db
+      - name: shine-user-db
       - name: shine-user-container
       
 
-  - name: core-db
+  - name: shine-core-db
     type: hdb
     path: core-db
     requires:
@@ -75,7 +75,7 @@ modules:
           TARGET_CONTAINER: ~{service-name} 
       - name: grantorService
       
-  - name: user-db
+  - name: shine-user-db
     type: hdb
     path: user-db
     requires:
