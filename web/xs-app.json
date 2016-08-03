@@ -41,7 +41,6 @@
 		"destination": "user-java-backend"
 	},{
 		"source": "^/(.*)",
-		"localDir": "resources",
-		"cacheControl": "public, max-age=1000,must-revalidate"
+		"localDir": "resources"
 	}]
 }
