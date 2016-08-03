@@ -1,0 +1,10 @@
+namespace sap.hana.democontent.epm.data;
+
+context annotations
+{
+	annotation OData 
+	{
+		publish: Boolean;
+	}
+	
+};

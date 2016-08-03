@@ -73,8 +73,27 @@ sap.ui.jsview("view.main", {
         jobTile.addStyleClass('templateTileClass');
         jobTile.addStyleClass('jobschedulingClass');
 
+        var userTile = new sap.m.StandardTile({
+            icon: "sap-icon://database",
+            info: sap.app.i18n.getText("USER"),
+            infoState: "None",
+            removable: false,
+            press: function(oEvent) {
+                view.handlePress(oController, 5);
+            }
+        });
+        userTile.addStyleClass('templateTileClass');
+        userTile.addStyleClass('dgClass');
+        
+        var oLink1 = new sap.ui.commons.Link({
+	    text: "Source code",
+	    tooltip: "Click to download Source code",
+	    
+		});
+	    oLink1.setHref("/epm.zip");
+       
         var items = [
-            adminTile, poTile, jobTile
+            adminTile, poTile, jobTile, userTile
         ];
         // create tile container
         var tileContainer = new sap.m.TileContainer({
@@ -100,21 +119,21 @@ sap.ui.jsview("view.main", {
                         src: 'images/SAPLogo.gif',
                     }),
                     // label
-                    titleLabel
+		
+                 titleLabel
                 ],
-				contentRight: [ 
-                    new HoverButton("download_button",{
-                    icon : "sap-icon://attachment-zip-file",
-                            hover: function(evt) {
-                            oPopover.openBy(evt.getSource()); 
-							},
-                                press : function (evt){
-                                   sap.m.URLHelper.redirect("../target/sap-xsac-shine-src-1.1.9-code.zip", true); 
-                                                       }
-                         })
+ contentRight: [ 
+		 new sap.m.Button({
+      			icon : "sap-icon://attachment-zip-file",
+			tooltip: "Click to download the source code",
+     			press : function (evt){
+  					   sap.m.URLHelper.redirect("../source/sap-xsac-shine-src-code.zip", true); 
+     					      }
+     				     })
                 ]
 
-            }),
+            }),             
+          
             content: [tileContainer],
             enableScrolling: false
         });
@@ -124,3 +143,4 @@ sap.ui.jsview("view.main", {
     }
 
 });
+

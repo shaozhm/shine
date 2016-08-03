@@ -1,6 +1,6 @@
 ---
 applications:
-- name: shine-core-db
+- name: core-db
   path: db
   memory: 256M
   no-route: true
@@ -13,7 +13,7 @@ applications:
   memory: 512M
   services:
     - shine-container
-    - shine-uaa
+    - uaa-refapps
 
 - name: shine-user-js
   port: 49040

@@ -2,6 +2,6 @@
 .project
 .hdi
 node_modules
-node
+/node
 target
 etc

@@ -24,6 +24,12 @@ modules:
           name: user-backend
           url: ~{url}
           forwardAuthToken: true
+      - name: user-java
+        group: destinations
+        properties:
+          name: user-java
+          url: ~{url}
+          forwardAuthToken: true
       - name: uaa 
         group: destinations 
         properties: 
@@ -65,15 +71,24 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
       
-
+  - name: user-java
+    type: java.tomee
+    path: user-java/target/user-java-1.1.13.war
+    provides: 
+      - name: user-java
+        properties:
+          url: "${default-url}"
+    requires:
+      - name: shine-uaa
+      - name: shine-scheduler
+      - name: shine-user-db
+      - name: shine-user-container
+      
   - name: shine-core-db
     type: hdb
     path: core-db
     requires:
       - name: shine-container
-        properties:
-          TARGET_CONTAINER: ~{service-name} 
-      - name: grantorService
       
   - name: shine-user-db
     type: hdb
@@ -86,12 +101,7 @@ resources:
     type: com.sap.xs.hdi-container
     properties:
       TARGET_CONTAINER: ~{service-name} 
-      
-  - name: grantorService
-    type: org.cloudfoundry.existing-service
-    parameters:
-        name: grantorService  
-    
+         
   - name: shine-user-container
     type: com.sap.xs.hdi-container
 

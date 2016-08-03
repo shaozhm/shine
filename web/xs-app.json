@@ -36,7 +36,10 @@
 		"source": "^/admin-ui/(.*)",
 		"localDir": "resources",
 		"scope": "$XSAPPNAME.DataGenerator"
-	}, {
+	},{
+		"source": "^/user/odata/v4/(.*)",
+		"destination": "user-java-backend"
+	},{
 		"source": "^/(.*)",
 		"localDir": "resources",
 		"cacheControl": "public, max-age=1000,must-revalidate"

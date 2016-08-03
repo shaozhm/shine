@@ -24,6 +24,12 @@ modules:
           name: user-backend
           url: ~{url}
           forwardAuthToken: true
+      - name: user-java
+        group: destinations
+        properties:
+          name: user-java-backend
+          url: ~{url}
+          forwardAuthToken: true
       - name: uaa 
         group: destinations 
         properties: 
@@ -62,6 +68,18 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-scheduler
+      - name: shine-user-db
+      - name: shine-user-container
+      
+  - name: shine-user-java
+    type: java.tomee
+    path: sap-xsac-shine-user-java.war
+    provides: 
+      - name: user-java
+        properties:
+          url: "${default-url}"
+    requires:
+      - name: shine-uaa
       - name: shine-user-db
       - name: shine-user-container
       

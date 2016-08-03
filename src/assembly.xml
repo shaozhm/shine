@@ -80,5 +80,16 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
+		<fileSet>
+            <directory>../user-java</directory>
+            <outputDirectory>user-java</outputDirectory>
+            <excludes>
+                <exclude>target/</exclude>
+                <exclude>.classpath</exclude>
+				<exclude>.project</exclude>
+				<exclude>.settings/</exclude>
+				<exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
     </fileSets>
 </assembly>

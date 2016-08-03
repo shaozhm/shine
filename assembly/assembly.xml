@@ -73,4 +73,13 @@
             </includes>
         </fileSet>
     </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <includes>
+                <include>com.sap.refapps:sap-xsac-shine-user-java</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
+            <outputFileNameMapping>sap-xsac-shine-user-java.war</outputFileNameMapping>
+        </dependencySet>
+    </dependencySets>
 </assembly>

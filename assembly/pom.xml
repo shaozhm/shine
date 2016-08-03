@@ -40,6 +40,12 @@
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-user-java</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -74,7 +80,7 @@
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>shine-js/</name>
+										<name>core-js/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
 											<MTA-Module>shine-core-js</MTA-Module>
@@ -101,6 +107,13 @@
 											<MTA-Module>shine-user-db</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
+									<manifestSection>
+                                        <name>sap-xsac-shine-user-java.war</name>
+                                        <manifestEntries>
+                                            <Content-Type>application/zip</Content-Type>
+                                            <MTA-Module>shine-user-java</MTA-Module>
+                                        </manifestEntries>
+                                    </manifestSection>
 									<manifestSection>
 										<name>xs-security.json</name>
 										<manifestEntries>
