@@ -67,7 +67,7 @@
         </fileSet>
         <fileSet>
             <directory>../src</directory>
-            <outputDirectory>web/resources</outputDirectory>
+            <outputDirectory>web/resources/source</outputDirectory>
             <includes>
                 <include>**/*.zip</include>
             </includes>
