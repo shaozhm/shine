@@ -7,8 +7,7 @@
 	"routes": [{
       	"source": "/sap/ui5/1(.*)",
       	"target": "$1",
-      	"localDir": "sapui5",
-		"cacheControl": "public, max-age=1000,must-revalidate"
+      	"localDir": "sapui5"
     }, {
 		"source": "/sap/rest/(.*)",
 		"destination": "uaa"
