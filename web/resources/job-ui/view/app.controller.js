@@ -92,10 +92,11 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 			$.ajax({
 				type: "GET",
 				async: false,
-				url: "/schedules/createjobschedule",
+				url: "/schedules/getjobschedules",
 				contentType: "application/json",
 				headers: {
-					'x-csrf-token': 'Fetch'
+					'x-csrf-token': 'Fetch',
+					'Accept': "application/json"
 				},
 				success: function(data, textStatus, request) {
 					xsrf_token = request.getResponseHeader('x-csrf-token');
@@ -139,10 +140,11 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 			$.ajax({
 				type: "GET",
 				async: false,
-				url: "/jobs/deletedata",
+				url: "/schedules/getjobschedules",
 				contentType: "application/json",
 				headers: {
-					'x-csrf-token': 'Fetch'
+					'x-csrf-token': 'Fetch',
+					'Accept': "application/json"
 				},
 				success: function(data, textStatus, request) {
 					xsrf_token = request.getResponseHeader('x-csrf-token');
@@ -275,10 +277,11 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 		$.ajax({
 			type: "GET",
 			async: false,
-			url: "/schedules/createjobschedule",
+			url: "/schedules/getjobschedules",
 			contentType: "application/json",
 			headers: {
-				'x-csrf-token': 'Fetch'
+				'x-csrf-token': 'Fetch',
+				'Accept': "application/json"
 			},
 			success: function(data, textStatus, request) {
 				xsrf_token = request.getResponseHeader('x-csrf-token');
