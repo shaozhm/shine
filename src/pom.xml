@@ -13,6 +13,8 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
+					<finalName>sap-xsac-shine-src-code</finalName>
+                            		<appendAssemblyId>false</appendAssemblyId>
 					<descriptors>
 						<descriptor>assembly.xml</descriptor>
 					</descriptors>
