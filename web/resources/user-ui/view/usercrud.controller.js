@@ -135,7 +135,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
         $.ajax({
             type: "GET",
             async: false,
-            url: "/user/odata/v4/sap.hana.democontent.epm.data._.UserData/User",
+            url: "/user/odata/v4/sap.hana.democontent.epm.data._.UserData/User" +"(" + userId + ")",
             contentType: "application/json",
             headers: {
                 'x-csrf-token': 'Fetch'
@@ -185,7 +185,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
             $.ajax({
                 type: "GET",
                 async: false,
-                url: "/user/odata/v4/sap.hana.democontent.epm.data._.UserData/User",
+                url: "/user/odata/v4/sap.hana.democontent.epm.data._.UserData/User" + "(" + userId + ")",
                 contentType: "application/json",
                 headers: {
                     'x-csrf-token': 'Fetch'
