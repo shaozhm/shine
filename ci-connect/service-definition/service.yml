@@ -2,7 +2,7 @@
 # You can find more information about the ci-connect service definition here:
 # https://github.wdf.sap.corp/ci-connect/ci-connect/blob/master/docs/customProcess/SharedService.md
 ---
-id:                 "RefApps/SHINE"
+id:                 "refapps/shine"
 displayName:        SHINE Integration Scenario
 description:        This Service do a shine integration test scenario
 
