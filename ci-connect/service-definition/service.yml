@@ -6,7 +6,7 @@ id:                 "refapps/shine1"
 displayName:        SHINE Integration Scenario
 description:        This Service do a shine integration test scenario
 
-webhook:            http://mo-b60444a56.mo.sap.corp:8080/ci-connect-webhook/
+webhook:            https://mo-b60444a56.mo.sap.corp:8443/ci-connect-webhook/
 homepage:           https://mo-b60444a56.mo.sap.corp:8443
 documentationUrl:   https://github.wdf.sap.corp/refapps/shine/blob/master/README.md
 
