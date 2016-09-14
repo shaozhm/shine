@@ -61,6 +61,9 @@ xs install sap-xsac-shine-1.1.13.zip
 10. Click on Ok and then Save button
 11. Go back to HANA Studio and create a User Parameter  XS_RC_SHINE_ADMIN:SHINE_ADMIN
 12. Launch the url for shine_ui app service and login with SHINE_USER
+13. 
+14.
+
 
 
 
