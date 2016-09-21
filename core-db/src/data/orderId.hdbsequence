@@ -1,7 +1,0 @@
-SEQUENCE "sap.hana.democontent.epm.data::orderId" 
-INCREMENT BY 1 START WITH 200000000 
-MINVALUE 1 MAXVALUE 2999999999
-NO CYCLE
-RESET BY
-SELECT IFNULL(MAX(PURCHASEORDERID), 0)+1 
-FROM "sap.hana.democontent.epm.data::PurchaseOrder.Header"

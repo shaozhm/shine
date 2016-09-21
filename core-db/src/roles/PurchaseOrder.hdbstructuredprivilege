@@ -1,5 +1,0 @@
-STRUCTURED PRIVILEGE 
-    "sap.hana.democontent.epm.roles::PO_VIEW_PRIVILEGE"
-    FOR SELECT ON 
-    "sap.hana.democontent.epm.data::PurchaseOrder.ItemView"
-    WHERE "CurrencyCode" = 'EUR'
