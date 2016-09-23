@@ -46,7 +46,24 @@ After user creation login once with this user to the HANA system to change the i
 
 
 
-Below are two ways to install SHINE:
+Below are three ways to install SHINE:
+
+###Install from HANA Media
+SHINE can be found in the XSA_CONT of HANA Media
+- Open **shine.mtaext** file.
+
+- Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
+
+-  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
+
+    `xs login -u <USERNAME> -p <PASSWORD>`   
+
+     `xs target –o <orgname> -s <customer spacename>`
+     
+- Install shine by running the following command from the /assembly/target folder.
+
+
+     `xs install XSACSHINE01_XX.ZIP -e shine.mtaext`
 
 ###Build the Source code and Install
 
@@ -82,6 +99,15 @@ Below are two ways to install SHINE:
   1. [Milestone nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/refapps/sap-xsac-shine/)
   2. [Release nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases.xmake/com/sap/refapps/sap-xsac-shine/)
 
+- Open **shine.mtaext** file.
+
+- Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
+-  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
+
+    `xs login -u <USERNAME> -p <PASSWORD>`   
+
+     `xs target –o <orgname> -s <customer spacename>`
+     
 - Navigate to the folder which contains the SCA and run the following command to install SHINE
 
      `xs install XSACSHINE01_XX.ZIP -e shine.mtaext `
