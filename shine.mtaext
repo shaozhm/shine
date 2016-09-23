@@ -6,7 +6,7 @@ resources:
   - name: CrossSchemaSys
     parameters:
       config:
-        host: mo-d4a944f2a.mo.sap.corp
+        host: ${default-domain}
         port: 30015
         user: SYSTEM
         password: Toor1234
@@ -17,7 +17,7 @@ resources:
   - name: CrossSchemaSysBi
     parameters:
       config:
-        host: mo-d4a944f2a.mo.sap.corp
+        host: ${default-domain}
         port: 30015
         user: SYSTEM
         password: Toor1234
