@@ -1,4 +1,4 @@
-SHINE XSA 1.1.14
+SHINE XSA 1.1.15
 ================
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
@@ -50,7 +50,7 @@ Below are three ways to install SHINE:
 
 ###Install from HANA Media
 SHINE can be found in the XSA_CONT of HANA Media
-- Open **shine.mtaext** file.
+- Open **sap-xsac-shine-1.1.xx.mtaext** file.
 
 - Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
 
@@ -63,7 +63,7 @@ SHINE can be found in the XSA_CONT of HANA Media
 - Install shine by running the following command from the /assembly/target folder.
 
 
-     `xs install XSACSHINE01_XX.ZIP -e shine.mtaext`
+     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.1.xx.mtaext`
 
 ###Build the Source code and Install
 
@@ -99,7 +99,7 @@ SHINE can be found in the XSA_CONT of HANA Media
   1. [Milestone nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/refapps/sap-xsac-shine/)
   2. [Release nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases.xmake/com/sap/refapps/sap-xsac-shine/)
 
-- Open **shine.mtaext** file.
+- Open **sap-xsac-shine-1.1.x.mtaext** file.
 
 - Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
 -  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
@@ -110,7 +110,7 @@ SHINE can be found in the XSA_CONT of HANA Media
      
 - Navigate to the folder which contains the SCA and run the following command to install SHINE
 
-     `xs install XSACSHINE01_XX.ZIP -e shine.mtaext `
+     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.1.xx.mtaext `
 
 
 ##Deploying SHINE on CF
