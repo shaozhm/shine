@@ -113,5 +113,18 @@
                 </sap.ui.table:template>
             </sap.ui.table:Column>
         </sap.ui.table:columns>
+         <sap.ui.table:footer>
+            <sap.ui.commons:Toolbar id="tb2" design="Standard" standalone="false" width="100%">
+                	<sap.ui.commons:Label width="33%"/>
+                    <sap.ui.commons:Paginator 
+							id='tablePaginator'
+							numberOfPages="5"
+							page="onPageChange" 
+							class="centerAllign"
+						
+							/>
+                    <sap.ui.commons:Label width="33%"/>
+            </sap.ui.commons:Toolbar>
+        </sap.ui.table:footer>
     </sap.ui.table:Table>
 </sap.ui.core.mvc:View>

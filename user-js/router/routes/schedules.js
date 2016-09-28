@@ -1,19 +1,21 @@
 /*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
 "use strict";
 var express = require("express");
-var bodyParser = require('body-parser');
+
 module.exports = function() {
+	var bodyParser = require('body-parser');
 	var app = express.Router();
 
 	var winston = require('winston');
 	var util = require(global.__base + "utils/jobs");
 	var jobsc = require('sap-jobs-client');
 	var jsonParser = bodyParser.json();
+	
 	var logger;
 
 	winston.level = process.env.winston_level || 'error';
 
-	app.post('/createjobschedule', jsonParser, function(req, res) {
+	app.post('/createjobschedule',jsonParser, function(req, res) {
 		logger = req.loggingContext.getLogger("/schedules/createjobschedule");
 		logger.error('info' + req.body);
 		var jname = req.body.jobname;

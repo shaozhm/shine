@@ -7,7 +7,7 @@ module.exports = {
 		var xssec = require("sap-xssec");
 		var xsHDBConn = require("sap-hdbext");
 		var express = require("express");
-		// var bodyParser = require('body-parser');
+		var bodyParser = require('body-parser');
 
 		//logging
 		var logging = require("sap-logging");

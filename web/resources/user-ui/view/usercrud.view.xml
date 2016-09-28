@@ -1,7 +1,7 @@
 <sap.ui.core.mvc:View xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.table="sap.ui.table" xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="shine.democontent.epm.usercrud.view.usercrud">
 	<u:Shell id="myShell" showCurtainPane="true">
 		<u:headItems>
-			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home" visible="true" press="handlePressHome"/>
+			<!--u:ShellHeadItem tooltip="Home" icon="sap-icon://home" visible="true" press="handlePressHome"/-->
 		</u:headItems>
 		<u:paneContent>
 			<List id="langlist" headerText="Languages" items="{                     path: 'lang&gt;/languages'                 }" itemPress="onListItemPress">
@@ -107,8 +107,8 @@
 								<sap.ui.commons.layout:content>
 									<sap.ui.layout:HorizontalLayout>
 										<sap.ui.layout:content>
-											<!-- <sap.ui.commons:Button text="{i18n>CREATE_BATCH}" press="openBatchDialog"></sap.ui.commons:Button>
-											<sap.ui.commons:Button class="helpButton" text="?" data:tileDialog="2" press="openTileDialog"></sap.ui.commons:Button> -->
+											<sap.ui.commons:Button id="batchButton" text="{i18n>CREATE_BATCH}" press="openBatchDialog"></sap.ui.commons:Button>
+											<sap.ui.commons:Button id="batchHelpButton" class="helpButton" text="?" data:tileDialog="1" press="openTileDialog"></sap.ui.commons:Button> 
 											<!-- <sap.ui.commons:Button class="buttonMarginLeft" text="{i18n>CREATE_XML}" press="onUsrCreateXmlBtnPress"></sap.ui.commons:Button> 
 											<sap.ui.commons:Button class="helpButton" text="?" data:tileDialog="4" press="openTileDialog"></sap.ui.commons:Button> -->
 										</sap.ui.layout:content>

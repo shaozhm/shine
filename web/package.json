@@ -1,7 +1,7 @@
 {
 	"name": "shine-web-approuter",
 	"dependencies": {
-		"approuter": "2.1.3"
+		"approuter": "2.2.0"
 	},
 	"scripts": {
 		"start": "node node_modules/approuter/approuter.js"

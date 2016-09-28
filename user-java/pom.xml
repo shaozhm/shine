@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-		<version>1.1.14</version>
+		<version>1.1.15</version>
 	</parent>
 	<artifactId>sap-xsac-shine-user-java</artifactId>
 	<packaging>war</packaging>
@@ -13,7 +13,6 @@
 		<javax.version>3.0.1</javax.version>
 		<odata.version>4.3.0-sap-01</odata.version>
 		<slf4j.version>1.7.7</slf4j.version>
-		<xs2.jdbc.version>0.1.0</xs2.jdbc.version>
 		<json.version>2.0</json.version>
 		<xs2.gw.v4.version>1.0.1</xs2.gw.v4.version>
 		<eclipselink.version>2.5.0</eclipselink.version>
@@ -110,11 +109,6 @@
 			<version>${xs2.gw.v4.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.sap.xs.java</groupId>
-			<artifactId>xs-jdbc-datasource</artifactId>
-			<version>${xs2.jdbc.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-		<version>1.1.14</version>
+		<version>1.1.15</version>
 	</parent>
 	<artifactId>sap-xsac-shine</artifactId>
 	<packaging>pom</packaging>
@@ -13,6 +13,18 @@
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-web</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-site-content</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-site-web</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
@@ -76,6 +88,20 @@
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
 											<MTA-Module>shine-web</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
+									<manifestSection>
+										<name>site-web/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>site-web</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
+									<manifestSection>
+										<name>site-content/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>site-content</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>

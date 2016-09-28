@@ -426,7 +426,7 @@ sap.account.CheckDialog.prototype.open = function() {
         		validateAndEnableDisableButton(doRoleCollectionExist,doShineAdminRoleExist,doJobSchedulerRoleExist);
 			},
 			error: function(error) {
-				if(ERROR.Status === '404'){
+				if(error.status === '404'){
 					doRoleCollectionExist = false;
 					validateAndEnableDisableButton(doRoleCollectionExist,doShineAdminRoleExist,doJobSchedulerRoleExist);
 				}else{
@@ -487,4 +487,3 @@ sap.account.CheckDialog.prototype.open = function() {
         return (oRow);
     }
 };
-

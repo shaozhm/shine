@@ -9,8 +9,14 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		this.getView().setModel(oModel);
 		//oModel.setDefaultBindingMode("TwoWay");
 		var oTable = this.byId("poTable");
+		
+	//	oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/visibleRows));
+		
+	
 		oTable.getBinding("rows").attachChange(function() {
 			oTable.setTitle(oBundle.getText("pos", [oTable.getBinding("rows").iLength]));
+			
+			
 		});
 
 		//create and set models for create new purchase orders
@@ -21,7 +27,9 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		var sProductDetailsServiceUrl = "/sap/hana/democontent/epm/services/productDetails.xsodata/";
 		var sProductDetailsoModel = new sap.ui.model.odata.ODataModel(sProductDetailsServiceUrl, true);
 		this.getView().setModel(sProductDetailsoModel, "productDetails");
+
 	},
+
 
 	//Toolbar Button Press Event Handler
 	onTBPress: function(oEvent, oController) {
@@ -417,8 +425,22 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			oController.onBindingChange(oController);
 		});
 		oSHTable.setModel(oModel);
-
+		       
+		var oPaginator=this.byId("tablePaginator");
+		var oTable= this.byId("poTable");
+		var visibleRows = oTable.getVisibleRowCount();             
+		oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/parseInt(visibleRows)));
+		
+	
 		// var oCtrl = sap.ui.getCore.byId("quantityTextField");
 		//   oCtrl.$().find('input').context.type = 'number';
+	},
+	onPageChange: function(oEvent){
+		var oTable = this.byId("poTable");
+		var visibleRows=oTable.getVisibleRowCount();
+		var row = (parseInt(oEvent.getParameter("targetPage").toString())-1)*visibleRows;
+		
+		oTable.setFirstVisibleRow(row);
+			
 	}
 });

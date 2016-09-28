@@ -42,6 +42,21 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
     	var oMode = this.getView().byId("serviceUrlMode");
          oMode.setSelectedKey(sKey);
     	this.loadJobsTable();
+    	var batchBtn = this.getView().byId("batchButton");
+    	var batchHelpBtn = this.getView().byId("batchHelpButton");
+    	if(sKey === "nodejs"){
+         	batchBtn.setVisible(true);
+         	batchHelpBtn.setVisible(true);
+         	
+         }
+         else if (sKey === "java")
+         {
+         	batchBtn.setVisible(false);
+         	batchHelpBtn.setVisible(false);
+         }
+        
+        
+       
     },
 
 
@@ -252,6 +267,37 @@ getServiceUrl:function(state){
 
     },
 
+    onSubmitBatch : function(){
+      //create an array of batch changes and save
+        var oThis = this;
+        var oModel = this.byId("userTbl").getModel();
+        var i18n = this.getView().getModel("i18n");
+        var batchModel = new sap.ui.model.odata.ODataModel("/user/xsodata/user.xsodata/", true);
+        var newUserList = this.getView().getModel("batch").getData();
+        var batchChanges = [];
+        for (var k = 0; k < newUserList.length; k++) {
+            batchChanges.push(batchModel.createBatchOperation("/Users", "POST", newUserList[k]));
+        }
+        batchModel.addBatchChangeOperations(batchChanges);
+        //submit changes and refresh the table and display message  
+        batchModel.submitBatch(function(data, response, errorResponse) {
+            oModel.refresh();
+            //Call the User Service (GET) and populate the table.
+            
+            if (errorResponse && errorResponse.length > 0) {
+                alert("Error occurred");
+            } else {
+                //alert(i18n.getResourceBundle().getText("USER_CREATED", k));
+                sap.m.MessageToast.show(k + " users created");
+                oThis.loadJobsTable();
+            }
+        }, function(data) {
+            alert("Error occurred ");
+        });
+
+        this.oBatchDialog.close();
+    },
+    
     onDeletePress: function(oEvent) {
         var oThis = this;
         var oTable = oThis.byId("userTbl");

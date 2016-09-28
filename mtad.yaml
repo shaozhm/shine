@@ -1,6 +1,6 @@
 _schema-version: "3.1.0"
 ID: XSAC_SHINE
-version: 1.1.14
+version: 1.1.15
 
 modules:
   - name: shine-user-db
@@ -118,6 +118,46 @@ modules:
        service-name: web 
        service-url: "${default-url}"
         
+  - name: site-web
+    type: javascript.nodejs
+    path: site-web/
+    requires:
+      - name: shine-uaa
+      - name: sap-portal-services-host
+      - name: controller
+        group: destinations
+        properties:
+          name: controller
+          url: ~{url}
+          forwardAuthToken: true
+      - name: sapui5-provider
+        properties:
+          sapui5url: ~{url}
+      - name: user-java
+        group: destinations
+        properties:
+          name: user-java-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: user-js
+        group: destinations
+        properties:
+          name: user-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: uaa 
+        group: destinations 
+        properties: 
+           name: uaa 
+           url: ~{url} 
+           forwardAuthToken: true
+  - name: site-content
+    type: com.sap.portal.site-content
+    path: site-content/
+    requires:
+       - name: sap-portal-services-client
+       - name: shine-uaa
+        
 resources:
   - name: shine-container
     type: com.sap.xs.hdi-container
@@ -180,3 +220,37 @@ resources:
   - name: uaa 
     properties: 
       url: "${xs-auth-url}"
+    
+  - name: sap-portal-services-host
+    type: com.sap.portal.site-host
+    parameters:
+      config:
+        siteId : XSAC_SHINE
+    
+  - name: sap-portal-services-client
+    type: com.sap.portal.site-content
+    parameters:
+      config:
+        siteId : XSAC_SHINE
+    
+  - name: portal-uaa
+    type: com.sap.xs.uaa-space
+    parameters:
+      config-path: xs-security.json
+    
+  - name: controller
+    properties:
+      url: "${xs-api-url}"
+
+# Once there will be central ui5 on xsa (ui5 mtar) shouid uncomment
+# this section with the proper ui5 mtar id and version and commnet the next section.
+#  - name: sapui5-provider
+#    type: mta-provided
+#    parameters:
+#      mta-id: com.sap.ui5.dist.sapui5-dist-xsa.1.36
+#      mta-version: ">=1.36.3"
+#      mta-provides-dependency: sapui5-1.36
+
+  - name: sapui5-provider
+    properties:
+      url: "https://sapui5.hana.ondemand.com/1.38.5"
