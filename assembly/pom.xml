@@ -216,7 +216,7 @@
 			<plugin>
 				<groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
 				<artifactId>alm-prod-assembler-maven-plugin</artifactId>
-				<version>1.9.7</version>
+				<version>1.10.2</version>
 				<executions>
 					<execution>
 						<id>assemble</id>
