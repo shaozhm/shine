@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
      <parent>
@@ -10,15 +9,19 @@
 
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.15</version>
     <packaging>pom</packaging>
 	
    <modules>
-		<module>ui</module>
-        <module>admin-js</module>
-		<module>xsjs</module>
-		<module>jobs-js</module>
-		<module>db</module>
+		<module>web</module>
+        <module>site-web</module>
+        <module>site-content</module>
+        <module>core-js</module>
+		<module>user-js</module>
+		<module>core-db</module>
+		<module>user-db</module>
+        <module>user-java</module>
+		<module>src</module>
         <module>assembly</module>
     </modules>
 </project>

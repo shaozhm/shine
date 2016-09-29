@@ -1,0 +1,16 @@
+{
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "name": "portal-delivery-demo",
+  "version": "1.5.0",
+  "description": "portal mta package example",
+  "license": "Apache-2.0",
+  "author": "Zohar Team",
+  "dependencies": {
+    "sap-site-entry": "1.6.9"
+  },
+  "scripts": {
+    "start": "node --harmony node_modules/sap-site-entry/server.js"
+  }
+}

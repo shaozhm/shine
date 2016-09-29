@@ -16,14 +16,23 @@
 			<id>release.build</id>
 			<pluginRepositories>
 				<pluginRepository>
-					<id>central</id>
+					<id>releases</id>
 					<url>http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.releases/</url>
 				</pluginRepository>
+				<pluginRepository>
+					<id>releases-xmake</id>
+					<url>http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.releases.xmake/</url>
+				</pluginRepository>
+				
 			</pluginRepositories>
 			<repositories>
 				<repository>
-					<id>central</id>
+					<id>releases</id>
 					<url>http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.releases/</url>
+				</repository>
+				<repository>
+					<id>releases-xmake</id>
+					<url>http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.releases.xmake/</url>
 				</repository>
 			</repositories>
 			<properties>

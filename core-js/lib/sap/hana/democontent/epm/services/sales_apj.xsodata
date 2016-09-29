@@ -1,0 +1,14 @@
+service namespace "sap.hana.democontent.epm"  { 
+    "sap.hana.democontent.epm.models::SALES_APJ"
+    as "sales"  
+	keys generate local "ID"
+    aggregates always
+    parameters via entity "InputParams"; 
+}
+
+settings {
+	    metadata cache-control "max-age= 604800";
+}
+
+
+
