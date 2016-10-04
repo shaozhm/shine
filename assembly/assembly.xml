@@ -25,26 +25,6 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
-        <fileSet>
-            <directory>../site-content</directory>
-            <outputDirectory>site-content</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-            </excludes>
-        </fileSet>
-        <fileSet>
-            <directory>../site-web</directory>
-            <outputDirectory>site-web</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-            </excludes>
-        </fileSet>
 		<fileSet>
             <directory>../core-js</directory>
             <outputDirectory>core-js</outputDirectory>
