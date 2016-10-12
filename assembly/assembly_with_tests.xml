@@ -6,7 +6,7 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <files>
         <file>
-            <source>../mtad.yaml</source>
+            <source>../mtad_test.yaml</source>
             <outputDirectory>META-INF</outputDirectory>
         </file>
 		<file>
