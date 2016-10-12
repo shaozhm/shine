@@ -8,6 +8,7 @@
         <file>
             <source>../mtad_test.yaml</source>
             <outputDirectory>META-INF</outputDirectory>
+            <destName>mtad.yaml</destName>
         </file>
 		<file>
             <source>../xs-security.json</source>
