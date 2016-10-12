@@ -29,7 +29,8 @@
 		"sap-hdbext": "2.0.5",
 		"sap-xsjs": "1.8.0",
 		"sap-jobs-client": "^1.0.10",
-		"body-parser": "1.13.2"
+		"body-parser": "1.13.2",
+		"mocha": "^3.1.0"
 	},
 	"engines": {
 		"node": "~4.x"
