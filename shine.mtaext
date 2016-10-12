@@ -8,8 +8,8 @@ resources:
       config:
         host: ${default-domain}
         port: 30015
-        user: <USERNAME>
-        password: <PASSWORD>
+        user: SYSTEM
+        password: Toor1234
         driver: com.sap.db.jdbc.Driver
         tags: hana
         schema: SYS
@@ -19,8 +19,8 @@ resources:
       config:
         host: ${default-domain}
         port: 30015
-        user: <USERNAME>
-        password: <PASSWORD>
+        user: SYSTEM
+        password: Toor1234
         driver: com.sap.db.jdbc.Driver
         tags: hana
         schema: _SYS_BI
