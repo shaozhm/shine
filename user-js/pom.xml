@@ -1,28 +1,90 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion>
-<parent>
-	<groupId>com.sap.refapps</groupId>
-    <artifactId>sap-xsac-shine-parent</artifactId>
-	 <version>1.2.0</version>
-</parent>
-<artifactId>sap-xsac-shine-user-js</artifactId>
-<packaging>pom</packaging>
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sap.refapps</groupId>
+		<artifactId>sap-xsac-shine-parent</artifactId>
+		 <version>1.2.0</version>
+	</parent>
+	<artifactId>sap-xsac-shine-user-js</artifactId>
+	<packaging>pom</packaging>
+	<profiles>
+		<profile>
+			<id>test</id>
+			<activation>
+			  <property>
+				<name>test</name>
+				
+			  </property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+					</plugin>
+					<!--plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+					</plugin-->
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>test-nodejs</id>
+								<phase>test</phase>
+								<configuration>
+									<tasks name="Run-mocha-tests">
+									
+										<echo>${basedir}</echo>
+										<exec dir="${basedir}"
+											  executable="${basedir}/node/npm.cmd"
+											  failonerror="true">
+											<arg value="test"/>
+										</exec>
+									</tasks>
+								</configuration>
+
+								<goals>
+									<goal>run</goal>
+								</goals>
+			   
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<activation>
+			   <activeByDefault>true</activeByDefault>
+			 </activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+					</plugin>
+					
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
 </project>

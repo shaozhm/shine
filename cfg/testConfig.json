@@ -1,0 +1,8 @@
+{
+  "api": {
+    
+    "host": "mo-d5a730025.mo.sap.corp",
+    "port_corejs": 51510,
+	"port_userjs": 51515
+  }
+}

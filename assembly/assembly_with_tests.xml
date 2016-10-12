@@ -13,6 +13,26 @@
             <source>../xs-security.json</source>
             <outputDirectory>.</outputDirectory>
         </file>
+		<file>
+            <source>../core-js/app_test.js</source>
+            <outputDirectory>core-js</outputDirectory>
+			<destName>app.js</destName>
+        </file>
+		<file>
+            <source>../user-js/app_test.js</source>
+            <outputDirectory>user-js</outputDirectory>
+			<destName>app.js</destName>
+        </file>
+		<file>
+            <source>../core-js/utils/initialize_test.js</source>
+            <outputDirectory>core-js/utils</outputDirectory>
+			<destName>initialize.js</destName>
+        </file>
+		<file>
+            <source>../user-js/utils/initialize_test.js</source>
+            <outputDirectory>user-js/utils</outputDirectory>
+			<destName>initialize.js</destName>
+        </file>
     </files>
     <fileSets>
         <fileSet>
@@ -31,10 +51,11 @@
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
-				<exclude>test/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>app_test.js</exclude>
+				<exclude>app.js</exclude>
+				<exclude>utils/initialize.js</exclude>
 				<exclude>utils/initialize_test.js</exclude>
             </excludes>
         </fileSet>
@@ -44,10 +65,11 @@
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
-				<exclude>test/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>app_test.js</exclude>
+				<exclude>app.js</exclude>
+				<exclude>utils/initialize.js</exclude>
 				<exclude>utils/initialize_test.js</exclude>
             </excludes>
         </fileSet>

@@ -52,9 +52,9 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
-					<descriptors>
+					<!--descriptors>
 						<descriptor>assembly.xml</descriptor>
-					</descriptors>
+					</descriptors-->
 				</configuration>
 				<executions>
 					<execution>
@@ -64,6 +64,8 @@
 							<goal>single</goal>
 						</goals>
 						<configuration>
+							<descriptor>assembly.xml</descriptor>
+							<finalName>sap-xsac-shine-${project.version}</finalName>
 							<archive>
 								<addMavenDescriptor>false</addMavenDescriptor>
 								<manifest>
@@ -158,6 +160,9 @@
 								<copy
 									file="${project.build.directory}/sap-xsac-shine-${project.version}-mta.jar"
 									tofile="${project.build.directory}/sap-xsac-shine-${project.version}.mtar" />
+								<copy
+									file="${project.build.directory}/sap-xsac-shine-${project.version}-with-tests-mta.jar"
+									tofile="${project.build.directory}/test/sap-xsac-shine-${project.version}-with-tests.mtar" />
 							</target>
 						</configuration>
 					</execution>
@@ -170,6 +175,7 @@
 						<configuration>
 							<target>
 								<copy file="../SL_MANIFEST.XML" tofile="${project.build.directory}/SL_MANIFEST.XML" />
+								<copy file="../SL_MANIFEST_WITH_TESTS.XML" tofile="${project.build.directory}/test/SL_MANIFEST.XML" />
 							</target>
 						</configuration>
 					</execution>
@@ -202,6 +208,21 @@
 							<mtaSourceDirs>
 								<param>${project.build.directory}</param>
 							</mtaSourceDirs>
+							<targetDir>${project.build.directory}</targetDir>
+							<overwrite>true</overwrite>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assemble-with-tests</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+						<configuration>
+							<mtaSourceDirs>
+								<param>${project.build.directory}/test</param>
+							</mtaSourceDirs>
+							<targetDir>${project.build.directory}/test</targetDir>
 							<overwrite>true</overwrite>
 						</configuration>
 					</execution>

@@ -49,6 +49,9 @@ modules:
     properties: 
       HANA_SERVICE_NAME: shine-container
       UAA_SERVICE_NAME: shine-uaa
+    parameters:
+      port: 51510
+
     requires:
       - name: shine-uaa
       - name: shine-container
@@ -61,6 +64,9 @@ modules:
       - name: user-js
         properties:
           url: "${default-url}"
+    parameters:
+      port: 51515
+
     requires:
       - name: shine-uaa
       - name: shine-scheduler
