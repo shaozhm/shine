@@ -1,4 +1,4 @@
-SHINE XSA 1.1.15
+SHINE XSA 1.2.1
 ================
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
@@ -57,7 +57,7 @@ Below are three ways to install SHINE:
 
 ###Install from HANA Media
 SHINE can be found in the XSA_CONT of HANA Media
-- Open **sap-xsac-shine-1.1.xx.mtaext** file.
+- Open **sap-xsac-shine-1.2.xx.mtaext** file.
 
 - Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
 
@@ -70,7 +70,7 @@ SHINE can be found in the XSA_CONT of HANA Media
 - Install shine by running the following command from the /assembly/target folder.
 
 
-     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.1.xx.mtaext`
+     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.2.xx.mtaext`
 
 ###Build the Source code and Install
 
@@ -117,7 +117,7 @@ SHINE can be found in the XSA_CONT of HANA Media
      
 - Navigate to the folder which contains the SCA and run the following command to install SHINE
 
-     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.1.xx.mtaext `
+     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.2.xx.mtaext `
 
 
 ##Deploying SHINE on CF
