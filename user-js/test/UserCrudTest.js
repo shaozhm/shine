@@ -35,7 +35,7 @@ var userId;
                  "UserId":1
               })
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(201);
@@ -49,13 +49,13 @@ var userId;
             .get("/user/xsodata/user.xsodata/Users?$format=json")
 
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(200);
                 var json=res.body;
                 userId=json["d"]["results"][0]["UserId"];
-                console.log(userId);
+                //console.log(userId);
                 //res.body.should.be.a('array');
                 //res.body.length.should.be.eql(0);
               done();
@@ -67,8 +67,8 @@ var userId;
             .put("/user/xsodata/user.xsodata/Users("+userId+")")//1000000228)")
             .send({"FirstName": "new", "LastName": "new", "Email": "2sdf", "UserId": userId})
             .end(function(err, res) {
-              console.log(userId);
-                console.log(res.status);
+              //console.log(userId);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(204);
@@ -82,8 +82,8 @@ var userId;
         chai.request(url)
             .delete("/user/xsodata/user.xsodata/Users("+userId+")")//1000000228)")
             .end(function(err, res) {
-              console.log(userId);
-                console.log(res.status);
+              //console.log(userId);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(204);
