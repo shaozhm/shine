@@ -24,7 +24,7 @@ chai.use(chaiHttp);
         chai.request(url)
             .get("/sap/hana/democontent/epm/services/poWorklist.xsodata/PO_WORKLIST?$skip=0&$top=106&$inlinecount=allpages&$format=json")
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 //if (err) return done(err);
                 res.should.have.status(200);
                 done();
@@ -34,7 +34,7 @@ chai.use(chaiHttp);
         chai.request(url)
             .get("/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=filter&query=sap&page=1&start=0&limit=25&$format=json")
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 //if (err) return done(err);
                 res.should.have.status(200);
                 done();
