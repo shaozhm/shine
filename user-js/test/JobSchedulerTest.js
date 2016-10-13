@@ -27,7 +27,7 @@ chai.use(chaiHttp);
             .get("/schedules/getjobschedules")
 
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(200);
@@ -36,15 +36,15 @@ chai.use(chaiHttp);
               done();
             });
       });
-      it('Create Job - POST', function(done) {
+      /*it('Create Job - POST', function(done) {
         chai.request(url)
             .post("/schedules/createjobschedule")
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/json')
             .send({  
-                   "appurl":"https://mo-d5a730025.mo.sap.corp:51125/jobactivity/create",
-                   "cron":"* * * * * * */40",
-                   "description":"Desc",
+                   "appurl":"https://mo-d5a730025.mo.sap.corp:51125/jobactivity/create",*/
+                   //"cron":"* * * * * * */40",
+                   /*"description":"Desc",
                    "endtime":"2016-10-05 16:00:44 +0530",
                    "jobname":"NewJob",
                    "password":"QWJjZDEyMzQ=",
@@ -52,7 +52,7 @@ chai.use(chaiHttp);
                    "user":"DEVX_TECH_USER"
                 })
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(200);
@@ -61,7 +61,7 @@ chai.use(chaiHttp);
               done();
             });
       });
-      
+*/      
   });
 
 
