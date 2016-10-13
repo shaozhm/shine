@@ -18,7 +18,7 @@ var url="https://"+host + ":" +port;
 //var should = require('should');
 
 //var url="https://mo-d5a730025.mo.sap.corp:51510";
-console.log(url);
+//console.log(url);
 chai.use(chaiHttp);
 var salesorderId;
 
@@ -49,7 +49,7 @@ var salesorderId;
             .get("/get/tablesize")
 
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(200);
@@ -80,8 +80,8 @@ var salesorderId;
         chai.request(url)
             .get("/replicate/sales")
             .end(function(err, res) {
-              console.log(salesorderId);
-                console.log(res.status);
+             // console.log(salesorderId);
+               // console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(200);
