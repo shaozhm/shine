@@ -4,6 +4,7 @@ SAP HANA Interactive Education, or SHINE, is a demo application that makes it ea
 The application consists of the following packages:
 
 
+
 - core-db - This is the core db package contains Core data models artifacts required to create the tables and other database artifacts (for example, .hdbcds, .hdbsequence, and so on).
 
 
