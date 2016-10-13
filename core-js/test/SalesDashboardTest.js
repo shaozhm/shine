@@ -18,7 +18,7 @@ var url="https://"+host + ":" +port;
 //var should = require('should');
 
 //var url="https://mo-d5a730025.mo.sap.corp:51510";
-console.log(url);
+//console.log(url);
 chai.use(chaiHttp);
 var salesorderId;
 
@@ -42,6 +42,7 @@ var salesorderId;
                 //res.body.should.be.a('array');
                 //res.body.length.should.be.eql(0);
              return  done();
+
             });
       });*/
       it('Get Sales Orders - GET', function(done) {
@@ -49,13 +50,13 @@ var salesorderId;
             .get("/sap/hana/democontent/epm/services/salesOrdersBuyer.xsodata/SalesOrderHeader?$skip=0&$top=110&$orderby=SALESORDERID%20desc&$select=SALESORDERID%2cCURRENCY%2cGROSSAMOUNT%2cTAXAMOUNT%2cPARTNER_PARTNERID%2cCOMPANYNAME%2cCITY&$inlinecount=allpages&$format=json")
 
             .end(function(err, res) {
-                console.log(res.status);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(200);
                 var json=res.body;
                 salesorderId=json["d"]["results"][0]["SALESORDERID"];
-                console.log(salesorderId);
+                //console.log(salesorderId);
                 //res.body.should.be.a('array');
                 //res.body.length.should.be.eql(0);
               done();
@@ -82,8 +83,8 @@ var salesorderId;
         chai.request(url)
             .delete("/sap/hana/democontent/epm/services/soDelete.xsodata/so_details('"+salesorderId+"')")//1000000228)")
             .end(function(err, res) {
-              console.log(salesorderId);
-                console.log(res.status);
+              //console.log(salesorderId);
+                //console.log(res.status);
                 if (err) return done(err);
                 //res=JSON.parse(res);
                 res.should.have.status(204);
