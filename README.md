@@ -1,7 +1,8 @@
 SHINE XSA 1.2.1
-================
+===============
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
+
 
 
 - core-db - This is the core db package contains Core data models artifacts required to create the tables and other database artifacts (for example, .hdbcds, .hdbsequence, and so on).
@@ -153,6 +154,8 @@ This step is optional and required only if you want to deploy app via cf push
 ```
 cf create-service xsuaa default shine-uaa -c xs-security.json
 ```
+
+
 
 
 
