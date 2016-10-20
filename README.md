@@ -1,4 +1,4 @@
-SHINE XSA 1.2.1
+SHINE XSA 1.2.2
 ===============
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
@@ -33,9 +33,6 @@ If not installed,please download the latest version from milestone [here](http:/
 
 - XSAC_SERVICES   
 If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/).
-
-- SAP_PORTAL_SERVICES
-If not installed, please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases.xmake/com/sap/xs/sap/portal/services/sap-portal-services/) or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/sap/portal/services/sap-portal-services/)
 
 ##Installation via Product Installer 
 ###Create a user for Custom User Provided Services creation
