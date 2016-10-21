@@ -69,7 +69,7 @@ SHINE for XSA (XSACSHINE02_x)can be found in the XSA_CONT of HANA Media and SHIN
 - Install shine by running the following command 
 
 
-     `xs install XSACSHINE01_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.2.xx.mtaext`
+     `xs install XSACSHINE02_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.2.xx.mtaext`
 
 ###Build the Source code and Install
 
