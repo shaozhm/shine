@@ -54,7 +54,8 @@ After user creation login once with this user to the HANA system to change the i
 Below are three ways to install SHINE:
 
 ###Install from HANA Media
-SHINE can be found in the XSA_CONT of HANA Media
+SHINE for XSA (XSACSHINE02_x)can be found in the XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.2.0-XSACSHINE02_0.mtaext
+
 - Open **sap-xsac-shine-1.2.xx.mtaext** file.
 
 - Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
@@ -65,10 +66,10 @@ SHINE can be found in the XSA_CONT of HANA Media
 
      `xs target –o <orgname> -s <customer spacename>`
      
-- Install shine by running the following command from the /assembly/target folder.
+- Install shine by running the following command 
 
 
-     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.2.xx.mtaext`
+     `xs install XSACSHINE01_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.2.xx.mtaext`
 
 ###Build the Source code and Install
 
@@ -151,12 +152,3 @@ This step is optional and required only if you want to deploy app via cf push
 ```
 cf create-service xsuaa default shine-uaa -c xs-security.json
 ```
-
-
-
-
-
-
-
-
-
