@@ -54,7 +54,7 @@ After user creation login once with this user to the HANA system to change the i
 Below are three ways to install SHINE:
 
 ###Install from HANA Media
-SHINE for XSA (XSACSHINE02_x)can be found in the XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.2.0-XSACSHINE02_0.mtaext
+SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.2.0-XSACSHINE02_0.mtaext
 
 - Open **sap-xsac-shine-1.2.xx.mtaext** file.
 
