@@ -7,9 +7,6 @@
 	<servlet>
 		<servlet-name>ODataServlet</servlet-name>
 		<servlet-class>com.sap.gateway.v4.rt.core.web.ODataServlet</servlet-class>
-		<!-- <init-param> <param-name>DPC</param-name> <param-value>JDBCDataProvider</param-value> 
-			</init-param> <init-param> <param-name>MPC</param-name> <param-value>com.sap.xs2.java.odatav4.edm.MyEdmProvider</param-value> 
-			</init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<resource-ref>
@@ -26,7 +23,7 @@
 	</context-param>
 	<context-param>
 		<param-name>MPC</param-name>
-		<param-value>com.sap.refapps.MyEdmProvider</param-value>
+		<param-value>com.sap.refapps.ShineEdmProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>RPF</param-name>
