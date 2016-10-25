@@ -32,7 +32,7 @@
 									
 										<echo>${basedir}</echo>
 										<exec dir="${basedir}"
-											  executable="${basedir}\node\node_modules\npm\bin\npm.cmd"
+											  executable="${basedir}/node/node_modules/npm/bin/npm.cmd"
 											  failonerror="true">
 											<arg value="test"/>
 										</exec>
