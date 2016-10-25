@@ -38,5 +38,11 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.salesdashboard.Componen
         });
         this.setModel(i18nModel, "i18n");
         
+        var tooltipFormatString = '';
+        
+        
+        /** initialize tile dialog */
+        jQuery.sap.registerModulePath('app', 'js');
+        jQuery.sap.require("app.tileDialog");
    }
 });
