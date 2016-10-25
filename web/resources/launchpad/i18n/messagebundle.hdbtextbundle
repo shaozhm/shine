@@ -88,8 +88,8 @@ TILE_UI_FOLDER_ETAGSXSODATA=/sap/hana/democontent/epm/etagsxsodata/ui/
 
 TILE_PERMS_DG=<div><font color="red">To access the Data Generator <ul><li>User should create Role Collection SHINE_ADMIN </li><li>Assign Admin role to Role Collection SHINE_ADMIN</li><li>Assign SHINE_ADMIN Role Collection to User</li></ul> Refer to SHINE for XSA documentation for steps</font>.</div>
 TILE_PERMS_PO=<div>None.</div>
-TILE_PERMS_SO=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.</div>
-TILE_PERMS_SD=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator.</div>
+TILE_PERMS_SO=<div>Time Data has to be generated.</div>
+TILE_PERMS_SD=<div>Time Data has to be generated.</div>
 TILE_PERMS_US=<div>User should have User.hdbrole.</div>
 TILE_PERMS_UIS_BLUE=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator. We need sap.hana.uis.db::SITE_DESIGNER & sap.hana.uis.db::SITE_USER with sap.hana.uis.privileges::AppSiteAccess-All ( Application Privilege) to access the Site. ( these are already added as part of User.Hdbrole)</div>
 TILE_PERMS_UIS_GOLD=<div>User should have User.hdbrole,Time Data has to be generated, Create Synonyms should have been executed in Data Generator. We need sap.hana.uis.db::SITE_DESIGNER & sap.hana.uis.db::SITE_USER with sap.hana.uis.privileges::AppSiteAccess-All ( Application Privilege) to access the Site. ( these are already added as part of User.Hdbrole)</div>
@@ -123,7 +123,7 @@ ROLE_COLLECTION=Role Collections
 CREATE_ROLE_COLLECTION=Create Role Collections
 SYNONYM_PRESENT=Synonyms present
 CREATE_SYNONYMS=Create Synonyms
-CREATE_SYNONYMS_SUCCESS=Synonyms created successfully.
+CREATE_SYNONYMS_SUCCESS=Synonyms created successfully.t
 CREATE_SYNONYMS_ERROR=Synonyms could not be created.
 CANT_CHECK=Not able to check the prerequisites
 INA_TOOLKIT_STATUS=INA Toolkit status
