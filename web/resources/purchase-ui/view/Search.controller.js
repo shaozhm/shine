@@ -1,9 +1,7 @@
 sap.ui.controller("shine.democontent.epm.poworklist.view.Search", {
 
-    
-
-    setFilter: function(oEvent){
-        
+   setFilter: function(oEvent){
+       
         var terms = oEvent.getParameter("query"); 
         var attribute = "COMPANY";
         var mySplitResults = terms.split(' | ' + oBundle.getText("attribute") + ' ');
@@ -66,8 +64,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Search", {
 
         //When a new search is executed, the detail item area must be cleared
         var oView = this.getOwnerComponent().getAggregation("rootControl").byId("po_detail_view");
-        var Context = "/PO_WORKLIST(PURCHASEORDERID='JUNK')";
-        oView.bindContext(Context);
+       
 
         var columns = oTable.getColumns();
         var length = columns.length;
@@ -77,9 +74,8 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Search", {
         }
 
         var oTableItem = this.getOwnerComponent().getAggregation("rootControl").byId("po_detail_view").byId("poItemTable");
-        var ContextItem = "/PurchaseOrderHeader(PurchaseOrderId='JUNK')/PurchaseOrderItem";
-        var sort1 = new sap.ui.model.Sorter("PurchaseOrderId,PurchaseOrderItem");
-        oTableItem.bindRows(ContextItem, sort1);
+        
+      
 
         var columns = oTableItem.getColumns();
         var length = columns.length;
