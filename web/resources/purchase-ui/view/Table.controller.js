@@ -10,7 +10,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		//oModel.setDefaultBindingMode("TwoWay");
 		var oTable = this.byId("poTable");
 		
-	//	oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/visibleRows));
+	
 		
 	
 		oTable.getBinding("rows").attachChange(function() {
@@ -432,8 +432,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/parseInt(visibleRows)));
 		
 	
-		// var oCtrl = sap.ui.getCore.byId("quantityTextField");
-		//   oCtrl.$().find('input').context.type = 'number';
+		
 	},
 	onPageChange: function(oEvent){
 		var oTable = this.byId("poTable");

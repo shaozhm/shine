@@ -246,75 +246,16 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 	},
 	
 	onSend : function(){
-	   // var that = this;
-	   // var oTable = sap.ui.getCore().byId("details--soHeader");
-	   // var selectedIndex = oTable.getSelectedIndex();
-	   // if(selectedIndex!==-1){
-	   //     $.ajax({
-	   //         url : "/sap/hana/democontent/epm/services/mailSMTP.xsjs?cmd=checkSMTP",
-	   //         success : jQuery.proxy(that.onSendSuccess,that),
-	   //         error : that.onSendFailed
-	   //     });
-	   //}else{
-	   //    jQuery.sap.require("sap.ui.commons.MessageBox");
-	   //     sap.ui.commons.MessageBox.show("Please Select a Sales Order to Send.",sap.ui.commons.MessageBox.Icon.WARNING,"Invalid Sales Order");
-	   //}
+	   
 	},
 	
 	onSendSuccess : function(response){
-	   // var oTable = sap.ui.getCore().byId("details--soHeader");
-	   //var oSalesOrderId = oTable.getRows()[oTable.getSelectedIndex()].getBindingContext().getProperty('SALESORDERID');
 	   
-				// function cell(oContent) {
-				// 	return new sap.ui.commons.layout.MatrixLayoutCell({
-				// 		content: oContent
-				// 	});
-				// }
-				// function validateEmail(email) { 
-				//     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				//     return re.test(email);
-				// } 
-				// function handleLiveChange(oEvent){
-				// 	var _liveChange = oEvent.getParameter("liveValue");
-				// 	if(validateEmail(_liveChange))
-				// 		oButton.setEnabled(true);
-				// 	else
-				// 		oButton.setEnabled(false);
-				// }
-				// var oText = new sap.ui.commons.TextField({liveChange : handleLiveChange,required:true});
-				// var oLabel = new sap.ui.commons.Label({text:sap.app.i18n.getText("Email"),labelFor:oText});
-				// var oButton = new sap.ui.commons.Button({text: "Send",enabled:false, press:function(){
-				// 	var _email = oText.getValue();
-				// 	oDialog.close();
-				// 	$.ajax({
-				// 		url:'/sap/hana/democontent/epm/services/mailSMTP.xsjs?cmd=sendMail&email=' + _email + '&soid=' + oSalesOrderId,
-				// 		success : function(response){
-				// 			sap.ui.commons.MessageBox.show(sap.app.i18n.getText("EMAIL_SUCCESS_DESCRIPTION"),
-				//                     "SUCCESS",
-				//                     sap.app.i18n.getText("EMAIL_SUCCESS"));
-				// 		},
-				// 		error : function(response){
-				// 			sap.ui.commons.MessageBox.show(response.responseText,
-				//                     "Error",
-				//                     sap.app.i18n.getText("EMAIL_ERROR"));
-				// 		}
-				// 	});
-				// }});
-				// var oContent = new sap.ui.commons.layout.MatrixLayout({layoutFixed:false}).addStyleClass("sapUiMboxCont");                               
-				// oContent.createRow(cell(oLabel),cell(oText));   
-	   // var oDialog = new sap.ui.commons.Dialog({
-				// 	content : oContent,
-				// 	modal : true
-				// });
-				// oDialog.setTitle( sap.app.i18n.getText("SEND_LONG"));
-				// oDialog.addButton(oButton);
-				// oDialog.open();
 	},
 	
 	onSendFailed : function(response){
 	
-		// var sendFailedDialog = sap.ui.jsfragment("sap.hana.democontent.epm.salesdashboard.view.sendFailedDialog");
-		// sendFailedDialog.open();
+		
 	},
 
 	/**

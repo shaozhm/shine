@@ -21,7 +21,6 @@ router.get('/replicate/sales', function (req, res) {
     var origTable = "SO.Header";
     util.getTableInfo(client, origTable, origTable, function(error, response) {
         var tableSize = response[0].RECORD_COUNT;
-        //console.log("table size " + tableSize);
         logger.info('Table size:' + tableSize);
         var query = 'insert into "SO.Header" '
                     + 'SELECT TOP 1000 '
@@ -74,7 +73,6 @@ router.get('/replicate/purchase', function (req, res) {
     var origTable = "PO.Header";
     util.getTableInfo(client, origTable, origTable, function(error, response) {
         var tableSize = response[0].RECORD_COUNT;
-        //console.log("table size " + tableSize);
          logger.info('Table size:' + tableSize);
         var query = 'insert into "PO.Header" '
                     + 'SELECT '

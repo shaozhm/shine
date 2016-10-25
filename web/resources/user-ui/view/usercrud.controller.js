@@ -86,7 +86,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
             contentType: "application/json",
             dataType:'json',
             headers: {
-                // 'x-csrf-token': 'Fetch',
+                
                 'Accept': "application/json"
             },
             success: function(data, textStatus, request) {
@@ -113,7 +113,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
     },
 
 getServiceUrl:function(state){
-               //var nodejs = "/sap/hana/democontent/epm/services/user.xsodata";
+               
                 var nodejs="/user/xsodata/user.xsodata/Users";
                 var java="/user/odata/v4/UserData/User";
                                 if(state == "nodejs"){
@@ -139,7 +139,7 @@ getServiceUrl:function(state){
          {
          	rest_url = "/user/odata/v4/UserData/User";	
          }
-       // var rest_url=this.getServiceUrl(oMode.getSelectedKey());
+      
 
         
         var oEntry = this.getView().getModel("user").getData();
@@ -185,12 +185,12 @@ getServiceUrl:function(state){
     },
 
     updateService: function(Event) {
-        //var oModel = this.byId("userTbl").getModel();
+        
 
 
         var oThis = this;
         var oTable = oThis.byId("userTbl");
-        // var oMode = oThis.byId("serviceUrlMode");
+        
       
       var oMode = oThis.getView().byId("serviceUrlMode");
          var sKey = oMode.getSelectedKey();
@@ -206,7 +206,7 @@ getServiceUrl:function(state){
       
       
       
-       // var rest_url=this.getServiceUrl(oMode.getSelectedKey());
+      
 
         // Get the index of the table.
         var link = Event.getSource();
@@ -244,7 +244,7 @@ getServiceUrl:function(state){
             }
         });
         var aUrl = rest_url+'('+userId + ')';
-        //'/user/odata/v4/UserData/User'+'('+userId + ')';
+        
             jQuery.ajax({
                 url: aUrl,
                 method: 'PUT',
@@ -255,7 +255,7 @@ getServiceUrl:function(state){
                     'x-csrf-token': xsrf_token
                 },
                 success: function(){
-                    //sap.ui.commons.MessageBox.alert(i18n.getProperty("CC_NUMBER_ADDED"));
+                    
                     oThis.loadJobsTable();
                 },
                 error: function(error) {
@@ -287,7 +287,7 @@ getServiceUrl:function(state){
             if (errorResponse && errorResponse.length > 0) {
                 alert("Error occurred");
             } else {
-                //alert(i18n.getResourceBundle().getText("USER_CREATED", k));
+                
                 sap.m.MessageToast.show(k + " users created");
                 oThis.loadJobsTable();
             }
@@ -325,7 +325,7 @@ getServiceUrl:function(state){
             $.ajax({
                 type: "GET",
                 async: false,
-                url: rest_url,//"/user/odata/v4/UserData/User",
+                url: rest_url,
                 contentType: "application/json",
                 headers: {
                     'x-csrf-token': 'Fetch',
@@ -340,7 +340,7 @@ getServiceUrl:function(state){
             });
         
             var aUrl = rest_url+'('+userId + ')';
-            //'/user/odata/v4/UserData/User'+'('+userId + ')';
+            
             jQuery.ajax({
                 url: aUrl,
                 method: 'DELETE',
@@ -436,13 +436,7 @@ getServiceUrl:function(state){
     },
   
   onListItemPress : function (oEvent){
-    //   var oTileDialog = new sap.account.TileDialog(this,1);
-    //   this.getView().addDependent(oTileDialog);
-    //   oTileDialog.open(1);
-    //   var oBtnOk = sap.ui.getCore().byId("idOkBtn");
-    //   oBtnOk.addDelegate({"onpress":function(){
-    //     var win = window.open("/sap/hana/democontent/epm/ui/userCRUD/index.html?sap-ui-language=de", '_blank');
-    //     win.focus(); 
+   
   
 		var oItem = oEvent.getParameters();
 		var item = JSON.stringify(oItem);

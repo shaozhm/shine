@@ -245,30 +245,11 @@ sap.account.CheckDialog.prototype.open = function() {
 						}
             }
             
-     //       if(!doJobSchedulerRoleExist){
-     //       	$.ajax({
-					// type: 'POST',
-					// url: '/sap/rest/authorization/rolecollections/' + "SHINE_ADMIN" + "/roles",
-					// async: false,
-					// headers: {
-					// 	'x-csrf-token': csrftoken,
-					// 	'Accept': "application/json",
-					// 	'Content-Type': "application/json"
-					// },
-					// data: JSON.stringify(jobrole),
-					// success: function(result) {
-					// 	ifSuccess=true;
-					// },
-					// error: function(error) {
-					// 	ifSuccess=false;
-					// 	ifJobSchedulerRoleFailed = true;
-     //       		}
-            	// });
-            // }
+     
             
             if(ifSuccess){
 				sap.ui.commons.MessageBox.alert(sap.app.i18n.getText("SUCCESS_ROLECOLLECTION"), logoutMethod);
-				// window.location.replace('/logout');
+				
 			}
 			else{
 				if(ifRoleCollectionFailed){
@@ -277,9 +258,7 @@ sap.account.CheckDialog.prototype.open = function() {
 				if(ifShineAdminRoleFailed){
 					sap.ui.commons.MessageBox.alert(sap.app.i18n.getText("ERROR_ROLECREATION"));
 				}
-				// if(ifJobSchedulerRoleFailed){
-				// 	sap.ui.commons.MessageBox.alert(sap.app.i18n.getText("ERROR_ROLECREATION"));
-				// }
+				
 			}
 
 			oCheckDialog.roleCollectionBtn.setEnabled(false);
@@ -316,7 +295,6 @@ sap.account.CheckDialog.prototype.open = function() {
 		$.ajax({
 					type: 'PUT',
 					url: '/sap/rest/authorization/rolecollections/' + "SHINE_ADMIN" + "/roles",
-					// url: '/sap/rest/authorization/apps/'+role.roleTemplateAppId+'/roletemplates/'+role.roleTemplateName+'/roles/'+role.name,
 					async: false,
 					headers: {
 						'x-csrf-token': csrftoken,
@@ -386,9 +364,7 @@ sap.account.CheckDialog.prototype.open = function() {
 													}
 												}
 										}
-										// if(!doShineAdminRoleExist){
-										// 	break;
-										// }
+										
 										arrayDoShineAdminRoleExist[i] = bool;
 									}
 									if((applications[i].appid).includes("shine-admin") && !bool){
@@ -405,18 +381,7 @@ sap.account.CheckDialog.prototype.open = function() {
 							}
 							}
 						}
-						// check for whether job scheduler role exist or not
-						// if(roleTemplates != undefined){
-						// 	if(roleTemplates.length!=undefined && roleTemplates.length>0)
-						// 		for(var k=0;k<roleTemplates.length;k++){
-						// 			if(roleTemplates[k].roleTemplateAppId === "jobscheduler"){
-						// 				doJobSchedulerRoleExist = true;
-									// }
-									// }else{
-									// 	doJobSchedulerRoleExist = false;
-									// }
-								// }
-							// }
+						
 					},
 					error: function(error) {
 						doRoleCollectionExist = false;
@@ -439,7 +404,7 @@ sap.account.CheckDialog.prototype.open = function() {
     }
     
     function validateAndEnableDisableButton(doRoleCollectionExist,doShineAdminRoleExist,doJobSchedulerRoleExist){
-        // if(doRoleCollectionExist & doShineAdminRoleExist & doJobSchedulerRoleExist){
+        
         if(doRoleCollectionExist & doShineAdminRoleExist){
         	oCheckDialog.roleCollectionLayout.removeAllContent();
 					oCheckDialog.roleCollectionBtn.setEnabled(false);

@@ -4,7 +4,7 @@ var MESSAGES = $.sap.hana.democontent.epm.services.messages;
 
 function deletePO() {
     var body = '';
-    // var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    
     console.log("info  "+ $.request.body.asString());
     var obj = $.request.body.asString();
     console.log("body "+obj);
@@ -180,7 +180,7 @@ function approvePO() {
     var purchaseOrderID = map.payload[0].purchaseOrderId;
     var action = map.payload[1].Action;
     console.log("key "+purchaseOrderID+ "action "+action);
-    // var purchaseOrderID = $.request.parameters.get('PurchaseOrderId');
+    
     purchaseOrderID = purchaseOrderID.replace("'", "");
     if (purchaseOrderID === null) {
         $.trace.error( MESSAGES.getMessage('SEPM_POWRK', '012'));
@@ -191,7 +191,7 @@ function approvePO() {
         // specified
         return;
     }
-    // var action = $.request.parameters.get('Action');
+    
     if (action === null) {
         $.trace.error( MESSAGES.getMessage('SEPM_POWRK', '022'));
         $.response.status = $.net.http.BAD_REQUEST;
