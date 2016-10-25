@@ -108,21 +108,21 @@ CHART_VIEW_7=MD.BusinessPartner, BUYER.calculationview
 CHART_VIEW_8=SO.Header, BUYER.calculationview, SALES_OVERVIEW_WO_CURR_CONV.calculationview, DT_TAX_CALCULATION.hdbruldec
 
 # Texts for UI views and controllers in help dialog
-CHART_UI_VIEW_1=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.view.xml' target='_blank'>overview.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.controller.js' target='_blank'>overview.controller.js</a></div>
-CHART_UI_VIEW_2=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.view.xml' target='_blank'>overview.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.controller.js' target='_blank'>overview.controller.js</a></div>
-CHART_UI_VIEW_3=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.view.xml' target='_blank'>overview.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.controller.js' target='_blank'>overview.controller.js</a></div>
-CHART_UI_VIEW_4=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.view.xml' target='_blank'>overview.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/overview.controller.js' target='_blank'>overview.controller.js</a></div>
-CHART_UI_VIEW_5=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/products.view.xml' target='_blank'>products.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/products.controller.js' target='_blank'>products.controller.js</a></div>
-CHART_UI_VIEW_6=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/products.view.xml' target='_blank'>products.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/products.controller.js' target='_blank'>products.controller.js</a></div>
-CHART_UI_VIEW_7=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/Search.view.xml' target='_blank'>Search.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/Search.controller.js' target='_blank'>Search.controller.js</a></div>
-CHART_UI_VIEW_8=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/details.view.xml' target='_blank'>details.view.xml</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/ui/salesDashboard/view/details.controller.js' target='_blank'>details.controller.js</a></div>
+CHART_UI_VIEW_1=<div>/web/resources/sales-ui/overview.view.xml and /web/resources/sales-ui/overview.controller.js</div>
+CHART_UI_VIEW_2=<div>/web/resources/sales-ui/overview.view.xml and /web/resources/sales-ui/overview.controller.js</div>
+CHART_UI_VIEW_3=<div>/web/resources/sales-ui/overview.view.xml and /web/resources/sales-ui/overview.controller.js</a></div>
+CHART_UI_VIEW_4=<div>/web/resources/sales-ui/overview.view.xml and /web/resources/sales-ui/overview.controller.js</div>
+CHART_UI_VIEW_5=<div>/web/resources/sales-ui/products.view.xml and /web/resources/sales-ui/products.controller.js</div>
+CHART_UI_VIEW_6=<div>/web/resources/sales-ui/products.view.xml and /web/resources/sales-ui/products.controller.js</div>
+CHART_UI_VIEW_7=<div>/web/resources/sales-ui/Search.view.xml and /web/resources/sales-ui/Search.controller.js</div>
+CHART_UI_VIEW_8=<div>/web/resources/sales-ui/details.view.xml and /web/resources/sales-ui/details.controller.js</div>
 
 # Texts for XS OData services in help dialog
-CHART_ODATA_1=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesByRegion.xsodata' target='_blank'>salesByRegion.xsodata</a></div>
-CHART_ODATA_2=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesByCountry.xsodata' target='_blank'>salesByCountry.xsodata</a></div>
-CHART_ODATA_3=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesOrderRank.xsodata' target='_blank'>salesOrderRank.xsodata</a></div>
-CHART_ODATA_4=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesDiscount.xsodata' target='_blank'>salesDiscount.xsodata</a></div>
-CHART_ODATA_5=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesYearCompare.xsodata' target='_blank'>salesYearCompare.xsodata</a></div>
-CHART_ODATA_6=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesByProduct.xsodata' target='_blank'>salesByProduct.xsodata</a></div>
-CHART_ODATA_7=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/soWorklistQuery.xsjs' target='_blank'>soWorklistQuery.xsjs</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesOrders.xsodata' target='_blank'>salesOrders.xsodata</a></div>
-CHART_ODATA_8=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/soCreateMultiple.xsjs' target='_blank'>soCreateMultiple.xsjs</a> and <a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/salesOrders.xsodata' target='_blank'>salesOrders.xsodata</a></div>
+CHART_ODATA_1=<div>/core-js/lib/sap/hana/democontent/epm/services/salesByRegion.xsodata</div>
+CHART_ODATA_2=<div>/core-js/lib/sap/hana/democontent/epm/services/salesByCountry.xsodata</div>
+CHART_ODATA_3=<div>/core-js/lib/sap/hana/democontent/epm/services/salesOrderRank.xsodata</div>
+CHART_ODATA_4=<div>/core-js/lib/sap/hana/democontent/epm/services/salesDiscount.xsodata</div>
+CHART_ODATA_5=<div>/core-js/lib/sap/hana/democontent/epm/services/salesYearCompare.xsodata</div>
+CHART_ODATA_6=<div>/core-js/lib/sap/hana/democontent/epm/services/salesByProduct.xsodata</div>
+CHART_ODATA_7=<div>/core-js/lib/sap/hana/democontent/epm/services/soWorklistQuery.xsjs and /core-js/lib/sap/hana/democontent/epm/services/salesOrders.xsodata</div>
+CHART_ODATA_8=<div>/core-js/lib/sap/hana/democontent/epm/services/soCreateMultiple.xsjs and /core-js/lib/sap/hana/democontent/epm/services/salesOrders.xsodata</div>
