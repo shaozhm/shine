@@ -108,7 +108,7 @@
 									<sap.ui.layout:HorizontalLayout>
 										<sap.ui.layout:content>
 											<sap.ui.commons:Button id="batchButton" text="{i18n>CREATE_BATCH}" press="openBatchDialog"></sap.ui.commons:Button>
-											<sap.ui.commons:Button id="batchHelpButton" class="helpButton" text="?" data:tileDialog="1" press="openTileDialog"></sap.ui.commons:Button> 
+											<sap.ui.commons:Button id="batchHelpButton" class="helpButton" text="?" data:tileDialog="2" press="openTileDialog"></sap.ui.commons:Button> 
 											<!-- <sap.ui.commons:Button class="buttonMarginLeft" text="{i18n>CREATE_XML}" press="onUsrCreateXmlBtnPress"></sap.ui.commons:Button> 
 											<sap.ui.commons:Button class="helpButton" text="?" data:tileDialog="4" press="openTileDialog"></sap.ui.commons:Button> -->
 										</sap.ui.layout:content>
