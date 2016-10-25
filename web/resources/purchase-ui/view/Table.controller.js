@@ -400,8 +400,8 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 	 */
 	onBindingChange: function(oController) {
 		var view = oController.getView();
-		var iNumberOfRows = view.oPHTable.getBinding("rows").iLength;
-		view.oPHTable.setTitle(oBundle.getText("pos", [numericSimpleFormatter(iNumberOfRows)]));
+		var iNumberOfRows = oPHTable.getBinding("rows").iLength;
+		oPHTable.setTitle(oBundle.getText("pos", [numericSimpleFormatter(iNumberOfRows)]));
 	},
 
 	onRowSelectionChange: function(oEvent) {
