@@ -1,5 +1,5 @@
 service namespace "sap.hana.democontent.epm"  { 
-    "sap.hana.democontent.epm.models::test2"
+    "sap.hana.democontent.epm.models::SALES_EMEA"
     as "sales"  
 	keys generate local "ID"
     aggregates always
