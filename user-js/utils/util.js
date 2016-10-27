@@ -8,7 +8,9 @@ module.exports = {
 			res.writeHead(500, {
 				'Content-Type': 'application/json'
 			});
-			res.end(JSON.stringify(error));
+			res.end(JSON.stringify({
+				message: message
+			}));
 		} else {
 			res.writeHead(200, {
 				'Content-Type': 'application/json'
