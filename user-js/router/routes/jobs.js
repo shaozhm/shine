@@ -6,7 +6,7 @@ module.exports = function() {
 	var app = express.Router();
 
 	var winston = require('winston');
-	var util = require(global.__base + "utils/jobs");
+	var util = require(global.__base + "utils/util");
 
 	var logger;
 

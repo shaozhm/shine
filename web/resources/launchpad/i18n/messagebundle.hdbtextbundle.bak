@@ -66,7 +66,7 @@ TILE_DB_VIEWS_FIORI=<div>No specific DB Views or Tables are used</div>
 TILE_DB_VIEWS_XSDS=<ul><li>EPM.Sales.Header</li><li>EPM.Sales.Item</li><li>EPM.MasterData.BusinessPartner</li></ul>
 TILE_DB_VIEWS_XSUNT=<div>All Views and Tables are used</div>
 TILE_DB_VIEWS_UI5SEARCH=<ul><li>MD.Products CDS Table</li><li>UTIL.Texts CDS Table</li><li>MD.productTexts CDS View</li><ul>
-TILE_DB_VIEWS_JOBSCHEDULING=<ul><li>Jobs.Data CDS Table</li><li>Jobs.ScheduleDetails CDS Table</li><ul>
+TILE_DB_VIEWS_JOBSCHEDULING=<ul><li>Jobs.ScheduleDetails CDS Table</li><li>Jobs.ScheduleDetails CDS Table</li><ul>
 TILE_DB_VIEWS_ETAGSXSODATA=<ul><li>User.Details CDS Table</li><ul>
 
 TILE_UI_FOLDER_DG=/admin-ui/
