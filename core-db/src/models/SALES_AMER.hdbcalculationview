@@ -3,17 +3,19 @@
 <descriptions defaultDescription="SALES_AMER"/>
 <localVariables>
   <variable id="IP_FR_DTE" parameter="true">
-    <descriptions defaultDescription=" "/>
-    <variableProperties datatype="DATE" length="0">
+    <descriptions defaultDescription="IP_FR_DTE"/>
+    <variableProperties datatype="VARCHAR" length="13" mandatory="false">
       <valueDomain type="empty"/>
       <selection/>
+      <defaultRange lowValue="2015"/>
     </variableProperties>
   </variable>
   <variable id="IP_TO_DTE" parameter="true">
-    <descriptions defaultDescription=" "/>
-    <variableProperties datatype="DATE" length="0">
+    <descriptions defaultDescription="IP_TO_DTE"/>
+    <variableProperties datatype="VARCHAR" length="13" mandatory="false">
       <valueDomain type="empty"/>
       <selection/>
+      <defaultRange lowValue="2016"/>
     </variableProperties>
   </variable>
 </localVariables>
@@ -28,12 +30,12 @@
   </mapping>
 </variableMappings>
 <dataSources>
-  <DataSource id="sales_order_ranking_and_discount" type="TABLE_FUNCTION">
+  <DataSource id="sales_order_ranking_and_discount" type="TABLE_FUNCTION" partitionedExecution="false">
     <resourceUri>sales_order_ranking_and_discount</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE" partitionedExecution="false">
     <viewAttributes>
       <viewAttribute id="SALES" measureType="simple">
         <descriptions defaultDescription="SALES"/>
