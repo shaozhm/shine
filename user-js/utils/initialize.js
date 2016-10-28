@@ -23,12 +23,15 @@ module.exports = {
 		app.use(logging.expressMiddleware(appContext));
 		// app.use(bodyParser.json());
 		app.use(passport.initialize());
+		var hanaOptions = xsenv.getServices({	
+			hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+		}).hana;
 
 		app.use(
 			passport.authenticate("JWT", {
 				session: false
 			}),
-			xsHDBConn.middleware());
+			xsHDBConn.middleware(hanaOptions));
 		//		app.use(xsHDBConn.middleware()); 	
 		return app;
 	},

@@ -20,7 +20,11 @@ app.use(logging.expressMiddleware(appContext));
 app.use(bodyParser.json());
 //use passport for authentication
 app.use(passport.initialize());
-app.use('/',hdbext.middleware(),
+var hanaOptions = xsenv.getServices({	
+		hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+}).hana;
+
+app.use('/',hdbext.middleware(hanaOptions),
            passport.authenticate('JWT', {session: false}),
            routes.jobs,
            routes.schedules,

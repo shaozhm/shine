@@ -6,7 +6,7 @@
 		"sap-xssec": "0.8.0",
 		"sap-xsenv": "1.2.3",
 		"sap-xsjs": "1.11.2",
-		"sap-hdbext": "2.0.5",
+		"sap-hdbext": "4.1.3",
 		"sap-cds": "1.0.10",
 		"sap-logging": "1.4.0",
 		"sap-jobs-client": "^1.0.10",
