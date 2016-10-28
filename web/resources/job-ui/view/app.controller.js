@@ -76,7 +76,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 				var uiId = (uiFieldArrayMapper[i].split(":"))[1];
 				var element = sap.ui.getCore().byId(uiId);
 				var value = element.getValue();
-				if ((uiId.includes("Time") || uiId.includes("Date")) !== false) {
+				if ((uiId.indexOf("Time")>-1 || uiId.indexOf("Date")>-1) !== false) {
 					var uiIdTime = uiId.replace("Date","Time");
 					var elementValue = sap.ui.getCore().byId(uiIdTime).getValue();
 					var offset = new Date().getTimezoneOffset();

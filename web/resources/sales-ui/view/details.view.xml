@@ -6,7 +6,7 @@
                     <sap.ui.commons.layout:cells>
                         <sap.ui.commons.layout:MatrixLayoutCell>
                             <sap.ui.commons.layout:content>
-                                <sap.ui.table:Table id="soHeader" visibleRowCount="10" selectionMode="Single" selectionBehavior="Row" navigationMode="Paginator" rowSelectionChange="onRowSelect">
+                                <sap.ui.table:Table id="soHeader" visibleRowCount="10" selectionMode="Single" selectionBehavior="Row"  rowSelectionChange="onRowSelect">
                                     <sap.ui.table:toolbar>
                                         <sap.ui.commons:Toolbar id="tb1" design="Standard" standalone="false">
                                             <sap.ui.commons:items>
@@ -76,6 +76,16 @@
                                             </sap.ui.table:template>
                                         </sap.ui.table:Column>
                                     </sap.ui.table:columns>
+	                                     <sap.ui.table:footer>
+					        <sap.ui.commons:Toolbar id="tb2" design="Standard" standalone="false" width="100%">
+										        	
+					            <sap.ui.commons:Paginator
+					            	id="tablePaginator"  
+					            	page="onPageChange" 
+					            	class="centerAllign"/>
+										            
+					        </sap.ui.commons:Toolbar>
+					    </sap.ui.table:footer>
                                 </sap.ui.table:Table>
                                 
                             </sap.ui.commons.layout:content>
@@ -86,7 +96,7 @@
                     <sap.ui.commons.layout:cells>
                         <sap.ui.commons.layout:MatrixLayoutCell>
                             <sap.ui.commons.layout:content>
-                                <sap.ui.table:Table id="soItemTable" visibleRowCount="8" selectionMode="None" navigationMode="Paginator" title="{i18n&gt;SALES_ORDER_ITEMS}">
+                                <sap.ui.table:Table id="soItemTable" visibleRowCount="8" selectionMode="None"  title="{i18n&gt;SALES_ORDER_ITEMS}">
                                     <sap.ui.table:columns>
                                         <sap.ui.table:Column sortProperty="SALESORDERITEM" filterProperty="SALESORDERITEM" filterOperator="EQ">
                                             <sap.ui.table:label>

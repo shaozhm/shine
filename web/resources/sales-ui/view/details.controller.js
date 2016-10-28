@@ -2,6 +2,10 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 
 	onRowSelect: function(oEvent) {
 		var path = oEvent.getParameter("rowContext");
+		var oSHTable = this .byId("soHeader");
+		var rowNum = oSHTable.getSelectedIndex();
+		var visibleRows=oSHTable.getVisibleRowCount();
+		this.byId("tablePaginator").setCurrentPage(Math.ceil( parseInt(rowNum)/parseInt(visibleRows))); 
 		
 		var oSITable = sap.ui.getCore().byId("details--soItemTable");
 		oSITable.bindRows(path + "/SalesOrderItem");
@@ -33,6 +37,27 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 		}
 
 		// bind with default value
+		var oPaginator=this.byId("tablePaginator");
+		var oTable= this.byId("soHeader");
+		var visibleRows = oTable.getVisibleRowCount(); 
+		
+		$.ajax({
+				type: "GET",
+				url: "/sap/hana/democontent/epm/services/salesOrdersBuyer.xsodata/SalesOrderHeader/$count",
+				async: true,
+				success: function(data, textStatus, request) {
+					
+					oPaginator.setNumberOfPages(Math.ceil( parseInt(data.toString() )/parseInt(visibleRows)));
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					sap.ui.commons.MessageBox.show("Error in loading Jobs Table",
+						"ERROR",
+						"Error");
+					return;
+				}
+			});
+			oPaginator.setCurrentPage(1);
 		var sort1 = new sap.ui.model.Sorter("SALESORDERID", true);
 		oSHTable.bindRows({
 			path: "/SalesOrderHeader",
@@ -292,6 +317,25 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 
         	var iNumberOfRows = oSHTable.getBinding("rows").iLength;
         	oSHTable.setTitle("Sales Orders" + " (" + this.numericSimpleFormatter(iNumberOfRows) + ")");
+        	var oPaginator=this.byId("tablePaginator");
+			var oTable= this.byId("soHeader");
+			var visibleRows = oTable.getVisibleRowCount();             
+        	$.ajax({
+				type: "GET",
+				url: "/sap/hana/democontent/epm/services/salesOrdersBuyer.xsodata/SalesOrderHeader/$count",
+				async: true,
+				success: function(data, textStatus, request) {
+					
+					oPaginator.setNumberOfPages(Math.ceil( parseInt(data.toString() )/parseInt(visibleRows)));
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					sap.ui.commons.MessageBox.show("Error in loading Jobs Table",
+						"ERROR",
+						"Error");
+					return;
+				}
+			});
+		
         }
     },
     
@@ -485,6 +529,14 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 
         view.oLayout.createRow(selectProductLblPd, oComboBoxPd, quantityLbPd, quantityInputPd, addButtonPd);
 
-    }
+    },
+    onPageChange: function(oEvent){
+		var oTable = this.byId("soHeader");
+		var visibleRows=oTable.getVisibleRowCount();
+		var row = (parseInt(oEvent.getParameter("targetPage").toString())-1)*visibleRows;
+		
+		oTable.setFirstVisibleRow(row);
+			
+	}
 
 });
