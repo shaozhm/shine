@@ -21,3 +21,7 @@
 .dialogTextColor{
     color: #007CC0 !important;
 }
+.centerAllign{
+	margin-left: 40%;
+    margin-right: 40%;
+}
