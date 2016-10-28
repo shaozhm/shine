@@ -35,9 +35,13 @@ module.exports = {
 		 * provides a db property containing the connection
 		 * object to the request object of all routes.
 		 */
+		 var hanaOptions = xsenv.getServices({	
+			hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+		}).hana;
+
 		app.use('/',
 		    passport.authenticate('JWT', {session: false}),
-		    hdbext.middleware(),
+		    hdbext.middleware(hanaOptions),
 		    routes.datagen,
 		    routes.get,
 		    routes.reset);
