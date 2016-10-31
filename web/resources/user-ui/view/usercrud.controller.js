@@ -161,6 +161,11 @@ getServiceUrl:function(state){
 
         
         var oEntry = this.getView().getModel("user").getData();
+        // validate that all fields (FName, LName and EmailId) are populated
+        if(oEntry && (!oEntry.FirstName || !oEntry.LastName || !oEntry.Email)){
+            sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USER_VALIDATION"));
+            return false;
+        }
         var xsrf_token;
         $.ajax({
             type: "GET",
