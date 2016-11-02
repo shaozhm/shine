@@ -7,7 +7,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.overview", {
      */
     onInit: function() {
 
-        var oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/sales_emea.xsodata/");
+        var oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/cust.xsodata/");
         var oDropDown = sap.ui.getCore().byId("overview--discountDropDown");
         var filterParam = '';
         if (oDropDown.getSelectedKey() === '') {
@@ -108,28 +108,11 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.overview", {
     	var oDiscountModel;
     	
     	
-    	if(aFilter==="AFR")
-    {
-    	oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/sales_afr.xsodata/",true);
+    	    	oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/salesDiscount.xsodata/",true);
     
-    }
     
-    	if(aFilter==="EMEA")
-    {
-    	oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/sales_emea.xsodata/",true);
     
-    }
-    	if(aFilter==="APJ")
-    {
-    	oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/sales_apj.xsodata/",true);
-    
-    }
-    	if(aFilter==="AMER")
-    {
-    	oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/sales_amer.xsodata/",true);
-    
-    }
-	
+    	    		
         var oDataset = new sap.viz.ui5.data.FlattenedDataset({
             dimensions: [{
                 axis: 1, // must be one for the x-axis, 2 for y-axis
@@ -150,7 +133,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.overview", {
 
 
         oDataset.bindData({
-            path:  "/InputParams(IP_FR_DTE=" + previousYear + ",IP_TO_DTE=" + currentYear + ")/Results",
+            path:  "/sales",
             filters: [new sap.ui.model.odata.Filter("REGION", [{
                     operator: sap.ui.model.FilterOperator.EQ,
                     value1: aFilter
