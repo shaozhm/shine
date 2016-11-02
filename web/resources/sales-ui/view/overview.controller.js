@@ -7,7 +7,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.overview", {
      */
     onInit: function() {
 
-        var oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/cust.xsodata/");
+        var oDiscountModel = new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/salesDiscount.xsodata/");
         var oDropDown = sap.ui.getCore().byId("overview--discountDropDown");
         var filterParam = '';
         if (oDropDown.getSelectedKey() === '') {
