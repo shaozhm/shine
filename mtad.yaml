@@ -131,7 +131,11 @@ resources:
     parameters: 
      service-name: shine-user-container
      config:
-       schema: SHINE_USER
+       schema: #to be specified in extension descriptor
+    parameters-metadata:
+      config:
+        overwrite: true
+
     
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
@@ -152,7 +156,7 @@ resources:
      sys-service-name: ${service-name}
     parameters-metadata:
       config:
-        overwritable: true
+        overwrite: true
 
   - name: CrossSchemaSysBi
     type: org.cloudfoundry.user-provided-service
