@@ -16,6 +16,7 @@
 		<json.version>2.0</json.version>
 		<xs2.gw.v4.version>1.0.2</xs2.gw.v4.version>
 		<eclipselink.version>2.5.0</eclipselink.version>
+		<java-container-security.version>0.20.8</java-container-security.version>
 	</properties>
 
 	<dependencies>
@@ -61,7 +62,7 @@
 		<dependency>
 			<groupId>com.sap.xs2.security</groupId>
 			<artifactId>java-container-security</artifactId>
-			<version>0.16.6</version>
+			<version>${java-container-security.version}</version>
 		</dependency>
 
 		<dependency>
