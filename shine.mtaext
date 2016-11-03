@@ -24,3 +24,9 @@ resources:
         driver: com.sap.db.jdbc.Driver
         tags: hana
         schema: _SYS_BI
+        
+  - name: shine-user-container
+    parameters:
+      config:
+        schema: <SCHEMA_NAME>
+
