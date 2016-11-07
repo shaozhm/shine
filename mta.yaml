@@ -72,8 +72,8 @@ modules:
       - name: shine-user-container
       
   - name: user-java
-    type: java.tomee
-    path: user-java/target/user-java-1.1.13.war
+    type: java
+    path: user-java
     provides: 
       - name: user-java
         properties:
@@ -83,6 +83,9 @@ modules:
       - name: shine-scheduler
       - name: shine-user-db
       - name: shine-user-container
+        properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+               {"service_name_for_DefaultDB" : "~{user-container-name}"}]'
       
   - name: shine-core-db
     type: hdb
@@ -95,7 +98,9 @@ modules:
     path: user-db
     requires:
      - name: shine-user-container
-
+       properties:
+        TARGET_CONTAINER: ~{user-container-name}
+       
 resources:
   - name: shine-container
     type: com.sap.xs.hdi-container
@@ -104,6 +109,12 @@ resources:
          
   - name: shine-user-container
     type: com.sap.xs.hdi-container
+	properties:
+      user-container-name: ${service-name}
+    parameters: 
+     service-name: DEVX_TECH_USER-et8mrlgocu9yi8c5-shine-shine-user-container
+     config:
+       schema: SHINE_USER
 
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
