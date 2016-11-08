@@ -134,7 +134,7 @@ resources:
        schema: #to be specified in extension descriptor
     parameters-metadata:
       config:
-        overwrite: true
+        overwritable: true
 
     
   - name: shine-scheduler
@@ -156,7 +156,7 @@ resources:
      sys-service-name: ${service-name}
     parameters-metadata:
       config:
-        overwrite: true
+        overwritable: true
 
   - name: CrossSchemaSysBi
     type: org.cloudfoundry.user-provided-service
