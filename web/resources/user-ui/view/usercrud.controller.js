@@ -26,26 +26,6 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
     }]
     };
 
-   setTimeout(function(){ 
-   var oDialog = new sap.m.Dialog({
-   	                title:"User Crud Services",
-   	                width:"100px",
-			contentHeight:"100px",
-			content:[
-				new sap.m.Text({text:" There are two bars namely \"Nodejs\" and \"Java\".\n \"Nodejs\" bar showcase implementation of crud operation and $batch operation using node.js runtime.\n \"Java\" bar showcase implementation of User crud operation using java runtime."})
-				],
-			leftButton: new sap.m.Button({
-				text: "OK",
-				press: function () {
-					oDialog.close();
-					}
-				})
-				
-			});
-		
-	oDialog.open();
-	},200);
-
     var oModel = new sap.ui.model.json.JSONModel(data);
     this.getView().setModel(oModel,"lang");
 
