@@ -130,7 +130,7 @@
 						<sap.ui.commons.layout:cells>
 							<sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:content>
-									<sap.ui.table:Table id="userTbl" selectionMode="Single" title="{i18n&gt;USERS}" navigationMode="Paginator" rows="{path:'/User'}">
+									<sap.ui.table:Table id="userTbl" selectionMode="Single" title="{i18n&gt;USERS}" rows="{path:'/User'}">
 										<sap.ui.table:toolbar>
 											<sap.ui.commons:Toolbar id="tb1" design="Standard" standalone="false">
 												<sap.ui.commons:items>
