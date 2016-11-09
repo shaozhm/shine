@@ -21,7 +21,7 @@
                         <ToolbarSpacer/>
                   </Toolbar>
 
-			<sap.ui.commons.layout:MatrixLayout columns="0">
+			<sap.ui.commons.layout:MatrixLayout columns="0" class="addPadding" width="99%">
 				<sap.ui.commons.layout:rows>
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:cells>
