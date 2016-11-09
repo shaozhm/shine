@@ -23,7 +23,7 @@
                                         <artifactItem>
                                             <groupId>com.sap.ui5.dist</groupId>
                                              <artifactId>sapui5-dist</artifactId>
-                                            <version>1.38.10</version>
+                                            <version>1.40.12</version>
                                             <classifier>static</classifier>
                                             <type>zip</type>
                                             <excludes> 
@@ -43,7 +43,9 @@
                                                 resources/sap/ui/richtexteditor/**,  
                                                 resources/sap/ui/rta/**, 
                                                 resources/sap/ui/fl/**, 
-                                                resources/sap/ui/vbm/**
+                                                resources/sap/ui/vbm/**,
+												resources/sap/gantt/**,
+												resources/sap/rules/**
                                             </excludes> 
                                             <overWrite>true</overWrite>
                                             <outputDirectory>sapui5</outputDirectory>
