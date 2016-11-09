@@ -45,7 +45,7 @@ HELP_HEADER_3=Controller method
 
 HELP_ODATA_1=<div>Node.js : /user/xsodata/user.xsodata .<br/> java : /user/odata/v4/UserData </div>
 HELP_ODATA_2=<div>/user/xsodata/user.xsodata/</div>
-HELP_ODATA_3=<div>/user/xsodata/user.xsodata/</div>
+HELP_ODATA_3=<div>Node.js : /user/xsodata/user.xsodata .<br/> java : /user/odata/v4/UserData </div>
 HELP_ODATA_4=<div><a href='/sap/hana/ide/editor/index.html?startURI=sap/hana/democontent/epm/services/xmlParser.xsjs' target='_blank'>xmlParser.xsjs</a></div>
 
 HELP_PROCEDURE_1=<div>user-db/procedures/usersCreateMethod.procedure</div>

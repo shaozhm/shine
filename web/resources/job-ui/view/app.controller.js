@@ -40,10 +40,11 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 	
 	setDateTimeValue: function(){
 			this.getView().byId('startDateField').setDateValue(new Date());
-			// var tomorrow = new Date();
+			var tomorrow = new Date();
+			var newDate = new Date(tomorrow.getTime()+1*24*60*60*1000);
 			// tomorrow.setDate(tomorrow.getDate()+1);
 			// tomorrow.setTime(tomorrow.getTime());  
-			this.getView().byId('endDateField').setDateValue(new Date());
+			this.getView().byId('endDateField').setDateValue(newDate);
 			this.getView().byId('startTimeField').setDateValue(new Date());
 			this.getView().byId('endTimeField').setDateValue(new Date());
 	},

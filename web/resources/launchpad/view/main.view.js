@@ -86,7 +86,7 @@ sap.ui.jsview("view.main", {
         soTile.addStyleClass('soClass');
 
         var userTile = new sap.m.StandardTile({
-            icon: "sap-icon://database",
+            icon: "sap-icon://account",
             info: sap.app.i18n.getText("USER"),
             infoState: "None",
             removable: false,
@@ -95,7 +95,7 @@ sap.ui.jsview("view.main", {
             }
         });
         userTile.addStyleClass('templateTileClass');
-        userTile.addStyleClass('dgClass');
+        userTile.addStyleClass('ucClass');
         
         var oLink1 = new sap.ui.commons.Link({
 	    text: "Source code",
