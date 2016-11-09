@@ -23,3 +23,7 @@
 .buttonMarginLeft{
     margin-left:50px !important;   
 }
+.addPadding{
+	margin-left:10px !important;
+	margin-bottom:10px;
+}
