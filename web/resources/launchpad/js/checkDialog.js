@@ -206,7 +206,7 @@ sap.account.CheckDialog.prototype.open = function() {
 							if(applications.length!=undefined && applications.length>0){
 								var applicationFound = false;
 								for(var i=0;i<applications.length;i++){
-									if((applications[i].appid).includes("shine-admin")){
+									if((applications[i].appid).indexOf("shine-admin")>-1){
 										applicationFound = true;
 										var role = {roleTemplateAppId: applications[i].appid, roleTemplateName: "Admin", name: "Admin"};
 										if(roleTemplates != undefined){
@@ -354,7 +354,7 @@ sap.account.CheckDialog.prototype.open = function() {
 							var arrayDoShineAdminRoleExist = [];
 								for(var i=0;i<applications.length;i++){
 									var bool = false;
-									if((applications[i].appid).includes("shine-admin")){
+									if((applications[i].appid).indexOf("shine-admin")>-1){
 										if(roleTemplates != undefined){
 											if(roleTemplates.length!=undefined && roleTemplates.length>0)
 												for(var j=0;j<roleTemplates.length;j++){
@@ -367,7 +367,7 @@ sap.account.CheckDialog.prototype.open = function() {
 										
 										arrayDoShineAdminRoleExist[i] = bool;
 									}
-									if((applications[i].appid).includes("shine-admin") && !bool){
+									if((applications[i].appid).indexOf("shine-admin")>-1 && !bool){
 											break;
 									}
 								}
