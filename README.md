@@ -60,7 +60,7 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 
 - Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
 
-- Also change the < SCHEMA_NAME > to any schema name like SHINE__USER. 
+- Also change the < SCHEMA_NAME > to any schema name like SHINE_USER_SCHEMA. 
 
 -  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
 
