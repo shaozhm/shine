@@ -21,15 +21,22 @@
 					<plugin>
 						<artifactId>maven-dependency-plugin</artifactId>
 					</plugin>
-					<plugin>
-						<groupId>com.github.eirslett</groupId>
-						<artifactId>frontend-maven-plugin</artifactId>
-					</plugin>
-				
 					
 					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>
+							<execution>
+					                    <id>handle-frontend-maven-plugin-bug</id>
+					                    <phase>generate-sources</phase>
+					                    <goals>
+					                        <goal>run</goal>
+					                    </goals>
+					                    <configuration>
+					                        <tasks>
+					                            <move failonerror="false" verbose="true" file="${basedir}/node/package" tofile="${basedir}/node/npm"/>
+					                        </tasks>
+					                    </configuration>
+					                </execution>
 							<execution>
 								<id>test-nodejs</id>
 								<phase>test</phase>
@@ -51,6 +58,10 @@
 			   
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
 					</plugin>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
