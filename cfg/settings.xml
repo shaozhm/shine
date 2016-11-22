@@ -100,8 +100,8 @@
 			</activation>
 			<properties>
 				<!-- Properties that hold host and port of proxy if you have one. Otherwise set local.server.proxy.settings and browser.proxy.settings values empty -->
-				<local.server.proxy.settings>--httpProxyHost proxy --httpProxyPort 8080 --httpsProxyHost proxy --httpsProxyPort 8080</local.server.proxy.settings>
-				<browser.proxy.settings>-Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080</browser.proxy.settings>
+				<!--local.server.proxy.settings>--httpProxyHost proxy --httpProxyPort 8080 --httpsProxyHost proxy --httpsProxyPort 8080</local.server.proxy.settings>
+				<browser.proxy.settings>-Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080</browser.proxy.settings-->
 			</properties>
 		</profile>
 	</profiles>
