@@ -7,6 +7,19 @@
 	</parent>
 	<artifactId>sap-xsac-shine-core-js</artifactId>
 	<packaging>pom</packaging>
+	<properties>
+		<npm.registry>
+			http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.milestones.npm
+		</npm.registry>
+		<node.version>0.12.4</node.version>
+		<npm.version>2.11.3</npm.version>
+		<filter.metadata.version>1.2.0</filter.metadata.version>
+		<download.node.phase>none</download.node.phase>
+		<npm.install.phase>none</npm.install.phase>
+		<delete.cfignore.phase>none</delete.cfignore.phase>
+		<filter.metadata.phase>none</filter.metadata.phase>
+		<flatten.packages.phase>none</flatten.packages.phase>
+	</properties>
 	<profiles>
 		<profile>
 			<id>test</id>
@@ -86,6 +99,41 @@
 					<plugin>
 						<groupId>com.github.eirslett</groupId>
 						<artifactId>frontend-maven-plugin</artifactId>
+						<version>0.0.25</version>
+						<executions>
+						   <execution>
+						      <id>install-node-and-npm</id>
+						      <phase>${npm.install.phase}</phase>
+						      <goals>
+						         <goal>install-node-and-npm</goal>
+						      </goals>
+						      <configuration>
+						         <nodeVersion>v${node.version}</nodeVersion>
+						         <npmVersion>${npm.version}</npmVersion>
+						         <npmDownloadRoot>${npm.registry}/npm/-/</npmDownloadRoot>
+						      </configuration>
+						   </execution>
+						   <execution>
+						      <id>npm-install</id>
+						      <phase>${npm.install.phase}</phase>
+						      <goals>
+						         <goal>npm</goal>
+						      </goals>
+						      <configuration>
+						         <arguments>install --production --registry=${npm.registry}</arguments>
+						      </configuration>
+						   </execution>
+						   <execution>
+						      <id>npm-install-flatten-packages</id>
+						      <phase>${flatten.packages.phase}</phase>
+						      <goals>
+						         <goal>npm</goal>
+						      </goals>
+						      <configuration>
+						         <arguments>install flatten-packages --registry=${npm.registry}</arguments>
+						      </configuration>
+						   </execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
