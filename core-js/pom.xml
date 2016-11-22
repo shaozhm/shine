@@ -11,8 +11,8 @@
 		<npm.registry>
 			http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.milestones.npm
 		</npm.registry>
-		<node.version>0.12.4</node.version>
-		<npm.version>2.11.3</npm.version>
+		<node.version>4.5.0</node.version>
+		<npm.version>2.15.9</npm.version>
 		<filter.metadata.version>1.2.0</filter.metadata.version>
 		<download.node.phase>none</download.node.phase>
 		<npm.install.phase>none</npm.install.phase>
