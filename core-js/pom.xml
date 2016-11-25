@@ -46,7 +46,7 @@
 									
 										<echo>${basedir}</echo>
 										<exec dir="${basedir}"
-											  executable="${basedir}/node/npm.cmd"
+											  executable="${basedir}/node/npm"
 											  failonerror="true">
 											<arg value="test"/>
 										</exec>
