@@ -39,7 +39,7 @@
 		"mocha": "^3.1.0"
 	},
 	"scripts": {
-		"test": "'./node/node.exe' './node_modules/mocha/bin/mocha' test --config=../cfg/testConfig.json --timeout 5000 --reporter tap",
+		"test": "\"./node/node.exe\" \"./node_modules/mocha/bin/mocha\" test --config=\"../cfg/testConfig.json\" --timeout 5000 --reporter tap",
 		"start": "node app.js"
 	}
 }
