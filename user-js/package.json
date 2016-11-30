@@ -40,7 +40,7 @@
 	"name": "user-js",
 	"scripts": {
 		"start": "node server.js",
-		 "test": "mocha test --config=../cfg/testConfig.json --timeout 5000 --reporter tap"
+		 "test": "node\\node.exe node_modules\\mocha\\bin\\mocha test --config=..\\cfg\\testConfig.json --timeout 5000 --reporter tap"
 	},
 	"version": "1.1.15"
 }
