@@ -21,12 +21,22 @@
 					<plugin>
 						<artifactId>maven-dependency-plugin</artifactId>
 					</plugin>
-					<!--plugin>
+					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
-					</plugin-->
+					</plugin>
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>	
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+					</plugin>
+				
 					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>
+							
 							<execution>
 								<id>test-nodejs</id>
 								<phase>test</phase>
@@ -35,7 +45,7 @@
 									
 										<echo>${basedir}</echo>
 										<exec dir="${basedir}"
-											  executable="${basedir}\node\node_modules\npm\bin\npm.cmd"
+											  executable="${basedir}/node/npm.cmd"
 											  failonerror="true">
 											<arg value="test"/>
 										</exec>
@@ -49,14 +59,7 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>com.github.eirslett</groupId>
-						<artifactId>frontend-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-					</plugin>
+
 				</plugins>
 			</build>
 		</profile>
