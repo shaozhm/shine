@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<artifactId>app.module</artifactId>
-	<groupId>com.company.project</groupId>
-	<version>0.0.1-SNAPSHOT</version>
-
+	<parent>
+		<groupId>com.sap.refapps</groupId>
+		<artifactId>sap-xsac-shine-parent</artifactId>
+		<version>1.2.3</version>
+	</parent>
+	<artifactId>sap-xsac-shine-user-java</artifactId>
 	<packaging>war</packaging>
-	<name>Gateway Runtime Reference Content: Java Project for DevX</name>
 
 	<properties>
-		<javax.version>3.0.1</javax.version>
-		<sap.gateway.version>1.0.5</sap.gateway.version>
-		<!-- apache.olingo.version>4.3.0-sap-02</apache.olingo.version -->
-		<slf4j.version>1.7.7</slf4j.version>
-		<java-container-security.version>0.21.4</java-container-security.version>
-	</properties>
+	<javax.version>3.0.1</javax.version>
+    <sap.gateway.version>1.0.5</sap.gateway.version>
+    <slf4j.version>1.7.7</slf4j.version>
+    <java-container-security.version>0.21.4</java-container-security.version>
+  </properties>
 
 	<dependencies>
 		<dependency>
@@ -27,47 +25,47 @@
 		</dependency>
 
 		<!-- SAP Gateway Runtime, provides OData services -->
-		<dependency>
-			<groupId>com.sap.gateway.v4.rt</groupId>
-			<artifactId>com.sap.gateway.v4.rt.api</artifactId>
-			<version>${sap.gateway.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.gateway.v4.rt</groupId>
-			<artifactId>com.sap.gateway.v4.rt.core</artifactId>
-			<version>${sap.gateway.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.gateway.v4.rt</groupId>
-			<artifactId>com.sap.gateway.v4.rt.jdbc</artifactId>
-			<version>${sap.gateway.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.gateway.v4.rt</groupId>
-			<artifactId>com.sap.gateway.v4.rt.cds</artifactId>
-			<version>${sap.gateway.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.gateway.v4.rt</groupId>
-			<artifactId>com.sap.gateway.v4.rt.core.web</artifactId>
-			<version>${sap.gateway.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.gateway.v4.rt</groupId>
-			<artifactId>com.sap.gateway.v4.rt.xsa</artifactId>
-			<version>${sap.gateway.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.xs2.security</groupId>
-			<artifactId>java-container-security</artifactId>
-			<version>${java-container-security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>provided</scope>
-		</dependency>
+    <dependency>
+      <groupId>com.sap.gateway.v4.rt</groupId>
+      <artifactId>com.sap.gateway.v4.rt.api</artifactId>
+      <version>${sap.gateway.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sap.gateway.v4.rt</groupId>
+      <artifactId>com.sap.gateway.v4.rt.core</artifactId>
+      <version>${sap.gateway.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sap.gateway.v4.rt</groupId>
+      <artifactId>com.sap.gateway.v4.rt.jdbc</artifactId>
+      <version>${sap.gateway.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sap.gateway.v4.rt</groupId>
+      <artifactId>com.sap.gateway.v4.rt.cds</artifactId>
+      <version>${sap.gateway.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sap.gateway.v4.rt</groupId>
+      <artifactId>com.sap.gateway.v4.rt.core.web</artifactId>
+      <version>${sap.gateway.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sap.gateway.v4.rt</groupId>
+      <artifactId>com.sap.gateway.v4.rt.xsa</artifactId>
+      <version>${sap.gateway.version}</version>
+    </dependency>
+    <dependency>
+	<groupId>com.sap.xs2.security</groupId>
+	<artifactId>java-container-security</artifactId>
+	<version>${java-container-security.version}</version>
+</dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>provided</scope>
+    </dependency>
 
 	</dependencies>
 
