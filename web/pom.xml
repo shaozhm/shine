@@ -23,7 +23,7 @@
                                         <artifactItem>
                                             <groupId>com.sap.ui5.dist</groupId>
                                              <artifactId>sapui5-dist</artifactId>
-                                            <version>1.40.12</version>
+                                            <version>1.40.16</version>
                                             <classifier>static</classifier>
                                             <type>zip</type>
                                             <excludes> 
