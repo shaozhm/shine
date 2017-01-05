@@ -16,7 +16,6 @@ var host = apiConfig.host;
 var port = apiConfig.port_corejs;
 var url="https://"+host + ":" +port;
 //var should = require('should');
-
 //var url="https://mo-d5a730025.mo.sap.corp:51510";
 //console.log(url);
 chai.use(chaiHttp);
