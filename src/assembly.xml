@@ -26,48 +26,52 @@
             <directory>../web</directory>
             <outputDirectory>web</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+		<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-				<exclude>sapui5/</exclude>
+		<exclude>sapui5/</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
             <directory>../core-js</directory>
             <outputDirectory>core-js</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+		<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-				<exclude>.cfignore</exclude>
+		<exclude>.cfignore</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
             <directory>../user-js</directory>
             <outputDirectory>user-js</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+		<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-				<exclude>.cfignore</exclude>
+		<exclude>.cfignore</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
          <fileSet>
             <directory>../core-db</directory>
             <outputDirectory>core-db</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+		<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-				<exclude>.cfignore</exclude>
+		<exclude>.cfignore</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -78,6 +82,7 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+                <exclude>.che/</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -86,9 +91,10 @@
             <excludes>
                 <exclude>target/</exclude>
                 <exclude>.classpath</exclude>
-				<exclude>.project</exclude>
-				<exclude>.settings/</exclude>
-				<exclude>pom.xml</exclude>
+		<exclude>.project</exclude>
+		<exclude>.settings/</exclude>
+		<exclude>pom.xml</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
     </fileSets>

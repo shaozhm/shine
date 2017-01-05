@@ -1,6 +1,6 @@
 _schema-version: "3.1.0"
 ID: XSAC_SHINE
-version: 1.2.0
+version: 1.2.2
 
 modules:
   - name: shine-user-db
@@ -49,7 +49,6 @@ modules:
     properties: 
       HANA_SERVICE_NAME: shine-container
       UAA_SERVICE_NAME: shine-uaa
-
     requires:
       - name: shine-uaa
       - name: shine-container
@@ -62,7 +61,6 @@ modules:
       - name: user-js
         properties:
           url: "${default-url}"
-
     requires:
       - name: shine-uaa
       - name: shine-scheduler
@@ -108,6 +106,9 @@ modules:
           name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
+      - name: sapui5-provider
+        properties:
+           sapui5url: ~{url}
       - name: uaa 
         group: destinations 
         properties: 
@@ -133,7 +134,11 @@ resources:
     parameters: 
      service-name: shine-user-container
      config:
-       schema: SHINE_USER
+       schema: #to be specified in extension descriptor
+    parameters-metadata:
+      config:
+        overwritable: true
+
     
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
@@ -182,3 +187,9 @@ resources:
   - name: uaa 
     properties: 
       url: "${xs-auth-url}"
+   
+  - name: sapui5-provider
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV2:sapui5_fesv2
+      version: ">=1.38.10"

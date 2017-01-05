@@ -21,7 +21,7 @@
                         <ToolbarSpacer/>
                   </Toolbar>
 
-			<sap.ui.commons.layout:MatrixLayout columns="0">
+			<sap.ui.commons.layout:MatrixLayout columns="0" class="addPadding" width="99%">
 				<sap.ui.commons.layout:rows>
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:cells>
@@ -108,7 +108,7 @@
 									<sap.ui.layout:HorizontalLayout>
 										<sap.ui.layout:content>
 											<sap.ui.commons:Button id="batchButton" text="{i18n>CREATE_BATCH}" press="openBatchDialog"></sap.ui.commons:Button>
-											<sap.ui.commons:Button id="batchHelpButton" class="helpButton" text="?" data:tileDialog="1" press="openTileDialog"></sap.ui.commons:Button> 
+											<sap.ui.commons:Button id="batchHelpButton" class="helpButton" text="?" data:tileDialog="2" press="openTileDialog"></sap.ui.commons:Button> 
 											<!-- <sap.ui.commons:Button class="buttonMarginLeft" text="{i18n>CREATE_XML}" press="onUsrCreateXmlBtnPress"></sap.ui.commons:Button> 
 											<sap.ui.commons:Button class="helpButton" text="?" data:tileDialog="4" press="openTileDialog"></sap.ui.commons:Button> -->
 										</sap.ui.layout:content>
@@ -130,7 +130,7 @@
 						<sap.ui.commons.layout:cells>
 							<sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:content>
-									<sap.ui.table:Table id="userTbl" selectionMode="Single" title="{i18n&gt;USERS}" navigationMode="Paginator" rows="{path:'/User'}">
+									<sap.ui.table:Table id="userTbl" selectionMode="Single" title="{i18n&gt;USERS}" rows="{path:'/User'}">
 										<sap.ui.table:toolbar>
 											<sap.ui.commons:Toolbar id="tb1" design="Standard" standalone="false">
 												<sap.ui.commons:items>

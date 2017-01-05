@@ -7,7 +7,7 @@ module.exports = function() {
 	var app = express.Router();
 
 	var winston = require('winston');
-	var util = require(global.__base + "utils/jobs");
+	var util = require(global.__base + "utils/util");
 	var jobsc = require('sap-jobs-client');
 	var jsonParser = bodyParser.json();
 	
@@ -20,28 +20,37 @@ module.exports = function() {
 		logger.error('info' + req.body);
 		var jname = req.body.jobname;
 		if (!(util.isAlphaNumeric(jname))) {
-			throw new Error("Invalid Job Name");
+			// throw new Error("Invalid Job Name");
+			logger.error('inside job name error');
+			util.callback(new Error("Invalid Job Name"), res, "Invalid Job Name");
+			return;
 		}
 		var description = req.body.description;
 		if (!(util.isAlphaNumericAndSpace(description))) {
-			throw new Error("Invalid Job Description");
+			util.callback(new Error("Invalid Job Description"), res, "Invalid Job Description");
+			return;
 		}
 		var juser = req.body.user;
 		if (juser == null || juser === undefined || juser === "") {
-			throw new Error("Invalid Job User");
+			util.callback(new Error("Invalid User"), res, "Invalid User");
+			return;
 		}
 		var startTime = req.body.starttime;
 		if (!(util.isValidDate(startTime))) {
-			throw new Error("Invalid Start Time");
+			util.callback(new Error("Invalid Start Time"), res, "Invalid Start Time");
+			return;
 		}
 		var endTime = req.body.endtime;
 		if (!(util.isValidDate(endTime))) {
-			throw new Error("Invalid End Time");
+			util.callback(new Error("Invalid End Time"), res, "Invalid End Time");
+			return;
 		}
 		var cron = req.body.cron;
 		if (cron == null || cron === undefined || cron === "") {
-			throw new Error("Invalid Job User");
+			util.callback(new Error("Invalid CRON"), res, "Invalid CRON");
+			return;
 		}
+
 		var jobid;
 		var options = util.appconfig();
 		var appUrl = req.body.appurl;
@@ -78,7 +87,11 @@ module.exports = function() {
 		};
 		scheduler.createJob(scJob, function(error, body) {
 			if (error) {
-				util.callback(error, res, "Error registering new job ");
+				if((error.message).includes("xscron")){
+					util.callback(error, res, "Invalid xscron");
+				}else{
+					util.callback(error, res, "Error registering new job ");
+				}
 				logger.error('Error occured' + error);
 			} else {
 				jobid = body._id;

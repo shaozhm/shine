@@ -1,9 +1,9 @@
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <modelVersion>4.0.0</modelVersion>
 <parent>
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-	 <version>1.2.0</version>
+	 <version>1.2.2</version>
 </parent>
 <artifactId>sap-xsac-shine-web</artifactId>
 <packaging>pom</packaging>
@@ -11,7 +11,7 @@
         <plugins>
                     <plugin>
                         <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
+                      <!--  <executions>
                             <execution>
                                 <id>unpack-sapui5</id>
                                 <phase>package</phase>
@@ -23,7 +23,7 @@
                                         <artifactItem>
                                             <groupId>com.sap.ui5.dist</groupId>
                                              <artifactId>sapui5-dist</artifactId>
-                                            <version>1.38.3</version>
+                                            <version>1.40.12</version>
                                             <classifier>static</classifier>
                                             <type>zip</type>
                                             <excludes> 
@@ -43,7 +43,9 @@
                                                 resources/sap/ui/richtexteditor/**,  
                                                 resources/sap/ui/rta/**, 
                                                 resources/sap/ui/fl/**, 
-                                                resources/sap/ui/vbm/**
+                                                resources/sap/ui/vbm/**,
+												resources/sap/gantt/**,
+												resources/sap/rules/**
                                             </excludes> 
                                             <overWrite>true</overWrite>
                                             <outputDirectory>sapui5</outputDirectory>
@@ -51,7 +53,7 @@
                                     </artifactItems>
                                 </configuration>
                             </execution>
-                        </executions>
+                        </executions>-->
                     </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>

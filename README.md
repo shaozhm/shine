@@ -1,5 +1,5 @@
-SHINE XSA 1.1.15
-================
+SHINE XSA 1.2.2
+===============
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
 
@@ -11,7 +11,6 @@ The application consists of the following packages:
 
 
 - user-db - This package contains the artifacts contains the db artificats for User Creation 
-
 
 - user-js - This package contains the User CRUD implementation in nodejs using xsodata libraries.
 
@@ -33,9 +32,6 @@ If not installed,please download the latest version from milestone [here](http:/
 - XSAC_SERVICES   
 If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/).
 
-- SAP_PORTAL_SERVICES
-If not installed, please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases.xmake/com/sap/xs/sap/portal/services/sap-portal-services/) or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/sap/portal/services/sap-portal-services/)
-
 ##Installation via Product Installer 
 ###Create a user for Custom User Provided Services creation
 
@@ -52,14 +48,16 @@ Open SQL console of the HANA system in the SAP web development workbench for SAP
 After user creation login once with this user to the HANA system to change the initial password.   
 
 
-
-Below are three ways to install SHINE:
+Below are different ways to install SHINE:
 
 ###Install from HANA Media
-SHINE can be found in the XSA_CONT of HANA Media
-- Open **sap-xsac-shine-1.1.xx.mtaext** file.
+SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.2.0-XSACSHINE02_0.mtaext
+
+- Open **sap-xsac-shine-1.2.xx.mtaext** file.
 
 - Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
+
+- Also change the < SCHEMA_NAME > to any schema name like SHINE__USER. 
 
 -  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
 
@@ -67,39 +65,12 @@ SHINE can be found in the XSA_CONT of HANA Media
 
      `xs target –o <orgname> -s <customer spacename>`
      
-- Install shine by running the following command from the /assembly/target folder.
+- Install shine by running the following command 
 
 
-     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.1.xx.mtaext`
-
-###Build the Source code and Install
+     `xs install XSACSHINE02_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.2.xx.mtaext`
 
 
-
-
-- Navigate to the shine folder in the system which contains the source code.
-
-
-
-- Execute the following command to run a maven build
-
-    `mvn clean install -s cfg/setting.xml`
-
-- Once the maven build is completed successfully,navigate to the assembly/target folder.
-
-- Open **shine.mtaext** file.
-
-- Change the Username and Password to the < USERNAME > and < PASSWORD > of the user created in the previous step.(Create a user for Custom User Provided Services creation)
--  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
-
-    `xs login -u <USERNAME> -p <PASSWORD>`   
-
-     `xs target –o <orgname> -s <customer spacename>`
-
-- Install shine by running the following command from the /assembly/target folder.
-
-
-     `xs install XSACSHINE01_XX.ZIP -e shine.mtaext`
 
 ###Install from nexus
 - Download the latest SHINE SCA from one of the following two nexus repositories:
@@ -117,8 +88,42 @@ SHINE can be found in the XSA_CONT of HANA Media
      
 - Navigate to the folder which contains the SCA and run the following command to install SHINE
 
-     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.1.xx.mtaext `
+     `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.2.xx.mtaext `
 
+##Importing SHINE from GitHub to SAP WebIDE
+
+- Launch SAP Web IDE for SAP HANA.
+
+- Navigate to File->Git->Clone Repository
+- Enter the URL of the repository as [https://github.com/SAP/hana-shine-xsa.git](https://github.com/SAP/hana-shine-xsa.git)
+
+- Choose OK.
+- Delete package.json file from the packages core-db and user-db
+
+- Create a Custom User Provided Services(CUPS) for SYS and SYS_BI schemas
+
+##
+    xs cups CROSS_SCHEMA_SYS -p "{\"host\":\"<hostname>\",\"port\":\"3##<15|13>\",\"user\":\"SYSTEM\",\"password\":\"<Password>\",\"driver\":\"com.sap.db.jdbc.Driver\",\"tags\":[\"hana\"] , \"schema\" : \"SYS\" }"
+
+   
+
+##
+
+     
+    xs cups CROSS_SCHEMA_SYS_BI -p "{\"host\":\"<hostname>\",\"port\":\"3##<15|13>\",\"user\":\"SYSTEM\",\"password\":\"<Password>\",\"driver\":\"com.sap.db.jdbc.Driver\",\"tags\":[\"hana\"] , \"schema\" : \"_SYS_BI\" }"
+
+‘##’ corresponds to instance number.
+
+- Create a service for the UAA by executing the command in CLI of XSA system:
+
+    `xs create-service xsuaa default shine-uaa -c xs-security.json`
+
+- Create Job Scheduler Service by executing the command in CLI of XSA system:
+  
+    `xs cs jobscheduler default shine-scheduler`
+
+- After all these services are created, build all packages like core-db, user-db, user-js etc.
+For more information, see Web IDE for SAP HANA - Installation and Upgrade Guide.
 
 ##Deploying SHINE on CF
 
@@ -140,8 +145,6 @@ SHINE can be found in the XSA_CONT of HANA Media
 
 This step is optional and required only if you want to deploy app via cf push 
  
-
-
     cf create-service hana hdi-shared shine-container
 
 #
@@ -153,10 +156,5 @@ This step is optional and required only if you want to deploy app via cf push
 ```
 cf create-service xsuaa default shine-uaa -c xs-security.json
 ```
-
-
-
-
-
 
 

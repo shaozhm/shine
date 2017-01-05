@@ -201,7 +201,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                     '/reset/notes',
                     '/reset/attachments'
                ];
-               oController.reloadData(urls, oController);
+               oController.reloadData(urls, oController,"cb1");
                               
            } else if (oModel.getProperty("/cb2")) {              
                var urls = [
@@ -210,7 +210,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                     '/reset/poheader',
                     '/reset/poitem',
                ];
-               oController.reloadData(urls, oController);
+               oController.reloadData(urls, oController,"cb2");
                
            } else if (oModel.getProperty("/cb2a")) {
         	   oModel.setProperty('/percentValue',0);
@@ -285,7 +285,8 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
-                            onError(jqXHR.status, oBundle.getText("cb1"));
+                            onError(jqXHR.status, oBundle.getText("cb4"));
+                            i = soRequired+1;
                         },
                         async: false
                     });
@@ -314,7 +315,8 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
-                            onError(jqXHR.status, oBundle.getText("cb1"));
+                            onError(jqXHR.status, oBundle.getText("cb4"));
+                            j = poRequired +1;
                         },
                         async: false
                     });
@@ -340,7 +342,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
        }
    },
    
-   reloadData: function(urls, oController) {
+   reloadData: function(urls, oController,msg){
         var oModel = sap.ui.getCore().getModel();
         oModel.setProperty('/percentValue', 0);
         oModel.setProperty('/displayValue', "");
@@ -365,7 +367,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
                    }
                },
                error: function(jqXHR, textStatus, errorThrown) {
-                   onError(jqXHR.status, oBundle.getText("cb1"));
+                   onError(jqXHR.status, oBundle.getText(msg));
                },
                async: false
            });

@@ -10,7 +10,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		//oModel.setDefaultBindingMode("TwoWay");
 		var oTable = this.byId("poTable");
 		
-	//	oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/visibleRows));
+	
 		
 	
 		oTable.getBinding("rows").attachChange(function() {
@@ -223,7 +223,11 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			path: "/PO_WORKLIST",
 			sorter: sort1
 		});
-
+			var oPaginator=this.byId("tablePaginator");
+		var oTable= this.byId("poTable");
+		var visibleRows = oTable.getVisibleRowCount();             
+		oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/parseInt(visibleRows)));
+		oPaginator.setCurrentPage(1);
 		this.clearUIFields();
 	},
 
@@ -393,6 +397,11 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			columns[i].setFilterValue('');
 			columns[i].setFiltered(false);
 		}
+			var oPaginator=this.byId("tablePaginator");
+		var oTable= this.byId("poTable");
+		var visibleRows = oTable.getVisibleRowCount();             
+		oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/parseInt(visibleRows)));
+		oPaginator.setCurrentPage(1);
 	},
 
 	/* Called when binding of the model is modified.
@@ -400,14 +409,20 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 	 */
 	onBindingChange: function(oController) {
 		var view = oController.getView();
-		var iNumberOfRows = view.oPHTable.getBinding("rows").iLength;
-		view.oPHTable.setTitle(oBundle.getText("pos", [numericSimpleFormatter(iNumberOfRows)]));
+		var oPHTable=view.byId("poTable");
+		var iNumberOfRows = oPHTable.getBinding("rows").iLength;
+		oPHTable.setTitle(oBundle.getText("pos", [numericSimpleFormatter(iNumberOfRows)]));
 	},
 
 	onRowSelectionChange: function(oEvent) {
 		this.getOwnerComponent().fireEvent("poTableRowSelectionChange", {
 			origin: oEvent
 		});
+		var	oTable = this.byId("poTable");
+		var rowNum = oTable.getSelectedIndex();
+		var visibleRows=oTable.getVisibleRowCount();
+		this.byId("tablePaginator").setCurrentPage(Math.ceil( parseInt(rowNum)/parseInt(visibleRows))); 
+		
 	},
 
 	openTileDialog: function(oEvent) {
@@ -432,8 +447,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		oPaginator.setNumberOfPages(Math.ceil( parseInt(oTable.getBinding("rows").iLength)/parseInt(visibleRows)));
 		
 	
-		// var oCtrl = sap.ui.getCore.byId("quantityTextField");
-		//   oCtrl.$().find('input').context.type = 'number';
+		
 	},
 	onPageChange: function(oEvent){
 		var oTable = this.byId("poTable");

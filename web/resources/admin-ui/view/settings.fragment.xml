@@ -38,7 +38,7 @@
 				</InputListItem>
 				<InputListItem label="{i18n>lblSO}">
 					<Input id="SOVal" type="Number" description="{/times}"
-						fieldWidth="25%" valueStateText="{i18n>confirm_validSO}"
+						fieldWidth="24.1%" valueStateText="{i18n>confirm_validSO}"
 						value="{ path: '/SOVal', type: 'sap.ui.model.type.Integer',
 					constraints : {
         				minimum: 0,

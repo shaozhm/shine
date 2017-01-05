@@ -41,36 +41,28 @@ app.use(passport.initialize());
  * provides a db property containing the connection
  * object to the request object of all routes.
  */
+ 
+
+ 
+ try{
+	 var hanaOptions = xsenv.getServices({hana: process.env.HANA_SERVICE_NAME || 
+		 { tag: 'hana' }
+	}).hana;
+ }catch(err){
+ 	console.error("Error in getting hana service details"+err);
+ }
+
+
+
 app.use('/',
 	passport.authenticate('JWT', {
 		session: false
 	}),
-	hdbext.middleware(),
+	hdbext.middleware(hanaOptions),
 	routes.datagen,
 	routes.get,
 	routes.reset);
-	// var options = xsjs.extend({
-	// 		//	anonymous : true, // remove to authenticate calls
-	// 		redirectUrl: "/index.xsjs"
-	// 	});
-
-	// 	// configure HANA
-	// 	try {
-	// 		options = xsjs.extend(options, xsenv.getServices({
-	// 			hana: {
-	// 				tag: "hana"
-	// 			}
-	// 		}));
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-
-	// 	// configure UAA
-	// 	try {
-	// 		options = xsjs.extend(options, xsenv.getServices({  uaa:{name:process.env.UAA_SERVICE_NAME} }));
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
+	
 		var options = {// anonymous : true, // remove to authenticate calls
 			redirectUrl: "/index.xsjs"
 		};

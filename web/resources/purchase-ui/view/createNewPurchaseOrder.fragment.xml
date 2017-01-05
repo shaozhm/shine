@@ -1,5 +1,5 @@
-<Dialog xmlns:sap.ui.core="sap.ui.core" xmlns="sap.ui.commons" xmlns:sap.ui.commons.layout="sap.ui.commons.layout" id="dlgpocrn" showHeader="true" title="Create New Purchase Orders" width="50%" height="20%" modal="true">
-		<sap.ui.commons.layout:HorizontalLayout width="100%">
+<Dialog xmlns:sap.ui.core="sap.ui.core" xmlns="sap.ui.commons" xmlns:sap.ui.commons.layout="sap.ui.commons.layout" id="dlgpocrn" showHeader="true" title="Create New Purchase Orders" width="59%" height="22%" modal="true">
+		<sap.ui.commons.layout:HorizontalLayout width="50%">
 			<Label design="Bold" id="businessPartner" text="Business Partner:" class="createNewPurchaseOrderLabelSpacing" labelFor="businessPartnerDropDown"/>
 			<ComboBox design="Bold" id="businessPartnerDropDown" required="true" tooltip="{i18n&gt;bpToolTip}" items="{path:'bspartners&gt;/BusinessPartners',sorter:{path:'bspartners&gt;COMPANYNAME'}}" displaySecondaryValues="true" change="liveChangeNewPO">
 				<items> 

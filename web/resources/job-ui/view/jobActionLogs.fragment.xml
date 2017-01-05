@@ -4,7 +4,7 @@
 		<sap.ui.commons:Button enabled="true" id="btnRefreshJobActivity" press="onButtonPress" text="{i18n&gt;refresActivityTable}"/>
 	</l:HorizontalLayout>
 	<l:VerticalLayout>
-		 <sap.ui.table:Table id="jobActionsTable" visibleRowCount="10" selectionMode="Single" selectionBehavior="Row" navigationMode="Paginator" rows="{/JOBACTIONLOGS}" rowSelectionChange="onRowSelectionChange" width="50%">
+		 <sap.ui.table:Table id="jobActionsTable" visibleRowCount="10" selectionMode="Single" selectionBehavior="Row"  rows="{/JOBACTIONLOGS}" rowSelectionChange="onRowSelectionChange" width="50%">
         <sap.ui.table:columns>
             <sap.ui.table:Column sortProperty="Id" filterProperty="Id" filterOperator="EQ">
                 <sap.ui.table:label>

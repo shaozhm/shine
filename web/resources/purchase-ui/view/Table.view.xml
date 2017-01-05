@@ -1,5 +1,5 @@
-<sap.ui.core.mvc:View xmlns:sap.ui.table="sap.ui.table" xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="shine.democontent.epm.poworklist.view.Table">
-    <sap.ui.table:Table id="poTable" visibleRowCount="6" selectionMode="Single" selectionBehavior="Row" navigationMode="Paginator" rows="{/PO_WORKLIST}" rowSelectionChange="onRowSelectionChange">
+<sap.ui.core.mvc:View xmlns:sap.ui.table="sap.ui.table" xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.ui.layout="sap.ui.layout" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="shine.democontent.epm.poworklist.view.Table">
+    <sap.ui.table:Table id="poTable" visibleRowCount="6" selectionMode="Single" selectionBehavior="Row"  rows="{/PO_WORKLIST}" rowSelectionChange="onRowSelectionChange">
         <sap.ui.table:toolbar>
             <sap.ui.commons:Toolbar id="tb1" design="Standard" standalone="false">
                 <sap.ui.commons:items>
@@ -115,15 +115,9 @@
         </sap.ui.table:columns>
          <sap.ui.table:footer>
             <sap.ui.commons:Toolbar id="tb2" design="Standard" standalone="false" width="100%">
-                	<sap.ui.commons:Label width="33%"/>
-                    <sap.ui.commons:Paginator 
-							id='tablePaginator'
-							numberOfPages="5"
-							page="onPageChange" 
-							class="centerAllign"
-						
-							/>
-                    <sap.ui.commons:Label width="33%"/>
+            	
+                <sap.ui.commons:Paginator id="tablePaginator" numberOfPages="5" page="onPageChange" class="centerAllign"/>
+                   
             </sap.ui.commons:Toolbar>
         </sap.ui.table:footer>
     </sap.ui.table:Table>

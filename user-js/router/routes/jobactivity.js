@@ -5,13 +5,14 @@ var express = require("express");
 module.exports = function() {
 	var app = express.Router();
 	var winston = require('winston');
-	var util = require(global.__base + "utils/jobs");
-
+	var util = require(global.__base + "utils/util");
+	var bodyParser = require('body-parser');
+	var jsonParser = bodyParser.json();
 	var logger;
 
 	winston.level = process.env.winston_level || 'error';
 	// method will insert Job Data into Job table
-	app.post('/create', function(req, res) {
+	app.post('/create',jsonParser,function(req, res) {
 		logger = req.loggingContext.getLogger("/jobactivity/create");
 		var client = req.db;
 		var query = 'select "jobId".NEXTVAL as nJobId from "DUMMY"';

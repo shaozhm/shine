@@ -1,6 +1,6 @@
 _schema-version: "2.0.0"
 ID: com.sap.refapps.shine
-version: 1.2.0
+version: 1.2.2
 
 modules:
   - name: shine-web
@@ -27,9 +27,12 @@ modules:
       - name: user-java
         group: destinations
         properties:
-          name: user-java
+          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
+      - name: sapui5-provider
+        properties:
+           sapui5url: ~{url}
       - name: uaa 
         group: destinations 
         properties: 
@@ -51,7 +54,7 @@ modules:
         properties:
           url: "${default-url}"
     properties: 
-      HANA_SERVICE_NAME: shine-container
+      
       UAA_SERVICE_NAME: shine-uaa
     requires:
       - name: shine-uaa
@@ -71,9 +74,9 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
       
-  - name: user-java
-    type: java.tomee
-    path: user-java/target/user-java-1.1.13.war
+  - name: shine-user-java
+    type: java
+    path: user-java
     provides: 
       - name: user-java
         properties:
@@ -83,27 +86,72 @@ modules:
       - name: shine-scheduler
       - name: shine-user-db
       - name: shine-user-container
+        properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+               {"service_name_for_DefaultDB" : "~{user-container-name}"}]'
       
   - name: shine-core-db
     type: hdb
     path: core-db
     requires:
       - name: shine-container
+        properties:
+          TARGET_CONTAINER: ~{container-name}
+          
+      - name: CrossSchemaSys
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-sys-service
+          service: ~{sys-service-name}
+         
+      - name: CrossSchemaSysBi
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-sys-bi-service
+          service: ~{sys-bi-service-name}
+      
+      - name: shine-user-container
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-user-service
+          service: ~{user-container-name} 
       
   - name: shine-user-db
     type: hdb
     path: user-db
     requires:
      - name: shine-user-container
+       properties:
+        TARGET_CONTAINER: ~{user-container-name}
 
 resources:
   - name: shine-container
     type: com.sap.xs.hdi-container
     properties:
-      TARGET_CONTAINER: ~{service-name} 
+      container-name: ${service-name}
          
   - name: shine-user-container
     type: com.sap.xs.hdi-container
+    properties:
+      user-container-name: ${service-name}
+    parameters: 
+     service-name: DEVX_TECH_USER-w50cwklpt5n0b95t-shine-shine-user-container
+     config:
+       schema: SHINE_USER
+       
+  - name: CrossSchemaSysBi
+    type: org.cloudfoundry.existing-service
+    parameters:
+     service-name: CROSS_SCHEMA_SYS_BI
+    properties:
+     sys-bi-service-name: ${service-name} 
+     
+  - name: CrossSchemaSys
+    type: org.cloudfoundry.existing-service
+    parameters:
+     service-name: CROSS_SCHEMA_SYS
+    properties:
+     sys-service-name: ${service-name} 
 
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
@@ -115,5 +163,8 @@ resources:
    
   - name: uaa 
     properties: 
-      url: "https://mo-f5008e5dd.mo.sap.corp:30032/uaa-security"
-
+      url: "https://mo-e219a3096.mo.sap.corp:30032/uaa-security"
+      
+  - name: sapui5-provider
+    properties:
+      url: "https://sapui5.hana.ondemand.com"

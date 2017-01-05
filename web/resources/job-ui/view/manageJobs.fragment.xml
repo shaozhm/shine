@@ -94,7 +94,7 @@
 		</l:MatrixLayoutRow>
 		<l:MatrixLayoutRow>
 			<l:MatrixLayoutCell colSpan="2">
-				<sap.ui.table:Table height="80%" id="manageJobsTable" navigationMode="Paginator" rowSelectionChange="onRowSelectionChange" rows="{/JOBS}" selectionBehavior="Row" selectionMode="Single" visibleRowCount="6" width="100%">
+				<sap.ui.table:Table height="80%" id="manageJobsTable" rowSelectionChange="onRowSelectionChange" rows="{/JOBS}" selectionBehavior="Row" selectionMode="Single" visibleRowCount="6" width="100%">
 					<sap.ui.table:columns>
 						<sap.ui.table:Column filterProperty="JOBID" sortProperty="JOBID" width="125px">
 							<sap.ui.table:label>

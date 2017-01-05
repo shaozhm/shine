@@ -6,7 +6,6 @@ module.exports = {
 		var xssec = require('sap-xssec');
 		var express = require('express');
 		var passport = require('passport');
-		//var sap_hdb_conn = require('sap-hdb-connection');
 		var hdbext = require('sap-hdbext'); 
 		var routes = require('./routes/index');
 		var winston = require('winston');
@@ -36,9 +35,13 @@ module.exports = {
 		 * provides a db property containing the connection
 		 * object to the request object of all routes.
 		 */
+		 var hanaOptions = xsenv.getServices({	
+			hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+		}).hana;
+
 		app.use('/',
 		    passport.authenticate('JWT', {session: false}),
-		    hdbext.middleware(),
+		    hdbext.middleware(hanaOptions),
 		    routes.datagen,
 		    routes.get,
 		    routes.reset);
@@ -53,28 +56,6 @@ module.exports = {
 	initXSJS: function(app) {
 		var xsjs = require("sap-xsjs");
 		var xsenv = require("sap-xsenv");
-		// var options = xsjs.extend({
-		// 	//	anonymous : true, // remove to authenticate calls
-		// 	redirectUrl: "/index.xsjs"
-		// });
-
-		// // configure HANA
-		// try {
-		// 	options = xsjs.extend(options, xsenv.getServices({
-		// 		hana: {
-		// 			tag: "hana"
-		// 		}
-		// 	}));
-		// } catch (err) {
-		// 	console.error(err);
-		// }
-
-		// // configure UAA
-		// try {
-		// 	options = xsjs.extend(options, xsenv.getServices({  uaa:{name:process.env.UAA_SERVICE_NAME} }));
-		// } catch (err) {
-		// 	console.error(err);
-		// }
 			var options = {// anonymous : true, // remove to authenticate calls
 			redirectUrl: "/index.xsjs"
 		};

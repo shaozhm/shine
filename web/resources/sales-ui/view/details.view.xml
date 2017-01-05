@@ -1,20 +1,12 @@
 <sap.ui.core.mvc:View xmlns:sap.ui.ux3="sap.ui.ux3" xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.table="sap.ui.table" xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.viz.ui5="sap.viz.ui5" xmlns:sap.viz.ui5.data="sap.viz.ui5.data" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:sap.viz.ui5.types="sap.viz.ui5.types" xmlns:sap.ui.commons="sap.ui.commons" controllerName="sap.hana.democontent.epm.salesdashboard.view.details">
         <sap.ui.commons.layout:MatrixLayout>
             <sap.ui.commons.layout:rows>
-                <!--<sap.ui.commons.layout:MatrixLayoutRow>-->
-                <!--    <sap.ui.commons.layout:cells>-->
-                <!--        <sap.ui.commons.layout:MatrixLayoutCell>-->
-                <!--            <sap.ui.commons.layout:content>-->
-                <!--                <sap.ui.core.mvc:JSView id="search_view" viewName="sap.hana.democontent.epm.salesdashboard.view.Search"></sap.ui.core.mvc:JSView>-->
-                <!--            </sap.ui.commons.layout:content>-->
-                <!--        </sap.ui.commons.layout:MatrixLayoutCell>-->
-                <!--    </sap.ui.commons.layout:cells>-->
-                <!--</sap.ui.commons.layout:MatrixLayoutRow>-->
+                
                 <sap.ui.commons.layout:MatrixLayoutRow>
                     <sap.ui.commons.layout:cells>
                         <sap.ui.commons.layout:MatrixLayoutCell>
                             <sap.ui.commons.layout:content>
-                                <sap.ui.table:Table id="soHeader" visibleRowCount="10" selectionMode="Single" selectionBehavior="Row" navigationMode="Paginator" rowSelectionChange="onRowSelect">
+                                <sap.ui.table:Table id="soHeader" visibleRowCount="10" selectionMode="Single" selectionBehavior="Row"  rowSelectionChange="onRowSelect">
                                     <sap.ui.table:toolbar>
                                         <sap.ui.commons:Toolbar id="tb1" design="Standard" standalone="false">
                                             <sap.ui.commons:items>
@@ -84,6 +76,16 @@
                                             </sap.ui.table:template>
                                         </sap.ui.table:Column>
                                     </sap.ui.table:columns>
+	                                     <sap.ui.table:footer>
+					        <sap.ui.commons:Toolbar id="tb2" design="Standard" standalone="false" width="100%">
+										        	
+					            <sap.ui.commons:Paginator
+					            	id="tablePaginator"  
+					            	page="onPageChange" 
+					            	class="centerAllign"/>
+										            
+					        </sap.ui.commons:Toolbar>
+					    </sap.ui.table:footer>
                                 </sap.ui.table:Table>
                                 
                             </sap.ui.commons.layout:content>
@@ -94,7 +96,7 @@
                     <sap.ui.commons.layout:cells>
                         <sap.ui.commons.layout:MatrixLayoutCell>
                             <sap.ui.commons.layout:content>
-                                <sap.ui.table:Table id="soItemTable" visibleRowCount="8" selectionMode="None" navigationMode="Paginator" title="{i18n&gt;SALES_ORDER_ITEMS}">
+                                <sap.ui.table:Table id="soItemTable" visibleRowCount="8" selectionMode="None"  title="{i18n&gt;SALES_ORDER_ITEMS}">
                                     <sap.ui.table:columns>
                                         <sap.ui.table:Column sortProperty="SALESORDERITEM" filterProperty="SALESORDERITEM" filterOperator="EQ">
                                             <sap.ui.table:label>
