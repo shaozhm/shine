@@ -22,7 +22,7 @@ var url="https://"+host + ":" +port;
 chai.use(chaiHttp);
 var salesorderId;
 
- describe('DATA GENERATOR', function() {
+ /*describe('DATA GENERATOR', function() {
      /* it('Create User - POST', function(done) {
         chai.request(url)
             .post("/user/xsodata/user.xsodata/Users")
@@ -43,7 +43,7 @@ var salesorderId;
                 //res.body.length.should.be.eql(0);
              return  done();
             });
-      });*/
+      });* /
       it('Get Tablesize - GET', function(done) {
         chai.request(url)
             .get("/get/tablesize")
@@ -74,7 +74,7 @@ var salesorderId;
                 //res.body.length.should.be.eql(0);
              return  done();
             });
-      });*/
+      });* /
       
       it('Replicate Sales - GET', function(done) {
         chai.request(url)
@@ -91,6 +91,6 @@ var salesorderId;
             });
       });
       
-  });
+  });*/
 
 
