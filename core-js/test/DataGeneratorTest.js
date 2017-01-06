@@ -1,4 +1,5 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
