@@ -126,6 +126,7 @@ modules:
        register-service-url: true 
        service-name: web 
        service-url: "${default-url}"
+	   port: 51520
         
 resources:
   - name: shine-container
