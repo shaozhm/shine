@@ -1,6 +1,6 @@
 _schema-version: "2.0.0"
 ID: com.sap.refapps.shine
-version: 1.2.5
+version: 1.2.2
 
 modules:
   - name: shine-web
@@ -27,7 +27,7 @@ modules:
       - name: user-java
         group: destinations
         properties:
-          name: user-java
+          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
@@ -51,7 +51,7 @@ modules:
         properties:
           url: "${default-url}"
     properties: 
-      HANA_SERVICE_NAME: shine-container
+      
       UAA_SERVICE_NAME: shine-uaa
     requires:
       - name: shine-uaa
@@ -71,7 +71,7 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
       
-  - name: user-java
+  - name: shine-user-java
     type: java
     path: user-java
     provides: 
@@ -92,6 +92,25 @@ modules:
     path: core-db
     requires:
       - name: shine-container
+        properties:
+          TARGET_CONTAINER: ~{container-name}
+          
+               
+      - name: CrossSchemaSysBi
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-sys-bi-service
+          service: ~{sys-bi-service-name}
+          
+     
+          
+    
+      
+      - name: shine-user-container
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-user-service
+          service: ~{user-container-name} 
       
   - name: shine-user-db
     type: hdb
@@ -100,21 +119,33 @@ modules:
      - name: shine-user-container
        properties:
         TARGET_CONTAINER: ~{user-container-name}
-       
+
 resources:
   - name: shine-container
     type: com.sap.xs.hdi-container
     properties:
-      TARGET_CONTAINER: ~{service-name} 
+      container-name: ${service-name}
          
   - name: shine-user-container
     type: com.sap.xs.hdi-container
-	properties:
+    properties:
       user-container-name: ${service-name}
     parameters: 
-     service-name: DEVX_TECH_USER-et8mrlgocu9yi8c5-shine-shine-user-container
+     service-name: DEVX_TECH_USER-gm8mj0k5ze4o1vbo-shine-shine-user-container
      config:
        schema: SHINE_USER
+       
+  - name: CrossSchemaSysBi
+    type: org.cloudfoundry.existing-service
+    parameters:
+     service-name: CROSS_SCHEMA_SYS_BI
+    properties:
+     sys-bi-service-name: ${service-name} 
+     
+       
+    
+     
+ 
 
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
@@ -126,5 +157,4 @@ resources:
    
   - name: uaa 
     properties: 
-      url: "https://mo-f5008e5dd.mo.sap.corp:30032/uaa-security"
-
+      url: "https://mo-adb888ab3.mo.sap.corp:30032/uaa-security"
