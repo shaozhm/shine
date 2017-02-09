@@ -21,12 +21,7 @@ modules:
         properties:
           TARGET_CONTAINER: ~{container-name}
 
-      - name: CrossSchemaSys
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sys-service
-          service: ~{sys-service-name}
- 
+       
       - name: CrossSchemaSysBi
         group: SERVICE_REPLACEMENTS
         properties:
@@ -140,24 +135,7 @@ resources:
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
 
-  - name: CrossSchemaSys
-    type: org.cloudfoundry.user-provided-service
-    parameters: 
-      service-name: CROSS_SCHEMA_SYS
-      config: 
-        host: # to be specified in extension descriptor
-        port: # to be specified in extension descriptor
-        user: # to be specified in extension descriptor
-        password: # to be specified in extension descriptor
-        driver: # to be specified in extension descriptor
-        tags: # to be specified in extension descriptor
-        schema: # to be specified in extension descriptor
-    properties:
-     sys-service-name: ${service-name}
-    parameters-metadata:
-      config:
-        overwritable: true
-
+  
   - name: CrossSchemaSysBi
     type: org.cloudfoundry.user-provided-service
     parameters: 
