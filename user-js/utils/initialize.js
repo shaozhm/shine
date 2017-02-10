@@ -24,7 +24,7 @@ module.exports = {
 		// app.use(bodyParser.json());
 		app.use(passport.initialize());
 		var hanaOptions = xsenv.getServices({	
-			hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+			hana: { tag: 'hana' }
 		}).hana;
 
 		app.use(
