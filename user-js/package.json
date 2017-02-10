@@ -38,7 +38,7 @@
   "main": "server.js",
   "name": "user-js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
 		 "test": "node\\node.exe node_modules\\mocha\\bin\\mocha test --config=..\\test\\cfg\\testConfig.json --timeout 5000 --reporter tap"
 	},
   "version": "1.2.2"
