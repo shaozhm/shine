@@ -61,6 +61,8 @@ modules:
   - name: shine-user-js
     type: nodejs
     path: user-js
+    properties: 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
     provides: 
       - name: user-js
         properties:
@@ -95,12 +97,7 @@ modules:
         properties:
           TARGET_CONTAINER: ~{container-name}
           
-               
-      - name: CrossSchemaSysBi
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sys-bi-service
-          service: ~{sys-bi-service-name}
+     
           
      
           
@@ -131,18 +128,12 @@ resources:
     properties:
       user-container-name: ${service-name}
     parameters: 
-     service-name: DEVX_TECH_USER-gm8mj0k5ze4o1vbo-shine-shine-user-container
+     service-name: DEVX_TECH_USER-jzcyz8jkre0kti6g-shine-shine-user-container
      config:
        schema: SHINE_USER
        
-  - name: CrossSchemaSysBi
-    type: org.cloudfoundry.existing-service
-    parameters:
-     service-name: CROSS_SCHEMA_SYS_BI
-    properties:
-     sys-bi-service-name: ${service-name} 
+ 
      
-       
     
      
  
@@ -151,10 +142,45 @@ resources:
     type: com.sap.xs.job-scheduler
 
   - name: shine-uaa
-    type: com.sap.xs.uaa
+    type: com.sap.xs.uaa-space
     parameters:
-     config-path: xs-security.json
+     config:
+       xsappname: shine-admin
+       scopes:
+       - name: "$XSAPPNAME.JOBSCHEDULER"
+         description: Job Scheduler Scope
+         grant-as-authority-to-apps: [jobscheduler]
+       - name: "$XSAPPNAME.Display"
+         description: display
+       - name: "$XSAPPNAME.Edit"
+         description: edit
+       - name: "$XSAPPNAME.Delete"
+         description: delete
+       - name: "$XSAPPNAME.DataGenerator"
+         description: data generator
+       - name: xs_authorization.read
+         description: Read authorization information from UAA
+       - name: xs_authorization.write
+         description: Write authorization information to UAA
+       role-templates:
+       - name: Admin
+         description: refapps administrator
+         scope-references:
+         - "$XSAPPNAME.Display"
+         - "$XSAPPNAME.Edit"
+         - "$XSAPPNAME.Delete"
+         - "$XSAPPNAME.DataGenerator"
+         - "$XSAPPNAME.JOBSCHEDULER"
+         - xs_controller.read
+         - xs_authorization.read
+         - xs_authorization.write
    
   - name: uaa 
     properties: 
-      url: "https://mo-adb888ab3.mo.sap.corp:30032/uaa-security"
+      url: "https://mo-e2d0a9b47.mo.sap.corp:30032/uaa-security"
+      
+  - name: sapui5-provider
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV2:sapui5_fesv2
+      version: ">=1.38.10"
