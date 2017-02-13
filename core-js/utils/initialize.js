@@ -23,7 +23,7 @@ module.exports = {
 		 * by defining a user defined service called 'uaa'.
 		 */
 		passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
-		//Change is pushed to github
+		
 		
 		//use passport for authentication
 		app.use(passport.initialize());
