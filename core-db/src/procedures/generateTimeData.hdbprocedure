@@ -1,4 +1,4 @@
-PROCEDURE "::generateTimeData" (  )
+PROCEDURE "generateTimeData" (  )
    LANGUAGE SQLSCRIPT
  AS
  

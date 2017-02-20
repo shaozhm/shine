@@ -7,7 +7,7 @@ try{
 var conn = $.db.getConnection();
 
 // get keys from MapKeys table
-var pstmt = conn.prepareStatement('CALL "::generateTimeData"()');
+var pstmt = conn.prepareStatement('CALL "generateTimeData"()');
 var rs = pstmt.executeQuery();
 
 conn.commit();

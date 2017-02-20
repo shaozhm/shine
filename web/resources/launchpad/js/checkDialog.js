@@ -343,6 +343,7 @@ sap.account.CheckDialog.prototype.open = function() {
 
  var ifTimeDataSuccess = false; 	
  
+  
 
 
     oCheckDialog.generateTimeDataBtn = new sap.ui.commons.Button({
@@ -373,6 +374,24 @@ sap.account.CheckDialog.prototype.open = function() {
 }
 }); 
 oCheckDialog.generateTimeDataBtn.setEnabled(true);
+
+$.ajax({ 
+                         type: 'GET', 
+                         url: "/sap/hana/democontent/epm/services/checkTimeData.xsjs", 
+                         async: false, 
+                         	success: function(myTxt) {
+                         		ifTimeDataSuccess = true;
+                         			oCheckDialog.timeDataLayout.removeAllContent();
+                         		oCheckDialog.generateTimeDataBtn.setEnabled(false);
+                         		oCheckDialog.timeDataLayout.addContent(new sap.ui.commons.Image({
+                        src: './images/green_tick.png'}));
+					 
+				},
+                         error: function(error) { 
+                            var ifTimeDataSuccess = false; 	
+                         } 
+                     }); 
+ 
 
  if(!ifTimeDataSuccess)
 {
