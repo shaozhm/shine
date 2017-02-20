@@ -52,13 +52,29 @@
 	}, {
 		"source": "^/admin-ui/(.*)",
 		"localDir": "resources",
-		"scope": "$XSAPPNAME.DataGenerator"
+		"scope": "$XSAPPNAME.DataGenerator",
+                "replace": {
+                    "pathSuffixes": ["index.html"],
+                    "services":{
+          	      "sapui5-provider": {
+        	      "tag": "ui5"
+    	              }
+                    }
+                 }
 	}, {
 		"source": "^/user/odata/v4/(.*)",
 		"destination": "user-java-backend"
 	}, {
 		"source": "^/(.*)",
 		"localDir": "resources",
-                "cacheControl": "public, max-age=1000,must-revalidate" 
+                "cacheControl": "public, max-age=1000,must-revalidate",
+                "replace": {
+                    "pathSuffixes": ["index.html"],
+                    "services":{
+          	      "sapui5-provider": {
+        	      "tag": "ui5"
+    	              }
+                    }
+                 }
 	}]
 }

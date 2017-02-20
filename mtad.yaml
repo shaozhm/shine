@@ -78,6 +78,7 @@ modules:
           ui-url: "${default-url}"
     requires:
       - name: shine-uaa
+      - name: sapui5-provider
       - name: core-js
         group: destinations
         properties:
@@ -130,13 +131,6 @@ resources:
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
 
-  
-      properties:
-     sys-bi-service-name: ${service-name}
-    parameters-metadata:
-      config:
-        overwritable: true
-
   - name: shine-uaa
     type: com.sap.xs.uaa-space
     parameters:
@@ -145,3 +139,10 @@ resources:
   - name: uaa 
     properties: 
       url: "${xs-auth-url}"
+
+  - name: sapui5-provider
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: sapui5_fesv3
+      service-plan: default
+
