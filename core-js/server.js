@@ -10,7 +10,7 @@ var init = require(global.__base + "utils/initialize");
 var app = init.initExpress();
 
 //Setup Routes
-var router = require("./router")(app, server);
+// var router = require("./router")(app, server);
 
 //Initialize the XSJS Compatibility Layer
 init.initXSJS(app);

@@ -7,7 +7,7 @@ module.exports = {
 		var express = require('express');
 		var passport = require('passport');
 		var hdbext = require('sap-hdbext'); 
-		var routes = require('./routes/index');
+		var routes = require('../routes/index');
 		var winston = require('winston');
 		var xsenv = require('sap-xsenv');
 		
@@ -47,9 +47,9 @@ module.exports = {
 		    routes.reset);
 		
 		//start the HTTP server
-		app.listen(PORT, function () {
-		    console.log('Server running on http://localhost:' + PORT);
-		});
+		// app.listen(PORT, function () {
+		//     console.log('Server running on http://localhost:' + PORT);
+		// });
 		return app;
 	},
 
