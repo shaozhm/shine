@@ -71,15 +71,36 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 
 				if (arg1.entry.APP_ID) {
 					// set keys to nokia settings
-					sap.app.platform = new H.service.Platform({
-						'app_id': arg1.entry.APP_ID,
-						'app_code': arg1.entry.APP_CODE,
-						'useHTTPS': true
-					});
-
-					// initialize the view
-					// add initial shell content
-					oShell.setContent(sap.app.mainController.getCachedView("bpDetails"));
+					var aUrl1 = "https://signature.venue.maps.api.here.com/venues/signature/v1?xnlp=CL_JSMv3.0.12.5&app_id="+arg1.entry.APP_ID+"&app_code="+arg1.entry.APP_CODE;
+					jQuery.ajax({
+						url: aUrl1,
+						method: 'GET',
+						success: function(jqXHR1){
+							sap.app.platform = new H.service.Platform({
+								'app_id': arg1.entry.APP_ID,
+								'app_code': arg1.entry.APP_CODE,
+								'useHTTPS': true
+							});
+						// initialize the view
+						// add initial shell content
+						oShell.setContent(sap.app.mainController.getCachedView("bpDetails"));
+						},
+						error: function(jqXHR, textStatus, errorThrown){
+							jQuery.sap.require("sap.ui.commons.MessageBox");
+							sap.ui.commons.MessageBox.show("Please enter a valid appid and appcode. Please click YES inorder to update",
+									sap.ui.commons.MessageBox.Icon.ERROR,
+									"Invalid Evaluation Credentials",
+									[sap.ui.commons.MessageBox.Action.YES, sap.ui.commons.MessageBox.Action.NO],
+									 function callback(sResult){
+									 	if(sResult === "YES"){
+											sap.app.mainController.openWelcomeDialog(true);
+									 	}
+									},
+									sap.ui.commons.MessageBox.Action.YES);
+							// handleError: function(){
+							// 	alert("inside error");   
+							// }
+						}});
 
 				} else {
 					// show welcome dialog with help to obtain the keys
@@ -88,7 +109,7 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 
 			},
 			error: function() {
-
+				alert("Couldnt connect to database");   
 			}
 		});
 	},
