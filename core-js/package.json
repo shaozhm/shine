@@ -21,6 +21,6 @@
 		"node": "~4.x || ~6.x"
 	},
 	"scripts": {
-		"start": "node app.js"
+		"start": "node server.js"
 	}
 }
