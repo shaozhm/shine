@@ -8,7 +8,7 @@ module.exports = function() {
 
 	var winston = require('winston');
 	var util = require(global.__base + "utils/util");
-	var jobsc = require('sap-jobs-client');
+	var jobsc = require('@sap/jobs-client');
 	var jsonParser = bodyParser.json();
 	
 	var logger;

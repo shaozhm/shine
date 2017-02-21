@@ -3,12 +3,12 @@
 var https= require('https');
 var express = require('express');
 var passport = require('passport');
-var xssec = require('sap-xssec');
+var xssec = require('@sap/xssec');
 var routes = require('./routes/index');
-var hdbext = require('sap-hdbext');
+var hdbext = require('@sap/hdbext');
 var bodyParser = require('body-parser');
-var logging = require('sap-logging');
-var xsenv = require('sap-xsenv');
+var logging = require('@sap/logging');
+var xsenv = require('@sap/xsenv');
 var appContext = logging.createAppContext();
 var app = express();
 var PORT = process.env.PORT || 3000;
