@@ -1,0 +1,58 @@
+{
+  "_version": "1.1.0",
+  "sap.fiori": {
+    "_version": "1.1.0",
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "sap_bluecrystal"
+    ]
+  },
+  "sap.app": {
+    "title": "Personalization Demo",
+    "dataSources": {
+      "Products": {
+        "type": "JSON",
+        "uri": "./Products.json"
+      }
+    }
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": {
+      "viewName": "sap.demo.sample.view.PersonalizationApp",
+      "type": "XML",
+      "id": "PersonalizationApp"
+    },
+    "config": {
+      "fullWidth": true
+    },
+    "dependencies": {
+      "minUI5Version": "1.32.7",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "": {
+        "dataSource": "Products",
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    }
+  }
+}

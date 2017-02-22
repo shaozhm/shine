@@ -109,6 +109,53 @@ modules:
        service-name: web 
        service-url: "${default-url}"
         
+  - name: site-web
+    type: javascript.nodejs
+    path: site-web/
+    requires:
+      - name: shine-uaa
+      - name: sap-portal-services-host
+      - name: controller
+        group: destinations
+        properties:
+          name: controller
+          url: ~{url}
+          forwardAuthToken: true
+      - name: user-js
+        group: destinations
+        properties:
+          name: user-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: user-java
+        group: destinations
+        properties:
+          name: user-java-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: core-js
+        group: destinations
+        properties:
+          name: core-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: uaa 
+        group: destinations 
+        properties: 
+           name: uaa 
+           url: ~{url} 
+           forwardAuthToken: true
+      - name: sapui5-provider
+        properties:
+          sapui5url: ~{url}
+        
+  - name: site-content
+    type: com.sap.portal.site-content
+    path: site-content/
+    requires:
+       - name: sap-portal-services-client
+       - name: shine-uaa
+        
 resources:
   - name: shine-container
     type: com.sap.xs.hdi-container

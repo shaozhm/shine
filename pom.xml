@@ -14,6 +14,8 @@
 	
    <modules>
 		<module>web</module>
+        <module>site-web</module>
+        <module>site-content</module>
         <module>core-js</module>
 		<module>user-js</module>
 		<module>core-db</module>
