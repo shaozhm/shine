@@ -212,9 +212,7 @@ getServiceUrl:function(state){
        // var rest_url=this.getServiceUrl(oMode.getSelectedKey());
 
         // Get the index of the table.
-        var link = Event.getSource();
-        link = link.toString();
-        var index = link[(link.length) - 1];
+        var index = Event.getSource().getParent().getIndex();
         var selectedRow = oTable.getRows()[index];
         var cells = selectedRow.getCells();
         
