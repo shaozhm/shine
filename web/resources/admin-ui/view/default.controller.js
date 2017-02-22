@@ -1,4 +1,5 @@
 var displayRecords = 0;
+jQuery.sap.require("sap.ui.commons.MessageBox");
 sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 	/**
 	 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -122,11 +123,21 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 				return false;
 			}
 		});
-
-		// output result
-		if (canContinue) {
-			this.executeCall(this);
-		} else {
+        var oModel = sap.ui.getCore().getModel();
+		var totalPO = parseInt(oModel.getProperty('/POVal'), 10);
+		var totalSO = parseInt(oModel.getProperty('/SOVal'), 10);
+		
+		if(totalPO > 5 || totalSO > 5)
+		{   canContinue = false;
+			sap.ui.commons.MessageBox.show("Please enter a number between 1 and 5",sap.ui.commons.MessageBox.Icon.ERROR,"Error");
+			
+		}
+		else  if (canContinue) {
+			this.
+			executeCall(this);
+		} 
+		 
+		else {
 			sap.m.MessageBox.alert(oBundle.getText("ValidNumber"));
 		}
 	},
@@ -288,7 +299,10 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 				var soLoops = parseInt(oModel.getProperty('/SOVal'), 10);
 				var poLoops = parseInt(oModel.getProperty('/POVal'), 10);
 				oModel.setProperty('/percentValue', (soLoops + poLoops) * 1000);
-				if (parseInt(oModel.getProperty('/POVal')) !== 0) {
+				
+				
+			
+					if (parseInt(oModel.getProperty('/POVal')) !== 0) {
 					var noRec = oModel.getProperty('/POVal');
 					var url = "/replicate/timebasedPO";
 					oController.triggerReplicateTimeBasedPO(oController, noRec, url, "PurchaseOrderId");
@@ -298,6 +312,8 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 					url = "/replicate/timebasedPO";
 					oController.triggerReplicateTimeBasedPO(oController, noRec, url, "SalesOrderId");
 				}
+				
+			
 			}
 		}
 	},
@@ -416,7 +432,15 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 				//oController.onTimeBasedRequestComplete(myTxt, oController);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
-				alert("error");
+			if (id=="PurchaseOrderId")
+			{
+			var errorString = "Unexpected error occured during Purchase order data generation.Please check the logs for more details";
+			}
+			else
+			{
+			var errorString = "Unexpected error occured during sales order data generation.Please check the logs for more details";
+			}
+			sap.ui.commons.MessageBox.show(errorString,sap.ui.commons.MessageBox.Icon.ERROR,"Error");
 				// onError(jqXHR.status, oBundle.getText("purchase_order"));
 			}
 
