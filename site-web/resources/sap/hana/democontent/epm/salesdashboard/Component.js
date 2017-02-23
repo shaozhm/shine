@@ -18,6 +18,8 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.salesdashboard.Componen
    },
    
    init : function() {
+       sap.isSingle = false;
+       sap.app = {};
        sap.ui.core.UIComponent.prototype.init.apply(this,arguments);
        
        var mConfig = this.getMetadata().getConfig();
