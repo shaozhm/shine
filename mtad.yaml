@@ -192,6 +192,10 @@ resources:
     parameters:
       config:
         siteId : XSAC_SHINE
+        
+  - name: controller
+    properties:
+      url: "${xs-api-url}"
 
   - name: sapui5-provider
     type: org.cloudfoundry.managed-service
