@@ -193,6 +193,12 @@ resources:
       config:
         siteId : XSAC_SHINE
         
+  - name: sap-portal-services-client
+    type: com.sap.portal.site-content
+    parameters:
+      config:
+        siteId : XSAC_SHINE
+        
   - name: controller
     properties:
       url: "${xs-api-url}"
