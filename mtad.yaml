@@ -186,6 +186,12 @@ resources:
   - name: uaa 
     properties: 
       url: "${xs-auth-url}"
+  
+  - name: sap-portal-services-host
+    type: com.sap.portal.site-host
+    parameters:
+      config:
+        siteId : XSAC_SHINE
 
   - name: sapui5-provider
     type: org.cloudfoundry.managed-service
