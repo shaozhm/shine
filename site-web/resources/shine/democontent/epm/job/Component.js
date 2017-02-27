@@ -17,7 +17,7 @@ sap.ui.core.UIComponent.extend("shine.democontent.epm.job.Component", {
 		rootView : "shine.democontent.epm.job.view.app",
 
 		config : {
-			resourceBundle : "i18n/messagebundle.hdbtextbundle",
+			resourceBundle : "/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
 			serviceConfig : {
                serviceUrl : "/jobschedule/getjobschedules"
            }
