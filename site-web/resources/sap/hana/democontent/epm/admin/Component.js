@@ -16,7 +16,7 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
        rootView : "sap.hana.democontent.epm.admin.view.App",
        
        config : {
-           resourceBundle : "/sap/hana/democontent/epm/admin/i18n/messagebundle.hdbtextbundle",
+           resourceBundle : "i18n/messagebundle.hdbtextbundle",
            serviceConfig : {
                name : "Get Size",
                serviceUrl : "/get/tablesize"

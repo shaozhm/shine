@@ -12,7 +12,7 @@ sap.ui.core.UIComponent.extend("shine.democontent.epm.poworklist.Component",{
        },
     
        config : {
-           resourceBundle : "/shine/democontent/epm/poworklist/i18n/messagebundle.hdbtextbundle",
+           resourceBundle : "i18n/messagebundle.hdbtextbundle",
            serviceConfig : {
                serviceUrl : "/sap/hana/democontent/epm/services/poWorklist.xsodata/"
            }

@@ -13,7 +13,7 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.salesdashboard.Componen
        rootView : "sap.hana.democontent.epm.salesdashboard.view.main",
        
        config : {
-           resourceBundle : "/sap/hana/democontent/epm/salesdashboard/i18n/messagebundle.hdbtextbundle"
+           resourceBundle : "i18n/messagebundle.hdbtextbundle"
        }
    },
    
