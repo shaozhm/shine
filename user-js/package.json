@@ -3,10 +3,10 @@
 		"node": "~4.x || ~6.x"
 	},
 	"dependencies": {
-		"@sap/xssec": "1.0.1",
+		"@sap/xssec": "1.0.2",
 		"@sap/xsenv": "1.2.6",
-		"@sap/xsjs": "1.13.0",
-		"@sap/hdbext": "4.3.0",
+		"@sap/xsjs": "1.13.1",
+		"@sap/hdbext": "4.3.1",
 		"@sap/cds": "1.14.0",
 		"@sap/logging": "2.2.0",
 		"@sap/jobs-client": "1.0.14",
