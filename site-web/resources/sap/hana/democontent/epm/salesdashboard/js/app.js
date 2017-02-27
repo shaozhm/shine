@@ -9,7 +9,7 @@ sap.app = {};
 jQuery.sap.require("jquery.sap.resources");
 
 var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
-sap.app.i18n = jQuery.sap.resources({url : "i18n/messagebundle.hdbtextbundle", locale: sLocale});
+sap.app.i18n = jQuery.sap.resources({url : "/sap/hana/democontent/epm/salesdashboard/i18n/messagebundle.hdbtextbundle", locale: sLocale});
 
 var tooltipFormatString = '';
 
