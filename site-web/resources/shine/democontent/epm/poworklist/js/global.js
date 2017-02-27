@@ -9,7 +9,7 @@
     jQuery.sap.require("jquery.sap.resources");
     var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
     var oBundle = jQuery.sap.resources({
-        url: "/shine/democontent/epm/poworklist/i18n/messagebundle.hdbtextbundle",
+        url: "/resources/shine/democontent/epm/poworklist/i18n/messagebundle.hdbtextbundle",
         locale: sLocale
     });
     
