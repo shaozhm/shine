@@ -1,6 +1,7 @@
 jQuery.sap.declare("sap.hana.democontent.epm.admin.Component");
 jQuery.sap.require("sap.m.MessageBox");
 jQuery.sap.require("sap.m.MessageToast");
+jQuery.sap.require("sap.hana.democontent.epm.admin.global");
 
 sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
    metadata : {
