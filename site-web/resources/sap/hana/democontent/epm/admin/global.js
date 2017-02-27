@@ -1,7 +1,7 @@
 	/*************** Language Resource Loader *************/
     jQuery.sap.require("jquery.sap.resources");
     var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
-    var oBundle = jQuery.sap.resources({url : "/sap/hana/democontent/epm/admin/i18n/messagebundle.hdbtextbundle", locale: sLocale});
+    var oBundle = jQuery.sap.resources({url : "/resources/sap/hana/democontent/epm/admin/i18n/messagebundle.hdbtextbundle", locale: sLocale});
     var oBarModel = new sap.ui.model.json.JSONModel();
     var phase1 = 0;
     var phase2 = 0;
