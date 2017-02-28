@@ -6,7 +6,7 @@ function po_create_before_exit(param) {
    
     try {
         pStmt = param.connection
-        		 //.prepareStatement('select "sap.hana.democontent.epm.data::purchaseOrderSeqId".NEXTVAL from "sap.hana.democontent.epm.data::DUMMY"');
+        		 
                    .prepareStatement('SELECT max(PURCHASEORDERID + 1) from "PO.Header"');
         var rs = pStmt.executeQuery();
         while (rs.next()) {

@@ -39,12 +39,14 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 	},
 	
 	setDateTimeValue: function(){
-			sap.ui.getCore().byId("__xmlview0--startDateField").setDateValue(new Date());
+			this.getView().byId('startDateField').setDateValue(new Date());
 			var tomorrow = new Date();
-			tomorrow.setDate(tomorrow.getDate()+1);
-			sap.ui.getCore().byId("__xmlview0--endDateField").setDateValue(tomorrow);
-			sap.ui.getCore().byId("__xmlview0--startTimeField").setDateValue(new Date());
-			sap.ui.getCore().byId("__xmlview0--endTimeField").setDateValue(new Date());
+			var newDate = new Date(tomorrow.getTime()+1*24*60*60*1000);
+			// tomorrow.setDate(tomorrow.getDate()+1);
+			// tomorrow.setTime(tomorrow.getTime());  
+			this.getView().byId('endDateField').setDateValue(newDate);
+			this.getView().byId('startTimeField').setDateValue(new Date());
+			this.getView().byId('endTimeField').setDateValue(new Date());
 	},
 	
 	checkValue: function(oEvent){
@@ -75,7 +77,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 				var uiId = (uiFieldArrayMapper[i].split(":"))[1];
 				var element = sap.ui.getCore().byId(uiId);
 				var value = element.getValue();
-				if ((uiId.includes("Time") || uiId.includes("Date")) !== false) {
+				if ((uiId.indexOf("Time")>-1 || uiId.indexOf("Date")>-1) !== false) {
 					var uiIdTime = uiId.replace("Date","Time");
 					var elementValue = sap.ui.getCore().byId(uiIdTime).getValue();
 					var offset = new Date().getTimezoneOffset();
@@ -128,9 +130,11 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 						oThis.clearUIFields();
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
-					sap.ui.commons.MessageBox.show("Creation of Job failed. Please ensure that the job name is unique!",
-						"ERROR",
-						"Error");
+					var jsonMessage = JSON.parse(jqXHR.responseText);
+					var message = jsonMessage.message;
+					sap.ui.commons.MessageBox.show(message,
+							"ERROR",
+							"Error");
 					return;
 				}
 			});
@@ -203,14 +207,31 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 			}
 		}
 		if(doSubmit === true){
-			var startDate = sap.ui.getCore().byId("__xmlview0--endDateField").getDateValue();
-			var endDate = sap.ui.getCore().byId("__xmlview0--startDateField").getDateValue();
-			if(endDate >= startDate){
+			var currentDate = new Date();
+			var endDate = (this.getView().byId('endDateField')).getDateValue();
+			var endTime = (this.getView().byId('endTimeField')).getDateValue();
+			endDate.setHours(endTime.getHours());
+			endDate.setMinutes(endTime.getMinutes());
+			endDate.setSeconds(endTime.getSeconds());
+			
+			var startDate = (this.getView().byId('startDateField')).getDateValue();
+			var startTime = (this.getView().byId('startTimeField')).getDateValue();
+			startDate.setHours(startTime.getHours());
+			startDate.setMinutes(startTime.getMinutes());
+			startDate.setSeconds(startTime.getSeconds());
+			if(startDate > endDate){
 				sap.ui.commons.MessageBox.show("Enter a valid value for start date and end date",
 						"ERROR",
 						"Error");
 				doSubmit = false;
 			}
+			
+			if((startDate < currentDate) && (endDate < currentDate)){
+					sap.ui.commons.MessageBox.show("You cannot schedule a job in the past!",
+						"ERROR",
+						"Error");
+				doSubmit = false;
+			} 
 		}
 		return doSubmit;
 	},
@@ -272,47 +293,54 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 		var oTable = sap.ui.getCore().byId("__xmlview0--manageJobsTable");
 		var model = oTable.getModel();
 		var jobId = model.getProperty("JobId", oTable.getContextByIndex(oTable.getSelectedIndex()));
-		var oThis = this; 
-		var xsrf_token;
-		$.ajax({
-			type: "GET",
-			async: false,
-			url: "/schedules/getjobschedules",
-			contentType: "application/json",
-			headers: {
-				'x-csrf-token': 'Fetch',
-				'Accept': "application/json"
-			},
-			success: function(data, textStatus, request) {
-				xsrf_token = request.getResponseHeader('x-csrf-token');
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				sap.ui.commons.MessageBox.show("Error in fetching XSRF Token",
-					"ERROR",
-					"Error");
-				return;
-			}
-		});
-
-		$.ajax({
-			type: "DELETE",
-			url: "/schedules/deletejobschedules/" + jobId,
-			headers: {
-				'x-csrf-token': xsrf_token
-			},
-			success: function(data) {
-				sap.ui.commons.MessageBox.show(data.message,
-					"SUCCESS",
-					"Job deleted successfully");
-				oThis.loadJobsTable();
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				sap.ui.commons.MessageBox.show("Deletion of Job failed",
-					"ERROR",
-					"Error");
-				return;
-			}
-		});
+		if(jobId!="" && jobId!=null){
+			var oThis = this; 
+			var xsrf_token;
+			$.ajax({
+				type: "GET",
+				async: false,
+				url: "/schedules/getjobschedules",
+				contentType: "application/json",
+				headers: {
+					'x-csrf-token': 'Fetch',
+					'Accept': "application/json"
+				},
+				success: function(data, textStatus, request) {
+					xsrf_token = request.getResponseHeader('x-csrf-token');
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					sap.ui.commons.MessageBox.show("Error in fetching XSRF Token",
+						"ERROR",
+						"Error");
+					return;
+				}
+			});
+	
+			$.ajax({
+				type: "DELETE",
+				url: "/schedules/deletejobschedules/" + jobId,
+				headers: {
+					'x-csrf-token': xsrf_token
+				},
+				success: function(data) {
+					sap.ui.commons.MessageBox.show(data.message,
+						"SUCCESS",
+						"Schedule deleted successfully");
+					oThis.loadJobsTable();
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					sap.ui.commons.MessageBox.show("Deletion of schedule failed",
+						"ERROR",
+						"Error");
+					return;
+				}
+			});
+		}else{
+			sap.ui.commons.MessageBox.show("Please select a schedule to delete",
+						"ERROR",
+						"Error");
+					return;
+		}
 	}
 
 });

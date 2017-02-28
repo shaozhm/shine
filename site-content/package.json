@@ -2,15 +2,12 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "name": "site-content",
-  "version": "1.5.0",
-  "description": "flp deployer package",
-  "license": "Apache-2.0",
-  "author": "Zohar Team",
+  "name": "shine-site-content",
+  "version": "1.3.0",
   "dependencies": {
-    "sap-site-content-deployer": "1.6.8"
+    "@sap/site-content-deployer": "^1.10.0"
   },
   "scripts": {
-    "start": "node --harmony node_modules/sap-site-content-deployer/deploy.js"
+    "start": "node --harmony node_modules/@sap/site-content-deployer/deploy.js"
   }
 }

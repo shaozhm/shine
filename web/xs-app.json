@@ -4,18 +4,22 @@
 		"logoutEndpoint": "/logout",
 		"logoutPage": "/"
 	},
-	"routes": [ {
-      	"source": "/sap/ui5/1(.*)",
-      	"target": "$1",
-      	"localDir": "sapui5",
-	"cacheControl": "public, max-age=1000,must-revalidate" 
-    },{
+	"routes": [{
 		"source": "/sap/rest/(.*)",
 		"destination": "uaa"
 	}, {
 		"source": "/sap/hana/democontent/epm/services/",
 		"destination": "core-backend"
-	}, {
+	},
+
+
+{
+      "source": "/sap/hana/democontent/epm/spatial/services/",
+      "destination": "core-backend"
+    },
+
+
+ {
 		"source": "/get/(.*)",
 		"destination": "core-backend",
 		"scope": "$XSAPPNAME.DataGenerator"
@@ -43,13 +47,29 @@
 	}, {
 		"source": "^/admin-ui/(.*)",
 		"localDir": "resources",
-		"scope": "$XSAPPNAME.DataGenerator"
+		"scope": "$XSAPPNAME.DataGenerator",
+                "replace": {
+                    "pathSuffixes": ["index.html"],
+                    "services":{
+          	      "sapui5-provider": {
+        	      "tag": "ui5"
+    	              }
+                    }
+                 }
 	}, {
 		"source": "^/user/odata/v4/(.*)",
 		"destination": "user-java-backend"
 	}, {
 		"source": "^/(.*)",
 		"localDir": "resources",
-                "cacheControl": "public, max-age=1000,must-revalidate" 
+                "cacheControl": "public, max-age=1000,must-revalidate",
+                "replace": {
+                    "pathSuffixes": ["index.html"],
+                    "services":{
+          	      "sapui5-provider": {
+        	      "tag": "ui5"
+    	              }
+                    }
+                 }
 	}]
 }

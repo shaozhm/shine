@@ -3,12 +3,12 @@
 var https= require('https');
 var express = require('express');
 var passport = require('passport');
-var xssec = require('sap-xssec');
+var xssec = require('@sap/xssec');
 var routes = require('./routes/index');
-var hdbext = require('sap-hdbext');
+var hdbext = require('@sap/hdbext');
 var bodyParser = require('body-parser');
-var logging = require('sap-logging');
-var xsenv = require('sap-xsenv');
+var logging = require('@sap/logging');
+var xsenv = require('@sap/xsenv');
 var appContext = logging.createAppContext();
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -20,7 +20,11 @@ app.use(logging.expressMiddleware(appContext));
 app.use(bodyParser.json());
 //use passport for authentication
 app.use(passport.initialize());
-app.use('/',hdbext.middleware(),
+var hanaOptions = xsenv.getServices({	
+		hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+}).hana;
+
+app.use('/',hdbext.middleware(hanaOptions),
            passport.authenticate('JWT', {session: false}),
            routes.jobs,
            routes.schedules,

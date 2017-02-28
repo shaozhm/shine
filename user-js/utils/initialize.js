@@ -2,15 +2,15 @@
 "use strict";
 module.exports = {
 	initExpress: function() {
-		var xsenv = require("sap-xsenv");
+		var xsenv = require("@sap/xsenv");
 		var passport = require("passport");
-		var xssec = require("sap-xssec");
-		var xsHDBConn = require("sap-hdbext");
+		var xssec = require("@sap/xssec");
+		var xsHDBConn = require("@sap/hdbext");
 		var express = require("express");
 		var bodyParser = require('body-parser');
 
 		//logging
-		var logging = require("sap-logging");
+		var logging = require("@sap/logging");
 		var appContext = logging.createAppContext();
 
 		//Initialize Express App for XS UAA and HDBEXT Middleware
@@ -23,19 +23,22 @@ module.exports = {
 		app.use(logging.expressMiddleware(appContext));
 		// app.use(bodyParser.json());
 		app.use(passport.initialize());
+		var hanaOptions = xsenv.getServices({	
+			hana: { tag: 'hana' }
+		}).hana;
 
 		app.use(
 			passport.authenticate("JWT", {
 				session: false
 			}),
-			xsHDBConn.middleware());
+			xsHDBConn.middleware(hanaOptions));
 		//		app.use(xsHDBConn.middleware()); 	
 		return app;
 	},
 
 	initXSJS: function(app) {
-		var xsjs = require("sap-xsjs");
-		var xsenv = require("sap-xsenv");
+		var xsjs = require("@sap/xsjs");
+		var xsenv = require("@sap/xsenv");
 		var options = {// anonymous : true, // remove to authenticate calls
 			redirectUrl: "/index.xsjs"
 		};

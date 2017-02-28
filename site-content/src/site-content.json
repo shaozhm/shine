@@ -1,105 +1,424 @@
 {
-  "_version": "1.0.0",
-  "site": {
-    "_version": "1.0",
-    "identification": {
-      "id": "sample_site",
-      "namespace": "com.sap.xs.portaltools",
-      "entityType": "site",
-      "layer": "vendor",
-      "description": "",
-      "i18n": "",
-      "title": "Fiori Launchpad Sample"
-    },
-    "payload": {
-      "groupsOrder": [],
-      "config": {}
-    }
-  },
-  "roles": {
-    "Everyone": {
-      "catalogs": [{
-        "id": "sample_catalog"
-      }],
-      "groups": [{
-        "id": "sample_group"
-      },{
-        "id": "sample_group1"
-      }]
-    }
-  },
-  "catalogs": {
-    "sample_catalog": {
-      "identification": {
-        "id": "sample_catalog",
-        "title": "Catalog with sample application"
-      },
-      "payload": {
-        "appDescriptors": [{
-          "id": "73c3f80a-5245-4e6c-a51d-d9436b1cb530"
-        }]
-      }
-    }
-  },
-  "applications": {
-    "sampleURLApplication": {
+	"_version": "1.0.0",
+	"site": {
+		"_version": "1.0",
+		"identification": {
+			"id": "499c36e2-687e-11e6-8b77-86f30ca893d3",
+			"namespace": "",
+			"entityType": "site",
+			"description": "",
+			"i18n": "i18n/bundle.properties",
+			"title": "{{site.title}}"
+		},
+		"payload": {
+			"groupsOrder": ["5acadc20-687e-11e6-8b77-86f30ca893d3"],
+			"config": {
+				
+			}
+		}
+	},
+	"catalogs":{
+
+	},
+	"roles": {
+		"Everyone": {
+			"catalogs": [],
+			"groups": [{
+				"id": "5acadc20-687e-11e6-8b77-86f30ca893d3"
+			}]
+		}
+	},
+	"applications": {
+		"73c3f80a-5245-4e6c-a51d-d9436b1cb530": {
+			"sap.app": {
+				"_version": "1.3.0",
+				"id": "73c3f80a-5245-4e6c-a51d-d9436b1cb530",
+				"title": "{{app1.title}}",
+				"i18n": "i18n/bundle.properties",
+				"tags": {
+					"keywords": []
+				},
+				"crossNavigation": {
+					"inbounds": {
+						"SapShow": {
+							"semanticObject": "Sap",
+							"action": "show",
+							"deviceTypes": {
+								"desktop": true,
+								"tablet": true,
+								"phone": true
+							}							
+						}
+					}
+				}
+			},
+			"sap.platform.runtime": {
+				"url": "https://www.sap.com"
+			},
+			"sap.ui": {
+				"_version": "1.3.0",
+				"technology": "URL"
+			}
+		},
+		"6ef9cdd2-687e-11e6-8b77-86f30ca893d3": {
+			"sap.app": {
+				"_version": "1.3.0",
+				"id": "6ef9cdd2-687e-11e6-8b77-86f30ca893d3",
+				"title": "{{app2.title}}",
+				"i18n": "i18n/bundle.properties",
+				"tags": {
+					"keywords": []
+				},
+				"crossNavigation": {
+					"inbounds": {
+						"appShow": {
+							"semanticObject": "app",
+							"action": "show",
+							"deviceTypes": {
+								"desktop": true,
+								"tablet": true,
+								"phone": true
+							}
+						}
+					},
+					"outbounds": {
+						
+					}
+				}
+			},
+			"sap.ui": {
+				"_version": "1.3.0",
+				"technology": "UI5"
+			},
+			"sap.ui5": {
+				"componentName": "sap.ushell.demo.AppPersSample2",
+				"_version": "1.2.0"
+			},
+			"sap.platform.runtime": {
+				"componentProperties": {
+					"url": "https://sapui5.hana.ondemand.com/test-resources/sap/ushell/demoapps/AppPersSample2"
+				}
+			}
+		},
+		"7af8cdd2-687e-22e6-8377-86f30ba893d3": {
+			"sap.app": {
+				"_version": "1.3.0",
+				"id": "7af8cdd2-687e-22e6-8377-86f30ba893d3",
+				"title": "{{app4.title}}",
+				"i18n": "i18n/bundle.properties",
+				"tags": {
+					"keywords": []
+				},
+				"crossNavigation": {
+					"inbounds": {
+						"siteShow": {
+							"semanticObject": "site",
+							"action": "show",
+							"deviceTypes": {
+								"desktop": true,
+								"tablet": true,
+								"phone": true
+							}
+						}
+					},
+					"outbounds": {
+						
+					}
+				}
+			},
+			"sap.ui": {
+				"_version": "1.3.0",
+				"technology": "UI5"
+			},
+			"sap.ui5": {
+				"componentName": "sap.demo.sitedirectory",
+				"_version": "1.2.0"
+			},
+			"sap.platform.runtime": {
+				"componentProperties": {
+					"url": "/resources/sap/demo/sitedirectory"
+				}
+			}
+		},
+    "job-scheduler": {
       "sap.app": {
         "_version": "1.3.0",
-        "id": "73c3f80a-5245-4e6c-a51d-d9436b1cb530",
-        "title": "sampleURLApplication",
-        "description": "sap.com",
+        "id": "job-scheduler",
+        "title": "{{app5.title}}",
+        "i18n": "i18n/bundle.properties",
         "tags": {
           "keywords": []
         },
         "crossNavigation": {
           "inbounds": {
-            "ExternalUrl1572295981": {
-              "semanticObject": "Crud",
+            "siteShow": {
+              "semanticObject": "app3",
               "action": "show",
               "deviceTypes": {
                 "desktop": true,
                 "tablet": true,
                 "phone": true
-              },
-              "title": "SAp",
-              "icon": "sap-icon://Chart-Tree-Map",
-              "size": "1x1"
+              }
             }
+          },
+          "outbounds": {
+            
           }
-        }
-      },
-      "sap.platform.runtime": {
-        "url": "/user-ui/index.html",
-        "componentProperties": {
-          "url": "/user-ui/index.html"
         }
       },
       "sap.ui": {
         "_version": "1.3.0",
-        "technology": "URL"
-      }
-    }
-  },
-  "groups": {
-    "sample_group": {
-      "identification": {
-        "id": "sample_group",
-        "namespace": "",
-        "title": "Sample App"
+        "technology": "UI5"
       },
-      "payload": {
-        "tiles": [{
-          "id": "mySapTile1",
-          "title": "User CRUD",
-          "description": "User CRUD",
-          "target": {
-            "semanticObject": "Crud",
-            "action": "show",
-            "parameters": []
+      "sap.ui5": {
+        "componentName": "shine.democontent.epm.job",
+        "_version": "1.2.0"
+      },
+      "sap.platform.runtime": {
+        "componentProperties": {
+          "url": "/resources/shine/democontent/epm/job"
+        }
+      }
+    },
+    "user-crud": {
+      "sap.app": {
+        "_version": "1.3.0",
+        "id": "user-crud",
+        "title": "{{app2.title}}",
+        "i18n": "i18n/bundle.properties",
+        "tags": {
+          "keywords": []
+        },
+        "crossNavigation": {
+          "inbounds": {
+            "siteShow": {
+              "semanticObject": "app2",
+              "action": "show",
+              "deviceTypes": {
+                "desktop": true,
+                "tablet": true,
+                "phone": true
+              }
+            },
+            "indicatorDataSource": {
+				"path": "/resources/shine/democontent/epm/usercrud/user-dynamic.json",
+				"refresh": "6000",
+				"displayNumberUnit": "%"
+			}
+          },
+          "outbounds": {
+            
           }
-        }]
+        }
+      },
+      "sap.ui": {
+        "_version": "1.3.0",
+        "technology": "UI5"
+      },
+      "sap.ui5": {
+        "componentName": "shine.democontent.epm.usercrud",
+        "_version": "1.2.0"
+      },
+      "sap.platform.runtime": {
+        "componentProperties": {
+          "url": "/resources/shine/democontent/epm/usercrud"
+        }
+      }
+    },
+	"data-generator": {
+      "sap.app": {
+        "_version": "1.3.0",
+        "id": "data-generator",
+        "title": "{{app6.title}}",
+        "i18n": "i18n/bundle.properties",
+        "tags": {
+          "keywords": []
+        },
+        "crossNavigation": {
+          "inbounds": {
+            "siteShow": {
+              "semanticObject": "app4",
+              "action": "show",
+              "deviceTypes": {
+                "desktop": true,
+                "tablet": true,
+                "phone": true
+              }
+            }
+          },
+          "outbounds": {
+            
+          }
+        }
+      },
+      "sap.ui": {
+        "_version": "1.3.0",
+        "technology": "UI5"
+      },
+      "sap.ui5": {
+        "componentName": "sap.hana.democontent.epm.admin",
+        "_version": "1.2.0"
+      },
+      "sap.platform.runtime": {
+        "componentProperties": {
+          "url": "/resources/sap/hana/democontent/epm/admin"
+        }
+      },
+      "sap.platform.cf": {
+      	"oAuthScopes": ["$XSAPPNAME.DataGenerator"]  
+	  }
+    },
+	"sales-dashboard": {
+      "sap.app": {
+        "_version": "1.3.0",
+        "id": "sales-dashboard",
+        "title": "{{app7.title}}",
+        "i18n": "i18n/bundle.properties",
+        "tags": {
+          "keywords": []
+        },
+        "crossNavigation": {
+          "inbounds": {
+            "siteShow": {
+              "semanticObject": "app5",
+              "action": "show",
+              "deviceTypes": {
+                "desktop": true,
+                "tablet": true,
+                "phone": true
+              }
+            }
+          },
+          "outbounds": {
+            
+          }
+        }
+      },
+      "sap.ui": {
+        "_version": "1.3.0",
+        "technology": "UI5"
+      },
+      "sap.ui5": {
+        "componentName": "sap.hana.democontent.epm.salesdashboard",
+        "_version": "1.2.0"
+      },
+      "sap.platform.runtime": {
+        "componentProperties": {
+          "url": "/resources/sap/hana/democontent/epm/salesdashboard"
+        }
+      }
+    },
+	"po-worklist": {
+      "sap.app": {
+        "_version": "1.3.0",
+        "id": "po-worklist",
+        "title": "{{app8.title}}",
+        "i18n": "i18n/bundle.properties",
+        "tags": {
+          "keywords": []
+        },
+        "crossNavigation": {
+          "inbounds": {
+            "siteShow": {
+              "semanticObject": "app6",
+              "action": "show",
+              "deviceTypes": {
+                "desktop": true,
+                "tablet": true,
+                "phone": true
+              }
+            }
+          },
+          "outbounds": {
+            
+          }
+        }
+      },
+      "sap.ui": {
+        "_version": "1.3.0",
+        "technology": "UI5"
+      },
+      "sap.ui5": {
+        "componentName": "shine.democontent.epm.poworklist",
+        "_version": "1.2.0"
+      },
+      "sap.platform.runtime": {
+        "componentProperties": {
+          "url": "/resources/shine/democontent/epm/poworklist"
+        }
       }
     }
-  },
-  "systemAliases": {}
+	},
+	"groups": {
+		"5acadc20-687e-11e6-8b77-86f30ca893d3": {
+			"identification": {
+				"id": "5acadc20-687e-11e6-8b77-86f30ca893d3",
+				"namespace": "",
+				"title": "{{group1.title}}",
+				"i18n": "i18n/bundle.properties"
+			},
+			"payload": {
+				"tiles": [{
+					"id": "myUi5Tile2",	
+					"title": "{{group1.tile3.title}}",
+					"description": "{{group1.tile3.desc}}",
+					"subTitle": "{{group1.tile3.sTitle}}",
+                    "icon": "sap-icon://person-placeholder",						
+					"target": {
+						"semanticObject": "app2",
+						"action": "show",
+						"parameters": []
+					}
+				},
+				{
+					"id": "jobScheduler",	
+					"title": "{{group1.tile5.title}}",
+					"description": "{{group1.tile5.desc}}",
+					"subTitle": "{{group1.tile5.sTitle}}",
+                    "icon": "sap-icon://list",						
+					"target": {
+						"semanticObject": "app3",
+						"action": "show",
+						"parameters": []
+					}
+				},
+				{
+					"id": "dataGenerator",	
+					"title": "{{group1.tile6.title}}",
+					"description": "{{group1.tile6.desc}}",
+					"subTitle": "{{group1.tile6.sTitle}}",
+                    "icon": "sap-icon://list",						
+					"target": {
+						"semanticObject": "app4",
+						"action": "show",
+						"parameters": []
+					}
+				},
+				{
+					"id": "salesDashboard",	
+					"title": "{{group1.tile7.title}}",
+					"description": "{{group1.tile7.desc}}",
+					"subTitle": "{{group1.tile7.sTitle}}",
+                    "icon": "sap-icon://list",						
+					"target": {
+						"semanticObject": "app5",
+						"action": "show",
+						"parameters": []
+					}
+				},
+				{
+					"id": "poWorklist",	
+					"title": "{{group1.tile8.title}}",
+					"description": "{{group1.tile8.desc}}",
+					"subTitle": "{{group1.tile8.sTitle}}",
+                    "icon": "sap-icon://list",						
+					"target": {
+						"semanticObject": "app6",
+						"action": "show",
+						"parameters": []
+					}
+				}]
+			}
+		}
+	}
 }

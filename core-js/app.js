@@ -1,15 +1,15 @@
 'use strict';
 var https = require('https');
-var xssec = require('sap-xssec');
+var xssec = require('@sap/xssec');
 var express = require('express');
 var passport = require('passport');
 //var sap_hdb_conn = require('sap-hdb-connection');
-var hdbext = require('sap-hdbext');
+var hdbext = require('@sap/hdbext');
 var routes = require('./routes/index');
 var winston = require('winston');
-var xsenv = require('sap-xsenv');
-var xsjs = require('sap-xsjs');
-var logging = require('sap-logging');
+var xsenv = require('@sap/xsenv');
+var xsjs = require('@sap/xsjs');
+var logging = require('@sap/logging');
 var appContext = logging.createAppContext();
 
 var PORT = process.env.PORT || 3000;
@@ -41,11 +41,15 @@ app.use(passport.initialize());
  * provides a db property containing the connection
  * object to the request object of all routes.
  */
+ var hanaOptions = xsenv.getServices({	
+		hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+}).hana;
+
 app.use('/',
 	passport.authenticate('JWT', {
 		session: false
 	}),
-	hdbext.middleware(),
+	hdbext.middleware(hanaOptions),
 	routes.datagen,
 	routes.get,
 	routes.reset);

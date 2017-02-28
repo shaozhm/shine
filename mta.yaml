@@ -1,6 +1,6 @@
 _schema-version: "2.0.0"
 ID: com.sap.refapps.shine
-version: 1.1.15
+version: 1.3.0
 
 modules:
   - name: shine-web
@@ -27,7 +27,7 @@ modules:
       - name: user-java
         group: destinations
         properties:
-          name: user-java
+          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
@@ -51,7 +51,7 @@ modules:
         properties:
           url: "${default-url}"
     properties: 
-      HANA_SERVICE_NAME: shine-container
+      
       UAA_SERVICE_NAME: shine-uaa
     requires:
       - name: shine-uaa
@@ -61,6 +61,8 @@ modules:
   - name: shine-user-js
     type: nodejs
     path: user-js
+    properties: 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
     provides: 
       - name: user-js
         properties:
@@ -71,9 +73,9 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
       
-  - name: user-java
-    type: java.tomee
-    path: user-java/target/user-java-1.1.13.war
+  - name: shine-user-java
+    type: java
+    path: user-java
     provides: 
       - name: user-java
         properties:
@@ -83,37 +85,102 @@ modules:
       - name: shine-scheduler
       - name: shine-user-db
       - name: shine-user-container
+        properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+               {"service_name_for_DefaultDB" : "~{user-container-name}"}]'
       
   - name: shine-core-db
     type: hdb
     path: core-db
     requires:
       - name: shine-container
+        properties:
+          TARGET_CONTAINER: ~{container-name}
+          
+     
+          
+     
+          
+    
+      
+      - name: shine-user-container
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-user-service
+          service: ~{user-container-name} 
       
   - name: shine-user-db
     type: hdb
     path: user-db
     requires:
      - name: shine-user-container
+       properties:
+        TARGET_CONTAINER: ~{user-container-name}
 
 resources:
   - name: shine-container
     type: com.sap.xs.hdi-container
     properties:
-      TARGET_CONTAINER: ~{service-name} 
+      container-name: ${service-name}
          
   - name: shine-user-container
     type: com.sap.xs.hdi-container
+    properties:
+      user-container-name: ${service-name}
+    parameters: 
+     service-name: DEVX_TECH_USER-jzcyz8jkre0kti6g-shine-shine-user-container
+     config:
+       schema: SHINE_USER
+       
+ 
+     
+    
+     
+ 
 
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
 
   - name: shine-uaa
-    type: com.sap.xs.uaa
+    type: com.sap.xs.uaa-space
     parameters:
-     config-path: xs-security.json
+     config:
+       xsappname: shine-admin
+       scopes:
+       - name: "$XSAPPNAME.JOBSCHEDULER"
+         description: Job Scheduler Scope
+         grant-as-authority-to-apps: [jobscheduler]
+       - name: "$XSAPPNAME.Display"
+         description: display
+       - name: "$XSAPPNAME.Edit"
+         description: edit
+       - name: "$XSAPPNAME.Delete"
+         description: delete
+       - name: "$XSAPPNAME.DataGenerator"
+         description: data generator
+       - name: xs_authorization.read
+         description: Read authorization information from UAA
+       - name: xs_authorization.write
+         description: Write authorization information to UAA
+       role-templates:
+       - name: Admin
+         description: refapps administrator
+         scope-references:
+         - "$XSAPPNAME.Display"
+         - "$XSAPPNAME.Edit"
+         - "$XSAPPNAME.Delete"
+         - "$XSAPPNAME.DataGenerator"
+         - "$XSAPPNAME.JOBSCHEDULER"
+         - xs_controller.read
+         - xs_authorization.read
+         - xs_authorization.write
    
   - name: uaa 
     properties: 
-      url: "https://mo-f5008e5dd.mo.sap.corp:30032/uaa-security"
-
+      url: "https://mo-e2d0a9b47.mo.sap.corp:30032/uaa-security"
+      
+  - name: sapui5-provider
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV2:sapui5_fesv2
+      version: ">=1.38.10"

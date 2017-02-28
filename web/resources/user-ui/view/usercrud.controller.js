@@ -9,9 +9,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
         };
         this.oLocalUserModel = new sap.ui.model.json.JSONModel(oLocalUserData);
         this.getView().setModel(this.oLocalUserModel,"user");
-        
-        
-        
+       
         var oLocalUserBatchData = [{
             "FirstName": "",
             "LastName" : "",
@@ -105,7 +103,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.view.usercrud", {
                 
             },
             error: function(error){
-                console.log(error);
+                sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("TAB_NOT_UPDATED"));
                 oTable.bindRows("/");
             }
             
@@ -143,6 +141,11 @@ getServiceUrl:function(state){
 
         
         var oEntry = this.getView().getModel("user").getData();
+        // validate that all fields (FName, LName and EmailId) are populated
+        if(oEntry && (!oEntry.FirstName || !oEntry.LastName || !oEntry.Email)){
+            sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USER_VALIDATION"));
+            return false;
+        }
         var xsrf_token;
         $.ajax({
             type: "GET",
@@ -157,7 +160,7 @@ getServiceUrl:function(state){
                 xsrf_token = request.getResponseHeader('x-csrf-token');
             },
             error: function(error){
-                console.log(error);
+                sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USR_CRT_ERROR"));
             }
         });
         
@@ -177,8 +180,8 @@ getServiceUrl:function(state){
                 oThis.resetUserModel();
             },
             error: function(error) {
-                sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("ERROR"));
-                console.log(error);
+               sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USR_CRT_ERROR"));
+                
             }
         });
 
@@ -209,9 +212,7 @@ getServiceUrl:function(state){
        // var rest_url=this.getServiceUrl(oMode.getSelectedKey());
 
         // Get the index of the table.
-        var link = Event.getSource();
-        link = link.toString();
-        var index = link[(link.length) - 1];
+        var index = Event.getSource().getParent().getIndex();
         var selectedRow = oTable.getRows()[index];
         var cells = selectedRow.getCells();
         
@@ -259,8 +260,7 @@ getServiceUrl:function(state){
                     oThis.loadJobsTable();
                 },
                 error: function(error) {
-                    sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("ERROR"));
-                    console.log(error);
+                    sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USR_UPD_ERROR"));
                     
                 }
             });
@@ -285,14 +285,14 @@ getServiceUrl:function(state){
             //Call the User Service (GET) and populate the table.
             
             if (errorResponse && errorResponse.length > 0) {
-                alert("Error occurred");
+                sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USR_CRT_ERROR"));
             } else {
                 //alert(i18n.getResourceBundle().getText("USER_CREATED", k));
                 sap.m.MessageToast.show(k + " users created");
                 oThis.loadJobsTable();
             }
         }, function(data) {
-            alert("Error occurred ");
+            sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USR_CRT_ERROR"));
         });
 
         this.oBatchDialog.close();
@@ -354,7 +354,7 @@ getServiceUrl:function(state){
                 },
                 error: function(error) {
                     sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USER_DELETE_FAILURE"));
-                    console.log(error);
+                    //console.log(error);
                 }
             });
 

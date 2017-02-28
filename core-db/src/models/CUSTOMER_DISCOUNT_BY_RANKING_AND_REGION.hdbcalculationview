@@ -4,7 +4,7 @@
 <localVariables>
   <variable id="IP_FR_DTE" parameter="true">
     <descriptions defaultDescription=" "/>
-    <variableProperties datatype="NVARCHAR" length="8" scale="NaN" mandatory="false">
+    <variableProperties datatype="NVARCHAR" length="8" scale="null" mandatory="false">
       <valueDomain type="empty"/>
       <selection multiLine="false"/>
       <derivationRule>
@@ -22,7 +22,7 @@
   </variable>
   <variable id="IP_TO_DTE" parameter="true">
     <descriptions defaultDescription=" "/>
-    <variableProperties datatype="NVARCHAR" length="8" scale="NaN" mandatory="false">
+    <variableProperties datatype="NVARCHAR" length="8" scale="null" mandatory="false">
       <valueDomain type="empty"/>
       <selection multiLine="false"/>
       <derivationRule>
@@ -45,17 +45,6 @@
       <selection multiLine="false"/>
     </variableProperties>
   </variable>
-  <variable id="IP_AMER" parameter="true">
-    <descriptions defaultDescription="IP_AMER"/>
-    <variableProperties datatype="NVARCHAR" length="4" scale="NaN" mandatory="false">
-      <valueDomain type="AttributeValue">
-        <attribute name="REGION"/>
-      </valueDomain>
-      <selection multiLine="false"/>
-      <defaultRange lowValue="AMER"/>
-      <internalExternalConversion convertToExternalFunction="" convertToInternalFunction="" orderPreserving="true"/>
-    </variableProperties>
-  </variable>
   <variable id="IP_APJ" parameter="true">
     <descriptions defaultDescription="IP_APJ"/>
     <variableProperties datatype="NVARCHAR" length="4" scale="NaN" mandatory="false">
@@ -64,7 +53,26 @@
       </valueDomain>
       <selection multiLine="false"/>
       <defaultRange lowValue="APJ"/>
-      <internalExternalConversion convertToExternalFunction="" convertToInternalFunction="" orderPreserving="true"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_AFR" parameter="true">
+    <descriptions defaultDescription="IP_AFR"/>
+    <variableProperties datatype="NVARCHAR" length="4" scale="null" mandatory="false">
+      <valueDomain type="AttributeValue">
+        <attribute name="REGION"/>
+      </valueDomain>
+      <selection multiLine="false"/>
+      <defaultRange lowValue="AFR"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_AMER" parameter="true">
+    <descriptions defaultDescription="IP_AMER"/>
+    <variableProperties datatype="NVARCHAR" length="4" scale="NaN" mandatory="false">
+      <valueDomain type="AttributeValue">
+        <attribute name="REGION"/>
+      </valueDomain>
+      <selection multiLine="false"/>
+      <defaultRange lowValue="AMER"/>
     </variableProperties>
   </variable>
   <variable id="IP_EMEA" parameter="true">
@@ -75,193 +83,249 @@
       </valueDomain>
       <selection multiLine="false"/>
       <defaultRange lowValue="EMEA"/>
-      <internalExternalConversion convertToExternalFunction="" convertToInternalFunction="" orderPreserving="true"/>
-    </variableProperties>
-  </variable>
-  <variable id="IP_AFR" parameter="true">
-    <descriptions defaultDescription="IP_AFR"/>
-    <variableProperties datatype="NVARCHAR" length="4" scale="NaN" mandatory="false">
-      <valueDomain type="AttributeValue">
-        <attribute name="REGION"/>
-      </valueDomain>
-      <selection multiLine="false"/>
-      <defaultRange lowValue="AFR"/>
-      <internalExternalConversion convertToExternalFunction="" convertToInternalFunction="" orderPreserving="true"/>
     </variableProperties>
   </variable>
 </localVariables>
 <variableMappings>
   <mapping xsi:type="Variable:VariableMapping" dataSource="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL">
-    <targetVariable name="IP_TO_DTE" resourceUri="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <targetVariable name="IP_FR_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_FR_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL">
+    <targetVariable name="IP_TO_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
     <localVariable>IP_TO_DTE</localVariable>
   </mapping>
   <mapping xsi:type="Variable:VariableMapping" dataSource="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL">
-    <targetVariable name="IP_FR_DTE" resourceUri="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <targetVariable name="IP_REGION" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_AMER</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_FR_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
     <localVariable>IP_FR_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_TO_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_TO_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_REGION" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_EMEA</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="AMER$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_FR_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_FR_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="AMER$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_TO_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_TO_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="AMER$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_REGION" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_AFR</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_FR_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_FR_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_TO_DTE" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_TO_DTE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+    <targetVariable name="IP_REGION" resourceUri="/undefined/calculationviews/sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL"/>
+    <localVariable>IP_APJ</localVariable>
   </mapping>
 </variableMappings>
 <dataSources>
-  <DataSource id="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL" partitionedExecution="false">
+  <DataSource id="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL">
     <resourceUri>sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL</resourceUri>
   </DataSource>
-  <DataSource id="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$" partitionedExecution="false">
+  <DataSource id="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
     <resourceUri>sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL</resourceUri>
   </DataSource>
-  <DataSource id="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$" partitionedExecution="false">
+  <DataSource id="AMER$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
     <resourceUri>sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL</resourceUri>
   </DataSource>
-  <DataSource id="AFR$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$" partitionedExecution="false">
+  <DataSource id="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
     <resourceUri>sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="AMER" partitionedExecution="false">
+  <calculationView xsi:type="Calculation:ProjectionView" id="AFR">
     <viewAttributes>
-      <viewAttribute id="REGION" measureType="simple"><descriptions/>
+      <viewAttribute id="REGION"><descriptions/>
         <descriptions defaultDescription="REGION"/>
       </viewAttribute>
-      <viewAttribute id="SALES_AMER" aggregationType="sum" measureType="simple"><descriptions/>
-        <descriptions defaultDescription="SALES_APJ"/>
+      <viewAttribute id="SALES_AFR" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="SALES"/>
       </viewAttribute>
-      <viewAttribute id="COMPANY_NAME" measureType="simple"><descriptions/>
+      <viewAttribute id="COMPANY_NAME"><descriptions/>
         <descriptions defaultDescription="COMPANY_NAME"/>
       </viewAttribute>
-      <viewAttribute id="DISCOUNT" aggregationType="sum" measureType="simple"><descriptions/>
+      <viewAttribute id="DISCOUNT" aggregationType="sum"><descriptions/>
         <descriptions defaultDescription="DISCOUNT"/>
       </viewAttribute>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
     <input node="sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AFR" source="SALES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT" source="DISCOUNT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="APJ">
+    <viewAttributes>
+      <viewAttribute id="REGION"><descriptions/>
+        <descriptions defaultDescription="REGION"/>
+      </viewAttribute>
+      <viewAttribute id="SALES_APJ" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="SALES_AFR"/>
+      </viewAttribute>
+      <viewAttribute id="COMPANY_NAME"><descriptions/>
+        <descriptions defaultDescription="COMPANY_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="DISCOUNT" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="DISCOUNT"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_APJ" source="SALES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT" source="DISCOUNT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="AMER">
+    <viewAttributes>
+      <viewAttribute id="REGION"><descriptions/>
+        <descriptions defaultDescription="REGION"/>
+      </viewAttribute>
+      <viewAttribute id="SALES_AMER" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="SALES_APJ"/>
+      </viewAttribute>
+      <viewAttribute id="COMPANY_NAME"><descriptions/>
+        <descriptions defaultDescription="COMPANY_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="DISCOUNT" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="DISCOUNT"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="AMER$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
       <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMER" source="SALES"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT" source="DISCOUNT"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:UnionView" id="Union_1" partitionedExecution="false">
+  <calculationView xsi:type="Calculation:ProjectionView" id="EMEA">
     <viewAttributes>
-      <viewAttribute id="DISCOUNT" measureType="simple"><descriptions/>
-        <descriptions defaultDescription="DISCOUNT"/>
-      </viewAttribute>
-      <viewAttribute id="SALES_AMER" measureType="simple"><descriptions/>
-        <descriptions defaultDescription="SALES_AMER"/>
-      </viewAttribute>
-      <viewAttribute id="REGION" measureType="simple">
+      <viewAttribute id="REGION"><descriptions/>
         <descriptions defaultDescription="REGION"/>
       </viewAttribute>
-    
-      <viewAttribute id="COMPANY_NAME" measureType="simple">
-        <descriptions defaultDescription="COMPANY_NAME"/>
-      </viewAttribute>
-      <viewAttribute id="SALES_APJ" measureType="simple">
+      <viewAttribute id="SALES_EMEA" aggregationType="sum"><descriptions/>
         <descriptions defaultDescription="SALES_APJ"/>
       </viewAttribute>
-      <viewAttribute id="SALES_EMEA" measureType="simple">
+      <viewAttribute id="COMPANY_NAME"><descriptions/>
+        <descriptions defaultDescription="COMPANY_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="DISCOUNT" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="DISCOUNT"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_EMEA" source="SALES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT" source="DISCOUNT"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="REGION"><descriptions/>
+        <descriptions defaultDescription="REGION"/>
+      </viewAttribute>
+      <viewAttribute id="COMPANY_NAME"><descriptions/>
+        <descriptions defaultDescription="COMPANY_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="DISCOUNT"><descriptions/>
+        <descriptions defaultDescription="DISCOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="SALES_AMER"><descriptions/>
+        <descriptions defaultDescription="SALES_AMER"/>
+      </viewAttribute>
+      <viewAttribute id="SALES_EMEA"><descriptions/>
         <descriptions defaultDescription="SALES_EMEA"/>
       </viewAttribute>
-      <viewAttribute id="SALES_AFR" measureType="simple">
+      <viewAttribute id="SALES_AFR"><descriptions/>
         <descriptions defaultDescription="SALES_AFR"/>
       </viewAttribute>
+      <viewAttribute id="SALES_APJ"><descriptions/>
+        <descriptions defaultDescription="SALES_APJ"/>
+      </viewAttribute>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
     <input node="AMER" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT" source="DISCOUNT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMER" source="SALES_AMER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-    
-      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_EMEA" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AFR" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_APJ" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_EMEA" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AFR" null="true" value=""/>
-    </input>
-    <input node="APJ" emptyUnionBehavior="NO_ROW">
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DISCOUNT" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMER" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REGION" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMPANY_NAME" null="true" value=""/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_APJ" source="SALES_APJ"/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_EMEA" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AFR" null="true" value=""/>
     </input>
     <input node="EMEA" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DISCOUNT" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMER" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REGION" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMPANY_NAME" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_APJ" null="true" value=""/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_EMEA" source="SALES_EMEA"/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AFR" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_APJ" null="true" value=""/>
     </input>
     <input node="AFR" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DISCOUNT" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMER" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REGION" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMPANY_NAME" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_APJ" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_EMEA" null="true" value=""/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AFR" source="SALES_AFR"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_APJ" null="true" value=""/>
     </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="APJ" partitionedExecution="false">
-    <viewAttributes>
-      <viewAttribute id="SALES_APJ" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="SALES"/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="APJ$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_APJ" source="SALES"/>
-    </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="EMEA" partitionedExecution="false">
-    <viewAttributes>
-      <viewAttribute id="SALES_EMEA" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="SALES"/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="EMEA$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_EMEA" source="SALES"/>
-    </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="AFR" partitionedExecution="false">
-    <viewAttributes>
-      <viewAttribute id="SALES_AFR" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="SALES"/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="AFR$$$$sap.hana.democontent.epm.models::SALES_ORDER_RANKING_AND_DISCOUNT_SQL$$">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AFR" source="SALES"/>
+    <input node="APJ" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DISCOUNT" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMER" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_EMEA" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AFR" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_APJ" source="SALES_APJ"/>
     </input>
   </calculationView>
 </calculationViews>
 <logicalModel id="Union_1">
   <attributes>
-    <attribute id="DISCOUNT" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DISCOUNT"/>
-      <keyMapping columnObjectName="Union_1" columnName="DISCOUNT"/>
-    </attribute>
-  
-    <attribute id="REGION" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGION" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="REGION"/>
       <keyMapping columnObjectName="Union_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="COMPANY_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="COMPANY_NAME"/>
+    </attribute>
+    <attribute id="DISCOUNT" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DISCOUNT"/>
+      <keyMapping columnObjectName="Union_1" columnName="DISCOUNT"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
-    <measure id="SALES_AMER" order="2" aggregationType="sum" measureType="simple">
+    <measure id="SALES_AMER" order="4" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="SALES_AMER"/>
       <measureMapping columnObjectName="Union_1" columnName="SALES_AMER"/>
-    </measure>
-    <measure id="SALES_APJ" order="4" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="SALES_APJ"/>
-      <measureMapping columnObjectName="Union_1" columnName="SALES_APJ"/>
     </measure>
     <measure id="SALES_EMEA" order="5" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="SALES_EMEA"/>
@@ -271,6 +335,10 @@
       <descriptions defaultDescription="SALES_AFR"/>
       <measureMapping columnObjectName="Union_1" columnName="SALES_AFR"/>
     </measure>
+    <measure id="SALES_APJ" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SALES_APJ"/>
+      <measureMapping columnObjectName="Union_1" columnName="SALES_APJ"/>
+    </measure>
   </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -279,31 +347,31 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="212" y="112"/>
+      <upperLeftCorner x="438" y="112"/>
     
       <rectangleSize width="140"/>
     </shape>
+  
+    <shape expanded="true" modelObjectName="AFR" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="472" y="377"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="APJ" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="662" y="377"/>
+      <rectangleSize width="140"/>
+    </shape>
     <shape expanded="true" modelObjectName="AMER" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91" y="337"/>
+      <upperLeftCorner x="92" y="377"/>
+      <rectangleSize width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="EMEA" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="282" y="377"/>
       <rectangleSize width="140"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="212" y="217"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectName="APJ" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="265" y="346"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-    <shape expanded="true" modelObjectName="EMEA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="427" y="346"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-    <shape expanded="true" modelObjectName="AFR" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="582" y="346"/>
+      <upperLeftCorner x="438" y="217"/>
       <rectangleSize height="30" width="140"/>
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario>
+</Calculation:scenario>   

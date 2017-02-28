@@ -1,9 +1,10 @@
 {
-	"name": "shine-web-approuter",
+	"name": "shine-web",
 	"dependencies": {
-		"approuter": "2.2.0"
+		"@sap/approuter": "2.7.0"
 	},
 	"scripts": {
-		"start": "node node_modules/approuter/approuter.js"
+		"start": "node node_modules/@sap/approuter/approuter.js"
 	}
 }
+

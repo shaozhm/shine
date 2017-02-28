@@ -1,6 +1,6 @@
 _schema-version: "3.1.0"
 ID: XSAC_SHINE
-version: 1.1.15
+version: 1.3.0
 
 modules:
   - name: shine-user-db
@@ -21,18 +21,8 @@ modules:
         properties:
           TARGET_CONTAINER: ~{container-name}
 
-      - name: CrossSchemaSys
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sys-service
-          service: ~{sys-service-name}
- 
-      - name: CrossSchemaSysBi
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sys-bi-service
-          service: ~{sys-bi-service-name}
-
+       
+      
       - name: shine-user-container
         group: SERVICE_REPLACEMENTS
         properties:
@@ -88,6 +78,7 @@ modules:
           ui-url: "${default-url}"
     requires:
       - name: shine-uaa
+      - name: sapui5-provider
       - name: core-js
         group: destinations
         properties:
@@ -130,19 +121,22 @@ modules:
           name: controller
           url: ~{url}
           forwardAuthToken: true
-      - name: sapui5-provider
+      - name: user-js
+        group: destinations
         properties:
-          sapui5url: ~{url}
+          name: user-backend
+          url: ~{url}
+          forwardAuthToken: true
       - name: user-java
         group: destinations
         properties:
           name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
-      - name: user-js
+      - name: core-js
         group: destinations
         properties:
-          name: user-backend
+          name: core-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
@@ -151,6 +145,8 @@ modules:
            name: uaa 
            url: ~{url} 
            forwardAuthToken: true
+      - name: sapui5-provider
+        
   - name: site-content
     type: com.sap.portal.site-content
     path: site-content/
@@ -171,46 +167,14 @@ resources:
     parameters: 
      service-name: shine-user-container
      config:
-       schema: SHINE_USER
+       schema: #to be specified in extension descriptor
+    parameters-metadata:
+      config:
+        overwritable: true
+
     
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
-
-  - name: CrossSchemaSys
-    type: org.cloudfoundry.user-provided-service
-    parameters: 
-      service-name: CROSS_SCHEMA_SYS
-      config: 
-        host: # to be specified in extension descriptor
-        port: # to be specified in extension descriptor
-        user: # to be specified in extension descriptor
-        password: # to be specified in extension descriptor
-        driver: # to be specified in extension descriptor
-        tags: # to be specified in extension descriptor
-        schema: # to be specified in extension descriptor
-    properties:
-     sys-service-name: ${service-name}
-    parameters-metadata:
-      config:
-        overwritable: true
-
-  - name: CrossSchemaSysBi
-    type: org.cloudfoundry.user-provided-service
-    parameters: 
-      service-name: CROSS_SCHEMA_SYS_BI
-      config: 
-        host: # to be specified in extension descriptor
-        port: # to be specified in extension descriptor
-        user: # to be specified in extension descriptor
-        password: # to be specified in extension descriptor
-        driver: # to be specified in extension descriptor
-        tags: # to be specified in extension descriptor
-        schema: # to be specified in extension descriptor
-    properties:
-     sys-bi-service-name: ${service-name}
-    parameters-metadata:
-      config:
-        overwritable: true
 
   - name: shine-uaa
     type: com.sap.xs.uaa-space
@@ -220,37 +184,26 @@ resources:
   - name: uaa 
     properties: 
       url: "${xs-auth-url}"
-    
+  
   - name: sap-portal-services-host
     type: com.sap.portal.site-host
     parameters:
       config:
         siteId : XSAC_SHINE
-    
+        
   - name: sap-portal-services-client
     type: com.sap.portal.site-content
     parameters:
       config:
         siteId : XSAC_SHINE
-    
-  - name: portal-uaa
-    type: com.sap.xs.uaa-space
-    parameters:
-      config-path: xs-security.json
-    
+        
   - name: controller
     properties:
       url: "${xs-api-url}"
 
-# Once there will be central ui5 on xsa (ui5 mtar) shouid uncomment
-# this section with the proper ui5 mtar id and version and commnet the next section.
-#  - name: sapui5-provider
-#    type: mta-provided
-#    parameters:
-#      mta-id: com.sap.ui5.dist.sapui5-dist-xsa.1.36
-#      mta-version: ">=1.36.3"
-#      mta-provides-dependency: sapui5-1.36
-
   - name: sapui5-provider
-    properties:
-      url: "https://sapui5.hana.ondemand.com/1.38.5"
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: sapui5_fesv3
+      service-plan: default
+

@@ -38,16 +38,11 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.salesdashboard.Componen
         });
         this.setModel(i18nModel, "i18n");
         
-        // var tooltipFormatString = '';
+        var tooltipFormatString = '';
         
-        // if (sLocale.indexOf("de") > -1) {
-        //     tooltipFormatString = '#.###.###.###,00'; 
-        // } else {
-        //     tooltipFormatString = '#,###,###,###.00'; 
-        // }
         
-        // /** initialize tile dialog */
-        // jQuery.sap.registerModulePath('app', 'js');
-        // jQuery.sap.require("app.tileDialog");
+        /** initialize tile dialog */
+        jQuery.sap.registerModulePath('app', 'js');
+        jQuery.sap.require("app.tileDialog");
    }
 });
