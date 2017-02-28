@@ -5,7 +5,7 @@
 				<version>1</version>
 				<vendor>sap.com</vendor>
 			</software-component-version-key>
-			<caption>SAPUI5 FESV3 XSA 1 - SAPUI5 SDK 1.344</caption>
+			<caption>SAPUI5 FESV3 XSA 1 - SAPUI5 SDK 1.44.8</caption>
 			<runtime-type>XSART</runtime-type>
 		</requires>
 	</dependencies></software-component-version>
