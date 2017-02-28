@@ -1,3 +1,4 @@
+var viewCounter=0;
 sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.main", {
 
     // instantiated view will be added to the oViewCache object and retrieved from there
@@ -5,20 +6,21 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.main", {
 
     onInit: function() {
     	 sap.app.mainController = this;
+         //viewCounter = 0;
     },
 
     /**
      * getCachedView checks if view already exists in oViewCache object, will create it if not, and return the view
      */
     getCachedView: function(viewName) {
-        if (!this.oViewCache[viewName]) {
+        //if (!this.oViewCache[viewName]) {
             var fullViewName = "sap.hana.democontent.epm.salesdashboard.view" + "." + viewName;
             this.oViewCache[viewName] = sap.ui.view({
                 id: viewName,
                 viewName: fullViewName,
                 type: sap.ui.core.mvc.ViewType.XML
             });
-        }
+        //}
         return this.oViewCache[viewName];
     },
 
@@ -60,7 +62,8 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.main", {
     
     	onAfterRendering: function() {
     	    
-    	    var oShell = sap.ui.getCore().byId("__xmlview0--myShell");
+    	    var oShell = sap.ui.getCore().byId("__xmlview" +viewCounter+"--myShell");
+            viewCounter++;
     	    
     		if (!sap.isSingle) {
     			oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
