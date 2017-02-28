@@ -80,7 +80,7 @@ modules:
       - name: shine-uaa
       - name: sapui5-provider
         properties:
-           sapui5url: ~{url}
+          sapui5url: ~{url}
       - name: core-js
         group: destinations
         properties:
@@ -204,9 +204,9 @@ resources:
       url: "${xs-api-url}"
 
   - name: sapui5-provider
-    type: configuration
-    parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-      version: ">=1.44.8"
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
+      version: ">=1.44.8"
 
 
