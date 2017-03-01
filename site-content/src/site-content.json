@@ -331,6 +331,18 @@
 					}
 				},
 				{
+					"id": "jobScheduler",	
+					"title": "{{group1.tile5.title}}",
+					"description": "{{group1.tile5.desc}}",
+					"subTitle": "{{group1.tile5.sTitle}}",
+                    "icon": "sap-icon://list",						
+					"target": {
+						"semanticObject": "app3",
+						"action": "show",
+						"parameters": []
+					}
+				},
+				{
 					"id": "dataGenerator",	
 					"title": "{{group1.tile6.title}}",
 					"description": "{{group1.tile6.desc}}",
