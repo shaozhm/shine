@@ -7,14 +7,17 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 		var visibleRows=oSHTable.getVisibleRowCount();
 		this.byId("tablePaginator").setCurrentPage(Math.ceil( parseInt(rowNum)/parseInt(visibleRows))); 
 		
-		var oSITable = sap.ui.getCore().byId("details--soItemTable");
+		//var oSITable = sap.ui.getCore().byId("details--soItemTable");
+		var oSITable = this.getView().byId("soItemTable");
 		oSITable.bindRows(path + "/SalesOrderItem");
 	},
 
 	onRefresh: function(oEvent) {
 		// clear selection and filters
-		var oSHTable = sap.ui.getCore().byId("details--soHeader");
-        var oSITable = sap.ui.getCore().byId("details--soItemTable");
+		//var oSHTable = sap.ui.getCore().byId("details--soHeader");
+		var oSHTable = this.getView().byId("soHeader");
+        //var oSITable = sap.ui.getCore().byId("details--soItemTable");
+        var oSITable = this.getView().byId("soItemTable");
         
 		oSHTable.clearSelection();
 		var aCols = oSHTable.getColumns();
@@ -81,7 +84,8 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 
 	onDeletePress: function(oEvent) {
 		var oController = this;
-		var oTable = sap.ui.getCore().byId("details--soHeader");
+		//var oTable = sap.ui.getCore().byId("details--soHeader");
+		var oTable = this.getView().byId("soHeader");
 		var data = oTable.getModel();
 		var soId = data.getProperty("SALESORDERID", oTable.getContextByIndex(oTable.getSelectedIndex()));
 
@@ -127,7 +131,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 	 *
 	 */
 	onBindingChange: function(oController) {
-		var oSHTable = sap.ui.getCore().byId("details--soHeader");
+		var oSHTable = this.getView().byId("soHeader");
 		var iNumberOfRows = oSHTable.getBinding("rows").iLength;
 		
 		oSHTable.setTitle("Sales Orders" + " (" + this.numericSimpleFormatter(iNumberOfRows) + ")");
@@ -298,11 +302,13 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
             oController.onBindingChange(oController);
         });
 	    
-        var oSHTable = sap.ui.getCore().byId("details--soHeader");
+        //var oSHTable = sap.ui.getCore().byId("details--soHeader");
+        var oSHTable = this.getView().byId("soHeader");
         if(oSHTable != undefined){
         	oSHTable.setModel(oModel);
         
-        	var oSITable = sap.ui.getCore().byId("details--soItemTable");
+        	//var oSITable = sap.ui.getCore().byId("details--soItemTable");
+        	var oSITable = this.getView().byId("soItemTable");
     		oSITable.setModel(oModel);
         
         	var sort1 = new sap.ui.model.Sorter("SALESORDERID", true);
