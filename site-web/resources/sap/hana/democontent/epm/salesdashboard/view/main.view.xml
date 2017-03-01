@@ -5,7 +5,7 @@
     xmlns:sap.ui.commons="sap.ui.commons" >
     <sap.ui.ux3:Shell id="myShell" 
                       appTitle="{i18n>SHELL_HEADER_TITLE}" 
-                      appIcon="./images/SAPLogo.gif" 
+                      appIcon="/resources/sap/hana/democontent/epm/salesdashboard/images/SAPLogo.gif" 
                       appIconTooltip="SAP" 
                       showLogoutButton="true"
                       logout="logout"

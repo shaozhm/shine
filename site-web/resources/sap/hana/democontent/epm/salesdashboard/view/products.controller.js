@@ -1,6 +1,6 @@
 sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.products", {
 
-	onAfterRendering: function() {
+    onAfterRendering: function() {
         var oModel = new sap.ui.model.odata.ODataModel(
                 "/sap/hana/democontent/epm/services/salesYearCompare.xsodata",
                 true);
@@ -33,7 +33,8 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.products", {
 
         dataset.bindData(bindString, sort1);
 
-        var oYearsCompareBarChart = sap.ui.getCore().byId("products--salesCompareColumn");
+        //var oYearsCompareBarChart = sap.ui.getCore().byId("products--salesCompareColumn");
+        var oYearsCompareBarChart = this.getView().byId("salesCompareColumn");
         oYearsCompareBarChart.setDataset(dataset);
         
         var xAxis = oYearsCompareBarChart.getXAxis();
@@ -79,7 +80,8 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.products", {
         dataset.setModel(oModel);
         dataset.bindData("/SalesByProduct");
 
-        var oSalesRankBubble = sap.ui.getCore().byId("products--productSalesScatter");
+        //var oSalesRankBubble = sap.ui.getCore().byId("products--productSalesScatter");
+        var oSalesRankBubble = this.getView().byId("productSalesScatter");
         oSalesRankBubble.setDataset(dataset);
         
         xAxis = oSalesRankBubble.getXAxis();
@@ -96,7 +98,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.products", {
         }));
 
         oSalesRankBubble.getLegend().setIsScrollable(true); 
-	},
+    },
     
     openTileDialog: function(oEvent) {
         var iData = parseInt(oEvent.getSource().data("tileDialog"), 10);

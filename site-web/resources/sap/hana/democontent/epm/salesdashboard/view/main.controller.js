@@ -1,26 +1,29 @@
 var viewCounter=0;
+oViewCache: {};
 sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.main", {
 
     // instantiated view will be added to the oViewCache object and retrieved from there
-    oViewCache: {},
+    
 
     onInit: function() {
-    	 sap.app.mainController = this;
-         //viewCounter = 0;
+               sap.app.mainController = this;
+               this.oViewCache={};
     },
 
     /**
      * getCachedView checks if view already exists in oViewCache object, will create it if not, and return the view
      */
     getCachedView: function(viewName) {
-        //if (!this.oViewCache[viewName]) {
+        var oShell1 = this.getView().byId("myShell");
+        var idd1 = oShell1.getId();
+        if (!this.oViewCache[viewName]) {
             var fullViewName = "sap.hana.democontent.epm.salesdashboard.view" + "." + viewName;
             this.oViewCache[viewName] = sap.ui.view({
-                id: viewName,
+                id: idd1+viewName,
                 viewName: fullViewName,
                 type: sap.ui.core.mvc.ViewType.XML
             });
-        //}
+        }
         return this.oViewCache[viewName];
     },
 
@@ -60,42 +63,44 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.main", {
     
 
     
-    	onAfterRendering: function() {
-    	    
-    	    var oShell = sap.ui.getCore().byId("__xmlview" +viewCounter+"--myShell");
+              onAfterRendering: function() {
+                  
+                  //var oShell = sap.ui.getCore().byId("__xmlview" +viewCounter+"--myShell");
+                  var oShell = this.getView().byId("myShell");
             viewCounter++;
-    	    
-    		if (!sap.isSingle) {
-    			oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-    				id : "nav-overview",
-    				text : sap.app.i18n.getText("OVERVIEW_TITLE")
-    			}));
-    			oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-    				id : "nav-products",
-    				text : sap.app.i18n.getText("PRODUCT_REPORTS_TITLE")
-    			}));
-    		}
-    		
-    		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-    			id : "nav-details",
-    			text : sap.app.i18n.getText("DETAILS_TITLE")
-    		}));
-    		
-    		oShell.addStyleClass('sapDkShell');
-    		
-    		// action when shell workset item are clicked
-    		oShell.attachWorksetItemSelected(function(oEvent) {
-    			var sViewName = oEvent.getParameter("id").replace("nav-", "");
-    			oShell.setContent(sap.app.mainController.getCachedView(sViewName));
-    		});
+            var idd=oShell.getId();
+                  
+                             if (!sap.isSingle) {
+                                           oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
+                                                          id : idd+"nav-overview",
+                                                          text : sap.app.i18n.getText("OVERVIEW_TITLE")
+                                           }));
+                                           oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
+                                                          id : idd+"nav-products",
+                                                          text : sap.app.i18n.getText("PRODUCT_REPORTS_TITLE")
+                                           }));
+                             }
+                             
+                             oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
+                                           id : idd+"nav-details",
+                                           text : sap.app.i18n.getText("DETAILS_TITLE")
+                             }));
+                             
+                             oShell.addStyleClass('sapDkShell');
+                             
+                             // action when shell workset item are clicked
+                             oShell.attachWorksetItemSelected(function(oEvent) {
+                                           var sViewName = oEvent.getParameter("id").replace(idd+"nav-", "");
+                                           oShell.setContent(sap.app.mainController.getCachedView(sViewName));
+                             });
     
-    		// initial shell content
-    		if (!sap.isSingle) {
-    			oShell.addContent(sap.app.mainController.getCachedView("overview"));
-    		} else {
-    			oShell.addContent(sap.app.mainController.getCachedView("details"));
-    		}
-    	}
+                             // initial shell content
+                             if (!sap.isSingle) {
+                                           oShell.addContent(sap.app.mainController.getCachedView("overview"));
+                             } else {
+                                           oShell.addContent(sap.app.mainController.getCachedView("details"));
+                             }
+              }
 
     
 
