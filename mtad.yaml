@@ -148,6 +148,8 @@ modules:
            url: ~{url} 
            forwardAuthToken: true
       - name: sapui5-provider
+        properties:
+          sapui5url: ~{url}
         
   - name: site-content
     type: com.sap.portal.site-content
