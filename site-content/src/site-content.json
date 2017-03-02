@@ -140,46 +140,6 @@
 				}
 			}
 		},
-		"job-scheduler": {
-      "sap.app": {
-        "_version": "1.3.0",
-        "id": "job-scheduler",
-        "title": "{{app5.title}}",
-        "i18n": "i18n/bundle.properties",
-        "tags": {
-          "keywords": []
-        },
-        "crossNavigation": {
-          "inbounds": {
-            "siteShow": {
-              "semanticObject": "app3",
-              "action": "show",
-              "deviceTypes": {
-                "desktop": true,
-                "tablet": true,
-                "phone": true
-              }
-            }
-          },
-          "outbounds": {
-            
-          }
-        }
-      },
-      "sap.ui": {
-        "_version": "1.3.0",
-        "technology": "UI5"
-      },
-      "sap.ui5": {
-        "componentName": "shine.democontent.epm.job",
-        "_version": "1.2.0"
-      },
-      "sap.platform.runtime": {
-        "componentProperties": {
-          "url": "/resources/shine/democontent/epm/job"
-        }
-      }
-    },
     "user-crud": {
       "sap.app": {
         "_version": "1.3.0",
@@ -359,30 +319,6 @@
 			},
 			"payload": {
 				"tiles": [{
-					"id": "myUi5Tile2",	
-					"title": "{{group1.tile3.title}}",
-					"description": "{{group1.tile3.desc}}",
-					"subTitle": "{{group1.tile3.sTitle}}",
-                    "icon": "sap-icon://person-placeholder",						
-					"target": {
-						"semanticObject": "app2",
-						"action": "show",
-						"parameters": []
-					}
-				},
-				{
-					"id": "jobScheduler",	
-					"title": "{{group1.tile5.title}}",
-					"description": "{{group1.tile5.desc}}",
-					"subTitle": "{{group1.tile5.sTitle}}",
-                    "icon": "sap-icon://list",						
-					"target": {
-						"semanticObject": "app3",
-						"action": "show",
-						"parameters": []
-					}
-				},
-				{
 					"id": "dataGenerator",	
 					"title": "{{group1.tile6.title}}",
 					"description": "{{group1.tile6.desc}}",
@@ -390,6 +326,18 @@
                     "icon": "sap-icon://list",						
 					"target": {
 						"semanticObject": "app4",
+						"action": "show",
+						"parameters": []
+					}
+				},
+				{
+					"id": "poWorklist",	
+					"title": "{{group1.tile8.title}}",
+					"description": "{{group1.tile8.desc}}",
+					"subTitle": "{{group1.tile8.sTitle}}",
+                    "icon": "sap-icon://list",						
+					"target": {
+						"semanticObject": "app6",
 						"action": "show",
 						"parameters": []
 					}
@@ -407,13 +355,13 @@
 					}
 				},
 				{
-					"id": "poWorklist",	
-					"title": "{{group1.tile8.title}}",
-					"description": "{{group1.tile8.desc}}",
-					"subTitle": "{{group1.tile8.sTitle}}",
-                    "icon": "sap-icon://list",						
+					"id": "myUi5Tile2",	
+					"title": "{{group1.tile3.title}}",
+					"description": "{{group1.tile3.desc}}",
+					"subTitle": "{{group1.tile3.sTitle}}",
+                    "icon": "sap-icon://person-placeholder",						
 					"target": {
-						"semanticObject": "app6",
+						"semanticObject": "app2",
 						"action": "show",
 						"parameters": []
 					}
