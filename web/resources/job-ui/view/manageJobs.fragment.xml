@@ -22,16 +22,6 @@
 					<sap.ui.commons:TextArea rows="3" cols="20" design="Bold" id="jobDescriptionTextField" required="true" tooltip="{i18n&gt;jobdescriptiontooltip}"/>
 			</l:MatrixLayoutCell>
 		</l:MatrixLayoutRow>
-		<l:MatrixLayoutRow>
-			<l:MatrixLayoutCell>
-				<sap.ui.commons:Label labelFor="userName" text="{i18n&gt;username}" width="30%"/>
-				<sap.ui.commons:TextField design="Bold" id="userName" required="true" tooltip="{i18n&gt;usernametooltip}"/>
-		</l:MatrixLayoutCell>
-		<l:MatrixLayoutCell>
-				<sap.ui.commons:Label labelFor="password" text="{i18n&gt;password}" width="30%"/>
-				<sap.ui.commons:PasswordField design="Bold" id="password" required="true" tooltip="{i18n&gt;passwordtooltip}"/>
-		</l:MatrixLayoutCell>
-		</l:MatrixLayoutRow>
 			<l:MatrixLayoutRow>
 			<l:MatrixLayoutCell colSpan="3">
 				<sap.ui.commons:TextView design="H5" text="Schedule Details"/>

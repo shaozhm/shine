@@ -47,6 +47,8 @@ modules:
   - name: shine-user-js
     type: javascript.nodejs
     path: user-js/
+    properties: 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"sb-jobscheduler\",\"identityzone\":\"*\"}]"
     provides: 
       - name: user-js
         properties:

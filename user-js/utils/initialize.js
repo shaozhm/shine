@@ -27,11 +27,18 @@ module.exports = {
 			hana: { tag: 'hana' }
 		}).hana;
 
-		app.use(
+	app.use("/jobactivity",
+			xsHDBConn.middleware(hanaOptions));
+		app.use("/jobs",
 			passport.authenticate("JWT", {
 				session: false
 			}),
 			xsHDBConn.middleware(hanaOptions));
+		app.use("/schedules",
+		passport.authenticate("JWT", {
+				session: false
+			}),
+			xsHDBConn.middleware(hanaOptions));	
 		//		app.use(xsHDBConn.middleware()); 	
 		return app;
 	},
