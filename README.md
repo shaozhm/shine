@@ -34,6 +34,10 @@ If not installed,please download the latest version from milestone [here](http:/
 - XSAC_SERVICES   
 If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/).
 
+
+- sapui5_fesv3   
+If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones/com/sap/ui5/dist/sapui5-dist-xsa/1.44.8/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-dist-xsa/1.44.8/).
+
 ##Installation via Product Installer 
 
 Below are three ways to install SHINE:
