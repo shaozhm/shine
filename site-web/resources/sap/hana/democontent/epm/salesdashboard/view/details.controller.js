@@ -512,9 +512,9 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
         var addButtonPd = new sap.ui.commons.Button({
 
             id: "addlineitmbtn" + lineitemindex,
-            icon: "images/AddLineItem.gif",
-            iconHovered: "images/AddLineItemHover.gif",
-            iconSelected: "images/AddLineItemHover.gif",
+            icon: "/resources/sap/hana/democontent/epm/salesdashboard/images/AddLineItem.gif",
+            iconHovered: "/resources/sap/hana/democontent/epm/salesdashboard/images/AddLineItemHover.gif",
+            iconSelected: "/resources/sap/hana/democontent/epm/salesdashboard/images/AddLineItemHover.gif",
             tooltip: "Add Row",
             width: "30px",
             press: function(oControlEvent) {
