@@ -12,6 +12,9 @@ modules:
           ui-url: "${default-url}"
     requires:
       - name: shine-uaa
+      - name: sapui5-provider
+        properties:
+          sapui5url: ~{url}
       - name: core-js
         group: destinations
         properties:
@@ -50,9 +53,7 @@ modules:
       - name: core-js
         properties:
           url: "${default-url}"
-    properties: 
-      
-      UAA_SERVICE_NAME: shine-uaa
+    
     requires:
       - name: shine-uaa
       - name: shine-container
@@ -96,13 +97,7 @@ modules:
       - name: shine-container
         properties:
           TARGET_CONTAINER: ~{container-name}
-          
-     
-          
-     
-          
-    
-      
+  
       - name: shine-user-container
         group: SERVICE_REPLACEMENTS
         properties:
@@ -116,6 +111,67 @@ modules:
      - name: shine-user-container
        properties:
         TARGET_CONTAINER: ~{user-container-name}
+ 
+ 
+
+
+  
+
+
+  - name: site-web
+    type: siteentry
+    path: site-web
+    parameters:
+       memory: 64M
+    requires:
+      - name: shine-uaa
+      - name: sap-portal-services-host
+      - name: user-js
+        group: destinations
+        properties:
+          name: user-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: controller
+        group: destinations
+        properties:
+          name: controller
+          url: ~{url}
+      - name: user-java
+        group: destinations
+        properties:
+          name: user-java-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: core-js
+        group: destinations
+        properties:
+          name: core-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: uaa 
+        group: destinations 
+        properties: 
+           name: uaa 
+           url: '~{url}' 
+           forwardAuthToken: true
+      - name: sapui5-provider
+        properties:
+          sapui5url: '~{url}'
+
+
+  
+     
+     
+  - name: site-content
+    type: sitecontent
+    path: site-content
+    parameters:
+       memory: 64M
+    requires:
+       - name: sap-portal-services-client
+       - name: shine-uaa
+
 
 resources:
   - name: shine-container
@@ -128,15 +184,9 @@ resources:
     properties:
       user-container-name: ${service-name}
     parameters: 
-     service-name: DEVX_TECH_USER-jzcyz8jkre0kti6g-shine-shine-user-container
+     service-name: shine-user-container
      config:
        schema: SHINE_USER
-       
- 
-     
-    
-     
- 
 
   - name: shine-scheduler
     type: com.sap.xs.job-scheduler
@@ -174,13 +224,77 @@ resources:
          - xs_controller.read
          - xs_authorization.read
          - xs_authorization.write
+         
+  - name: sap-portal-services-host
+    type: com.sap.portal.site-host
+    parameters:
+      config:
+        siteId : XSAC_SHINE
+        
+  - name: sap-portal-services-client
+    type: com.sap.portal.site-content
+    parameters:
+      config:
+        siteId : XSAC_SHINE
+
    
   - name: uaa 
     properties: 
-      url: "https://mo-e2d0a9b47.mo.sap.corp:30032/uaa-security"
+      url: "https://mo-2fb6625be.mo.sap.corp:30032/uaa-security"
       
   - name: sapui5-provider
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV2:sapui5_fesv2
-      version: ">=1.38.10"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
+      version: "1.44.8"
+  - name: sap-portal-services-host-com.sap.refapps.shine
+    parameters:
+       config:
+          siteId: com.sap.refapps.shine
+    type: com.sap.portal.site-host
+
+
+  - name: portal-uaa-com.sap.refapps.shine
+    parameters:
+       service-plan: space
+    type: com.sap.xs.uaa
+
+
+  - name: sapui5-provider_2
+    parameters:
+       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
+       version: '>=1.42.0'
+       provider-nid: mta
+    type: configuration
+
+
+  - name: sap-portal-services-host-com.sap.refapps.shine_2
+    parameters:
+       config:
+          siteId: com.sap.refapps.shine
+    type: com.sap.portal.site-host
+
+
+  - name: portal-uaa-com.sap.refapps.shine_2
+    parameters:
+       service-plan: space
+    type: com.sap.xs.uaa
+
+
+  - name: sapui5-provider_3
+    parameters:
+       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
+       version: '>=1.42.0'
+       provider-nid: mta
+    type: configuration
+ 
+  - name: controller
+    properties:
+      url: 'https://mo-2fb6625be.mo.sap.corp:30030'
+
+  - name: sap-portal-services-client-com.sap.refapps.shine
+    parameters:
+       config:
+          siteId: com.sap.refapps.shine
+    type: com.sap.portal.site-content
+
