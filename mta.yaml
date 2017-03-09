@@ -260,41 +260,11 @@ resources:
     type: com.sap.xs.uaa
 
 
-  - name: sapui5-provider_2
-    parameters:
-       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-       version: '>=1.42.0'
-       provider-nid: mta
-    type: configuration
-
-
-  - name: sap-portal-services-host-com.sap.refapps.shine_2
-    parameters:
-       config:
-          siteId: com.sap.refapps.shine
-    type: com.sap.portal.site-host
-
-
-  - name: portal-uaa-com.sap.refapps.shine_2
-    parameters:
-       service-plan: space
-    type: com.sap.xs.uaa
-
-
-  - name: sapui5-provider_3
-    parameters:
-       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-       version: '>=1.42.0'
-       provider-nid: mta
-    type: configuration
+ 
  
   - name: controller
     properties:
       url: 'https://mo-2fb6625be.mo.sap.corp:30030'
 
-  - name: sap-portal-services-client-com.sap.refapps.shine
-    parameters:
-       config:
-          siteId: com.sap.refapps.shine
-    type: com.sap.portal.site-content
+  
 
