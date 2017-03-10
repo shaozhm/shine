@@ -37,7 +37,7 @@
     }, {
       "source": "/jobactivity/(.*)",
       "destination": "user-backend",
-      "authenticationType": "basic"
+      "authenticationType": "none"
     },{
       "source": "/user/xsodata/(.*)",
       "destination": "user-backend"

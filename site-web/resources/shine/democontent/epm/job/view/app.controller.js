@@ -88,7 +88,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 				}
 				item[id] = value;
 			}
-            item.password= window.btoa(item.password);
+            // item.password= window.btoa(item.password);
              item.appurl = "https://"+window.location.hostname+":"+window.location.port+"/jobactivity/create";
 			var xsrf_token;
 			$.ajax({
@@ -239,7 +239,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	clearUIFields: function() {
 		// var i18n = this.getView.getModel("i18n");
 		var oBundle = jQuery.sap.resources({
-			url: "/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
+			url: "/resources/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
 			locale: "EN"
 		});
 		var uiFieldsArray = oBundle.getText("uiKeyMapper");
