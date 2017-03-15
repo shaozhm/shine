@@ -29,117 +29,6 @@
 		}
 	},
 	"applications": {
-		"73c3f80a-5245-4e6c-a51d-d9436b1cb530": {
-			"sap.app": {
-				"_version": "1.3.0",
-				"id": "73c3f80a-5245-4e6c-a51d-d9436b1cb530",
-				"title": "{{app1.title}}",
-				"i18n": "i18n/bundle.properties",
-				"tags": {
-					"keywords": []
-				},
-				"crossNavigation": {
-					"inbounds": {
-						"SapShow": {
-							"semanticObject": "Sap",
-							"action": "show",
-							"deviceTypes": {
-								"desktop": true,
-								"tablet": true,
-								"phone": true
-							}							
-						}
-					}
-				}
-			},
-			"sap.platform.runtime": {
-				"url": "https://www.sap.com"
-			},
-			"sap.ui": {
-				"_version": "1.3.0",
-				"technology": "URL"
-			}
-		},
-		"6ef9cdd2-687e-11e6-8b77-86f30ca893d3": {
-			"sap.app": {
-				"_version": "1.3.0",
-				"id": "6ef9cdd2-687e-11e6-8b77-86f30ca893d3",
-				"title": "{{app2.title}}",
-				"i18n": "i18n/bundle.properties",
-				"tags": {
-					"keywords": []
-				},
-				"crossNavigation": {
-					"inbounds": {
-						"appShow": {
-							"semanticObject": "app",
-							"action": "show",
-							"deviceTypes": {
-								"desktop": true,
-								"tablet": true,
-								"phone": true
-							}
-						}
-					},
-					"outbounds": {
-						
-					}
-				}
-			},
-			"sap.ui": {
-				"_version": "1.3.0",
-				"technology": "UI5"
-			},
-			"sap.ui5": {
-				"componentName": "sap.ushell.demo.AppPersSample2",
-				"_version": "1.2.0"
-			},
-			"sap.platform.runtime": {
-				"componentProperties": {
-					"url": "https://sapui5.hana.ondemand.com/test-resources/sap/ushell/demoapps/AppPersSample2"
-				}
-			}
-		},
-		"7af8cdd2-687e-22e6-8377-86f30ba893d3": {
-			"sap.app": {
-				"_version": "1.3.0",
-				"id": "7af8cdd2-687e-22e6-8377-86f30ba893d3",
-				"title": "{{app4.title}}",
-				"i18n": "i18n/bundle.properties",
-				"tags": {
-					"keywords": []
-				},
-				"crossNavigation": {
-					"inbounds": {
-						"siteShow": {
-							"semanticObject": "site",
-							"action": "show",
-							"deviceTypes": {
-								"desktop": true,
-								"tablet": true,
-								"phone": true
-							}
-						}
-					},
-					"outbounds": {
-						
-					}
-				}
-			},
-			"sap.ui": {
-				"_version": "1.3.0",
-				"technology": "UI5"
-			},
-			"sap.ui5": {
-				"componentName": "sap.demo.sitedirectory",
-				"_version": "1.2.0"
-			},
-			"sap.platform.runtime": {
-				"componentProperties": {
-					"url": "/resources/sap/demo/sitedirectory"
-				}
-			}
-		},
     "user-crud": {
       "sap.app": {
         "_version": "1.3.0",
@@ -161,7 +50,7 @@
               }
             },
             "indicatorDataSource": {
-				"path": "/resources/shine/democontent/epm/usercrud/user-dynamic.json",
+				"path": "/resources/shine/usercrud/user-dynamic.json",
 				"refresh": "6000",
 				"displayNumberUnit": "%"
 			}
@@ -181,7 +70,7 @@
       },
       "sap.platform.runtime": {
         "componentProperties": {
-          "url": "/resources/shine/democontent/epm/usercrud"
+          "url": "/resources/shine/usercrud"
         }
       }
     },
@@ -221,7 +110,7 @@
       },
       "sap.platform.runtime": {
         "componentProperties": {
-          "url": "/resources/sap/hana/democontent/epm/admin"
+          "url": "/resources/shine/admin"
         }
       },
       "sap.platform.cf": {
@@ -264,7 +153,7 @@
       },
       "sap.platform.runtime": {
         "componentProperties": {
-          "url": "/resources/sap/hana/democontent/epm/salesdashboard"
+          "url": "/resources/shine/salesdashboard"
         }
       }
     },
@@ -304,7 +193,7 @@
       },
       "sap.platform.runtime": {
         "componentProperties": {
-          "url": "/resources/shine/democontent/epm/poworklist"
+          "url": "/resources/poworklist"
         }
       }
     }
