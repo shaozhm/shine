@@ -190,7 +190,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	validateFields: function(oEvent, oController) {
 		// var i18n = this.getView.getModel("i18n");
 		var oBundle = jQuery.sap.resources({
-			url: "/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
+			url: "/resources/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
 			locale: "EN"
 		});
 		var doSubmit = true;
