@@ -9,21 +9,21 @@
 <packaging>pom</packaging>
     <build>
         <plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                                                    </executions>
+                    </plugin>
             <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>node</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>etc</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>sapui5</directory>
-                        </fileset>
-                    </filesets>
-                </configuration>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
