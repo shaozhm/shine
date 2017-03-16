@@ -10,7 +10,7 @@ sap.ui.core.UIComponent.extend("shine.democontent.epm.job.Component", {
 		version : "1.0",
 		includes : [],
 		dependencies : {
-			libs : ["sap.m", "sap.ui.layout"],
+			libs : ["sap.m", "sap.ui.layout", sap.ui.ux3],
 			components : []
 		},
 
