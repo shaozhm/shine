@@ -68,9 +68,10 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 			url: aUrl,
 			method: 'GET',
 			success: function(arg1, arg2, jqXHR) {
+				if (arg1.entry.APP_ID) {
 				var appId = atob(arg1.entry.APP_ID);
 				var appCode = atob(arg1.entry.APP_CODE);
-				if (appId) {
+				
 					// set keys to nokia settings
 					var aUrl1 = "https://signature.venue.maps.api.here.com/venues/signature/v1?xnlp=CL_JSMv3.0.12.5&app_id="+appId+"&app_code="+appCode;
 					jQuery.ajax({
