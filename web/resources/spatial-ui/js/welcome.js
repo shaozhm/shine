@@ -220,8 +220,11 @@ sap.account.WelcomeDialog.prototype.open = function() {
 	            });
 	            
 	            var entry = {};
-	            entry.APP_ID = appIdInput.getValue();
-	            entry.APP_CODE= appCodeInput.getValue();
+	            var appIdInputValue = appIdInput.getValue();
+	            var appCodeInputValue = appCodeInput.getValue();
+	            
+	            entry.APP_ID = btoa(appIdInputValue);
+	            entry.APP_CODE = btoa(appCodeInputValue);
 	            
 	            var aUrl = '/sap/hana/democontent/epm/spatial/services/addKeys.xsjs';
 	            jQuery.ajax({
