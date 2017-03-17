@@ -73,9 +73,9 @@ sap.account.CheckDialog.prototype.open = function() {
         }
     });
 
-    oCell.addContent(oLinkButton);
-    oRow.addCell(oCell);
-    oContentMatrix.addRow(oRow);
+   // oCell.addContent(oLinkButton);
+   // oRow.addCell(oCell);
+   // oContentMatrix.addRow(oRow);
 
     // vspace
     oContentMatrix.addRow(new sap.ui.commons.layout.MatrixLayoutRow({
