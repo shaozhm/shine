@@ -21,7 +21,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 			async: true,
 			dataType:'json',
 			success: function(data, textStatus, request) {
-				var oTable = sap.ui.getCore().byId("__xmlview0--manageJobsTable");
+				var oTable = this.getView().byId("manageJobsTable");
 				var oModelTable = new sap.ui.model.json.JSONModel();
 				oModelTable.setData({
 					modelData: data
@@ -75,11 +75,11 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 			for (var i = 0; i < uiFieldArrayMapper.length; i++) {
 				var id = (uiFieldArrayMapper[i].split(":"))[0];
 				var uiId = (uiFieldArrayMapper[i].split(":"))[1];
-				var element = sap.ui.getCore().byId(uiId);
+				var element = this.getView().byId(uiId);
 				var value = element.getValue();
 				if ((uiId.indexOf("Time")>-1 || uiId.indexOf("Date")>-1) !== false) {
 					var uiIdTime = uiId.replace("Date","Time");
-					var elementValue = sap.ui.getCore().byId(uiIdTime).getValue();
+					var elementValue = this.getView().byId(uiIdTime).getValue();
 					var offset = new Date().getTimezoneOffset();
 					
 					// offset = ((offset<0? '+':'-')+ // Note the reversed sign!
@@ -198,7 +198,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 		var uiFields = uiFieldsArray.split(",");
 		for (var i = 0; i < uiFields.length; i++) {
 			var uiId = (uiFields[i].split(":"))[1];
-			var element = sap.ui.getCore().byId(uiId);
+			var element = this.getView().byId(uiId);
 			if (element.getValue() === "") {
 					element.setValueState(sap.ui.core.ValueState.Error);
 					doSubmit = false;
@@ -246,14 +246,14 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 		var uiFields = uiFieldsArray.split(",");
 		for (var i = 0; i < uiFields.length; i++) {
 			var uiId = (uiFields[i].split(":"))[1];
-			var element = sap.ui.getCore().byId(uiId);
+			var element = this.getView().byId(uiId);
 			if (element.getValue() !== "") {
 				element.setValue("");
 			}
 			element.setValueState(sap.ui.core.ValueState.none);
 		}
 		this.setDateTimeValue();
-		sap.ui.getCore().byId("__xmlview0--xsCronInput").setValue("* * * * * * */40");
+		this.getView().byId("xsCronInput").setValue("* * * * * * */40");
 	},
 	
 	onTabPress: function(oEvent){
@@ -272,7 +272,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 			async: true,
 			dataType: 'json',
 			success: function(data, textStatus, request) {
-				var oTable = sap.ui.getCore().byId("__xmlview0--jobActionsTable");
+				var oTable = this.getView().byId("jobActionsTable");
 				var oModelTable = new sap.ui.model.json.JSONModel();
 				oModelTable.setData({
 					modelData: data
@@ -290,7 +290,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	},
 
 	deleteJob: function() {
-		var oTable = sap.ui.getCore().byId("__xmlview0--manageJobsTable");
+		var oTable = this.getView().byId("manageJobsTable");
 		var model = oTable.getModel();
 		var jobId = model.getProperty("JobId", oTable.getContextByIndex(oTable.getSelectedIndex()));
 		if(jobId!="" && jobId!=null){
