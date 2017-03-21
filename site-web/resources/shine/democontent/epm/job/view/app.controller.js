@@ -15,13 +15,13 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	},
 
 	loadJobsTable: function() {
+		var oTable = this.getView().byId("manageJobsTable");
 		$.ajax({
 			type: "GET",
 			url: "/schedules/getjobschedules",
 			async: true,
 			dataType:'json',
 			success: function(data, textStatus, request) {
-				var oTable = this.getView().byId("manageJobsTable");
 				var oModelTable = new sap.ui.model.json.JSONModel();
 				oModelTable.setData({
 					modelData: data
@@ -266,13 +266,13 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	},
 
 	loadJobActivitiesTable: function() {
+		var oTable = this.getView().byId("jobActionsTable");
 		$.ajax({
 			type: "GET",
 			url: "/jobs/getalljobs",
 			async: true,
 			dataType: 'json',
 			success: function(data, textStatus, request) {
-				var oTable = this.getView().byId("jobActionsTable");
 				var oModelTable = new sap.ui.model.json.JSONModel();
 				oModelTable.setData({
 					modelData: data
