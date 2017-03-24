@@ -44,6 +44,7 @@
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 		<exclude>sapui5/</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
 
@@ -58,6 +59,7 @@
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 		<exclude>sapui5/</exclude>
+		<exclude>.che/</exclude>
             </excludes>
         </fileSet>
 
@@ -71,6 +73,7 @@
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
+				<exclude>test/</exclude>
             </excludes>
         </fileSet>
 		<fileSet>

@@ -109,7 +109,7 @@ TILE_PERMS_JOBSCHEDULING=<div>None</div>
 TILE_PERMS_ETAGSXSODATA=<div>User should have User.hdbrole.</div>
 
 CHECKING_PRE=Checking Prerequisites
-PRE_PROMPT=Please check Section 5 of this guide for the complete list of prerequisites.
+PRE_PROMPT=Please check the SHINE documentation for the complete list of prerequisites.
 PDF_LINK=http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf
 LINK_PROMPT=Getting started guide
 USER_ROLE_PRESENT=User role status
