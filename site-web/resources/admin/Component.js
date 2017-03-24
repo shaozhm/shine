@@ -1,3 +1,4 @@
+jQuery.sap.require("jquery.sap.resources");
 jQuery.sap.declare("sap.hana.democontent.epm.admin.Component");
 jQuery.sap.require("sap.m.MessageBox");
 jQuery.sap.require("sap.m.MessageToast");
