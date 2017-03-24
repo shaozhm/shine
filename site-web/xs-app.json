@@ -1,14 +1,9 @@
 {
   "routes": [
     {
-      "source": "^/resources/sap/hana/(.*)",
+      "source": "^/resources/(.*)",
       "target": "$1",
-      "localDir": "resources/sap/hana/",
-      "cacheControl": "public, max-age=31536000,must-revalidate"
-    },{
-      "source": "^/resources/shine/democontent/(.*)",
-      "target": "$1",
-      "localDir": "resources/shine/democontent/",
+      "localDir": "resources/",
       "cacheControl": "public, max-age=31536000,must-revalidate"
     },{
     "source": "/sap/rest/(.*)",
