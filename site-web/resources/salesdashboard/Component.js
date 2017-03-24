@@ -1,3 +1,4 @@
+jQuery.sap.require("jquery.sap.resources");
 jQuery.sap.declare("sap.hana.democontent.epm.salesdashboard.Component");
 
 sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.salesdashboard.Component",{
