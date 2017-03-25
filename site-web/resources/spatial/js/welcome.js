@@ -1,5 +1,4 @@
 jQuery.sap.declare("sap.account.WelcomeDialog");
-
 var isSettings = false;
 sap.account.WelcomeDialog = function(oFrameController, isSettings){
 	this.controller = oFrameController;
@@ -227,29 +226,23 @@ sap.account.WelcomeDialog.prototype.open = function() {
 	            entry.APP_ID = btoa(appIdInputValue);
 	            entry.APP_CODE = btoa(appCodeInputValue);
 	            
-            	var userId = "";	
-				var aUrl = '/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=getSessionInfo';
-				var loggedUser = "";
-		        jQuery.ajax({
-		            url: aUrl,
-		            method: 'GET',
-		            dataType: 'json',
-		            async: false,
-		            success: function(myJSON) {
-		            	userId = myJSON.session[0].UserName ;
-		            
-		            	 location.reload();
-		            	  oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
-					       var appIdKey = userId+":appId";
-					       var appCodeKey = userId+":appCode";
-					        oStorage.put(appIdKey, entry.APP_ID);
-					        oStorage.put(appCodeKey, entry.APP_CODE);
-		            },
-		            error: function(err)
-		            {
-		            	sap.ui.commons.MessageBox.alert("Unexpected Error"+err+"Please check the application logs for more details");
-		            }
-		        });
+	            var aUrl = '/sap/hana/democontent/epm/spatial/services/addKeys.xsjs';
+	            jQuery.ajax({
+	    			url: aUrl,
+	    			headers: { 'x-csrf-token' : xsrf_token }, 
+	    			async: false,
+	    			data: JSON.stringify(entry),
+	    			type: 'POST',
+	    			success: function(arg1, arg2, jqXHR){
+	    			    
+	    			    // refresh page
+	                    location.reload();
+	                    
+	    			},
+	    			error: function(){
+	                    alert('An error occured');
+	    			} 
+	    		});
 	    		oWelcomeDialog.close();
 	        } else {
 	            sap.ui.commons.MessageBox.alert(sap.app.i18n.getText("WELCOME_INVALID_KEY"));
