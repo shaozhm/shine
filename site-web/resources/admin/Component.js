@@ -2,13 +2,12 @@ jQuery.sap.require("jquery.sap.resources");
 jQuery.sap.declare("sap.hana.democontent.epm.admin.Component");
 jQuery.sap.require("sap.m.MessageBox");
 jQuery.sap.require("sap.m.MessageToast");
-jQuery.sap.require("sap.hana.democontent.epm.admin.global");
+//jQuery.sap.require("sap.hana.democontent.epm.admin.global");
 
 sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
    metadata : {
        name : "SHINE - Data Generator",
        version : "1",
-       includes : [],
        dependencies : {
            libs : ["sap.ui.commons", "sap.ui.table","sap.ui.unified"],
            components : []

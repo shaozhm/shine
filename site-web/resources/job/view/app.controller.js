@@ -59,7 +59,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 		//on New Button Press
 		// var i18n = this.getView.getModel("i18n");
 		var oBundle = jQuery.sap.resources({
-			url: "/resources/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
+			url: "/resources/job/i18n/messagebundle.hdbtextbundle",
 			locale: "EN"
 		});
 		var oThis = this;
@@ -190,7 +190,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	validateFields: function(oEvent, oController) {
 		// var i18n = this.getView.getModel("i18n");
 		var oBundle = jQuery.sap.resources({
-			url: "/resources/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
+			url: "/resources/job/i18n/messagebundle.hdbtextbundle",
 			locale: "EN"
 		});
 		var doSubmit = true;
@@ -239,7 +239,7 @@ sap.ui.controller("shine.democontent.epm.job.view.app", {
 	clearUIFields: function() {
 		// var i18n = this.getView.getModel("i18n");
 		var oBundle = jQuery.sap.resources({
-			url: "/resources/shine/democontent/epm/job/i18n/messagebundle.hdbtextbundle",
+			url: "/resources/job/i18n/messagebundle.hdbtextbundle",
 			locale: "EN"
 		});
 		var uiFieldsArray = oBundle.getText("uiKeyMapper");

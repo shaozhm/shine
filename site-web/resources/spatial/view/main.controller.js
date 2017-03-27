@@ -1,8 +1,10 @@
 sap.ui.controller("shine.democontent.epm.spatial.view.main", {
+
 	// instantiated view will be added to the oViewCache object and retrieved from there
 	oViewCache: {},
 
 	onInit: function() {
+	 
 		sap.app.mainController = this;
 	},
 
@@ -11,11 +13,9 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 	 */
 	getCachedView: function(viewName) {
 		if (!this.oViewCache[viewName]) {
-			 var oShell1 = this.getView().byId("myShell");
-        		var idd1 = oShell1.getId();
 			var fullViewName = "shine.democontent.epm.spatial.view" + "." + viewName;
 			this.oViewCache[viewName] = sap.ui.view({
-				id: idd1+viewName,
+				id: viewName,
 				viewName: fullViewName,
 				type: sap.ui.core.mvc.ViewType.XML
 			});
@@ -40,18 +40,18 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 	onAfterRendering: function() {
 		var oController = this;
 		var view = this.getView();
-		var oShell = view.byId("myShell");
-		var idd=oShell.getId();
+		var oShell = view.byId("main");
+
 		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-			id: idd+"nav-bpDetails",
+			id: "nav-bpDetails",
 			text: sap.app.i18n.getText("BP_DETAILS_TITLE")
 		}));
 		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-			id: idd+"nav-sales-analysis",
+			id: "nav-sales-analysis",
 			text: sap.app.i18n.getText("SALES_ANALYSIS")
 		}));
 		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-			id: idd+"nav-productsHeatMap",
+			id: "nav-productsHeatMap",
 			text: sap.app.i18n.getText("PRODUCT_SALES")
 		}));
 
@@ -59,62 +59,46 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 
 		// action when shell workset item are clicked
 		oShell.attachWorksetItemSelected(function(oEvent) {
-			var sViewName = oEvent.getParameter("id").replace(idd+"nav-", "");
-			//sViewName = sViewName.replace("main--", "");
+			var sViewName = oEvent.getParameter("id").replace("nav-", "");
+			sViewName = sViewName.replace("main--", "");
 			oShell.setContent(sap.app.mainController.getCachedView(sViewName));
 		});
+	    var userId = "";		
 		
-		var aUrl = "/sap/hana/democontent/epm/spatial/services/getKeys.xsjs";
-		jQuery.ajax({
-			url: aUrl,
-			method: 'GET',
-			success: function(arg1, arg2, jqXHR) {
-				
-				if (arg1.entry.APP_ID) {
-					var appId = atob(arg1.entry.APP_ID);
-					var appCode = atob(arg1.entry.APP_CODE);
-					// set keys to nokia settings
-					var aUrl1 = "https://signature.venue.maps.api.here.com/venues/signature/v1?xnlp=CL_JSMv3.0.12.5&app_id="+appId +"&app_code="+appCode ;
-					jQuery.ajax({
-						url: aUrl1,
-						method: 'GET',
-						success: function(jqXHR1){
-							sap.app.platform = new H.service.Platform({
-								'app_id': appId ,
-								'app_code': appCode ,
-								'useHTTPS': true
-							});
-						// initialize the view
-						// add initial shell content
-						oShell.setContent(sap.app.mainController.getCachedView("bpDetails"));
-						},
-						error: function(jqXHR, textStatus, errorThrown){
-							jQuery.sap.require("sap.ui.commons.MessageBox");
-							sap.ui.commons.MessageBox.show("Please enter a valid appid and appcode. Please click YES inorder to update",
-									sap.ui.commons.MessageBox.Icon.ERROR,
-									"Invalid Evaluation Credentials",
-									[sap.ui.commons.MessageBox.Action.YES, sap.ui.commons.MessageBox.Action.NO],
-									 function callback(sResult){
-									 	if(sResult === "YES"){
-											sap.app.mainController.openWelcomeDialog(true);
-									 	}
-									},
-									sap.ui.commons.MessageBox.Action.YES);
-							// handleError: function(){
-							// 	alert("inside error");   
-							// }
-						}});
-
-				} else {
-					// show welcome dialog with help to obtain the keys
-					oController.openWelcomeDialog(true);
-				}
-
-			},
-			error: function() {
-				alert("Couldnt connect to database");   
-			}
-		});
+		var aUrl = '/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=getSessionInfo';
+		var loggedUser = "";
+        jQuery.ajax({
+            url: aUrl,
+            method: 'GET',
+            dataType: 'json',
+            success: function(myJSON) {
+            	userId = myJSON.session[0].UserName ;
+            
+            	  oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
+			        var appIdKey = userId+":appId";
+			        var appCodeKey = userId+":appCode";
+			        if(oStorage.get(appIdKey))
+			        {
+			        	sap.app.platform = new H.service.Platform({
+											'app_id': oStorage.get(appIdKey),
+											'app_code': oStorage.get(appCodeKey),
+											'useHTTPS': true
+										});
+									// initialize the view
+									// add initial shell content
+									oShell.setContent(sap.app.mainController.getCachedView("bpDetails"));
+			        }
+			        else
+			        {
+			        oController.openWelcomeDialog(true);
+			        }
+			            },
+			            error: function(err)
+			            {
+			            	sap.ui.commons.MessageBox.alert("Unexpected error occured."+err+"Please check the application logs for more details");
+			            }
+			        });
+		
 	},
 	openHelpWindow: function(){
 		var oController = this; 

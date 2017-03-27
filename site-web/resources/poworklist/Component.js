@@ -25,7 +25,7 @@ sap.ui.core.UIComponent.extend("shine.democontent.epm.poworklist.Component",{
        
        var mConfig = this.getMetadata().getConfig();
        
-       var oRootPath = jQuery.sap.getModulePath("shine.democontent.epm.poworklist");
+       var oRootPath = jQuery.sap.getModulePath("poworklist");
        
        var i18nModel = new sap.ui.model.resource.ResourceModel({
            bundleUrl : [oRootPath, mConfig.resourceBundle].join("/")
