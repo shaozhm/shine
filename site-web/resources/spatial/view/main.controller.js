@@ -13,9 +13,11 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 	 */
 	getCachedView: function(viewName) {
 		if (!this.oViewCache[viewName]) {
+			 var oShell1 = this.getView().byId("myShell");
+        		var idd1 = oShell1.getId();
 			var fullViewName = "shine.democontent.epm.spatial.view" + "." + viewName;
 			this.oViewCache[viewName] = sap.ui.view({
-				id: viewName,
+				id: idd1+viewName,
 				viewName: fullViewName,
 				type: sap.ui.core.mvc.ViewType.XML
 			});
@@ -38,20 +40,20 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 	 * @memberOf shine_so.main
 	 */
 	onAfterRendering: function() {
-		var oController = this;
+	var oController = this;
 		var view = this.getView();
-		var oShell = view.byId("main");
-
+		var oShell = view.byId("myShell");
+		var idd=oShell.getId();
 		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-			id: "nav-bpDetails",
+			id: idd+"nav-bpDetails",
 			text: sap.app.i18n.getText("BP_DETAILS_TITLE")
 		}));
 		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-			id: "nav-sales-analysis",
+			id: idd+"nav-sales-analysis",
 			text: sap.app.i18n.getText("SALES_ANALYSIS")
 		}));
 		oShell.addWorksetItem(new sap.ui.ux3.NavigationItem({
-			id: "nav-productsHeatMap",
+			id: idd+"nav-productsHeatMap",
 			text: sap.app.i18n.getText("PRODUCT_SALES")
 		}));
 
@@ -59,8 +61,8 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 
 		// action when shell workset item are clicked
 		oShell.attachWorksetItemSelected(function(oEvent) {
-			var sViewName = oEvent.getParameter("id").replace("nav-", "");
-			sViewName = sViewName.replace("main--", "");
+			var sViewName = oEvent.getParameter("id").replace(idd+"nav-", "");
+			//sViewName = sViewName.replace("main--", "");
 			oShell.setContent(sap.app.mainController.getCachedView(sViewName));
 		});
 	    var userId = "";		
