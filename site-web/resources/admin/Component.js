@@ -8,6 +8,7 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.admin.Component",{
    metadata : {
        name : "SHINE - Data Generator",
        version : "1",
+       includes : ["global.js"],
        dependencies : {
            libs : ["sap.ui.commons", "sap.ui.table","sap.ui.unified"],
            components : []
