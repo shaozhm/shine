@@ -121,6 +121,6 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
 	 * @memberOf shine_so.main
 	 */
 	onExit: function() {
-p
+
 	}
 });
