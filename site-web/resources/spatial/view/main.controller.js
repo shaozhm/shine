@@ -77,11 +77,13 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
             	  oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
 			        var appIdKey = userId+":appId";
 			        var appCodeKey = userId+":appCode";
+			        var appId = atob(oStorage.get(appIdKey));
+			         var appCode = atob(oStorage.get(appCodeKey));
 			        if(oStorage.get(appIdKey))
 			        {
 			        	sap.app.platform = new H.service.Platform({
-											'app_id': oStorage.get(appIdKey),
-											'app_code': oStorage.get(appCodeKey),
+											'app_id': appId,
+											'app_code': appCode,
 											'useHTTPS': true
 										});
 									// initialize the view

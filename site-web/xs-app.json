@@ -12,6 +12,9 @@
       "source": "/sap/hana/democontent/epm/services/",
       "destination": "core-backend"
     }, {
+      "source": "/sap/hana/democontent/epm/spatial/services/",
+      "destination": "core-backend"
+    }, {
       "source": "/get/(.*)",
       "destination": "core-backend",
       "scope": "$XSAPPNAME.DataGenerator"

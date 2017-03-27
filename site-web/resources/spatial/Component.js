@@ -11,6 +11,7 @@ jQuery.sap.registerResourcePath("mapsjsdatajs", "https://js.api.here.com/v3/3.0/
 jQuery.sap.require("mapsjsdatajs");
 jQuery.sap.registerResourcePath("mapsjsclusteringjs", "https://js.api.here.com/v3/3.0/mapsjs-clustering");
 jQuery.sap.require("mapsjsclusteringjs");
+jQuery.sap.includeStyleSheet("https://js.api.here.com/v3/3.0/mapsjs-ui.css");
 sap.ui.core.UIComponent.extend("shine.democontent.epm.spatial.Component",{
    metadata : {
        name : "SHINE Spatial Demo",
@@ -39,7 +40,7 @@ sap.ui.core.UIComponent.extend("shine.democontent.epm.spatial.Component",{
        
        var oRootPath = jQuery.sap.getModulePath("shine.democontent.epm.spatial");
         var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
-        sap.app.i18n = jQuery.sap.resources({url : "/resources/shine/democontent/epm/spatial/i18n/messagebundle.hdbtextbundle", locale: sLocale});
+        sap.app.i18n = jQuery.sap.resources({url : "/resources/spatial/i18n/messagebundle.hdbtextbundle", locale: sLocale});
        var i18nModel = new sap.ui.model.resource.ResourceModel({
            bundleUrl : [oRootPath, mConfig.resourceBundle].join("/")
        });

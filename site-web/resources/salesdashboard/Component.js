@@ -34,7 +34,7 @@ sap.ui.core.UIComponent.extend("sap.hana.democontent.epm.salesdashboard.Componen
         jQuery.sap.require("jquery.sap.resources");
         
         var sLocale = sap.ui.getCore().getConfiguration().getLanguage();
-        sap.app.i18n = jQuery.sap.resources({url : "/resources/sap/hana/democontent/epm/salesdashboard/i18n/messagebundle.hdbtextbundle", locale: sLocale});
+        sap.app.i18n = jQuery.sap.resources({url : "/resources/salesdashboard/i18n/messagebundle.hdbtextbundle", locale: sLocale});
         
         var i18nModel = new sap.ui.model.resource.ResourceModel({
            bundleUrl : [oRootPath, mConfig.resourceBundle].join("/")
