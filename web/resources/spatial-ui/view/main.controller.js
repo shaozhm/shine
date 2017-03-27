@@ -73,7 +73,7 @@ sap.ui.controller("shine.democontent.epm.spatial.view.main", {
             dataType: 'json',
             success: function(myJSON) {
             	userId = myJSON.session[0].UserName ;
-            
+                jQuery.sap.require("jquery.sap.storage");
             	  oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
 			        var appIdKey = userId+":appId";
 			        var appCodeKey = userId+":appCode";
