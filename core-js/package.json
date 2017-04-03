@@ -1,7 +1,7 @@
 {
 	"name": "shine-core-js-backend",
 	"description": "Nodejs based SHINE core implementation",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"private": true,
 	"dependencies": {
 		"async": "1.4.0",
