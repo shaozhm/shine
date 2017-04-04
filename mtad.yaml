@@ -21,8 +21,6 @@ modules:
         properties:
           TARGET_CONTAINER: ~{container-name}
 
-       
-      
       - name: shine-user-container
         group: SERVICE_REPLACEMENTS
         properties:
@@ -152,6 +150,8 @@ modules:
       - name: sapui5-provider
         properties:
           sapui5url: ~{url}
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
         
   - name: site-content
     type: com.sap.portal.site-content
@@ -159,6 +159,8 @@ modules:
     requires:
        - name: sap-portal-services-client
        - name: shine-uaa
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
         
 resources:
   - name: shine-container
