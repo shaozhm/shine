@@ -12,9 +12,9 @@
 		"@sap/xssec": "1.0.2",
 		"@sap/xsenv": "1.2.6",
 		"@sap/logging": "2.2.0",
-		"@sap/hdbext": "4.3.1",
+		"@sap/hdbext": "4.3.2",
 		"@sap/xsjs": "1.14.1",
-		"@sap/jobs-client": "1.0.14",
+		"@sap/jobs-client": "1.1.0",
 		"body-parser": "1.13.2"
 	},
 	"engines": {
