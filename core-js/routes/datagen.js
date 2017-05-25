@@ -44,7 +44,7 @@ function getMaxId(idType, client, callback) {
 }
 
 function createTimeBasedPO(startDates, batchSizes, totalSize, bpDict, prodDict, client, id, res,callback) {
-
+	try {
 	var maxPoId = '';
 	var randProductIndex, randProduct, randPrice, randQuantity, randNetAmount = 0,
 		randTaxAmount = 0,
@@ -52,7 +52,7 @@ function createTimeBasedPO(startDates, batchSizes, totalSize, bpDict, prodDict, 
 		randBPIndex, randBP;
 	var items = [];
 	var headers = [];
-	try {
+
 		var i;
 		var queryHeaders = "";
 		var queryItems = "";
@@ -267,11 +267,14 @@ function createTimeBasedPO(startDates, batchSizes, totalSize, bpDict, prodDict, 
 	} finally{
 		items = [];
 	    headers = [];
+		randProductIndex = randProduct = randPrice = randQuantity = randNetAmount = randTaxAmount =randGrossAmount = randBPIndex = randBP = null;
+	     k=netAmountItem=taxAmountItem=grossAmountItem = null;
 	}
 }
 
 function callCreateTimeBasedPo(j, diffDays, thetaArray, StartDate, totalSize, dates, batchSizes, prodDict, bpDict, client, id, res, cb) {
-    
+    try
+    {
     //if thetaArray[j] === 0 and if its not the last loop then proceed to the next iteration
 	if (thetaArray[j] === 0) {
 		j = j + 1;
@@ -325,7 +328,17 @@ function callCreateTimeBasedPo(j, diffDays, thetaArray, StartDate, totalSize, da
 
 	// Increment Date
 	StartDate.setDate(StartDate.getDate() + 1);
-
+    startDay = startMonth = startYear = StartDateStr = BATCHSIZE = null;
+    }
+    catch(e)
+    {
+    		logger.error('Unexpected error occured'+e);
+    }
+    finally
+    {
+    	startDay = startMonth = startYear = BATCHSIZE = null;
+    }
+    
 }
 
 
@@ -349,6 +362,7 @@ router.post('/replicate/timebasedPO', jsonParser, function(req, res) {
 	var totalRecords = (req.body.noRec) * 1000;
 	var id = req.body.id;
 	//get business partner details in an array bpDict
+	try {
 	util.getBuinessPartners(client, function(errorinbp, businessPartners) {
 		var row;
 		for (row = 0; row < businessPartners.length; row++) {
@@ -419,14 +433,28 @@ router.post('/replicate/timebasedPO', jsonParser, function(req, res) {
 					text = "Sales Orders"; 
 				}
 				util.callback(false, "response", res, text+" replicated successfully, records added: " + totalRecords);
-				
+				text = null;
 			});
-
+                totalSize = null;
+                dates = [];
+                batchSizes = [];
 		});
 	});
     thetaArray = [];
 	bpDict = [];
 	prodDict = [];
+}
+catch(e)
+{
+		logger.error('Unexpected error occured'+e );
+}
+finally
+{
+alpha = null;
+	j = i = calc =startDay= startMonth= startYear=StartDateStr= BATCHSIZE = totalRecords ==null;
+	i =null;
+	randNo = null;
+}
 });
 
 router.post('/replicate/sales', function(req, res) {
