@@ -6,7 +6,7 @@ var winston = require('winston');
 var util = require('./util');
 
 winston.level = process.env.winston_level || 'error'
-router.get('/reset/soheader', function (req, res) {
+router.post('/reset/soheader', function (req, res) {
     console.log('reset so header triggered');
     util.resetTable(
         req, 
@@ -17,7 +17,7 @@ router.get('/reset/soheader', function (req, res) {
     );
 });
 
-router.get('/reset/soitem', function (req, res) {
+router.post('/reset/soitem', function (req, res) {
     console.log('reset so item triggered');
     util.resetTable(
         req, 
@@ -28,7 +28,7 @@ router.get('/reset/soitem', function (req, res) {
     );
 });
 
-router.get('/reset/poheader', function (req, res) {
+router.post('/reset/poheader', function (req, res) {
     console.log('reset po header triggered');
     util.resetTable(
         req, 
@@ -39,7 +39,7 @@ router.get('/reset/poheader', function (req, res) {
     );
 });
 
-router.get('/reset/poitem', function (req, res) {
+router.post('/reset/poitem', function (req, res) {
     console.log('reset po item triggered');
     util.resetTable(
         req, 
@@ -50,7 +50,7 @@ router.get('/reset/poitem', function (req, res) {
     );
 });
 
-router.get('/reset/addresses', function (req, res) {
+router.post('/reset/addresses', function (req, res) {
     console.log('reset addresses triggered');
     util.resetTable(
         req, 
@@ -61,7 +61,7 @@ router.get('/reset/addresses', function (req, res) {
     );
 });
 
-router.get('/reset/partners', function (req, res) {
+router.post('/reset/partners', function (req, res) {
     console.log('reset business partners triggered');
     util.resetTable(
         req, 
@@ -72,7 +72,7 @@ router.get('/reset/partners', function (req, res) {
     );
 });
 
-router.get('/reset/employees', function (req, res) {
+router.post('/reset/employees', function (req, res) {
     console.log('reset employees triggered');
     util.resetTable(
         req, 
@@ -83,7 +83,7 @@ router.get('/reset/employees', function (req, res) {
     );
 });
 
-router.get('/reset/products', function (req, res) {
+router.post('/reset/products', function (req, res) {
     console.log('reset products triggered');
     util.resetTable(
         req, 
@@ -94,7 +94,7 @@ router.get('/reset/products', function (req, res) {
     );
 });
 
-router.get('/reset/constants', function (req, res) {
+router.post('/reset/constants', function (req, res) {
     console.log('reset constants triggered');
     util.resetTable(
         req, 
@@ -105,7 +105,7 @@ router.get('/reset/constants', function (req, res) {
     );
 });
 
-router.get('/reset/texts', function (req, res) {
+router.post('/reset/texts', function (req, res) {
     console.log('reset texts triggered');
     util.resetTable(
         req, 
@@ -116,7 +116,7 @@ router.get('/reset/texts', function (req, res) {
     );
 });
 
-router.get('/reset/notes', function (req, res) {
+router.post('/reset/notes', function (req, res) {
     console.log('reset notes triggered');
     util.resetTable(
         req, 
@@ -127,7 +127,7 @@ router.get('/reset/notes', function (req, res) {
     );
 });
 
-router.get('/reset/attachments', function (req, res) {
+router.post('/reset/attachments', function (req, res) {
     console.log('reset attachments triggered');
     util.resetTable(
         req, 

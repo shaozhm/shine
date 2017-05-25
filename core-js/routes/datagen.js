@@ -1,6 +1,5 @@
 var express = require('express');
 var async = require('async');
-var cds = require('@sap/cds');
 var router = express.Router();
 var winston = require('winston');
 var util = require('./util');
@@ -265,6 +264,9 @@ function createTimeBasedPO(startDates, batchSizes, totalSize, bpDict, prodDict, 
 	} catch (e) {
 		$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 		$.response.setBody(e.message);
+	} finally{
+		items = [];
+	    headers = [];
 	}
 }
 
@@ -422,10 +424,12 @@ router.post('/replicate/timebasedPO', jsonParser, function(req, res) {
 
 		});
 	});
-
+    thetaArray = [];
+	bpDict = [];
+	prodDict = [];
 });
 
-router.get('/replicate/sales', function(req, res) {
+router.post('/replicate/sales', function(req, res) {
 	var reqContext = appContext.createRequestContext(req);
 	logger = reqContext.getLogger("/replicate/sales");
 	logger.info('Sales Data generation initiated');
@@ -467,7 +471,7 @@ router.get('/replicate/sales', function(req, res) {
 
 // method will pick records from POShadow.Header and add to PO.Header
 // and POShadow.Item to PO.Item
-router.get('/replicate/purchase', function(req, res) {
+router.post('/replicate/purchase', function(req, res) {
 	var reqContext = appContext.createRequestContext(req);
 	logger = reqContext.getLogger("/replicate/purchase");
 	logger.info('Purchase Data generation initiated');
