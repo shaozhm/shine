@@ -46,6 +46,9 @@
  				evt.currentPointer.viewportY);
  			var length = polyLineGroup.getObjects().length;
  			if (!polyLineStrip && length === 1) {
+     	if(oController.polygon){
+ 					oController.removePolygon();
+ 				}
  				polyLineStrip = new H.geo.Strip();
  				polyLineStrip.pushPoint(polyLineGroup.getObjects()[0].getPosition());
  				polyLineStrip.pushPoint(coord);
@@ -85,6 +88,9 @@
  							lineWidth: 8
  						}
  					});
+      if(oController.polygon){
+ 						oController.removePolygon();
+ 					}
  					oController.map.addObject(oController.polygon);
  					oController.isPolygonDisplayed = true;
  					oController.bpMarkers.removeAll();
