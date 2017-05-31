@@ -40,7 +40,7 @@
  		// Attach an event listener to map display
  		// obtain the coordinates and display in an alert box.
  		oController.map.addEventListener('tap', function(evt) {
- 			oController.removePolygon();
+ 			//oController.removePolygon();
  			// if (!evt.target instanceof H.map.Marker) {
  			var coord = oController.map.screenToGeo(evt.currentPointer.viewportX,
  				evt.currentPointer.viewportY);
