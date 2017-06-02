@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-		<version>1.3.3</version>
+		<version>1.3.4</version>
 	</parent>
 	<artifactId>sap-xsac-shine-user-java</artifactId>
 	<packaging>war</packaging>
