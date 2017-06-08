@@ -34,6 +34,35 @@
 				<exclude>sapui5/</exclude>
             </excludes>
         </fileSet>
+        <fileSet>
+            <directory>../site-content</directory>
+            <outputDirectory>site-content</outputDirectory>
+            <excludes>
+		<exclude>node_modules/</exclude>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+		<exclude>sapui5/</exclude>
+		<exclude>.che/</exclude>
+            </excludes>
+        </fileSet>
+
+
+	<fileSet>
+            <directory>../site-web</directory>
+            <outputDirectory>site-web</outputDirectory>
+            <excludes>
+		<exclude>node_modules/</exclude>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+		<exclude>sapui5/</exclude>
+		<exclude>.che/</exclude>
+            </excludes>
+        </fileSet>
+
 		<fileSet>
             <directory>../core-js</directory>
             <outputDirectory>core-js</outputDirectory>
@@ -44,6 +73,7 @@
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
+				<exclude>test/</exclude>
             </excludes>
         </fileSet>
 		<fileSet>

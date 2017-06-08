@@ -1,20 +1,18 @@
 {
   "routes": [
     {
-      "source": "^/resources/sap/hana/(.*)",
+      "source": "^/resources/(.*)",
       "target": "$1",
-      "localDir": "resources/sap/hana/",
-      "cacheControl": "public, max-age=31536000,must-revalidate"
-    },{
-      "source": "^/resources/shine/democontent/(.*)",
-      "target": "$1",
-      "localDir": "resources/shine/democontent/",
+      "localDir": "resources/",
       "cacheControl": "public, max-age=31536000,must-revalidate"
     },{
     "source": "/sap/rest/(.*)",
     "destination": "uaa"
     }, {
       "source": "/sap/hana/democontent/epm/services/",
+      "destination": "core-backend"
+    }, {
+      "source": "/sap/hana/democontent/epm/spatial/services/",
       "destination": "core-backend"
     }, {
       "source": "/get/(.*)",
@@ -37,7 +35,7 @@
     }, {
       "source": "/jobactivity/(.*)",
       "destination": "user-backend",
-      "authenticationType": "basic"
+      "authenticationType": "none"
     },{
       "source": "/user/xsodata/(.*)",
       "destination": "user-backend"

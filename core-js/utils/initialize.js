@@ -70,10 +70,12 @@ module.exports = {
 		}
 
 		// configure UAA
-		try {
-			options = Object.assign(options, xsenv.getServices(
-				{  uaa:{name:process.env.UAA_SERVICE_NAME} }
-			));
+	try {
+			options = Object.assign(options, xsenv.getServices({
+				uaa: {
+					tag: "xsuaa"
+				}
+			}));
 		} catch (err) {
 			console.error(err);
 		}

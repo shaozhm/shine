@@ -312,7 +312,7 @@ sap.account.TileDialog.prototype.open = function(tileID) {
             case 3:
                 return sap.app.i18n.getText("JOBSCHEDULING"); 
             case 4:
-                return sap.app.i18n.getText("SOWLIST");
+                return sap.app.i18n.getText("SALES_DASH");
             case 5:
                 return sap.app.i18n.getText("USER");
             case 6:
@@ -351,7 +351,7 @@ sap.account.TileDialog.prototype.open = function(tileID) {
             case 3:
                 return sap.app.i18n.getText("TILE_DESC_JOBSCHEDULING");
             case 4:
-                return sap.app.i18n.getText("TILE_DESC_SO");
+                return sap.app.i18n.getText("TILE_DESC_SD");
             case 5:
                 return sap.app.i18n.getText("TILE_DESC_US");
             case 6:
@@ -389,6 +389,7 @@ sap.account.TileDialog.prototype.open = function(tileID) {
             case 1:
             case 2:
             case 4:
+            	return true;
             case 5:
             case 6:
             case 7:
@@ -402,8 +403,8 @@ sap.account.TileDialog.prototype.open = function(tileID) {
 
     function getBusinessScenario(tileID) {
         switch (tileID) {
-            // case 3:
-            //     return sap.app.i18n.getText("TILE_BUSI_SCEN_SD");
+            case 4:
+                 return sap.app.i18n.getText("TILE_BUSI_SCEN_SD");
             case 8:
                 return sap.app.i18n.getText("TILE_BUSI_SCEN_SP");
         }
@@ -420,7 +421,7 @@ sap.account.TileDialog.prototype.open = function(tileID) {
             case 3:
                 return sap.app.i18n.getText("TILE_DB_VIEWS_JOBSCHEDULING"); 
             case 4:
-                return sap.app.i18n.getText("TILE_DB_VIEWS_SO");
+                return sap.app.i18n.getText("TILE_DB_VIEWS_SD");
             case 5:
                 return sap.app.i18n.getText("TILE_DB_VIEWS_US");
             case 6:
@@ -459,7 +460,7 @@ sap.account.TileDialog.prototype.open = function(tileID) {
             case 3:
                 return sap.app.i18n.getText("TILE_UI_FOLDER_JOBSCHEDULING");
             case 4:
-                return sap.app.i18n.getText("TILE_UI_FOLDER_SO");
+                return sap.app.i18n.getText("TILE_UI_FOLDER_SD");
             case 5:
                 return sap.app.i18n.getText("TILE_UI_FOLDER_US");
             case 6:
@@ -498,7 +499,7 @@ sap.account.TileDialog.prototype.open = function(tileID) {
             case 3:
                 return sap.app.i18n.getText("TILE_PERMS_JOBSCHEDULING");  
             case 4:
-                return sap.app.i18n.getText("TILE_PERMS_SO");
+                return sap.app.i18n.getText("TILE_PERMS_SD");
             case 5:
                 return sap.app.i18n.getText("TILE_PERMS_US");
             case 6:
