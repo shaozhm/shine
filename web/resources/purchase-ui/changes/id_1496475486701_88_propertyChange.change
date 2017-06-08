@@ -1,0 +1,30 @@
+{
+	"fileName": "id_1496475486701_88_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "shine.democontent.epm.poworklist.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "icon",
+		"newValue": "sap-icon://add"
+	},
+	"selector": {
+		"id": "shine.democontent.epm.poworklist::sap.suite.ui.generic.template.ListReport.view.ListReport::POHeader--ActionPOHeader1button",
+		"type": "sap.m.Button",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/shine.democontent.epm.poworklist/changes/",
+	"creation": "2017-06-03T07:40:22.196Z",
+	"originalLanguage": "EN",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.46.7"
+	},
+	"dependentSelector": {}
+}

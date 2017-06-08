@@ -1,0 +1,30 @@
+{
+	"fileName": "id_1496208447873_61_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "shine.democontent.epm.poworklist.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "showVariantManagement",
+		"newValue": false
+	},
+	"selector": {
+		"id": "shine.democontent.epm.poworklist::sap.suite.ui.generic.template.ListReport.view.ListReport::POHeader--listReport",
+		"type": "sap.ui.comp.smarttable.SmartTable",
+		"idIsLocal": false
+	},
+	"layer": "VENDOR",
+	"texts": {},
+	"namespace": "apps/shine.democontent.epm.poworklist/changes/",
+	"creation": "2017-05-31T05:27:30.134Z",
+	"originalLanguage": "EN",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.46.7"
+	},
+	"dependentSelector": {}
+}

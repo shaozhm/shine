@@ -1,6 +1,6 @@
 _schema-version: "3.1.0"
 ID: XSAC_SHINE
-version: 1.3.4
+version: 1.4.0
 
 modules:
   - name: shine-user-db
@@ -41,6 +41,7 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: shine-core-db
+      - name: shine-auditlog
       
   - name: shine-user-js
     type: javascript.nodejs
@@ -167,6 +168,17 @@ resources:
     type: com.sap.xs.hdi-container
     properties:
       container-name: ${service-name}
+    parameters: 
+     config:
+       schema: SHINE_CORE_SCHEMA
+    parameters-metadata:
+      config:
+        overwritable: true
+
+  - name: shine-auditlog
+    type: com.sap.xs.auditlog
+    properties:
+      container-name: ${service-name}
     
   - name: shine-user-container
     type: com.sap.xs.hdi-container
@@ -175,7 +187,7 @@ resources:
     parameters: 
      service-name: shine-user-container
      config:
-       schema: #to be specified in extension descriptor
+       schema: SHINE_USER_SCHEMA
     parameters-metadata:
       config:
         overwritable: true

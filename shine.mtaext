@@ -9,3 +9,9 @@ resources:
       config:
         schema: <SCHEMA_NAME>
 
+- name: shine-container
+    parameters:
+      config:
+        schema: <SCHEMA_NAME>
+
+

@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.ui.commons" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core">
+	<smartfilterbar:ControlConfiguration key="search" index="1" label="Super Search" groupId="_BASIC">
+		<smartfilterbar:customControl>
+			<!--<ComboBox id="id">-->
+			<!--	<core:Item key="0" text="Item1"/>-->
+			<!--	<core:Item key="1" text="Item2"/>-->
+			<!--	<core:Item key="2" text="Item3"/>-->
+			<!--</ComboBox>-->
+			
+			    <SearchField id="filterBy" suggest="onSuggest" width="400px" startSuggestion="2"  enableListSuggest="true" search="setFilter"></SearchField>
+                                
+
+			
+		</smartfilterbar:customControl>
+	</smartfilterbar:ControlConfiguration>
+</core:FragmentDefinition>

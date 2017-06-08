@@ -1,0 +1,193 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="com.sap.openSAP.hana5.example.services">
+            <EntityType Name="POHeaderType">
+                <Key>
+                    <PropertyRef Name="PURCHASEORDERID"/>
+                </Key>
+                <Property Name="PURCHASEORDERID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PARTNER_PARTNERID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="COMPANYNAME" Type="Edm.String" MaxLength="80"/>
+                <Property Name="CITY" Type="Edm.String" MaxLength="40"/>
+                <Property Name="HISTORY_CHANGEDAT" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="HISTORY_CHANGEDBY_EMPLOYEEID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="HISTORY_CREATEDAT" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="HISTORY_CREATEDBY_EMPLOYEEID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="GROSSAMOUNT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="NETAMOUNT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="TAXAMOUNT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="CURRENCY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="NOTEID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="APPROVALSTATUSDESC" Type="Edm.String" MaxLength="60"/>
+                <Property Name="CONFIRMSTATUSDESC" Type="Edm.String" MaxLength="60"/>
+                <Property Name="LIFECYCLESTATUSDESC" Type="Edm.String" MaxLength="60"/>
+                <Property Name="ORDERINGSTATUSDESC" Type="Edm.String" MaxLength="60"/>
+                <NavigationProperty Name="POItem" Relationship="com.sap.openSAP.hana5.example.services.ItemsType" FromRole="POHeaderPrincipal" ToRole="POItemDependent" sap:creatable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Supplier" Relationship="com.sap.openSAP.hana5.example.services.PO_SupplierType" FromRole="POHeaderPrincipal" ToRole="BusinessPartnersDependent" sap:creatable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Notes" Relationship="com.sap.openSAP.hana5.example.services.PO_NotesType" FromRole="POHeaderPrincipal" ToRole="NotesDependent" sap:creatable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Attachments" Relationship="com.sap.openSAP.hana5.example.services.PO_AttachmentsType" FromRole="POHeaderPrincipal" ToRole="AttachmentsDependent" sap:creatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="POItemType">
+                <Key>
+                    <PropertyRef Name="PURCHASEORDERID"/>
+                    <PropertyRef Name="PURCHASEORDERITEM"/>
+                </Key>
+                <Property Name="PURCHASEORDERID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PURCHASEORDERITEM" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PRODUCT_PRODUCTID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ProductName" Type="Edm.String" MaxLength="1024"/>
+                <Property Name="GROSSAMOUNT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="NETAMOUNT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="TAXAMOUNT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="CURRENCY" Type="Edm.String" MaxLength="5"/>
+                <Property Name="QUANTITY" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="QUANTITYUNIT" Type="Edm.String" MaxLength="3"/>
+                <Property Name="DELIVERYDATE" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="CATEGORY" Type="Edm.String" MaxLength="40"/>
+                <NavigationProperty Name="ToProducts" Relationship="com.sap.openSAP.hana5.example.services.ToProductsType" FromRole="POItemPrincipal" ToRole="ProductsDependent" sap:creatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="BusinessPartnersType">
+                <Key>
+                    <PropertyRef Name="PARTNERID"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="255"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Street" Type="Edm.String" MaxLength="60"/>
+                <Property Name="Building" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="NotesType">
+                <Key>
+                    <PropertyRef Name="NOTEID"/>
+                </Key>
+                <Property Name="NOTEID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Author" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="255"/>
+                <Property Name="CREATEDAT" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="Thumbnail" Type="Edm.String" MaxLength="255"/>
+                <Property Name="LINKID" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="AttachmentsType">
+                <Key>
+                    <PropertyRef Name="NOTEID"/>
+                </Key>
+                <Property Name="NOTEID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Title" Type="Edm.String" MaxLength="255"/>
+                <Property Name="CREATEDAT" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Size" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LINKID" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="ProductsType">
+                <Key>
+                    <PropertyRef Name="Product_Id"/>
+                </Key>
+                <Property Name="Product_Id" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Product_Category" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Product_Currency" Type="Edm.String" MaxLength="5"/>
+                <Property Name="Product_Price" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="Product_TypeCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="Product_WeightMeasure" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="Product_WeightUnit" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Supplier_Id" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Supplier_CompanyName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="Supplier_City" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Supplier_PostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Supplier_Street" Type="Edm.String" MaxLength="60"/>
+                <Property Name="Supplier_Building" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Supplier_Country" Type="Edm.String" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="CountriesType">
+                <Key>
+                    <PropertyRef Name="CODE"/>
+                </Key>
+                <Property Name="NAME" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CODE" Type="Edm.String" MaxLength="2"/>
+            </EntityType>
+            <EntityType Name="ProductsVHType">
+                <Key>
+                    <PropertyRef Name="Product_Id"/>
+                </Key>
+                <Property Name="Product_Id" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Product_Name" Type="Edm.String" MaxLength="1024"/>
+            </EntityType>
+            <EntityType Name="ProductCatVhType">
+                <Key>
+                    <PropertyRef Name="Product_Category"/>
+                </Key>
+                <Property Name="Product_Category" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="SupplierVHType">
+                <Key>
+                    <PropertyRef Name="Supplier_Id"/>
+                </Key>
+                <Property Name="Supplier_Id" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Supplier_CompanyName" Type="Edm.String" MaxLength="80"/>
+            </EntityType>
+            <Association Name="ItemsType">
+                <End Type="com.sap.openSAP.hana5.example.services.POHeaderType" Role="POHeaderPrincipal" Multiplicity="1"/>
+                <End Type="com.sap.openSAP.hana5.example.services.POItemType" Role="POItemDependent" Multiplicity="*"/>
+            </Association>
+            <Association Name="ToProductsType">
+                <End Type="com.sap.openSAP.hana5.example.services.POItemType" Role="POItemPrincipal" Multiplicity="1"/>
+                <End Type="com.sap.openSAP.hana5.example.services.ProductsType" Role="ProductsDependent" Multiplicity="1"/>
+            </Association>
+            <Association Name="PO_SupplierType">
+                <End Type="com.sap.openSAP.hana5.example.services.POHeaderType" Role="POHeaderPrincipal" Multiplicity="1"/>
+                <End Type="com.sap.openSAP.hana5.example.services.BusinessPartnersType" Role="BusinessPartnersDependent" Multiplicity="1"/>
+            </Association>
+            <Association Name="PO_NotesType">
+                <End Type="com.sap.openSAP.hana5.example.services.POHeaderType" Role="POHeaderPrincipal" Multiplicity="1"/>
+                <End Type="com.sap.openSAP.hana5.example.services.NotesType" Role="NotesDependent" Multiplicity="*"/>
+            </Association>
+            <Association Name="PO_AttachmentsType">
+                <End Type="com.sap.openSAP.hana5.example.services.POHeaderType" Role="POHeaderPrincipal" Multiplicity="1"/>
+                <End Type="com.sap.openSAP.hana5.example.services.AttachmentsType" Role="AttachmentsDependent" Multiplicity="*"/>
+            </Association>
+            <EntityContainer Name="v2" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="POHeader" EntityType="com.sap.openSAP.hana5.example.services.POHeaderType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="POItem" EntityType="com.sap.openSAP.hana5.example.services.POItemType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="BusinessPartners" EntityType="com.sap.openSAP.hana5.example.services.BusinessPartnersType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="Notes" EntityType="com.sap.openSAP.hana5.example.services.NotesType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="Attachments" EntityType="com.sap.openSAP.hana5.example.services.AttachmentsType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="Products" EntityType="com.sap.openSAP.hana5.example.services.ProductsType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="Countries" EntityType="com.sap.openSAP.hana5.example.services.CountriesType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="ProductsVH" EntityType="com.sap.openSAP.hana5.example.services.ProductsVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="ProductCatVh" EntityType="com.sap.openSAP.hana5.example.services.ProductCatVhType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <EntitySet Name="SupplierVH" EntityType="com.sap.openSAP.hana5.example.services.SupplierVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false"/>
+                <AssociationSet Name="Items" Association="com.sap.openSAP.hana5.example.services.ItemsType">
+                    <End Role="POHeaderPrincipal" EntitySet="POHeader"/>
+                    <End Role="POItemDependent" EntitySet="POItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ToProducts" Association="com.sap.openSAP.hana5.example.services.ToProductsType">
+                    <End Role="POItemPrincipal" EntitySet="POItem"/>
+                    <End Role="ProductsDependent" EntitySet="Products"/>
+                </AssociationSet>
+                <AssociationSet Name="PO_Supplier" Association="com.sap.openSAP.hana5.example.services.PO_SupplierType">
+                    <End Role="POHeaderPrincipal" EntitySet="POHeader"/>
+                    <End Role="BusinessPartnersDependent" EntitySet="BusinessPartners"/>
+                </AssociationSet>
+                <AssociationSet Name="PO_Notes" Association="com.sap.openSAP.hana5.example.services.PO_NotesType">
+                    <End Role="POHeaderPrincipal" EntitySet="POHeader"/>
+                    <End Role="NotesDependent" EntitySet="Notes"/>
+                </AssociationSet>
+                <AssociationSet Name="PO_Attachments" Association="com.sap.openSAP.hana5.example.services.PO_AttachmentsType">
+                    <End Role="POHeaderPrincipal" EntitySet="POHeader"/>
+                    <End Role="AttachmentsDependent" EntitySet="Attachments"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,10 +1,11 @@
 {
-	"name": "deploy",
-	"dependencies": {
-		"@sap/hdi-deploy": "3.1.2"
-	},
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/@sap/hdi-deploy/deploy.js"
+    "name": "shine-user-db",
+	"description": "SHINE User DB Artifacts",
+	"version": "1.4.0",
+	"dependencies":{
+	"@sap/hdi-deploy": "3.2.0"
+	},"private":true,
+	"scripts":{
+	"start":"node node_modules/@sap/hdi-deploy/deploy.js"
 	}
 }
