@@ -1,4 +1,4 @@
-service namespace "com.sap.openSAP.hana5.example.services" {
+service namespace "sap.hana.democontent.epm.services" {
     "POViews.POHeaderConsumption" 
 	  as "POHeader" keys("PURCHASEORDERID") navigates ("Items" as "POItem", "PO_Supplier" as "Supplier", "PO_Notes" as "Notes", 
 	           "PO_Attachments" as "Attachments") ;
