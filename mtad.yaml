@@ -112,7 +112,7 @@ modules:
        service-name: web 
        service-url: "${default-url}"
         
-  - name: site-web
+  - name: shine-site-web
     type: javascript.nodejs
     path: site-web/
     requires:
@@ -154,7 +154,7 @@ modules:
     properties:
       NODE_TLS_REJECT_UNAUTHORIZED: "0"  
         
-  - name: site-content
+  - name: shine-site-content
     type: com.sap.portal.site-content
     path: site-content/
     requires:
