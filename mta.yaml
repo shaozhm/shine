@@ -119,7 +119,7 @@ modules:
   
 
 
-  - name: site-web
+  - name: shine-site-web
     type: siteentry
     path: site-web
     parameters:
@@ -159,12 +159,13 @@ modules:
       - name: sapui5-provider
         properties:
           sapui5url: '~{url}'
-
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
 
   
      
      
-  - name: site-content
+  - name: shine-site-content
     type: sitecontent
     path: site-content
     parameters:
@@ -172,7 +173,8 @@ modules:
     requires:
        - name: sap-portal-services-client
        - name: shine-uaa
-
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
 
 resources:
   - name: shine-auditlog
