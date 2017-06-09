@@ -4,7 +4,7 @@
 		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
 	</edmx:Reference>
 	<edmx:Reference Uri="$metadata">
-		<edmx:Include Alias="com.sap.openSAP.hana5.example.services" Namespace="com.sap.openSAP.hana5.example.services"/>
+		<edmx:Include Alias="sap.hana.democontent.epm.services" Namespace="sap.hana.democontent.epm.services"/>
 	</edmx:Reference>
 	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
 		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
@@ -25,11 +25,11 @@
 		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
 	</edmx:Reference>
 	<edmx:DataServices>
-		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="POWorklist.com.sap.openSAP.hana5.example.services">
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="sap.hana.democontent.epm.services">
 			<!--===============================================================================
                 Entity Type from chosen collection 
                 ================================================================================-->
-			<Annotations Target="com.sap.openSAP.hana5.example.services.POHeaderType">
+			<Annotations Target="sap.hana.democontent.epm.services.POHeaderType">
 				<Annotation Term="UI.HeaderInfo">
 					<Record Type="UI.HeaderInfoType">
 						<PropertyValue Property="TypeName" String="{@i18n&gt;PURCHASE_ORDERS}"/>
@@ -116,7 +116,7 @@
 			<!--===============================================================================
                 Entity Type from chosen navigation property
                 ================================================================================-->
-			<Annotations Target="com.sap.openSAP.hana5.example.services.POItemType">
+			<Annotations Target="sap.hana.democontent.epm.services.POItemType">
 				<Annotation Term="UI.LineItem">
 					<Collection>
 						<Record Type="UI.DataField">
