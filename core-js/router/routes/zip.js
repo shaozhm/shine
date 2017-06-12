@@ -7,8 +7,9 @@ module.exports = function() {
 
 	//Hello Router
 	app.get("/", function(req, res) {
+		var URL = encodeURI(req.baseUrl);
 		var output = "<H1>ZIP Examples</H1></br>" +
-			"<a href=\"" + req.baseUrl + "/example1\">/example1</a> - Download data in ZIP format - folder and files</br>" +
+			"<a href=\"" + URL + "/example1\">/example1</a> - Download data in ZIP format - folder and files</br>" +
 			require(global.__base + "utils/exampleTOC").fill();
 		res.type("text/html").status(200).send(output);
 	});

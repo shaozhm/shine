@@ -16,11 +16,12 @@ module.exports = function() {
 
 	//Hello Router
 	app.get("/", function(req, res) {
+		var URL = encodeURI(req.baseUrl);
 		var output = "<H1>Node-CDS Examples</H1></br>" +
-			"<a href=\"" + req.baseUrl + "/example1\">/example1</a> - Unmanaged Query</br>" +
-			"<a href=\"" + req.baseUrl + "/example2\">/example2</a> - Managed Find</br>" +
-			"<a href=\"" + req.baseUrl + "/example3\">/example3</a> - Managed Get</br>" +
-			"<a href=\"" + req.baseUrl + "/example4\">/example4</a> - Managed Update/Save</br>" +
+			"<a href=\"" + URL + "/example1\">/example1</a> - Unmanaged Query</br>" +
+			"<a href=\"" + URL + "/example2\">/example2</a> - Managed Find</br>" +
+			"<a href=\"" + URL + "/example3\">/example3</a> - Managed Get</br>" +
+			"<a href=\"" + URL + "/example4\">/example4</a> - Managed Update/Save</br>" +
 			require(global.__base + "utils/exampleTOC").fill();
 		res.type("text/html").status(200).send(output);
 	});

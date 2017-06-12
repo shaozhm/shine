@@ -14,8 +14,9 @@ module.exports = function(server) {
 	var httpClient = require(global.__base + "async/httpClient.js");
 
 	app.use(function(req, res) {
+		var URL = encodeURI(req.baseUrl);
 		var output = "<H1>Asynchronous Examples</H1></br>" +
-			"<a href=\"/exerciseAsync\">/exerciseAsync</a> - Test Framework for Async Examples</br>" +
+			"<a href=\"" + URL + "/exerciseAsync\">/exerciseAsync</a> - Test Framework for Async Examples</br>" +
 			require(global.__base + "utils/exampleTOC").fill();
 		res.type("text/html").status(200).send(output);
 	});

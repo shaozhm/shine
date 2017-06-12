@@ -13,8 +13,9 @@ module.exports = function() {
 
 	//Hello Router
 	app.get("/", function(req, res) {
+		var URL = encodeURI(req.baseUrl);
 		var output = "<H1>Excel Examples</H1></br>" +
-			"<a href=\"" + req.baseUrl + "/download\">/download</a> - Download data in Excel XLSX format</br>" +
+			"<a href=\"" + URL + "/download\">/download</a> - Download data in Excel XLSX format</br>" +
 			require(global.__base + "utils/exampleTOC").fill();
 		res.type("text/html").status(200).send(output);
 	});
