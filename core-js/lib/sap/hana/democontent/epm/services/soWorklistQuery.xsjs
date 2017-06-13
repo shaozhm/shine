@@ -15,7 +15,7 @@ function getFilter() {
     }
 
     var body = '';
-    var terms = $.request.parameters.get("query");
+    var terms = encodeURI($.request.parameters.get("query"));
     terms = terms.replace("'","");
     var conn = $.hdb.getConnection();
     var rs;
