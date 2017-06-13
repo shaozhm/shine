@@ -94,14 +94,14 @@
 										<name>site-web/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>site-web</MTA-Module>
+											<MTA-Module>shine-site-web</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
 										<name>site-content/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>site-content</MTA-Module>
+											<MTA-Module>shine-site-content</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
