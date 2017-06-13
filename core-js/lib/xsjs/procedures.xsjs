@@ -48,7 +48,7 @@ function outputJSON(jsonOut){
 }
 
 
-var aCmd = $.request.parameters.get("cmd");
+var aCmd = encodeURI($.request.parameters.get("cmd"));
 switch (aCmd) {
 case "direct":
 	hdbDirectTest();
