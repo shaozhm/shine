@@ -440,7 +440,7 @@ module.exports = function() {
 		console.log("Time based purchase Data generation initiated" + "+++++++++" + req.body.id);
 		var bpDict = [];
 		var prodDict = [];
-		var totalRecords = (req.body.noRec) * 1000;
+		var totalRecords = encodeURI((req.body.noRec)) * 1000;
 		var id = req.body.id;
 		var usrName = req.user.id;
 		//get business partner details in an array bpDict
@@ -456,8 +456,8 @@ module.exports = function() {
 					prodDict.push([products[row].PRODUCTID, products[row].PRICE]);
 				}
 
-				var aStartDate = req.body.startdate;
-				var aEndDate = req.body.enddate;
+				var aStartDate = encodeURI(req.body.startdate);
+				var aEndDate = encodeURI(req.body.enddate);
 				if (aStartDate) {
 					aStartDate = aStartDate.replace("'", "");
 				}
