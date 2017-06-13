@@ -3,7 +3,10 @@
 var express = require("express");
 
 function upsertVariant(req, res) {
-	var body = req.body;
+	var body1 = encodeURI(req.body);
+	console.log(req.body);
+	console.log("encode : "+ body1);
+	var body = body1;
 	var client = req.db;
 	var insertString = "UPSERT \"lrep.variants\" " +
 		" (\"fileName\", \"fileType\", \"changeType\", \"reference\", \"packageName\", \"content\", " +
@@ -69,7 +72,8 @@ module.exports = function() {
 	});
 
 	app.put("/variants/:fileName", function(req, res) {
-		var body = req.body;
+		var body1 = encodeURI(req.body);
+		var body = body1;
 		var client = req.db;
 		var fileNameInput = req.params.fileName;
 
@@ -119,9 +123,10 @@ module.exports = function() {
 	});
 
 	app.delete("/variants/:fileName", function(req, res) {
-		var body = req.body;
+		var body1 = encodeURI(req.body);
+		var body = body1;
 		var client = req.db;
-		var fileNameInput = req.params.fileName;
+		var fileNameInput = encodeURI(req.params.fileName);
 
 		var deleteString = "DELETE FROM \"lrep.variants\" " +
 			" WHERE \"fileName\" = ? ";
@@ -159,7 +164,7 @@ module.exports = function() {
 				"isProductiveSystem": false
 			}
 		};
-		var appInput = req.params.app;
+		var appInput = encodeURI(req.params.app);
 		var client = req.db;
 		var insertString = "SELECT * from \"lrep.userVariants\" " +
 			" WHERE \"reference\" = ? ";

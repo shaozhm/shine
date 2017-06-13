@@ -3,8 +3,8 @@ var MESSAGES = $.sap.hana.democontent.epm.services.messages;
 
 // enables outbound access to a defined HTTP destination defined in the image.xshttpdest file.
 function searchImages() {
-    var search = $.request.parameters.get("search");
-    var index = $.request.parameters.get("index");
+    var search = encodeURI($.request.parameters.get("search"));
+    var index = encodeURI($.request.parameters.get("index"));
     if (index === undefined) {
         index = 0;
     }
@@ -14,7 +14,7 @@ function searchImages() {
     var req = new $.web.WebRequest($.net.http.GET, search);
     client.request(req, dest);
 
-    var response = client.getResponse();
+    var response = encodeURI(client.getResponse());
 
     var body = null;
     if (response.body) {
@@ -35,7 +35,7 @@ function searchImages() {
     }
 }
 
-var aCmd = $.request.parameters.get("cmd");
+var aCmd = encodeURI($.request.parameters.get("cmd"));
 switch (aCmd) {
     case "Images":
         searchImages();

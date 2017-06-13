@@ -2,7 +2,7 @@ var purchaseOrder = $.import("xsjs.JavaScriptBasics", "purchaseOrder");
 
 function objectsAdv(){
 	var body = '';
-	var inputPO = $.request.parameters.get('po');
+	var inputPO = encodeURI($.request.parameters.get('po'));
 	inputPO = typeof inputPO !== 'undefined' ? inputPO : '300000000'; 
 	
 	body += '<b>Object Advanced</b><br>';
@@ -44,7 +44,7 @@ function objectsAdv(){
 }
 
 function getObjectsJSON(){
-	var inputPO = $.request.parameters.get('po');
+	var inputPO = encodeURI($.request.parameters.get('po'));
 	inputPO = typeof inputPO !== 'undefined' ? inputPO : '0300000000'; 
 	var po = new purchaseOrder.header(inputPO);
 	var poJson = {"purchaseOrder": po};
@@ -57,7 +57,7 @@ function getObjectsJSON(){
 	
 }
 
-var aCmd = $.request.parameters.get('cmd');
+var aCmd = encodeURI($.request.parameters.get('cmd'));
 switch (aCmd) {
 case "json":
 	getObjectsJSON();
