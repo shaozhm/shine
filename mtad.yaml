@@ -1,6 +1,6 @@
 _schema-version: "3.1.0"
 ID: XSAC_SHINE
-version: 1.4.1
+version: 1.4.2
 
 modules:
   - name: shine-user-db
