@@ -10,11 +10,11 @@
 		"@sap/cds": "1.14.0",
 		"@sap/logging": "3.0.0",
 		"@sap/jobs-client": "1.1.1",
-		"express": "4.14.1",
+		"express": "4.15.3",
 		"passport": "0.3.2",
 		"winston": "2.3.0",
 		"async": "2.1.4",
-		"body-parser": "1.13.2"
+		"body-parser": "1.17.1"
 	},
 	"devDependencies": {},
 	"files": [],
