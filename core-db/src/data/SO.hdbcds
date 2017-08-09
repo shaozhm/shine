@@ -33,8 +33,7 @@ context SO {
    entity Item {
     @Comment: 'Sales Order ID'
       key SALESORDERID   : EPM.BusinessKey;
-    @Comment: 'Sales Order Item ID'
-      key SALESORDERITEM : EPM.BusinessKey;
+     key SALESORDERITEM : EPM.BusinessKey;
           HEADER         : association [ 1 ] to Header on
           HEADER.SALESORDERID = SALESORDERID;
           PRODUCT        : association to MD.Products;
