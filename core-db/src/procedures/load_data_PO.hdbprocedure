@@ -2,7 +2,6 @@
 	IN start_date NVARCHAR(30),
 	IN end_date NVARCHAR(30),
 	IN aNoRec INTEGER,
-	IN type VARCHAR(10),
 	OUT Res VARCHAR(20)
 ) 
 	LANGUAGE SQLSCRIPT
@@ -31,7 +30,7 @@ Declare MaxPO Integer;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION   
 BEGIN
   SELECT ::SQL_ERROR_MESSAGE AS ErrorMessage into ERROR_MESS FROM DUMMY; 
-  SELECT ::SQL_ERROR_MESSAGE AS ErrorMessage into ERROR_MESS FROM DUMMY; 
+  Res:= ERROR_MESS;
 
   
 END;
@@ -149,6 +148,6 @@ Item_Prod_Details= SELECT Header_Id,
 
 
 
-
+Res:= 'Success';
 
 END;

@@ -368,16 +368,16 @@ var client = req.db;
 		aEndDate =  d.getDate()+'.'+d.getMonth()+'.'+d.getFullYear();
 		if(id === "PurchaseOrderId") 
 		{
-			 query = "CALL \"load_data_PO\"(START_DATE => '"+aStartDate+"',END_DATE => '"+aEndDate+"',ANOREC => "+totalRecords+",TYPE => 'PO',RES => ?)";
+			 query = "CALL \"load_data_PO\"(START_DATE => '"+aStartDate+"',END_DATE => '"+aEndDate+"',ANOREC => "+totalRecords+",RES => ?)";
 			
 		}
 		else
 		{
-			 query = "CALL \"load_data_SO\"(START_DATE => '"+aStartDate+"',END_DATE => '"+aEndDate+"',ANOREC => "+totalRecords+",TYPE => 'SO',RES => ?)";
+			 query = "CALL \"load_data_SO\"(START_DATE => '"+aStartDate+"',END_DATE => '"+aEndDate+"',ANOREC => "+totalRecords+",RES => ?)";
 		}
 	console.log("query----->"+query);
     
-			client.exec(query, function(err, param, dummy, result) {
+			client.exec(query, function(err, dummy) {
 					  if (err) {
 
                                 res.json({status: 401, message: "ERR", data: err});
@@ -385,22 +385,14 @@ var client = req.db;
                             }
 				else {
 
-                                var returnData = {};
-
-                                returnData.param = param;
-								console.log("param----->"+Object.keys(param) );
-                                returnData.dummy = dummy;
-							    console.log("dummy----->"+dummy);
-                                returnData.result = result;
-								console.log("result----->"+result);
-                                returnData.body = req.body;
+                               
 									if(id === "PurchaseOrderId") 
 									{
-                                res.json({status: 200, message: "Purchase orders generated successfully, records added: " + totalRecords, data: returnData});
+                                res.json({status: 200, message: "Purchase orders generated successfully, records added: " + totalRecords});
 									}
 									else
 									{
-									res.json({status: 200, message: "Sales orders generated successfully, records added: " + totalRecords, data: returnData});	
+									res.json({status: 200, message: "Sales orders generated successfully, records added: " + totalRecords});	
 									}
 
                             }

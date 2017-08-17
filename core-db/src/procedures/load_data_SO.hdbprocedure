@@ -2,7 +2,6 @@
 	IN start_date NVARCHAR(30),
 	IN end_date NVARCHAR(30),
 	IN aNoRec INTEGER,
-	IN type VARCHAR(10),
 	OUT Res VARCHAR(20)
 ) 
 	LANGUAGE SQLSCRIPT
@@ -23,7 +22,7 @@ declare aEndDate Date;
 DECLARE ERROR_MESS VARCHAR(5000);
 Declare BP_COUNT Integer;
 Declare PROD_COUNT Integer;
-Declare MaxPO Integer;
+Declare MaxSO Integer;
 
 
 
@@ -31,7 +30,7 @@ Declare MaxPO Integer;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION   
 BEGIN
   SELECT ::SQL_ERROR_MESSAGE AS ErrorMessage into ERROR_MESS FROM DUMMY; 
-  SELECT ::SQL_ERROR_MESSAGE AS ErrorMessage into ERROR_MESS FROM DUMMY; 
+  Res:= ERROR_MESS;
 
   
 END;
@@ -40,7 +39,7 @@ END;
 
 SELECT Count(*) into BP_COUNT  from "MD.BusinessPartner";
 SELECT Count(*) into PROD_COUNT  from "MD.Products";
-SELECT MAX(SALESORDERID) into MaxPO FROM "SO.Header";
+SELECT MAX(SALESORDERID) into MaxSO FROM "SO.Header";
     
 
 
@@ -109,7 +108,7 @@ Item_Prod_Details= SELECT Header_Id,
                         ON :Header_Generated.BP= :BP.RowNum;
                     
     
-    Header_Final = SELECT TO_NVARCHAR(MaxPO+ :Header_BP_Details.Header_Id) as "PURCHASEORDERID",
+    Header_Final = SELECT TO_NVARCHAR(MaxSO+ :Header_BP_Details.Header_Id) as "SALESORDERID",
                               '0000000033' as "HISTORY.CREATEDBY.EMPLOYEEID",
                               CreatedAt as "HISTORY.CREATEDAT",
                               '0000000033'as "HISTORY.CHANGEDBY.EMPLOYEEID",
@@ -129,8 +128,8 @@ Item_Prod_Details= SELECT Header_Id,
     
     
     
-    Items_Final = Select TO_NVARCHAR(MaxPO+ Header_Id) as "PURCHASEORDERID",
-                              CONCAT(  '00000000' , TO_NVARCHAR(ItemNum * 10)) as "PURCHASEORDERITEM",
+    Items_Final = Select TO_NVARCHAR(MaxSO+ Header_Id) as "SALESORDERID",
+                              CONCAT(  '00000000' , TO_NVARCHAR(ItemNum * 10)) as "SALESORDERITEM",
                               PRODUCTID as "PRODUCT.PRODUCTID",
                               'NoteId' as "NOTEID",
                               'EUR' as "CURRENCY",
@@ -148,7 +147,9 @@ Item_Prod_Details= SELECT Header_Id,
     Insert into "SO.Header" (SELECT * FROM :Header_Final);
     Insert into "SO.Item" (SELECT * FROM :Items_Final);
 
+    
 
+Res:= 'Success';
 
 
 

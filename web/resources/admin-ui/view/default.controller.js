@@ -406,7 +406,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 				var oModel = sap.ui.getCore().getModel();
 				//var total = oModel.getProperty('/percentValue');
 				oModel.setProperty('/txtLog', myTxt.message + "\n" + oModel.getProperty('/txtLog'));
-				oController.getTableSizes();
+				
 				var totalPO = (parseInt(oModel.getProperty('/POVal'), 10)) * 1000;
 				var totalSO = (parseInt(oModel.getProperty('/SOVal'), 10)) * 1000;
 				var percentValue = totalPO + totalSO;
