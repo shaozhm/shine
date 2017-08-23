@@ -127,7 +127,7 @@ sap.ui.controller("sap.hana.democontent.epm.admin.view.default", {
 		var totalPO = parseInt(oModel.getProperty('/POVal'), 10);
 		var totalSO = parseInt(oModel.getProperty('/SOVal'), 10);
 		
-		if(totalPO > 5 || totalSO > 5)
+		if(totalPO > 20 || totalSO > 20)
 		{   canContinue = false;
 			sap.ui.commons.MessageBox.show("Please enter a number between 1 and 5",sap.ui.commons.MessageBox.Icon.ERROR,"Error");
 			
