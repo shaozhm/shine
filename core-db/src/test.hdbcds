@@ -1,7 +1,0 @@
-using get_buyer_city as GBC;
-
-define view getCity with parameters TERM : String(40)
-as
-select from GBC(terms: :TERM){
-	CITY	
-};
