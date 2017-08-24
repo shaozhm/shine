@@ -56,7 +56,7 @@ function getFilter() {
 	        
 	        try{
 		        // Business Partner City
-		        query = 'SELECT "CITY" FROM "get_buyer_city"(?)';
+		        query = 'SELECT "CITY" FROM "getCity"(?)';
 		        pstmt = conn.prepareStatement(query);
 		        pstmt.setString(1, terms);
 		        rs = pstmt.executeQuery();
