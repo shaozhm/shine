@@ -114,7 +114,7 @@ After doing the above steps,
     
 
 
-   For more information on cloning, building, deploying etc. for XSA applications, see [SAP Web IDE for SAP HANA - Installation and  Upgrade Guide. ](https://help.sap.com/doc/13ff61e61a8f442090e27050dc61f019/2.0.01/en-US/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_en_HANA2.0SPS01.pdf)
+   For more information on cloning, building, deploying etc. for XSA applications, see [SAP Web IDE for SAP HANA - Installation and  Upgrade Guide. ](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.02/en-US/0a1c5d829a074a8a889acd2ace444042.html)
 
 
 
