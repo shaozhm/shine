@@ -103,11 +103,17 @@ Rerun the core-js after executing the above command.
 Note: If any 3rd party NPM packages are used, then npm-registry env needs to be updated to public NPM registry manually before building the modules. This can be done by executing below commands.
 
 `xs login -u <XSA_ADMIN_USER>`
+
 `xs target -s SAP`
+
 `xs set-env di-local-npm-registry UPSTREAM_LINK http://registry.npmjs.org/`
+
 `xs restage di-local-npm-registry`
+
 `xs restart di-local-npm-registry`
+
 `xs env di-local-npm-registry | grep UPSTREAM_LINK`
+
 
 ## Deploy SHINE for XSA application with FLP  ##
 
