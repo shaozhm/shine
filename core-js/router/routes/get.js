@@ -14,7 +14,33 @@ module.exports = function() {
 	var app = express.Router();
 	winston.level = process.env.winston_level || 'error';
 	
-	app.get('/tablesize', function(req, res) {
+	app.get('/tablesize', function (req, res) {
+	    var reqContext = appContext.createRequestContext(req);
+	    logger = reqContext.getLogger("/tablesize");
+	    	
+	    var client = req.db;
+	    var query, rs, maxId;
+		query = 'SELECT * from "getTableSize"()';
+		try {
+			client.exec(query, function(error, result) {
+				if (error) {
+					logger.error("Error in getting table sizes" + error);
+					console.log("error "+error);
+				} else {
+	                console.log("result array in getTableSize "+JSON.stringify(result));
+	                res.writeHead(200, {'Content-Type' : 'application/json'});
+	                res.end(JSON.stringify(result));
+	            }
+	    	});
+		}catch (e) {
+			console.log("inside getTableSize error " + e.message);
+		}
+	});
+	
+	
+	
+	
+	app.get('/tablesize1', function(req, res) {
 		var reqContext = appContext.createRequestContext(req);
 		logger = reqContext.getLogger("/get/tablesize");
 
