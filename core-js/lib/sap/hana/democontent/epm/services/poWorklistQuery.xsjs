@@ -6,11 +6,10 @@ var SESSIONINFO = $.sap.hana.democontent.epm.services.session;
 function getFilter() {
     function createFilterEntry(rs, attribute, obj) {
        
-        console.log("add " + rs.getNString(1) + " " + attribute + " obj " + obj);
+        console.log("add " + rs.getNString(1) + " " + rs.getNString(2) + " obj " + obj);
         return {
             "terms": rs.getNString(1),
-            "attribute": attribute,
-            "category": obj
+            "attribute": rs.getNString(2)
         };
     }
 
@@ -38,14 +37,20 @@ function getFilter() {
 			console.log("is Nan");
 			try{
 		        // Business Partner Company Name
-		        query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(COMPANYNAME) FROM "MD.BusinessPartner" ' + ' WHERE CONTAINS(COMPANYNAME,?)';
+		       // query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(COMPANYNAME) FROM "MD.BusinessPartner" ' + ' WHERE CONTAINS(COMPANYNAME,?)';
+		       query = 'SELECT * FROM "text_search"(?,?)';
 		        pstmt = conn.prepareStatement(query);
 		        pstmt.setString(1, terms);
+		        pstmt.setString(2,"OTHERS");
 		        rs = pstmt.executeQuery();
 		
 		        while (rs.next()) {
-		            list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
-		                '001'), "businessPartner"));
+		        	
+		            // list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
+		            //     '001'), "businessPartner"));
+		            console.log("rs.getNString(2)"+rs.getNString(2)+"rs.getNString(1)"+rs.getNString(1));
+		            list.push(createFilterEntry(rs, rs.getNString(2), "businessPartner"));
+		                
 		        }
 			}catch(err){
 	        	 $.trace.error("Exception raised:" + err+" message from company name search:"+err.message);
@@ -54,71 +59,78 @@ function getFilter() {
 	        	pstmt.close();
 			}
 	        
-	        try{
-		        // Business Partner City
-		        query = 'SELECT "CITY" FROM "get_buyer_city"(?)';
-		        pstmt = conn.prepareStatement(query);
-		        pstmt.setString(1, terms);
-		        rs = pstmt.executeQuery();
+	  //      try{
+		 //       // Business Partner City
+		 //      // query = 'SELECT "CITY" FROM "get_city"(?)';
+		 //       query = 'SELECT "RESULTS" FROM "text_search"(?,?)';
+		 //       pstmt = conn.prepareStatement(query);
+		 //       pstmt.setString(1, terms);
+		 //       pstmt.setString(2,"CITY");
+		 //       rs = pstmt.executeQuery();
 		
-		        while (rs.next()) {
-		            list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
-		                '007'), "businessPartner"));
-		        }
-	        }catch(err){
-	        	 $.trace.error("Exception raised:" + err+" message from city search:"+err.message);
-	        }finally{
-	        	rs.close();
-	        	pstmt.close();	
-	        }
+		 //       while (rs.next()) {
+		 //           list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
+		 //               '007'), "businessPartner"));
+		 //       }
+	  //      }catch(err){
+	  //      	 $.trace.error("Exception raised:" + err+" message from city search:"+err.message);
+	  //      }finally{
+	  //      	rs.close();
+	  //      	pstmt.close();	
+	  //      }
 			
-			try{
-		        // Product - Product Category
-		        query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(CATEGORY) FROM "MD.Products" ' + 'WHERE CONTAINS(CATEGORY,?)';
-		        pstmt = conn.prepareStatement(query);
-		        pstmt.setString(1, terms);
-		        rs = pstmt.executeQuery();
+			// try{
+		 //       // Product - Product Category
+		 //       //query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(CATEGORY) FROM "MD.Products" ' + 'WHERE CONTAINS(CATEGORY,?)';
+		 //       query = 'SELECT "RESULTS" FROM "text_search"(?,?)';
+		 //       pstmt = conn.prepareStatement(query);
+		 //       pstmt.setString(1, terms);
+		 //       pstmt.setString(2,"CATEGORY");
+		 //       rs = pstmt.executeQuery();
 		
-		        while (rs.next()) {
-		            list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
-		                '008'), "products"));
-		        }
-			}catch(err){
-				$.trace.error("Exception raised:" + err+" message from product cateory search:"+err.message);
-			}finally{
-				rs.close();
-	        	pstmt.close();
-			}
+		 //       while (rs.next()) {
+		 //           list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
+		 //               '008'), "products"));
+		 //       }
+			// }catch(err){
+			// 	$.trace.error("Exception raised:" + err+" message from product cateory search:"+err.message);
+			// }finally{
+			// 	rs.close();
+	  //      	pstmt.close();
+			// }
 			
-			try{
-		        // Product - Product ID
-		        query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(PRODUCTID) FROM "MD.Products" ' + 'WHERE CONTAINS(PRODUCTID,?)';
-		        pstmt = conn.prepareStatement(query);
-		        pstmt.setString(1, terms);
-		        rs = pstmt.executeQuery();
+			// try{
+		 //       // Product - Product ID
+		 //       //query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(PRODUCTID) FROM "MD.Products" ' + 'WHERE CONTAINS(PRODUCTID,?)';
+		 //       query = 'SELECT "RESULTS" FROM "text_search"(?,?)';
+		 //       pstmt = conn.prepareStatement(query);
+		 //       pstmt.setString(1, terms);
+		 //       pstmt.setString(2,"PRODUCTID");
+		 //       rs = pstmt.executeQuery();
 		
-		        while (rs.next()) {
-		            list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
-		                '009'), "products"));
-		        }
-		      }catch(err){
-		      	 $.trace.error("Exception raised:" + err+" message from productId search:"+err.message);
-		      }finally{
-		      	 rs.close();
-	        	 pstmt.close();
-		      }
+		 //       while (rs.next()) {
+		 //           list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
+		 //               '009'), "products"));
+		 //       }
+		 //     }catch(err){
+		 //     	 $.trace.error("Exception raised:" + err+" message from productId search:"+err.message);
+		 //     }finally{
+		 //     	 rs.close();
+	  //      	 pstmt.close();
+		 //     }
     	  }else{
     	  	  console.log("inside else NaN");
 			  try{
 			     // PO - PO ID
-			     query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(PURCHASEORDERID) FROM "PO.Header" ' + 'WHERE CONTAINS(PURCHASEORDERID,?)';
+			    // query = 'SELECT TOP 50 DISTINCT TO_NVARCHAR(PURCHASEORDERID) FROM "PO.Header" ' + 'WHERE CONTAINS(PURCHASEORDERID,?)';
+			     query = 'SELECT * FROM "text_search"(?,?)';
 			     pstmt = conn.prepareStatement(query);
 			     pstmt.setString(1, terms);
+			     pstmt.setString(2,"PURCHASEORDERID");
 			     rs = pstmt.executeQuery();
 			
 			     while (rs.next()) {
-			         list.push(createFilterEntry(rs, MESSAGES.getMessage('SEPM_POWRK',
-			              '002'), "purchaseOrder"));
+			         list.push(createFilterEntry(rs, rs.getNString(2), "purchaseOrder"));
 			     }
 			  }catch(err){
 			  	$.trace.error("Exception raised:" + err+" message from purchaseorder id search:"+err.message);
