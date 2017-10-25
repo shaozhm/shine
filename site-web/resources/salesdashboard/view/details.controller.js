@@ -7,14 +7,17 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 		var visibleRows=oSHTable.getVisibleRowCount();
 		this.byId("tablePaginator").setCurrentPage(Math.ceil( parseInt(rowNum)/parseInt(visibleRows))); 
 		
-		var oSITable = sap.ui.getCore().byId("details--soItemTable");
+		//var oSITable = sap.ui.getCore().byId("details--soItemTable");
+		var oSITable = this.getView().byId("soItemTable");
 		oSITable.bindRows(path + "/SalesOrderItem");
 	},
 
 	onRefresh: function(oEvent) {
 		// clear selection and filters
-		var oSHTable = sap.ui.getCore().byId("details--soHeader");
-        var oSITable = sap.ui.getCore().byId("details--soItemTable");
+		//var oSHTable = sap.ui.getCore().byId("details--soHeader");
+		var oSHTable = this.getView().byId("soHeader");
+        //var oSITable = sap.ui.getCore().byId("details--soItemTable");
+        var oSITable = this.getView().byId("soItemTable");
         
 		oSHTable.clearSelection();
 		var aCols = oSHTable.getColumns();
@@ -81,7 +84,8 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 
 	onDeletePress: function(oEvent) {
 		var oController = this;
-		var oTable = sap.ui.getCore().byId("details--soHeader");
+		//var oTable = sap.ui.getCore().byId("details--soHeader");
+		var oTable = this.getView().byId("soHeader");
 		var data = oTable.getModel();
 		var soId = data.getProperty("SALESORDERID", oTable.getContextByIndex(oTable.getSelectedIndex()));
 
@@ -127,7 +131,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 	 *
 	 */
 	onBindingChange: function(oController) {
-		var oSHTable = sap.ui.getCore().byId("details--soHeader");
+		var oSHTable = this.getView().byId("soHeader");
 		var iNumberOfRows = oSHTable.getBinding("rows").iLength;
 		
 		oSHTable.setTitle("Sales Orders" + " (" + this.numericSimpleFormatter(iNumberOfRows) + ")");
@@ -298,11 +302,13 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
             oController.onBindingChange(oController);
         });
 	    
-        var oSHTable = sap.ui.getCore().byId("details--soHeader");
+        //var oSHTable = sap.ui.getCore().byId("details--soHeader");
+        var oSHTable = this.getView().byId("soHeader");
         if(oSHTable != undefined){
         	oSHTable.setModel(oModel);
         
-        	var oSITable = sap.ui.getCore().byId("details--soItemTable");
+        	//var oSITable = sap.ui.getCore().byId("details--soItemTable");
+        	var oSITable = this.getView().byId("soItemTable");
     		oSITable.setModel(oModel);
         
         	var sort1 = new sap.ui.model.Sorter("SALESORDERID", true);
@@ -381,69 +387,11 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
         });
 
         view.oLayout.createRow(view.submitButton);
-		
-		var lineitemindex = that.lineItemCount(oController);
-		var oComboBoxPd = new sap.ui.commons.ComboBox({
-			id: "productsel" + lineitemindex,
-			displaySecondaryValues: true,
-			width: '300px',
-			change: function(oEvent) {
 
-			}
-		});
-		
         view.oComboBoxBp = new sap.ui.commons.ComboBox({
             displaySecondaryValues: true,
             width: '300px',
             change: function(oEvent) {
-				var selectedBP = oEvent.oSource.getSelectedKey();
-				var max = that.lineItemCount(oController);
-				var oItemTemplatePd = new sap.ui.core.ListItem();
-				oItemTemplatePd.bindProperty("text", "PRODUCT_NAME");
-				oItemTemplatePd.bindProperty("additionalText", {
-					parts: [{
-						path: "PRODUCT_PRICE",
-						type: new sap.ui.model.type.Float({
-							minFractionDigits: 2,
-							maxFractionDigits: 2
-						})
-					}, {
-						path: "PRODUCT_CURRENCY"
-					}],
-					formatter: function(price, currency) {
-						return price + " " + currency;
-					}
-				});
-				
-					var oDataTemplatePd1 = new sap.ui.core.CustomData({
-						key: "PRODUCTID",
-						value: "{PRODUCTID}"
-					});
-					oItemTemplatePd.addCustomData(oDataTemplatePd1);
-			
-					var oDataTemplatePd2 = new sap.ui.core.CustomData({
-						key: "PRODUCT_CURRENCY",
-						value: "{PRODUCT_CURRENCY}"
-					});
-					oItemTemplatePd.addCustomData(oDataTemplatePd2);
-					var endindex = max;
-					for (var beginindex1 = min + 1; beginindex1 < endindex; beginindex1++) {
-						if (jQuery.sap.domById('productsel' + beginindex1 + '-input') !== null) {
-							sap.ui.getCore().byId('productsel' + beginindex1).bindItems({
-								path: "/ProductDetails",
-								parameters: {
-									select: "PRODUCTID,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CURRENCY"
-								},
-							//	sorter: sortPd,
-								template: oItemTemplatePd,
-								filters:[
-					                new sap.ui.model.odata.Filter("SUPPLIER_ID", [{operator:"EQ",value1:selectedBP}])
-					            ]
-							});
-							sap.ui.getCore().byId('productsel' + beginindex1).fireChange();
-							sap.ui.getCore().byId('productsel' + beginindex1).setValue("");
-						}
-					}
 
             }
 
@@ -453,7 +401,6 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
             true));
 
         var oItemTemplateBp = new sap.ui.core.ListItem();
-        oItemTemplateBp.bindProperty("key", "PARTNERID");
         oItemTemplateBp.bindProperty("text", "COMPANYNAME");
         oItemTemplateBp.bindProperty("additionalText", {
             parts: [{
@@ -485,93 +432,8 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
         });
 
         view.oLayout.createRow(selectBpLbl, view.oComboBoxBp);
-        //that.createNewLineItemContent(oController);
-        //******changing******
-		
-		oComboBoxPd.setModel(new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/productDetails.xsodata",true));
-
-		var oItemTemplatePd = new sap.ui.core.ListItem();
-		oItemTemplatePd.bindProperty("text", "PRODUCT_NAME");
-		oItemTemplatePd.bindProperty("additionalText", {
-			parts: [{
-				path: "PRODUCT_PRICE",
-				type: new sap.ui.model.type.Float({
-					minFractionDigits: 2,
-					maxFractionDigits: 2
-				})
-			}, {
-				path: "PRODUCT_CURRENCY"
-			}],
-			formatter: function(price, currency) {
-				return price + " " + currency;
-			}
-		});
-
-		var oDataTemplatePd1 = new sap.ui.core.CustomData({
-			key: "PRODUCTID",
-			value: "{PRODUCTID}"
-		});
-		oItemTemplatePd.addCustomData(oDataTemplatePd1);
-
-		var oDataTemplatePd2 = new sap.ui.core.CustomData({
-			key: "PRODUCT_CURRENCY",
-			value: "{PRODUCT_CURRENCY}"
-		});
-		oItemTemplatePd.addCustomData(oDataTemplatePd2);
-
-		var sortPd = new sap.ui.model.Sorter("PRODUCT_NAME");
-	    oComboBoxPd.bindItems({
-			path: "/ProductDetails",
-			parameters: {
-				select: "PRODUCTID,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CURRENCY"
-			},
-			sorter: sortPd,
-			filters:[
-	                new sap.ui.model.odata.Filter("SUPPLIER_ID", [{operator:"EQ",value1:''}])
-	        ],
-			template: oItemTemplatePd
-		});
-
-		var selectProductLblPd = new sap.ui.commons.TextView({
-			text: sap.app.i18n.getText("SELECT_PRODUCT")
-		});
-
-		// create a simple Input field
-		var quantityInputPd = new sap.ui.commons.TextField({
-			id: "quantitysel" + lineitemindex,
-			value: "1"
-		});
-
-		var quantityLbPd = new sap.ui.commons.TextView({
-			text: sap.app.i18n.getText("ENTER_QUANTITY")
-		});
-
-		var addButtonPd = new sap.ui.commons.Button({
-
-			id: "addlineitmbtn" + lineitemindex,
-			icon: "images/AddLineItem.gif",
-			iconHovered: "images/AddLineItemHover.gif",
-			iconSelected: "images/AddLineItemHover.gif",
-			tooltip: "Add Row",
-			width: "30px",
-			press: function(oControlEvent) {
-
-				if (sap.ui.getCore().byId(oControlEvent.getSource().getId()).getTooltip_AsString() === 'Add Row') {
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setTooltip('Remove Row');
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIcon("images/DeleteLineItem.gif");
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIconHovered("images/DeleteLineItemHover.gif");
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIconSelected("images/DeleteLineItem.gif");
-					that.createNewLineItemContent(oController);
-				} else if (sap.ui.getCore().byId(oControlEvent.getSource().getId()).getTooltip_AsString() === 'Remove Row') {
-					view.oLayout.removeRow(jQuery.sap.domById(oControlEvent.getSource().getId()).parentElement.parentElement.id);
-				}
-			}
-
-		});
-
-		view.oLayout.createRow(selectProductLblPd,oComboBoxPd, quantityLbPd, quantityInputPd, addButtonPd);
-		
-		//******** changing ******//
+        that.createNewLineItemContent(oController);
+        
 
         return view.oLayout;
     },
@@ -582,7 +444,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
         var view = this.getView();
         var lineitemindex = that.lineItemCount(oController);
 
-        this.oComboBoxPd = new sap.ui.commons.ComboBox({
+        var oComboBoxPd = new sap.ui.commons.ComboBox({
             id: "productsel" + lineitemindex,
             displaySecondaryValues: true,
             width: '300px',
@@ -591,7 +453,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
             }
         });
 
-        this.oComboBoxPd.setModel(new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/productDetails.xsodata",
+        oComboBoxPd.setModel(new sap.ui.model.odata.ODataModel("/sap/hana/democontent/epm/services/productDetails.xsodata",
             true));
 
         var oItemTemplatePd = new sap.ui.core.ListItem();
@@ -624,18 +486,14 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
         oItemTemplatePd.addCustomData(oDataTemplatePd2);
 
         var sortPd = new sap.ui.model.Sorter("PRODUCT_NAME");
-        var partnerid =  view.oComboBoxBp.getSelectedKey();
-    	this.oComboBoxPd.bindItems({
-			path: "/ProductDetails",
-			parameters: {
-				select: "PRODUCTID,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CURRENCY"
-			},
-			sorter: sortPd,
-			template: oItemTemplatePd,
-			filters:[
-	                new sap.ui.model.odata.Filter("SUPPLIER_ID", [{operator:"EQ",value1:partnerid}])
-	        ]
-		});
+        oComboBoxPd.bindItems({
+            path: "/ProductDetails",
+            parameters: {
+                select: "PRODUCTID,PRODUCT_NAME,PRODUCT_PRICE,PRODUCT_CURRENCY"
+            },
+            sorter: sortPd,
+            template: oItemTemplatePd
+        });
 
         var selectProductLblPd = new sap.ui.commons.TextView({
             text: sap.app.i18n.getText("SELECT_PRODUCT")
@@ -654,9 +512,9 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
         var addButtonPd = new sap.ui.commons.Button({
 
             id: "addlineitmbtn" + lineitemindex,
-            icon: "images/AddLineItem.gif",
-            iconHovered: "images/AddLineItemHover.gif",
-            iconSelected: "images/AddLineItemHover.gif",
+            icon: "/resources/salesdashboard/images/AddLineItem.gif",
+            iconHovered: "/resources/salesdashboard/images/AddLineItemHover.gif",
+            iconSelected: "/resources/salesdashboard/images/AddLineItemHover.gif",
             tooltip: "Add Row",
             width: "30px",
             press: function(oControlEvent) {
@@ -675,7 +533,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 
         });
 
-        view.oLayout.createRow(selectProductLblPd,this.oComboBoxPd, quantityLbPd, quantityInputPd, addButtonPd);
+        view.oLayout.createRow(selectProductLblPd, oComboBoxPd, quantityLbPd, quantityInputPd, addButtonPd);
 
     },
     onPageChange: function(oEvent){
