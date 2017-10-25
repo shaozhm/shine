@@ -459,6 +459,7 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
             true));
 
         var oItemTemplateBp = new sap.ui.core.ListItem();
+	oItemTemplateBp.bindProperty("key", "PARTNERID");
         oItemTemplateBp.bindProperty("text", "COMPANYNAME");
         oItemTemplateBp.bindProperty("additionalText", {
             parts: [{
