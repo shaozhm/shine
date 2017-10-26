@@ -553,20 +553,19 @@ sap.ui.controller("sap.hana.democontent.epm.salesdashboard.view.details", {
 		});
 
 		var addButtonPd = new sap.ui.commons.Button({
-
-			id: "addlineitmbtn" + lineitemindex,
-			icon: "images/AddLineItem.gif",
-			iconHovered: "images/AddLineItemHover.gif",
-			iconSelected: "images/AddLineItemHover.gif",
-			tooltip: "Add Row",
-			width: "30px",
-			press: function(oControlEvent) {
+		    id: "addlineitmbtn" + lineitemindex,
+		    icon: "/resources/salesdashboard/images/AddLineItem.gif",
+		    iconHovered: "/resources/salesdashboard/images/AddLineItemHover.gif",
+		    iconSelected: "/resources/salesdashboard/images/AddLineItemHover.gif",
+		    tooltip: "Add Row",
+		    width: "30px",
+		    press: function(oControlEvent) {
 
 				if (sap.ui.getCore().byId(oControlEvent.getSource().getId()).getTooltip_AsString() === 'Add Row') {
 					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setTooltip('Remove Row');
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIcon("images/DeleteLineItem.gif");
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIconHovered("images/DeleteLineItemHover.gif");
-					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIconSelected("images/DeleteLineItem.gif");
+					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIcon("/resources/salesdashboard/images/DeleteLineItem.gif");
+					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIconHovered("/resources/salesdashboard/images/DeleteLineItemHover.gif");
+					sap.ui.getCore().byId(oControlEvent.getSource().getId()).setIconSelected("/resources/salesdashboard/images/DeleteLineItem.gif");
 					that.createNewLineItemContent(oController);
 				} else if (sap.ui.getCore().byId(oControlEvent.getSource().getId()).getTooltip_AsString() === 'Remove Row') {
 					view.oLayout.removeRow(jQuery.sap.domById(oControlEvent.getSource().getId()).parentElement.parentElement.id);
