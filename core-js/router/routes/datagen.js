@@ -1,3 +1,4 @@
+/*eslint-env node, es6*/
 module.exports = function() {
 	var express = require("express");
 	var async = require('async');
@@ -25,7 +26,7 @@ module.exports = function() {
 	// and SOShadow.Item and add to SO.Item
 
 	
-	app.post('/timebasedPO', jsonParser, function(req, res) {
+	app.post('/timebasedPO', jsonParser, (req, res) => {
 
 		var client = req.db;
 		var reqContext = appContext.createRequestContext(req);
@@ -58,7 +59,7 @@ module.exports = function() {
 		}
 	console.log("query----->"+query);
     
-			client.exec(query, function(err, dummy) {
+			client.exec(query, (err, dummy) => {
 					  if (err) {
 
                                 res.json({status: 401, message: "ERR", data: err});
@@ -80,7 +81,7 @@ module.exports = function() {
 			});
 	});
 
-	app.post('/sales', function(req, res) {
+	app.post('/sales', (req, res) => {
 		var user = req.user;
 		var usrName = req.user.id;
 		var reqContext = appContext.createRequestContext(req);
@@ -101,7 +102,7 @@ module.exports = function() {
 		});
 		var client = req.db;
 		var origTable = "SO.Header";
-		util.getTableInfo(client, origTable, origTable, function(error, response) {
+		util.getTableInfo(client, origTable, origTable, (error, response) => {
 			var tableSize = response[0].RECORD_COUNT;
 			logger.info('Table size:' + tableSize);
 			var usrName = req.user.id;
@@ -109,7 +110,7 @@ module.exports = function() {
 				' "HISTORY.CREATEDBY.EMPLOYEEID",	"HISTORY.CREATEDAT",' + ' "HISTORY.CHANGEDBY.EMPLOYEEID",	"HISTORY.CHANGEDAT",' +
 				' "NOTEID", "PARTNER.PARTNERID",	"CURRENCY",	"GROSSAMOUNT",' + '	"NETAMOUNT", "TAXAMOUNT", "LIFECYCLESTATUS", "BILLINGSTATUS",' +
 				'	"DELIVERYSTATUS" FROM "shadow::SOShadow.Header"';
-			client.exec(query, function(error, response) {
+			client.exec(query, (error, response) => {
 				if (error) {
 					logger.error("SO header Query execution error: " + error);
 					util.callback(error, response, res, "");
@@ -159,7 +160,7 @@ module.exports = function() {
 
 	// method will pick records from POShadow.Header and add to PO.Header
 	// and POShadow.Item to PO.Item
-	app.post('/purchase', function(req, res) {
+	app.post('/purchase', (req, res) => {
 		var reqContext = appContext.createRequestContext(req);
 		var usrName = req.user.id;
 		logger = reqContext.getLogger("/replicate/purchase");
@@ -178,7 +179,7 @@ module.exports = function() {
 		});
 		var client = req.db;
 		var origTable = "PO.Header";
-		util.getTableInfo(client, origTable, origTable, function(error, response) {
+		util.getTableInfo(client, origTable, origTable, (error, response) => {
 			var tableSize = response[0].RECORD_COUNT;
 			var user = req.user;
 			logger.info('Table size:' + tableSize);
@@ -186,7 +187,7 @@ module.exports = function() {
 				' "HISTORY.CREATEDBY.EMPLOYEEID",	"HISTORY.CREATEDAT",' + ' "HISTORY.CHANGEDBY.EMPLOYEEID",	"HISTORY.CHANGEDAT",' +
 				' "NOTEID", "PARTNER.PARTNERID",	"CURRENCY",	"GROSSAMOUNT",' + '	"NETAMOUNT", "TAXAMOUNT", "LIFECYCLESTATUS", "APPROVALSTATUS",' +
 				' "CONFIRMSTATUS", "ORDERINGSTATUS",' + '	"INVOICINGSTATUS" FROM "shadow::POShadow.Header"';
-			client.exec(query, function(error, response) {
+			client.exec(query, (error, response) => {
 				if (error) {
 					logger.error("PO header Query execution error: " + error);
 					util.callback(error, response, res, "");
@@ -196,7 +197,7 @@ module.exports = function() {
 					var query = 'insert into "PO.Item" ' + 'SELECT ' + "(\"PURCHASEORDERID\" + " + tableSize + ') AS "PURCHASEORDERID",' +
 						' "PURCHASEORDERITEM", "PRODUCT.PRODUCTID", "NOTEID",' + ' "CURRENCY", "GROSSAMOUNT", "NETAMOUNT", "TAXAMOUNT",' +
 						' "QUANTITY", "QUANTITYUNIT",' + ' "DELIVERYDATE" FROM "shadow::POShadow.Item"';
-					client.exec(query, function(error, response) {
+					client.exec(query, (error, response) => {
 						if (error) {
 							logger.error("PO Item Query execution error: " + error);
 							msg = auditLog.update('Purchase order generation successful')
@@ -215,7 +216,7 @@ module.exports = function() {
 							msg = auditLog.update('Purchase order generation successful')
 								.attribute('Data generation 1000 records', true)
 								.by(usrName);
-							msg.log(function(err, id) {
+							msg.log((err, id) => {
 								if (err) {
 									console.log("error" + err);
 								} else {
