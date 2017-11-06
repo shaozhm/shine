@@ -3,7 +3,7 @@
 	"description": "Web Moduele of SHINE",
 	"version": "1.4.5",
 	"dependencies": {
-		"@sap/approuter": "2.8.1"
+		"@sap/approuter": "2.10.0"
 	},
 	"scripts": {
 		"start": "node node_modules/@sap/approuter/approuter.js"
