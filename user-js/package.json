@@ -3,18 +3,18 @@
 		"node": "~4.x || ~6.x"
 	},
 	"dependencies": {
-		"@sap/xssec": "1.1.1",
-		"@sap/xsenv": "1.2.7",
+		"@sap/xssec": "2.1.1",
+		"@sap/xsenv": "1.2.8",
 		"@sap/xsjs": "1.15.1",
-		"@sap/hdbext": "4.3.4",
-		"@sap/cds": "1.14.0",
-		"@sap/logging": "3.0.0",
+		"@sap/hdbext": "4.4.3",
+		"@sap/cds": "1.14.1",
+		"@sap/logging": "3.1.0",
 		"@sap/jobs-client": "1.1.1",
-		"express": "4.15.3",
-		"passport": "0.3.2",
-		"winston": "2.3.0",
+		"express": "4.16.2",
+		"passport": "0.4.0",
+		"winston": "2.4.0",
 		"async": "2.1.4",
-		"body-parser": "1.17.1"
+		"body-parser": "1.18.2"
 	},
 	"devDependencies": {},
 	"files": [],
