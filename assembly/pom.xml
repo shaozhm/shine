@@ -208,7 +208,7 @@
 						</goals>
 						<configuration>
 							<target>
-								<copy file="../shine.mtaext" tofile="${project.build.directory}/shine.mtaext.template" />
+								<copy file="../shine.mtaext.template" tofile="${project.build.directory}/shine.mtaext.template" />
 							</target>
 						</configuration>
 					</execution>
