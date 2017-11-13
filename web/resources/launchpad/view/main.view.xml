@@ -1,0 +1,43 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="shine.democontent.epm.launchpad.view.main" displayBlock="true">
+	<App>
+		<Page>
+			<content>
+				<App id="__app1">
+					<pages>
+						<TileContainer editable="false" allowAdd="true" id="__container0">
+							<tiles>
+								<StandardTile id="dg" class="dgClass" title="Data Generator" icon="sap-icon://database" activeIcon="sap-icon://database" busy="false"
+									press="handlePress"/>
+								<StandardTile id="po" class="poClass" title="Purchase Order Worklist" icon="sap-icon://monitor-payments"
+									activeIcon="sap-icon://monitor-payments" press="handlePress"/>
+								<StandardTile id="jobscheduling" class="jobschedulingClass" title="Runtime Job Scheduling" icon="sap-icon://time-entry-request"
+									activeIcon="sap-icon://time-entry-request" press="handlePress"/>
+								<StandardTile id="so" class="soClass" title="Sales Dashboard" icon="sap-icon://sales-orde" activeIcon="sap-icon://sales-order"
+									press="handlePress"/>
+								<StandardTile id="uc" class="ucClass" title="User CRUD" icon="sap-icon://account" activeIcon="sap-icon://account" press="handlePress"/>
+								<StandardTile id="spatial" class="spatialClass" title="Spatial Demo" icon="sap-icon://map" activeIcon="sap-icon://map" press="handlePress"/>
+								<StandardTile id="fulltextsearch" class="fulltextsearchClass" title="FullText Search" icon="sap-icon://search"
+									activeIcon="sap-icon://search" press="handlePress"/>
+							</tiles>
+						</TileContainer>
+					</pages>
+				</App>
+			</content>
+			<customHeader>
+				<Bar>
+					<contentRight>
+						<Button press="sourceCodeDownload" width="50px" id="__button0" activeIcon="sap-icon://attachment-zip-file"
+							icon="sap-icon://attachment-zip-file" tooltip="Click to download the source code"/>
+					</contentRight>
+					<contentMiddle>
+						<Label id="sTitle" design="sap.m.LabelDesign.Bold" text="SHINE (SAP HANA Interactive Education) for SAP HANA XS Advanced Model" class="sapMTitle"/>
+					</contentMiddle>
+					<contentLeft>
+						<Image src="images/SAPLogo.gif" height="40px"/>
+					</contentLeft>
+				</Bar>
+			</customHeader>
+		</Page>
+	</App>
+</mvc:View>
