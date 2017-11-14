@@ -42,6 +42,10 @@
       "destination": "user-backend"
     },
     {
+      "source": "/user/xsjs/(.*)",
+      "destination": "user-backend"
+    },
+    {
       "source": "/jobactivity/(.*)",
       "destination": "user-backend",
       "authenticationType": "none"
