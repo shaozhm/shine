@@ -1,6 +1,9 @@
 .sapMStdTileInfo{
 	color: #007cc0;
 }
+.sapUiUfdShellSearch{
+	max-width: 650px !important;	
+}
 #__view0{
     width: 85%;
 }
