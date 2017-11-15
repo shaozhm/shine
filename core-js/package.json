@@ -25,10 +25,14 @@
 		"node-zip" : "1.1.1",
 		"express-ws": "3.0.0"
 	},	
+  "devDependencies": {
+    "eslint": "3.5.0"
+	},
 	"engines": {
 		"node": "~4.x || ~6.x"
 	},
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"prepareRelease": "clean-packages && npm prune --production"
 	}
 }

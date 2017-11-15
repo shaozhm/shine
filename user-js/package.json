@@ -1,4 +1,6 @@
 {
+	"name": "shine-user-js",
+	"version": "1.4.6",
 	"engines": {
 		"node": "~4.x || ~6.x"
 	},
@@ -16,12 +18,12 @@
 		"async": "2.1.4",
 		"body-parser": "1.18.2"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+    "eslint": "3.5.0"
+	},
 	"files": [],
 	"main": "server.js",
-	"name": "shine-user-js",
 	"scripts": {
 		"start": "node server.js"
-	},
-	"version": "1.4.6"
+	}
 }
