@@ -1,5 +1,4 @@
-/*eslint no-console: 0, no-unused-vars: 0, new-cap: 0*/
-"use strict";
+/* eslint-disable */
 var WebSocketServer = require("ws").Server;
 var express = require("express");
 

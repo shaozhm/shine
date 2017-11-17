@@ -1,5 +1,6 @@
 {
 	"name": "shine-user-js",
+	"description": "Nodejs based SHINE User handling implementation",
 	"version": "1.4.6",
 	"engines": {
 		"node": "~4.x || ~6.x"
@@ -19,11 +20,13 @@
 		"body-parser": "1.18.2"
 	},
 	"devDependencies": {
-    "eslint": "3.5.0"
+    "eslint": "3.5.0",
+	"node-style": "^2.0.0"
 	},
 	"files": [],
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"lint": "eslint -c .eslintrc.json --ignore-path .gitignore ."
 	}
 }

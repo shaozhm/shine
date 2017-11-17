@@ -4,11 +4,7 @@
 	"version": "1.4.6",
 	"private": true,
 	"dependencies": {
-		"async": "2.1.4",
-		"@sap/cds": "1.14.1",
-		"express": "4.16.2", 
-		"passport": "0.4.0",
-		"winston": "2.4.0",
+	    "@sap/cds": "1.14.1",
 		"@sap/xssec": "2.1.1",
 		"@sap/textbundle": "2.1.0",
 		"@sap/xsenv": "1.2.8",
@@ -16,8 +12,12 @@
 		"@sap/hdbext": "4.4.3",
 		"@sap/xsjs": "1.15.1",
 		"@sap/jobs-client": "1.1.1",
-		"body-parser": "1.17.2",
 		"@sap/audit-logging": "2.1.1",
+		"async": "2.1.4",
+		"express": "4.16.2", 
+		"passport": "0.4.0",
+		"winston": "2.4.0",
+		"body-parser": "1.17.2",
 		"accept-language-parser": "1.2.0",
 		"xmldoc": "0.5.1",
 		"node-xlsx":"0.7.4",
@@ -26,13 +26,14 @@
 		"express-ws": "3.0.0"
 	},	
   "devDependencies": {
-    "eslint": "3.5.0"
+    "eslint": "3.5.0",
+	"node-style": "^2.0.0"
 	},
 	"engines": {
 		"node": "~4.x || ~6.x"
 	},
 	"scripts": {
 		"start": "node server.js",
-		"prepareRelease": "clean-packages && npm prune --production"
+		"lint": "eslint -c .eslintrc.json --ignore-path .gitignore ."
 	}
 }

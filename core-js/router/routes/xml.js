@@ -1,4 +1,4 @@
-/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, new-cap: 0*/
+/* eslint-disable */
 "use strict";
 var express = require("express");
 var XmlDocument = require("xmldoc").XmlDocument;
