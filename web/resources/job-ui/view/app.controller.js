@@ -17,7 +17,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 	loadJobsTable: function() {
 		$.ajax({
 			type: "GET",
-			url: "/schedules/getjobschedules",
+			url: "/schedules/getJobSchedules",
 			async: true,
 			dataType:'json',
 			success: function(data, textStatus, request) {
@@ -113,7 +113,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 
 			$.ajax({
 				type: "POST",
-				url: "/schedules/createjobschedule",
+				url: "/schedules/createJobSchedule",
 				headers: {
 					'x-csrf-token': xsrf_token
 				},
@@ -144,7 +144,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 			$.ajax({
 				type: "GET",
 				async: false,
-				url: "/schedules/getjobschedules",
+				url: "/schedules/getJobSchedules",
 				contentType: "application/json",
 				headers: {
 					'x-csrf-token': 'Fetch',
@@ -162,7 +162,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 			});
 			$.ajax({
 				type: "DELETE",
-				url: "/jobs/deletedata",
+				url: "/jobs/deleteData",
 				headers: {
 					'x-csrf-token': xsrf_token
 				},
@@ -268,7 +268,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 	loadJobActivitiesTable: function() {
 		$.ajax({
 			type: "GET",
-			url: "/jobs/getalljobs",
+			url: "/jobs/getAllJobs",
 			async: true,
 			dataType: 'json',
 			success: function(data, textStatus, request) {
@@ -299,7 +299,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 			$.ajax({
 				type: "GET",
 				async: false,
-				url: "/schedules/getjobschedules",
+				url: "/schedules/getJobSchedules",
 				contentType: "application/json",
 				headers: {
 					'x-csrf-token': 'Fetch',
@@ -318,7 +318,7 @@ sap.ui.controller("sap.hana.democontent.epm.job.view.app", {
 	
 			$.ajax({
 				type: "DELETE",
-				url: "/schedules/deletejobschedules/" + jobId,
+				url: "/schedules/deleteJobSchedules/" + jobId,
 				headers: {
 					'x-csrf-token': xsrf_token
 				},
