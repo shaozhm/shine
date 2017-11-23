@@ -1,6 +1,6 @@
-/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
-"use strict";
-var express = require("express");
+/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0, linebreak-style: ["error", "windows"], no-undef:0*/
+'use strict';
+var express = require('express');
 
 module.exports = function() {
 	var app = express.Router();
@@ -14,7 +14,7 @@ module.exports = function() {
 
 	// method will delete all job data
 	app.delete('/deletedata', function(req, res) {
-		logger = req.loggingContext.getLogger("/jobs/deletedata");
+		logger = req.loggingContext.getLogger('/jobs/deletedata');
 		var query = 'truncate table "Jobs.Data"';
 		var client = req.db;
 		client.exec(query, function(error, rows) {
@@ -23,29 +23,27 @@ module.exports = function() {
 				util.callback(error, res, "");
 			} else {
 				res.writeHead(200, {
-					"Content-Type": "application/json"
+					'Content-Type': 'application/json'
 				});
 				res.end(JSON.stringify({
-					"message": " All records in Jobs Data table deleted"
+					'message': 'All records in Jobs Data table deleted'
 				}));
 			}
 		});
 
 	});
-	
-		app.get('/getJobsCount', function(req, res) {
-		logger = req.loggingContext.getLogger("/jobs/getJobsCount");
+	app.get('/getJobsCount', function(req, res) {
+		logger = req.loggingContext.getLogger('/jobs/getJobsCount');
 		var client = req.db;
 		var query = 'select count(*) as COUNT from "Jobs.ScheduleDetails"';
 		var jobArray = [];
 		var jobObj = {};
 		var jsonString = '{"d":'+'{"icon": "sap-icon://time-entry-request","info":" ",';
-		var jsonString3 = '"numberDigits": 1,"subtitle": "No of Jobs"}}'; 
-
+		var jsonString3 = '"numberDigits": 1,"subtitle": "No of Jobs"}}';
 		client.exec(query, function(error, rows) {
 			if (error) {
 				logger.error('Error occured' + error);
-				util.callback(error, res, "Data Unavailable");
+				util.callback(error, res, 'Data Unavailable');
 			} else {
 				console.log("rows"+Object.keys(rows));
 				if(rows.length>=1){
@@ -55,9 +53,9 @@ module.exports = function() {
 					console.log("count"+count);
 					var numberStateString = '"numberState": "Positive",';
 					if(count > 0){
-	   					numberStateString = '"numberState": "Positive",';
+						numberStateString = '"numberState": "Positive",';
 					}else{
-           					numberStateString = '"numberState": "Negative",';
+						numberStateString = '"numberState": "Negative",';
 					}
 					var jsonString2 = '"number":'+count+','+numberStateString;
 					var responseString = jsonString+jsonString2+jsonString3;
