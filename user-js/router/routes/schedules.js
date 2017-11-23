@@ -1,33 +1,32 @@
-/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
-"use strict";
-var express = require("express");
+/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0, no-undef:0 */
+'use strict';
+var express = require('express');
 
 module.exports = function() {
 	var bodyParser = require('body-parser');
 	var app = express.Router();
 
 	var winston = require('winston');
-	var util = require(global.__base + "utils/util");
+	var util = require(global.__base + 'utils/util');
 	var jobsc = require('@sap/jobs-client');
 	var jsonParser = bodyParser.json();
-	
 	var logger;
 
 	winston.level = process.env.winston_level || 'error';
 
 	app.post('/createjobschedule',jsonParser, function(req, res) {
-		logger = req.loggingContext.getLogger("/schedules/createjobschedule");
+		logger = req.loggingContext.getLogger('/schedules/createjobschedule');
 		logger.error('info' + req.body);
 		var jname = req.body.jobname;
 		if (!(util.isAlphaNumeric(jname))) {
 			// throw new Error("Invalid Job Name");
 			logger.error('inside job name error');
-			util.callback(new Error("Invalid Job Name"), res, "Invalid Job Name");
+			util.callback(new Error('Invalid Job Name'), res, 'Invalid Job Name');
 			return;
 		}
 		var description = req.body.description;
 		if (!(util.isAlphaNumericAndSpace(description))) {
-			util.callback(new Error("Invalid Job Description"), res, "Invalid Job Description");
+			util.callback(new Error('Invalid Job Description'), res, 'Invalid Job Description');
 			return;
 		}
 		//var juser = req.body.user;
@@ -46,7 +45,7 @@ module.exports = function() {
 			return;
 		}
 		var cron = req.body.cron;
-		if (cron == null || cron === undefined || cron === "") {
+		if (cron === null || cron === undefined || cron === "") {
 			util.callback(new Error("Invalid CRON"), res, "Invalid CRON");
 			return;
 		}
