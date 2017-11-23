@@ -7,6 +7,7 @@
         "eqeqeq": ["error", "always"],
         "comma-dangle": ["error", "always"],
         "no-trailing-spaces": ["error"],
-        "camelcase": ["error", { "properties": "never" }]
-    }
+        "camelcase": ["error", { "properties": "never" }],
+		"comma-dangle": ["error", "never"]
+	}
 }
