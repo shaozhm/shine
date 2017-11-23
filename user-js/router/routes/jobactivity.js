@@ -41,7 +41,7 @@ module.exports = function() {
 				res.status(401).json({message: 'Authorization header not found'});
 				return;
 			}
-			xssec.createSecurityContextCC(accessToken, xsuaaCredentials, function(error, securityContext) {
+			xssec.createSecurityContext(accessToken, xsuaaCredentials, function(error, securityContext) {
 			if (error) {
 				logger.error('Invalid access token');
 				res.status(401).json({message: 'Invalid access token'});
