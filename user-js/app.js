@@ -1,5 +1,5 @@
-/*eslint no-console: 0*/
-"use strict";
+/*eslint  "no-console":0,no-undef:0*/
+'use strict';
 var https= require('https');
 var express = require('express');
 var passport = require('passport');
@@ -13,15 +13,14 @@ var appContext = logging.createAppContext();
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-https.globalAgent.options.ca= xsenv.loadCertificates(); 
-
+https.globalAgent.options.ca = xsenv.loadCertificates();
 passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
 app.use(logging.expressMiddleware(appContext));
 app.use(bodyParser.json());
 //use passport for authentication
 app.use(passport.initialize());
-var hanaOptions = xsenv.getServices({	
-		hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
+var hanaOptions = xsenv.getServices({
+	hana: process.env.HANA_SERVICE_NAME || { tag: 'hana' }
 }).hana;
 
 app.use('/',hdbext.middleware(hanaOptions),
