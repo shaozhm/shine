@@ -1,4 +1,4 @@
-/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
+/*eslint no-console: 0, no-undef: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
 "use strict";
 var xsenv = require("@sap/xsenv");
 
@@ -24,9 +24,9 @@ module.exports = {
         var services = xsenv.getServices({jobscheduler:{ tag: "jobscheduler" }}).jobscheduler;
 		return {
 			timeout: 15000,
-    		user: services.user,
-    		password: services.password,
-    		baseURL: services.url
+			user: services.user,
+			password: services.password,
+			baseURL: services.url
 		};
 	},
 	isAlphaNumeric: function(str) {
@@ -41,20 +41,14 @@ module.exports = {
 		}
 		return true;
 	},
-	
 	isAlphaNumericAndSpace: function(str) {
-		 var res = str.match(/^[a-z\d\-_\s]+$/i);
-		 if(res)
-		 {
-		 	return true ;
-		 }
-		 else
-		 {
-		 	return false ;
-		 }
-		
+		var res = str.match(/^[a-z\d\-_\s]+$/i);
+		if(res){
+			return true ;
+		}else{
+			return false ;
+		}
 	},
-
 	isValidDate: function(date) {
 		console.log("date"+date);
 		var timestamp = Date.parse(date);
@@ -62,9 +56,6 @@ module.exports = {
 		if (isNaN(timestamp) === true) {
 			return false;
 		}
-		// if(timestamp === "NaN"){
-		// 	return false;
-		// }
 		return true;
 	}
 };
