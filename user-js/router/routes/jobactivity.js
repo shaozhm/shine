@@ -21,7 +21,6 @@ module.exports = function() {
 	if (!xsuaaCredentials) {
 		logger.error('uaa service not found');
 		res.status(401).json({message: 'uaa service not found'});
-		//util.callback(new Error("uaa service not found"), res, "uaa service not found");
 		return;
 	}
 	var SCOPE = xsuaaCredentials.xsappname + '.JOBSCHEDULER';
@@ -40,44 +39,45 @@ module.exports = function() {
 			}else {
 				logger.error('Authorization header not found');
 				res.status(401).json({message: 'Authorization header not found'});
-				//util.callback(new Error("Authorization header not found"), res, "Authorization header not found");
 				return;
 			}
-			xssec.createSecurityContextCC(accessToken, xsuaaCredentials, function(error, securityContext) {
+			xssec.createSecurityContext(accessToken, xsuaaCredentials, function(error, securityContext) {
 			if (error) {
 				logger.error('Invalid access token');
 				res.status(401).json({message: 'Invalid access token'});
-				//util.callback(new Error("Invalid access token"), res, "Invalid access token");
 				return;
 			}
 
 			if (securityContext.checkScope(SCOPE)) {
-				client.exec(query, function(error, rows) {
-					if (error) {
-						//util.callback(error, res, "");
-						logger.error('Error occured' + error);
-					} else {
-						jobid = rows[0].NJOBID;
-						timestamp = new Date().toISOString();
-						query = "INSERT INTO \"Jobs.Data\" VALUES('" + jobid.toString() + "','" + jname + "','" + timestamp +
-							"')";
-						client.exec(query, function(error, status) {
-							if (error) {
-								logger.error('Error occured' + error);
-								//util.callback(error, res, "Job Creation Failed");
-								res.status(401).json({message: 'couldnt insert record to SHINE'});
+				try{
+					client.exec(query, function(error, rows) {
+						if (error) {
+							logger.error('Error occured' + error);
+						} else {
+							jobid = rows[0].NJOBID;
+							timestamp = new Date().toISOString();
+							query = "INSERT INTO \"Jobs.Data\" VALUES('" + jobid.toString() + "','" + jname + "','" + timestamp +
+								"')";
+							client.exec(query, function(error, status) {
+								if (error) {
+									logger.error('Error occured' + error);
+									res.status(401).json({message: 'couldnt insert record to SHINE'});
 
-							} else {
-								res.status(200).json({status: 'record inserted into shine'});
-							}
-						});
+								} else {
+									res.status(200).json({status: 'record inserted into shine'});
+								}
+							});
 
-					}
-				});
+						}
+					});
+				}catch(err){
+					logger.error("Exception : "+err);
+				}finally{
+					client.close();
+				}
 			} else {
 				logger.error('Unauthorized, Scope required is missing');
 				res.status(401).json({message: 'Unauthorized, Scope required is missing'});
-				//util.callback(new Error("Unauthorized, Scope required is missing"), res, "Unauthorized, Scope required is missing");
 				return;
 			}
 		});
