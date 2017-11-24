@@ -49,7 +49,7 @@ module.exports = function() {
 			}
 
 			if (securityContext.checkScope(SCOPE)) {
-				try{
+				//try{
 					client.exec(query, function(error, rows) {
 						if (error) {
 							logger.error('Error occured' + error);
@@ -70,11 +70,11 @@ module.exports = function() {
 
 						}
 					});
-				}catch(err){
-					logger.error("Exception : "+err);
-				}finally{
-					client.close();
-				}
+				//}catch(err){
+				//	logger.error("Exception : "+err);
+				//}finally{
+				//	client.close();
+				//}
 			} else {
 				logger.error('Unauthorized, Scope required is missing');
 				res.status(401).json({message: 'Unauthorized, Scope required is missing'});
