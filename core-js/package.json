@@ -23,7 +23,8 @@
 		"node-xlsx":"0.7.4",
 		"elementtree": "0.1.7",
 		"node-zip" : "1.1.1",
-		"express-ws": "3.0.0"
+		"express-ws": "3.0.0",
+		"ws": "3.0.0"
 	},	
   "devDependencies": {
     "eslint": "3.5.0",
