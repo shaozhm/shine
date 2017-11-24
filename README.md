@@ -71,7 +71,7 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 
 - Execute the following command to run a maven build
 
-    `mvn clean install -s cfg/setting.xml`
+    `mvn clean install -s cfg/settings.xml`
 
 - Once the maven build is completed successfully,navigate to the assembly/target folder.
 
