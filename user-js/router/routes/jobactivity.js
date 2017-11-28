@@ -70,7 +70,7 @@ module.exports = function() {
 
 						}
 					});
-					client.close();
+				//	client.close();
 			} else {
 				logger.error('Unauthorized, Scope required is missing');
 				res.status(401).json({message: 'Unauthorized, Scope required is missing'});
