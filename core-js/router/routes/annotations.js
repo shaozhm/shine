@@ -1,7 +1,7 @@
-/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, new-cap: 0, quotes: 0*/
-"use strict";
-var express = require("express");
-var async = require("async");
+/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, new-cap: 0, quotes: 0,no-undef:0*/
+'use strict';
+var express = require('express');
+var async = require('async');
 var et = require('elementtree');
 var XML = et.XML;
 var ElementTree = et.ElementTree;
@@ -9,8 +9,8 @@ var element = et.Element;
 var subElement = et.SubElement;
 
 function getLocale(req) {
-	var langparser = require("accept-language-parser");
-	var lang = req.headers["accept-language"];
+	var langparser = require('accept-language-parser');
+	var lang = req.headers['accept-language'];
 	if (!lang) {
 		return 'EN';
 	}
