@@ -38,11 +38,11 @@ If not installed,please download the latest version to be installed from milesto
 - sapui5_fesv3   
 If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones/com/sap/ui5/dist/sapui5-dist-xsa/1.44.8/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-dist-xsa/1.44.8/).
 
-##Installation via Product Installer 
+## Installation via Product Installer 
 
 Below are three ways to install SHINE:
 
-###Install from HANA Media
+## Install from HANA Media
 SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.3.x-XSACSHINE03_x.mtaext
 
 - Open **sap-xsac-shine-1.3.xx.mtaext** file.
@@ -60,7 +60,7 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 
      `xs install XSACSHINE02_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.2.xx.mtaext`
 
-###Build the Source code and Install
+### Build the Source code and Install
 
 
 
@@ -89,7 +89,7 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 
      `xs install XSACSHINE01_XX.ZIP -e shine.mtaext`
 
-###Install from nexus
+### Install from nexus
 - Download the latest SHINE SCA from one of the following two nexus repositories:
   1. [Milestone nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/refapps/sap-xsac-shine/)
   2. [Release nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases.xmake/com/sap/refapps/sap-xsac-shine/)
@@ -108,11 +108,11 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
      `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.2.xx.mtaext `
 
 
-##Deploying SHINE on CF
+## Deploying SHINE on CF
 
 
 
-##Create a service for the HDI container 
+## Create a service for the HDI container 
 
 This step is optional and required only if you want to deploy app via cf push 
  
@@ -123,7 +123,7 @@ This step is optional and required only if you want to deploy app via cf push
 #
     cf create-service hana hdi-shared shine-user-container
 
-##Create a service for the UAA
+## Create a service for the UAA
 This step is optional and required only if you want to deploy app via cf push
 
 ```
