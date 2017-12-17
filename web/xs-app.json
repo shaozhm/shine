@@ -1,59 +1,113 @@
 {
-  "welcomeFile": "launchpad/index.html",
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "websockets": {
+    "enabled": true
+  },
   "logout": {
     "logoutEndpoint": "/logout",
     "logoutPage": "/"
   },
   "routes": [
     {
-      "source": "/sap/rest/(.*)",
-      "destination": "uaa"
+      "source": "/node(.*)",
+      "destination": "core-node-backend",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa",
+      "scope": {
+        "GET": "$XSAPPNAME.Display",
+        "POST": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "PUT": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "DELETE": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Delete"
+        ],
+        "default": "$XSAPPNAME.Display"
+      }
     },
     {
-      "source": "/sap/hana/democontent/epm/services/",
-      "destination": "core-backend"
+      "source": "/sap/bc/lrep(.*)",
+      "destination": "core-node-backend",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa",
+      "scope": {
+        "GET": "$XSAPPNAME.Display",
+        "POST": [
+          "$XSAPPNAME.Display"
+        ],
+        "PUT": [
+          "$XSAPPNAME.Display"
+        ],
+        "DELETE": [
+          "$XSAPPNAME.Display"
+        ],
+        "default": "$XSAPPNAME.Display"
+      }
     },
-    
     {
-      "source": "/sap/hana/democontent/epm/spatial/services/",
-      "destination": "core-backend"
+      "source": "/sap/hana/democontent/epm/(.*)",
+      "destination": "core-xsjs-backend",
+      "scope": {
+        "GET": "$XSAPPNAME.Display",
+        "POST": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "PUT": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "DELETE": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Delete"
+        ],
+        "default": "$XSAPPNAME.Display"
+      }
+    },
+    {
+      "source": "/java/odata(.*)",
+      "destination": "user-java-backend",
+      "csrfProtection": true, 
+      "authenticationType": "xsuaa"
     },
     {
       "source": "/get/(.*)",
-      "destination": "core-backend",
+      "destination": "admin-backend",
       "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/reset/(.*)",
-      "destination": "core-backend",
+      "destination": "admin-backend",
       "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/replicate/(.*)",
-      "destination": "core-backend",
+      "destination": "admin-backend",
       "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/jobs/(.*)",
-      "destination": "user-backend"
+      "destination": "admin-backend"
     },
     {
       "source": "/schedules/(.*)",
-      "destination": "user-backend"
-    },
-    {
-      "source": "/user/xsjs/(.*)",
-      "destination": "user-backend"
+      "destination": "admin-backend"
     },
     {
       "source": "/jobactivity/(.*)",
-      "destination": "user-backend",
-      "authenticationType": "none"
+      "destination": "admin-backend",
+      "authenticationType": "basic"
     },
     {
-      "source": "/user/xsodata/(.*)",
+      "source": "/user/(.*)", 
       "destination": "user-backend",
-      "authenticationType": "none"
+      "authenticationType": "xsuaa"
     },
     {
       "source": "^/admin-ui/(.*)",
@@ -64,24 +118,68 @@
           "index.html"
         ],
         "vars": [
-          "sapui5url"
+          "ui5liburl"
         ]
       }
     },
     {
-      "source": "^/user/odata/v4/(.*)",
-      "destination": "user-java-backend"
+      "source": "(.*)(.xsjs)",
+      "destination": "core-xsjs-backend",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa",
+      "scope": {
+        "GET": "$XSAPPNAME.Display",
+        "POST": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "PUT": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "DELETE": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Delete"
+        ],
+        "default": "$XSAPPNAME.Display"
+      }
     },
     {
-      "source": "^/(.*)",
+      "source": "(.*)(.xsodata)",
+      "destination": "core-xsjs-backend",
+      "authenticationType": "xsuaa",
+      "scope": {
+        "GET": "$XSAPPNAME.Display",
+        "POST": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "PUT": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Create"
+        ],
+        "DELETE": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Delete"
+        ],
+        "default": "$XSAPPNAME.Display"
+      }
+    },
+    {
+      "source": "/(.*)",
       "localDir": "resources",
-      "cacheControl": "public, max-age=1000,must-revalidate",
+      "authenticationType": "xsuaa",
+      "scope": {
+        "GET": "$XSAPPNAME.Display",
+        "default": "$XSAPPNAME.Display"
+      },
       "replace": {
         "pathSuffixes": [
-          "index.html"
+          "index.html",
+          "odataTest.html"
         ],
         "vars": [
-          "sapui5url"
+          "ui5liburl"
         ]
       }
     }

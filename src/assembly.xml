@@ -64,7 +64,7 @@
         </fileSet>
 
 		<fileSet>
-            <directory>../core-js</directory>
+            <directory>../core-xsjs</directory>
             <outputDirectory>core-js</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
@@ -77,7 +77,7 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../user-js</directory>
+            <directory>../user-xsjs</directory>
             <outputDirectory>user-js</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
@@ -119,6 +119,32 @@
 				<exclude>.project</exclude>
 				<exclude>.settings/</exclude>
 				<exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
+          	<fileSet>
+            <directory>../core-node</directory>
+            <outputDirectory>core-js</outputDirectory>
+            <excludes>
+			<exclude>node_modules/</exclude>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+				<exclude>.cfignore</exclude>
+				<exclude>test/</exclude>
+            </excludes>
+        </fileSet>
+     	<fileSet>
+            <directory>../admin-node</directory>
+            <outputDirectory>core-js</outputDirectory>
+            <excludes>
+			<exclude>node_modules/</exclude>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+				<exclude>.cfignore</exclude>
+				<exclude>test/</exclude>
             </excludes>
         </fileSet>
     </fileSets>

@@ -31,13 +31,13 @@
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-core-js</artifactId>
+			<artifactId>sap-xsac-shine-core-xsjs</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-user-js</artifactId>
+			<artifactId>sap-xsac-shine-user-xsjs</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
@@ -53,6 +53,19 @@
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
+          	<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-core-node</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+	<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-admin-node</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-user-java</artifactId>
