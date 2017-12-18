@@ -6,7 +6,7 @@ modules:
     type: hdb
     path: user-db
     requires:
-      - name: user-container
+      - name: shine-user-container
         properties:
           TARGET_CONTAINER: '~{user-container-name}'
           
@@ -18,7 +18,7 @@ modules:
         properties:
           TARGET_CONTAINER: '~{container-name}'
       
-      - name: user-container
+      - name: shine-user-container
         group: SERVICE_REPLACEMENTS
         properties:
           key: hdi-user-service
@@ -62,7 +62,7 @@ modules:
           url: '${default-url}'
     requires:
       - name: shine-uaa
-      - name: user-container
+      - name: shine-user-container
       - name: shine-user-db
 
   - name: shine-user-java
@@ -75,7 +75,7 @@ modules:
            
     requires:
       - name: shine-uaa
-      - name: user-container
+      - name: shine-user-container
         properties:
           JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml: {"service_name_for_DefaultDB" : "~{user-container-name}"}]'
       - name: shine-user-db
@@ -147,6 +147,7 @@ modules:
       - name: shine-container
       - name: shine-core-db
       - name: shine-scheduler
+      - name: shine-auditlog
 
 
   - name: shine-core-xsjs
@@ -167,7 +168,7 @@ modules:
       - name: shine-core-db
             
 resources:
-  - name: user-container
+  - name: shine-user-container
     properties:
       user-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
@@ -179,6 +180,7 @@ resources:
       container-name: '${service-name}'
     type: com.sap.xs.hdi-container
     parameters:
+      service-name: shine-user-container
       config:
         schema: SHINE_CORE
   - name: shine-uaa
