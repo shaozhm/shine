@@ -147,6 +147,7 @@ modules:
       - name: shine-container
       - name: shine-core-db
       - name: shine-scheduler
+      - name: shine-auditlog
 
 
   - name: shine-core-xsjs
