@@ -27,11 +27,16 @@ modules:
           key: hdi-user-service
           service: ~{user-container-name} 
 
-  - name: shine-core-js
+  - name: shine-core-xsjs
     type: javascript.nodejs
-    path: core-js/
+    path: core-xsjs/
+    parameters:
+      host: shine-core-xsjs
+      register-service-url: true
+      service-name: shine-core-xsjs
+      service-url: '${default-url}'
     provides: 
-      - name: core-js
+      - name: core_xsjs_api
         properties:
           url: "${default-url}"
     properties: 
@@ -41,28 +46,69 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: shine-core-db
-      - name: shine-auditlog
+     
       
-  - name: shine-user-js
+  - name: shine-user-xsjs
     type: javascript.nodejs
-    path: user-js/
-    properties: 
-      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"sb-jobscheduler\",\"identityzone\":\"*\"}]"
+    path: user-xsjs/
+    parameters:
+      host: shine-user-xsjs
+      register-service-url: true
+      service-name: shine-user-xsjs
+      service-url: '${default-url}'
     provides: 
-      - name: user-js
+      - name: user_xsjs_api
         properties:
           url: "${default-url}"
     requires:
       - name: shine-uaa
-      - name: shine-scheduler
       - name: shine-user-db
       - name: shine-user-container
       
+  - name: shine-admin-node
+    type: javascript.nodejs
+    path: admin-node/
+    properties: 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
+    parameters:
+      host: shine-admin-node
+      register-service-url: true
+      service-name: shine-admin-node
+      service-url: '${default-url}' 
+    provides: 
+      - name: admin_node_api
+        properties:
+          url: "${default-url}"
+    requires:
+      - name: shine-uaa
+      - name: shine-auditlog
+      - name: shine-core-db
+      - name: shine-container
+      - name: shine-scheduler
+      
+  - name: shine-core-node
+    type: javascript.nodejs
+    path: core-node/
+    parameters:
+      host: shine-core-node
+      register-service-url: true
+      service-name: shine-core-node
+      service-url: '${default-url}'
+    provides: 
+      - name: core_node_api
+        properties:
+          url: "${default-url}"
+    requires:
+      - name: shine-uaa
+      - name: shine-auditlog
+      - name: shine-core-db
+      - name: shine-container
+   
   - name: shine-user-java
     type: java.tomee
     path: sap-xsac-shine-user-java.war
     provides: 
-      - name: user-java
+      - name: user_java_api
         properties:
           url: "${default-url}"
     requires:
@@ -82,19 +128,31 @@ modules:
       - name: sapui5-provider
         properties:
           sapui5url: ~{url}
-      - name: core-js
+      - name: core_node_api
         group: destinations
         properties:
-          name: core-backend
+          name: core-node-backend
           url: ~{url}
-          forwardAuthToken: true 
-      - name: user-js
+          forwardAuthToken: true \
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: ~{url}
+          forwardAuthToken: true  
+      - name: user_xsjs_api
         group: destinations
         properties:
           name: user-backend
           url: ~{url}
           forwardAuthToken: true
-      - name: user-java
+      - name: admin_node_api
+        group: destinations
+        properties:
+          name: admin-backend
+          url: ~{url}
+          forwardAuthToken: true 
+      - name: user_java_api
         group: destinations
         properties:
           name: user-java-backend
@@ -107,7 +165,7 @@ modules:
            url: ~{url} 
            forwardAuthToken: true 
     parameters: 
-       host: web 
+       host: shine-web 
        register-service-url: true 
        service-name: web 
        service-url: "${default-url}"
@@ -124,22 +182,34 @@ modules:
           name: controller
           url: ~{url}
           forwardAuthToken: true
-      - name: user-js
+      - name: core_node_api
+        group: destinations
+        properties:
+          name: core-node-backend
+          url: ~{url}
+          forwardAuthToken: true \
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: ~{url}
+          forwardAuthToken: true  
+      - name: user_xsjs_api
         group: destinations
         properties:
           name: user-backend
           url: ~{url}
           forwardAuthToken: true
-      - name: user-java
+      - name: admin_node_api
+        group: destinations
+        properties:
+          name: admin-backend
+          url: ~{url}
+          forwardAuthToken: true 
+      - name: user_java_api
         group: destinations
         properties:
           name: user-java-backend
-          url: ~{url}
-          forwardAuthToken: true
-      - name: core-js
-        group: destinations
-        properties:
-          name: core-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
