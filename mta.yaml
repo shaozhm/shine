@@ -4,7 +4,7 @@ version: 1.4.6
 modules:
   - name: shine-user-db
     type: hdb
-    path: user_db
+    path: user-db
     requires:
       - name: user-container
         properties:
@@ -12,7 +12,7 @@ modules:
           
   - name: shine-core-db
     type: hdb
-    path: core_db
+    path: core-db
     requires:
       - name: shine-container
         properties:
@@ -48,7 +48,7 @@ modules:
       
   - name: shine-user-xsjs
     type: nodejs
-    path: user_xsjs
+    path: user-xsjs
     parameters:
       host: shine-user-xsjs
       register-service-url: true
@@ -67,7 +67,7 @@ modules:
 
   - name: shine-user-java
     type: java
-    path: user_java
+    path: user-java
     provides:
       - name: user_java_api
         properties:
@@ -134,7 +134,7 @@ modules:
 
   - name: shine-admin-node
     type: nodejs
-    path: admin_node
+    path: admin-node
     parameters:
       host: shine-admin-node
       register-service-url: true
@@ -153,7 +153,7 @@ modules:
 
   - name: shine-core-xsjs
     type: nodejs
-    path: core_xsjs
+    path: core-xsjs
     provides:
      - name: core_xsjs_api
        properties:
