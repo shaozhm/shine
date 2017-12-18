@@ -149,7 +149,6 @@ modules:
       - name: shine-scheduler
       - name: shine-auditlog
 
-
   - name: shine-core-xsjs
     type: nodejs
     path: core-xsjs
