@@ -1,10 +1,11 @@
 {
 	"dependencies": {
-		"@sap/xssec": "2.1.4",
-		"@sap/xsenv": "1.2.8",
-		"@sap/hdbext": "4.5.0",
-		"@sap/logging": "~3.2",
-		"@sap/jobs-client": "~1.2",
+		"@sap/audit-logging": "2.0.1",
+		"@sap/xssec": "2.1.0",
+		"@sap/xsenv": "1.2.7",
+		"@sap/hdbext": "4.4.2",
+		"@sap/logging": "3.1.0",
+		"@sap/jobs-client": "1.1.1",
 		"@sap/cds": "1.14.1",		
 		"express": "~4.16",
 		"passport": "~0.4.0",
@@ -27,7 +28,7 @@
 		"test-coverage": "node ./node_modules/gulp/bin/gulp test-coverage"
 	},
 	"engines": {
-		"node": " ^6 || ^8.7"
+		"node": " ^6 || ^8"
 	},
 	"version": "1.0.0"
 }

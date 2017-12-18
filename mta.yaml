@@ -28,7 +28,7 @@ modules:
           
   - name: shine-core-node
     type: nodejs
-    path: core_node
+    path: core-node
     parameters:
       host: shine-core-node
       register-service-url: true
@@ -72,11 +72,7 @@ modules:
       - name: user_java_api
         properties:
           url: '${default-url}'
-    parameters:
-      host: shine-user-java
-      register-service-url: true
-      service-name: shine-user-java
-      service-url: '${default-url}'            
+           
     requires:
       - name: shine-uaa
       - name: user-container
@@ -197,7 +193,7 @@ resources:
     type: configuration
     parameters:
       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-      version: "1.44.8"
+      version: "1.44.17"
   - name: sap-portal-services-host-com.sap.refapps.shine
     parameters:
        config:
@@ -222,8 +218,11 @@ resources:
       config:
         siteId : XSAC_SHINE
  
- 
+  - name: uaa 
+    properties: 
+      url: "https://mo-1dd8df5cd.mo.sap.corp:30032/uaa-security"
+      
   - name: controller
     properties:
-      url: 'https://mo-e61fec7e4.mo.sap.corp:30030'
+      url: 'https://mo-1dd8df5cd.mo.sap.corp:30030'
   
