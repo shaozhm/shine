@@ -17,11 +17,7 @@ modules:
       - name: shine-container
         properties:
           TARGET_CONTAINER: '~{container-name}'
-      - name: CrossSchemaService
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sflight-service
-          service: '~{sflight-service-name}'
+      
       - name: user-container
         group: SERVICE_REPLACEMENTS
         properties:
