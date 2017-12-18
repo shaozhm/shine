@@ -131,6 +131,8 @@ modules:
   - name: shine-admin-node
     type: nodejs
     path: admin-node
+    properties: 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
     parameters:
       host: shine-admin-node
       register-service-url: true

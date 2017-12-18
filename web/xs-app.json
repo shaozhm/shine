@@ -32,18 +32,15 @@
     },
     {
       "source": "/get/(.*)",
-      "destination": "admin-backend",
-      "scope": "$XSAPPNAME.DataGenerator"
+      "destination": "admin-backend"
     },
     {
       "source": "/reset/(.*)",
-      "destination": "admin-backend",
-      "scope": "$XSAPPNAME.DataGenerator"
+      "destination": "admin-backend"
     },
     {
       "source": "/replicate/(.*)",
-      "destination": "admin-backend",
-      "scope": "$XSAPPNAME.DataGenerator"
+      "destination": "admin-backend"
     },
     {
       "source": "/jobs/(.*)",
@@ -66,7 +63,7 @@
     {
       "source": "^/admin-ui/(.*)",
       "localDir": "resources",
-      "scope": "$XSAPPNAME.DataGenerator",
+      
       "replace": {
         "pathSuffixes": [
           "index.html"
