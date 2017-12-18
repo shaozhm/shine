@@ -23,28 +23,35 @@
     },
     {
       "source": "/get/(.*)",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/reset/(.*)",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/replicate/(.*)",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/jobs/(.*)",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "$XSAPPNAME.JOBSCHEDULER"
+      
     },
     {
       "source": "/schedules/(.*)",
-      "destination": "admin-backend"
+      "destination": "admin-backend",
+      "scope": "$XSAPPNAME.JOBSCHEDULER"
     },
     {
       "source": "/jobactivity/(.*)",
       "destination": "admin-backend",
-      "authenticationType": "basic"
+      "authenticationType": "basic",
+      "scope": "$XSAPPNAME.JOBSCHEDULER"
     },
     {
       "source": "/user/(.*)", 
@@ -54,7 +61,20 @@
     {
       "source": "^/admin-ui/(.*)",
       "localDir": "resources",
-      
+      "scope": "$XSAPPNAME.DataGenerator",
+      "replace": {
+        "pathSuffixes": [
+          "index.html"
+        ],
+        "vars": [
+          "sapui5url"
+        ]
+      }
+    },
+       {
+      "source": "^/job-ui/(.*)",
+      "localDir": "resources",
+      "scope": "$XSAPPNAME.JOBSCHEDULER",
       "replace": {
         "pathSuffixes": [
           "index.html"
