@@ -166,13 +166,13 @@ modules:
         properties:
           name: core-node-backend
           url: ~{url}
-          forwardAuthToken: true \
+          forwardAuthToken: true
       - name: core_xsjs_api
         group: destinations
         properties:
           name: core-xsjs-backend
           url: ~{url}
-          forwardAuthToken: true  
+          forwardAuthToken: true
       - name: user_xsjs_api
         group: destinations
         properties:
