@@ -59,12 +59,7 @@
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
-	<dependency>
-			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-admin-node</artifactId>
-			<version>${project.version}</version>
-			<type>pom</type>
-		</dependency>
+
 
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
@@ -139,13 +134,7 @@
 											<MTA-Module>shine-core-node</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
-									<manifestSection>
-										<name>admin-node/</name>
-										<manifestEntries>
-											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-admin-node</MTA-Module>
-										</manifestEntries>
-									</manifestSection>
+									
 									<manifestSection>
 										<name>core-db/</name>
 										<manifestEntries>
