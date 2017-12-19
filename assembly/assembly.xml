@@ -47,7 +47,7 @@
         </fileSet>
 		<fileSet>
             <directory>../core-xsjs</directory>
-            <outputDirectory>core-js</outputDirectory>
+            <outputDirectory>core-xsjs</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -57,7 +57,7 @@
         </fileSet>
 		<fileSet>
             <directory>../user-xsjs</directory>
-            <outputDirectory>user-js</outputDirectory>
+            <outputDirectory>user-xsjs</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -67,7 +67,7 @@
         </fileSet>
        <fileSet>
             <directory>../core-node</directory>
-            <outputDirectory>user-js</outputDirectory>
+            <outputDirectory>core-node</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -77,7 +77,7 @@
         </fileSet>
        <fileSet>
             <directory>../admin-node</directory>
-            <outputDirectory>user-js</outputDirectory>
+            <outputDirectory>admin-node</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
