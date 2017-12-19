@@ -119,17 +119,31 @@
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>core-js/</name>
+										<name>core-xsjs/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-core-js</MTA-Module>
+											<MTA-Module>shine-core-xsjs</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>user-js/</name>
+										<name>user-xsjs/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-user-js</MTA-Module>
+											<MTA-Module>shine-user-xsjs</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
+									<manifestSection>
+										<name>core-node/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>shine-core-node</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
+									<manifestSection>
+										<name>admin-node/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>shine-admin-node</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
