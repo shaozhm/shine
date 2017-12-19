@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "index.html",
+  "welcomeFile": "launchpad/index.html",
   "authenticationMethod": "route",
   "websockets": {
     "enabled": true
