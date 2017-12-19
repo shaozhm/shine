@@ -35,7 +35,8 @@ modules:
       service-name: shine-core-node
       service-url: '${default-url}'      
     properties:
-      UAA_SERVICE_NAME: shine-uaa
+      UAA_SERVICE_NAME: shine-uaa 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
     provides:
       - name: core_node_api
         properties:
