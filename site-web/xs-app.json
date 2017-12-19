@@ -23,33 +23,33 @@
     },
     {
       "source": "/get/(.*)",
-      "destination": "admin-backend",
+      "destination": "core-node-backend",
       "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/reset/(.*)",
-      "destination": "admin-backend",
+      "destination": "core-node-backend",
       "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/replicate/(.*)",
-      "destination": "admin-backend",
+      "destination": "core-node-backend",
       "scope": "$XSAPPNAME.DataGenerator"
     },
     {
       "source": "/jobs/(.*)",
-      "destination": "admin-backend",
+      "destination": "core-node-backend",
       "scope": "$XSAPPNAME.JOBSCHEDULER"
       
     },
     {
       "source": "/schedules/(.*)",
-      "destination": "admin-backend",
+      "destination": "core-node-backend",
       "scope": "$XSAPPNAME.JOBSCHEDULER"
     },
     {
       "source": "/jobactivity/(.*)",
-      "destination": "admin-backend",
+      "destination": "core-node-backend",
       "authenticationType": "basic",
       "scope": "$XSAPPNAME.JOBSCHEDULER"
     },
