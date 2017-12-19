@@ -46,7 +46,7 @@ public class Extensions {
 	
 	//private static final String SELECT = "SELECT * FROM \"UserData.User\" WHERE " + '"' + "UserId" + '"' + '=' + "?";
 	private static final String SELECT = "SELECT * FROM \"UserData.User\"";
-        /private static final String SELECT_UPDATE = "SELECT * FROM \"UserData.User\" WHERE " + '"' + "UserId" + '"' + '=' + "?";
+        private static final String SELECT_UPDATE = "SELECT * FROM \"UserData.User\" WHERE " + '"' + "UserId" + '"' + '=' + "?";
 	@ExtendDataProvider(entitySet = { "User" }, requestTypes = { RequestType.CREATE })
 	public void createUser(ExtensionContext ectx) throws ODataApplicationException {
 		LOGGER.info("Entered the method createUser");
