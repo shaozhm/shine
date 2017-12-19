@@ -75,16 +75,7 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
-       <fileSet>
-            <directory>../admin-node</directory>
-            <outputDirectory>admin-node</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-            </excludes>
-        </fileSet>
+      
 
 
         <fileSet>
