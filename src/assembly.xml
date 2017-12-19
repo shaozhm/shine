@@ -134,18 +134,6 @@
 				<exclude>test/</exclude>
             </excludes>
         </fileSet>
-     	<fileSet>
-            <directory>../admin-node</directory>
-            <outputDirectory>admin-node</outputDirectory>
-            <excludes>
-			<exclude>node_modules/</exclude>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-				<exclude>.cfignore</exclude>
-				<exclude>test/</exclude>
-            </excludes>
-        </fileSet>
+     	
     </fileSets>
 </assembly>
