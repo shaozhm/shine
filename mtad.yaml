@@ -65,30 +65,13 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
       
-  - name: shine-admin-node
-    type: javascript.nodejs
-    path: admin-node/
-    properties: 
-      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
-    parameters:
-      host: shine-admin-node
-      register-service-url: true
-      service-name: shine-admin-node
-      service-url: '${default-url}' 
-    provides: 
-      - name: admin_node_api
-        properties:
-          url: "${default-url}"
-    requires:
-      - name: shine-uaa
-      - name: shine-auditlog
-      - name: shine-core-db
-      - name: shine-container
-      - name: shine-scheduler
+
       
   - name: shine-core-node
     type: javascript.nodejs
     path: core-node/
+    properties: 
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
     parameters:
       host: shine-core-node
       register-service-url: true
@@ -146,12 +129,7 @@ modules:
           name: user-backend
           url: ~{url}
           forwardAuthToken: true
-      - name: admin_node_api
-        group: destinations
-        properties:
-          name: admin-backend
-          url: ~{url}
-          forwardAuthToken: true 
+       
       - name: user_java_api
         group: destinations
         properties:
@@ -200,12 +178,7 @@ modules:
           name: user-backend
           url: ~{url}
           forwardAuthToken: true
-      - name: admin_node_api
-        group: destinations
-        properties:
-          name: admin-backend
-          url: ~{url}
-          forwardAuthToken: true 
+       
       - name: user_java_api
         group: destinations
         properties:
