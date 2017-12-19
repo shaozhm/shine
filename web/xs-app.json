@@ -59,8 +59,7 @@
     {
       "source": "/jobactivity/(.*)",
       "destination": "core-node-backend",
-      "authenticationType": "basic",
-      "scope": "$XSAPPNAME.JOBSCHEDULER"
+      "authenticationType": "none"
     },
     {
       "source": "/user/(.*)", 
