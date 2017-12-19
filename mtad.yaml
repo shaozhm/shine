@@ -86,6 +86,7 @@ modules:
       - name: shine-auditlog
       - name: shine-core-db
       - name: shine-container
+      - name: shine-scheduler
    
   - name: shine-user-java
     type: java.tomee
