@@ -16,8 +16,10 @@
 		<module>web</module>
         <module>site-web</module>
         <module>site-content</module>
-        <module>core-js</module>
-		<module>user-js</module>
+        <module>core-xsjs</module>
+		<module>user-xsjs</module>
+	        <module>core-node</module>
+	        <module>admin-node</module>
 		<module>core-db</module>
 		<module>user-db</module>
         <module>user-java</module>
