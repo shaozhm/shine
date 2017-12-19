@@ -9,6 +9,7 @@
 		"@sap/textbundle": "latest",
 		"@sap/logging": "3.1.0",
 		"@sap/audit-logging": "2.0.1",
+		"@sap/jobs-client": "1.1.1",
 		"@sap/cds": "1.14.1",
 		"express": "~4.16",
 		"express-ws": "3.0",
