@@ -46,7 +46,7 @@ public class Extensions {
 	
 	//private static final String SELECT = "SELECT * FROM \"UserData.User\" WHERE " + '"' + "UserId" + '"' + '=' + "?";
 	private static final String SELECT = "SELECT * FROM \"UserData.User\"";
-
+        /private static final String SELECT_UPDATE = "SELECT * FROM \"UserData.User\" WHERE " + '"' + "UserId" + '"' + '=' + "?";
 	@ExtendDataProvider(entitySet = { "User" }, requestTypes = { RequestType.CREATE })
 	public void createUser(ExtensionContext ectx) throws ODataApplicationException {
 		LOGGER.info("Entered the method createUser");
@@ -121,7 +121,7 @@ public class Extensions {
 			final Preferences.Return returnPreference = OData.newInstance()
 					.createPreferences(request.getHeaders(HttpHeader.PREFER)).getReturn();
 			if (returnPreference == null || returnPreference == Preferences.Return.REPRESENTATION) {
-				pstmt = conn.prepareStatement(SELECT);
+				pstmt = conn.prepareStatement(SELECT_UPDATE);
 				pstmt.setString(1, keyVal);
 				ResultSet rs = pstmt.executeQuery();
 				Entity result = rs.next() ? createEntityFromResultSet(rs) : null;
