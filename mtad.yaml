@@ -45,7 +45,7 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-container
-      - name: shine-core-db
+      - name: secureStore
      
       
   - name: shine-user-xsjs
@@ -218,6 +218,9 @@ resources:
     parameters-metadata:
       config:
         overwritable: true
+
+  - name: secureStore
+    type: com.sap.xs.hana-securestore
 
   - name: shine-auditlog
     type: com.sap.xs.auditlog

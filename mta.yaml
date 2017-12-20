@@ -138,7 +138,7 @@ modules:
     requires:
       - name: shine-uaa
       - name: shine-container
-      - name: shine-core-db
+      - name: secureStore
             
 resources:
   - name: shine-user-container
@@ -156,6 +156,10 @@ resources:
       service-name: shine-user-container
       config:
         schema: SHINE_CORE
+
+  - name: secureStore
+    type: com.sap.xs.hana-securestore
+
   - name: shine-uaa
     type: com.sap.xs.uaa
     parameters:

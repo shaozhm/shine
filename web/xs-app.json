@@ -26,6 +26,10 @@
       "destination": "core-xsjs-backend"
     },
     {
+      "source": "/sap/rest/(.*)",
+      "destination": "uaa"
+    },
+    {
       "source": "/user/odata/v4/(.*)",
       "destination": "user-java-backend"
       
