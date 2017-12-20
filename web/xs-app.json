@@ -107,7 +107,7 @@
       "source": "/(.*)",
       "localDir": "resources",
       "authenticationType": "xsuaa",
-      
+      "cacheControl": "public, max-age=1000,must-revalidate",
       "replace": {
         "pathSuffixes": [
           "index.html",
