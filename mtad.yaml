@@ -71,7 +71,7 @@ modules:
     type: javascript.nodejs
     path: core-node/
     properties: 
-      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
+      SAP_JWT_TRUST_ACL: "[{\"clientid\":\"sb-jobscheduler\",\"identityzone\":\"*\"}]"
     parameters:
       host: shine-core-node
       register-service-url: true
