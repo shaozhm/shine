@@ -36,7 +36,9 @@ var hanaOptions = xsenv.getServices({
 	}
 });
 //hanaOptions.hana.rowsWithMetadata = true;
-app.use(
+app.use('/jobactivity',
+			xsHDBConn.middleware(hanaOptions.hana));
+app.use('/',
 	passport.authenticate("JWT", {
 		session: false
 	}),
