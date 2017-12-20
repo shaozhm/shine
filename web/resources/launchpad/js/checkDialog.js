@@ -213,7 +213,7 @@ sap.account.CheckDialog.prototype.open = function() {
 								for(var i=0;i<applications.length;i++){
 									if((applications[i].appid).indexOf("shine!")>-1){
 										applicationFound = true;
-										var role = {roleTemplateAppId: applications[i].appid, roleTemplateName: "shine_admin", name: "shine_admin"};"shi
+										var role = {roleTemplateAppId: applications[i].appid, roleTemplateName: "shine_admin", name: "shine_admin"};
 										if(roleTemplates != undefined){
 											if(roleTemplates.length!=undefined && roleTemplates.length>0){
 												var appidPresent = false;
