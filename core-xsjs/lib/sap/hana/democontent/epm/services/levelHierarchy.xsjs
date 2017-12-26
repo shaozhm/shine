@@ -18,7 +18,7 @@ var SESSIONINFO = $.sap.hana.democontent.epm.services.session;
 function getHierarchyData()
 {
     var conn = $.hdb.getConnection();
-    var region = $.request.parameters.get('region');
+    var region = encodeURI($.request.parameters.get('region'));
     region = region.replace("'", ""); 
     var rs;
 try
@@ -52,7 +52,7 @@ try
     $.response.status = $.net.http.OK;
 }
 
-var aCmd = $.request.parameters.get('cmd');
+var aCmd = encodeURI($.request.parameters.get('cmd'));
 switch (aCmd) {
     case "getHierarchyData":
         getHierarchyData();
