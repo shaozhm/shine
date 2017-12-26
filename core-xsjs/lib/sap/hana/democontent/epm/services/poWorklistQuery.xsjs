@@ -14,7 +14,7 @@ function getFilter() {
     }
 
     var body = '';
-    var terms = $.request.parameters.get('query');
+    var terms = encodeURI($.request.parameters.get('query'));
     
     var termList = terms.split(" ");
     var termStr = "";
@@ -163,9 +163,9 @@ function getTotalOrders() {
     }
 
     var body = '';
-    var ivGroupBy = $.request.parameters.get('groupby');
+    var ivGroupBy = encodeURI($.request.parameters.get('groupby'));
    
-    var ivCurrency = $.request.parameters.get('currency');
+    var ivCurrency = encodeURI($.request.parameters.get('currency'));
    
     var list = [];
 
@@ -316,7 +316,7 @@ function downloadZip() {
 }
 //end of zip
 
-var aCmd = $.request.parameters.get('cmd');
+var aCmd = encodeURI($.request.parameters.get('cmd'));
 switch (aCmd) {
     case "filter":
         getFilter();
