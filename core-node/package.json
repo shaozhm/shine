@@ -3,7 +3,7 @@
 		"node": " ^6 "
 	},
 	"dependencies": {
-		"@sap/xssec": "2.1.0",
+		"@sap/xssec": "2.1.1",
 		"@sap/xsenv": "1.2.8",
 		"@sap/hdbext": "4.4.3",
 		"@sap/textbundle": "2.1.0",
