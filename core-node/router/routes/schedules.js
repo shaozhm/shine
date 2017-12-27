@@ -15,32 +15,32 @@ module.exports = function() {
 	winston.level = process.env.winston_level || 'error';
 
 	app.post('/createJobSchedule',jsonParser, function(req, res) {
-		logger = req.loggingContext.getLogger("/schedules/createJobSchedule");
+		logger = req.loggingContext.getLogger('/schedules/createJobSchedule');
 		logger.error('info' + req.body);
 		var jname = req.body.jobname;
 		if (!(util.isAlphaNumeric(jname))) {
 			logger.error('inside job name error');
-			util.callback(new Error("Invalid Job Name"), res, "Invalid Job Name");
+			util.callback(new Error('Invalid Job Name'), res, 'Invalid Job Name');
 			return;
 		}
 		var description = req.body.description;
 		if (!(util.isAlphaNumericAndSpace(description))) {
-			util.callback(new Error("Invalid Job Description"), res, "Invalid Job Description");
+			util.callback(new Error('Invalid Job Description'), res, 'Invalid Job Description');
 			return;
 		}
 		var startTime = req.body.starttime;
 		if (!(util.isValidDate(startTime))) {
-			util.callback(new Error("Invalid Start Time"), res, "Invalid Start Time");
+			util.callback(new Error('Invalid Start Time'), res, 'Invalid Start Time');
 			return;
 		}
 		var endTime = req.body.endtime;
 		if (!(util.isValidDate(endTime))) {
-			util.callback(new Error("Invalid End Time"), res, "Invalid End Time");
+			util.callback(new Error('Invalid End Time'), res, 'Invalid End Time');
 			return;
 		}
 		var cron = req.body.cron;
 		if (cron === null || cron === undefined || cron === "") {
-			util.callback(new Error("Invalid CRON"), res, "Invalid CRON");
+			util.callback(new Error('Invalid CRON'), res, 'Invalid CRON');
 			return;
 		}
 
@@ -50,25 +50,25 @@ module.exports = function() {
 		var client = req.db;
 		var scheduleId;
 		var myJob = {
-			"name": jname,
-			"description": description,
-			"action": appUrl,
-			"active": true,
-			"httpMethod": "POST",
-			"schedules": [{
-				"cron": cron,
-				"description": description,
-				"data": {
-					"jobname": jname
+			'name': jname,
+			'description': description,
+			'action': appUrl,
+			'active': true,
+			'httpMethod': 'POST',
+			'schedules': [{
+				'cron': cron,
+				'description': description,
+				'data': {
+					'jobname': jname
 				},
-				"active": true,
-				"startTime": {
-					"date": startTime,
-					"format": "YYYY-MM-DD HH:mm:ss Z"
+				'active': true,
+				'startTime': {
+					'date': startTime,
+					'format': 'YYYY-MM-DD HH:mm:ss Z'
 				},
-				"endTime": {
-					"date": endTime,
-					"format": "YYYY-MM-DD HH:mm:ss Z"
+				'endTime': {
+					'date': endTime,
+					'format': 'YYYY-MM-DD HH:mm:ss Z'
 				}
 			}]
 		};
@@ -78,10 +78,10 @@ module.exports = function() {
 		};
 		scheduler.createJob(scJob, function(error, body) {
 			if (error) {
-				if((error.message).includes("xscron")){
-					util.callback(error, res, "Invalid xscron");
+				if((error.message).includes('xscron')){
+					util.callback(error, res, 'Invalid xscron');
 				}else{
-					util.callback(error, res, "Error registering new job ");
+					util.callback(error, res, 'Error registering new job ');
 				}
 				logger.error('Error occured' + error);
 			} else {
@@ -89,23 +89,23 @@ module.exports = function() {
 				scheduleId = body.schedules[0].scheduleId;
 
 				var upJob = {
-					"jobId": jobid,
-					"job": {
-						"active": true
+					'jobId': jobid,
+					'job': {
+						'active': true
 					}
 				};
-				var sql = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)";
+				var sql = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
 				try{
 					client.prepare(sql, function(error, stmt) {
 						if (error) {
 							logger.error('Error occured' + error);
-							util.callback(error, res, "Unable to insert new job details to db");
+							util.callback(error, res, 'Unable to insert new job details to db');
 						} else {
 							var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
 							stmt.exec(params, function(err, rows) {
 								if (err) {
 									logger.error('Error occured' + err);
-									util.callback(err, res, "Unable to insert new job details to db");
+									util.callback(err, res, 'Unable to insert new job details to db');
 								} else {
 									res.status(200).send(JSON.stringify({
 										JobId: jobid,
@@ -121,7 +121,7 @@ module.exports = function() {
 						}
 					});
 				}catch(err){
-					logger.error("ERROR : "+err);
+					logger.error('ERROR : '+err);
 				}finally{
 					client.close();
 				}
@@ -132,7 +132,7 @@ module.exports = function() {
 	});
 
 	app.get('/getJobSchedules', function(req, res) {
-		logger = req.loggingContext.getLogger("/schedules/getJobSchedules");
+		logger = req.loggingContext.getLogger('/schedules/getJobSchedules');
 		var client = req.db;
 
 		var query = 'SELECT "JOBID","NAME","STARTTIME","ENDTIME","CRON" FROM "Jobs.ScheduleDetails"';
@@ -142,26 +142,26 @@ module.exports = function() {
 			client.exec(query, function(error, rows) {
 				if (error) {
 					logger.error('Error occured' + error);
-					util.callback(error, res, "Job fetching failed");
+					util.callback(error, res, 'Job fetching failed');
 				} else {
 					for (var i in rows) {
 						jobObj = {
-							"JobId": rows[i].JOBID,
-							"JobName": rows[i].NAME,
-							"StartTime": rows[i].STARTTIME,
-							"EndTime": rows[i].ENDTIME,
-							"Cron": rows[i].CRON
+							'JobId': rows[i].JOBID,
+							'JobName': rows[i].NAME,
+							'StartTime': rows[i].STARTTIME,
+							'EndTime': rows[i].ENDTIME,
+							'Cron': rows[i].CRON
 						};
 						jobArray.push(jobObj);
 					}
 					res.writeHead(200, {
-						"Content-Type": "application/json"
+						'Content-Type': 'application/json'
 					});
 					res.end(JSON.stringify(jobArray));
 				}
 			});
 		}catch(error){
-			logger.error("ERROR : "+error);
+			logger.error('ERROR : '+error);
 		}finally{
 			client.close();
 		}
@@ -169,7 +169,7 @@ module.exports = function() {
 	});
 
 	app.get('/getJobSchedulesByName/:name', function(req, res) {
-		logger = req.loggingContext.getLogger("/schedules/getJobSchedulesByName");
+		logger = req.loggingContext.getLogger('/schedules/getJobSchedulesByName');
 		var client = req.db;
 		var name = req.params.name;
 		var sql = 'SELECT "JOBID","NAME" FROM "Jobs.ScheduleDetails" WHERE NAME= ?';
@@ -179,24 +179,24 @@ module.exports = function() {
 			client.prepare(sql, function(error, stmt) {
 				if (error) {
 					logger.error('Error occured' + error);
-					util.callback(error, res, "Job Schedule fetching failed");
+					util.callback(error, res, 'Job Schedule fetching failed');
 				} else {
 					var params = [name];
 					stmt.exec(params, function(err, rows) {
 						if (err) {
 							logger.error('Error occured' + err);
-							util.callback(err, res, "Job fetching failed");
+							util.callback(err, res, 'Job fetching failed');
 						} else {
 							for (var i in rows) {
 								jobObj = {
-									"Id": rows[i].ID,
-									"Name": rows[i].NAME,
-									"TimeStamp": rows[i].TIMESTAMP
+									'Id': rows[i].ID,
+									'Name': rows[i].NAME,
+									'TimeStamp': rows[i].TIMESTAMP
 								};
 								jobArray.push(jobObj);
 							}
 							res.writeHead(200, {
-								"Content-Type": "application/json"
+								'Content-Type': 'application/json'
 							});
 							res.end(JSON.stringify(jobArray));
 						}
@@ -204,7 +204,7 @@ module.exports = function() {
 				}
 			});
 		}catch(error){
-			logger.error("ERROR : "+error);
+			logger.error('ERROR : '+error);
 		}finally{
 			client.close();
 		}
@@ -212,7 +212,7 @@ module.exports = function() {
 	});
 
 	app.delete('/deleteJobSchedules/:jobid', function(req, res) {
-		logger = req.loggingContext.getLogger("/schedules/deleteJobSchedules");
+		logger = req.loggingContext.getLogger('/schedules/deleteJobSchedules');
 		var client = req.db;
 		var jobId = req.params.jobid;
 		var scheduleId;
@@ -223,38 +223,38 @@ module.exports = function() {
 			client.prepare(sql, function(error, stmt) {
 				if (error) {
 					logger.error('Error occured' + error);
-					util.callback(error, res, "Job Schedule fetching failed");
+					util.callback(error, res, 'Job Schedule fetching failed');
 				} else {
 					var params = [jobId];
 					stmt.exec(params, function(err, rows) {
 						if (err) {
 							logger.error('Error occured' + err);
-							util.callback(err, res, "Job fetching failed");
+							util.callback(err, res, 'Job fetching failed');
 						} else {
 							scheduleId = rows[0].SCHEDULE;
 							jobName = rows[0].NAME;
 							var myJob = {
-								"jobId": jobId,
-								"scheduleId": scheduleId
+								'jobId': jobId,
+								'scheduleId': scheduleId
 							};
 							var scheduler = new jobsc.Scheduler(options);
 							scheduler.deleteJobSchedule(myJob, function(error, body) {
 								if (error) {
-									util.callback(error, res, "Error deleteing new job ");
+									util.callback(error, res, 'Error deleteing new job ');
 									logger.error('Error occured' + error);
 								} else {
 									var query = 'DELETE FROM "Jobs.ScheduleDetails" WHERE JOBID=' + jobId;
 									client.exec(query, function(error, rows) {
 										if (error) {
 											logger.error('Error occured' + error);
-											util.callback(error, res, "Job fetching failed");
+											util.callback(error, res, 'Job fetching failed');
 
 										} else {
 											res.writeHead(200, {
-												"Content-Type": "application/json"
+												'Content-Type': 'application/json'
 											});
 											res.end(JSON.stringify({
-												"message": "Schedule for job " + jobName + " is deleted"
+												'message': 'Schedule for job ' + jobName + ' is deleted'
 											}));
 										}
 									});
