@@ -1,7 +1,6 @@
-/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
-var xsenv = require("@sap/xsenv");
-
-
+/*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0, no-undef:0*/
+'use strict';
+var xsenv = require('@sap/xsenv');
 module.exports = {
 	resetTable: function(req, res, origTable, shadowTable, callback) {
 		var client = req.db;
@@ -12,7 +11,7 @@ module.exports = {
 				} else {
 					var query = 'insert into "' + origTable + '" select * from "shadow::' + shadowTable + '"';
 					client.exec(query, function(error1, response1) {
-						callback(error1, response1, res, origTable + " reloaded successfully");
+						callback(error1, response1, res, origTable + ' reloaded successfully');
 					});
 				}
 			});
@@ -22,7 +21,7 @@ module.exports = {
 		client.exec(queryPrefix + tableName + "'",
 			function(error, response) {
 				if (response) {
-					response[0]["TABLE_SYNONYM"] = tableSynonym;
+					response[0]['TABLE_SYNONYM'] = tableSynonym;
 				}
 				callback(error, response);
 			});
@@ -66,9 +65,9 @@ module.exports = {
 	},
 
 	isValidDate: function(date) {
-		console.log("date" + date);
+		console.log('date' + date);
 		var timestamp = Date.parse(date);
-		console.log("timsestamp" + timestamp);
+		console.log('timsestamp' + timestamp);
 		if (isNaN(timestamp) === true) {
 			return false;
 		}
@@ -78,17 +77,17 @@ module.exports = {
 		return true;
 	},
 	getBuinessPartners: function(client, callback1) {
-		console.log("inside bpDict");
-		var query = "SELECT \"PARTNERID\" FROM \"MD.BusinessPartner\"";
+		console.log('inside bpDict');
+		var query = 'SELECT \"PARTNERID\" FROM \"MD.BusinessPartner\"';
 		client.exec(query, function(error, response) {
-			console.log("bpDict in utils");
+			console.log('bpDict in utils');
 			callback1(error, response);
 		});
 	},
 	getProducts: function(client, callback2) {
 		//console.log("inside prodDict");
 		// Select ProductId and the corresponding Price
-		var query = "SELECT \"PRODUCTID\", \"PRICE\" FROM \"MD.Products\"";
+		var query = 'SELECT \"PRODUCTID\", \"PRICE\" FROM \"MD.Products\"';
 		client.exec(query, function(error, response) {
 			// console.log("prodDict in utils");
 			callback2(error, response);
