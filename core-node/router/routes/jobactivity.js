@@ -49,8 +49,7 @@ module.exports = function() {
 			}
 
 			if (securityContext.checkScope(SCOPE)) {
-				
-					client.exec(query, function(error, rows) {
+				client.exec(query, function(error, rows) {
 						if (error) {
 							logger.error('Error occured' + error);
 						} else {
