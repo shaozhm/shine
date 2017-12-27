@@ -1,6 +1,6 @@
 /*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
-"use strict";
-var express = require("express");
+'use strict';
+var express = require('express');
 
 module.exports = function() {
 	var app = express.Router();
@@ -15,14 +15,14 @@ module.exports = function() {
 	});*/
 
 	//Hello Router
-	app.get("/", function(req, res) {
-		var output = "<H1>Obsolete - Removed: Node-CDS Examples</H1></br>" +
+	app.get('/', function(req, res) {
+		var output = '<H1>Obsolete - Removed: Node-CDS Examples</H1></br>' +
 /*			"<a href=\"" + req.baseUrl + "/example1\">/example1</a> - Unmanaged Query</br>" +
 			"<a href=\"" + req.baseUrl + "/example2\">/example2</a> - Managed Find</br>" +
 			"<a href=\"" + req.baseUrl + "/example3\">/example3</a> - Managed Get</br>" +
 			"<a href=\"" + req.baseUrl + "/example4\">/example4</a> - Managed Update/Save</br>" +*/
-			require(global.__base + "utils/exampleTOC").fill();
-		res.type("text/html").status(200).send(output);
+			require(global.__base + 'utils/exampleTOC').fill();
+		res.type('text/html').status(200).send(output);
 	});
 
 /*	// //Unmanaged Query
@@ -38,7 +38,7 @@ module.exports = function() {
 	// 	});
 	// });
 
-	// //Managed Find 
+	// //Managed Find
 	// app.get("/example2", function(req, res) {
 
 	// 	cds.$getTransaction(req.db, function(error, tx) {
@@ -64,7 +64,7 @@ module.exports = function() {
 
 	// });
 
-	// //Managed Get 
+	// //Managed Get
 	// app.get("/example3", function(req, res) {
 
 	// 	cds.$getTransaction(req.db, function(error, tx) {
