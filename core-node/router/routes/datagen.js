@@ -12,7 +12,7 @@ module.exports = function() {
 	var xsenv = require('@sap/xsenv');
 	xsenv.loadEnv();
 	var credentials = xsenv.getServices({
-		auditlog: 'shine-auditlog',
+		auditlog: 'shine-auditlog'
 	}).auditlog;
 	var auditLog = require('@sap/audit-logging')(credentials);
 	var app = express.Router();
@@ -44,16 +44,16 @@ module.exports = function() {
 		}
 		client.exec(query, (err, dummy) => {
 			if (err) {
-						res.json({status: 401, message: 'ERR', data: err,});
+						res.json({status: 401, message: 'ERR', data: err});
 					}
 			else {
 						if(id === 'PurchaseOrderId')
 						{
-						res.json({status: 200, message: 'Purchase orders generated successfully, records added: ' + totalRecords,});
+						res.json({status: 200, message: 'Purchase orders generated successfully, records added: ' + totalRecords});
 						}
 						else
 						{
-						res.json({status: 200, message: 'Sales orders generated successfully, records added: ' + totalRecords,});
+						res.json({status: 200, message: 'Sales orders generated successfully, records added: ' + totalRecords});
 						}
 				}
 			});
