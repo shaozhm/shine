@@ -1,49 +1,41 @@
 /*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0 */
-"use strict";
+'use strict';
 
 module.exports = function() {
 	var express = require('express');
 	var async = require('async');
 	var cds = require('@sap/cds');
 	var winston = require('winston');
-	var util = require(global.__base + "utils/datagen");
+	var util = require(global.__base + 'utils/datagen');
 	var logging = require('@sap/logging');
 	var appContext = logging.createAppContext();
 	var logger;
-	
 	var app = express.Router();
 	winston.level = process.env.winston_level || 'error';
-	
 	app.get('/tablesize', function (req, res) {
-	    var reqContext = appContext.createRequestContext(req);
-	    logger = reqContext.getLogger("/tablesize");
-	    	
-	    var client = req.db;
-	    var query, rs, maxId;
+		var reqContext = appContext.createRequestContext(req);
+		logger = reqContext.getLogger("/tablesize");
+		var client = req.db;
+		var query, rs, maxId;
 		query = 'SELECT * from "getTableSize"()';
 		try {
 			client.exec(query, function(error, result) {
 				if (error) {
-					logger.error("Error in getting table sizes" + error);
-					console.log("error "+error);
+					logger.error('Error in getting table sizes' + error);
+					console.log('error '+error);
 				} else {
-	                console.log("result array in getTableSize "+JSON.stringify(result));
-	                res.writeHead(200, {'Content-Type' : 'application/json'});
-	                res.end(JSON.stringify(result));
-	            }
-	    	});
+					console.log('result array in getTableSize '+JSON.stringify(result));
+					res.writeHead(200, {'Content-Type' : 'application/json'});
+					res.end(JSON.stringify(result));
+				}
+			});
 		}catch (e) {
-			console.log("inside getTableSize error " + e.message);
+			console.log('inside getTableSize error ' + e.message);
 		}
 	});
-	
-	
-	
-	
 	app.get('/tablesize1', function(req, res) {
 		var reqContext = appContext.createRequestContext(req);
-		logger = reqContext.getLogger("/get/tablesize");
-
+		logger = reqContext.getLogger('/get/tablesize');
 		var client = req.db;
 		var tableDict = [{
 			"tableName": "MD.Addresses",
