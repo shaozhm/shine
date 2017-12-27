@@ -1,11 +1,11 @@
 /*eslint-env node, es6 */
-"use strict";
+'use strict';
 module.exports = {
    asyncDemo: (wss) => {
-	 	wss.broadcast("Start");
+		wss.broadcast('Start');
 		setTimeout(() => {
-			wss.broadcast("Wait Timer Over");
+			wss.broadcast('Wait Timer Over');
 		}, 3000);
-		wss.broadcast("End");
+		wss.broadcast('End');
   }
 };
