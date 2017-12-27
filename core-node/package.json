@@ -26,7 +26,7 @@
 	},
 	"devDependencies": {
 		"eslint": "3.5.0",
-		"node-style": "^2.0.0"
+		"node-style": "2.0.0"
 	},
 	"description": "",
 	"files": [],
