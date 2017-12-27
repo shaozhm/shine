@@ -4,12 +4,12 @@
 'use strict';
 var https = require('https');
 var port = process.env.PORT || 3000;
+var xsenv = require('@sap/xsenv');
 var server = require('http').createServer();
 https.globalAgent.options.ca = xsenv.loadCertificates();
 global.__base = __dirname + '/';
 
 //Initialize Express App for XSA UAA and HDBEXT Middleware
-var xsenv = require('@sap/xsenv');
 var passport = require('passport');
 var xssec = require('@sap/xssec');
 var xsHDBConn = require('@sap/hdbext');
