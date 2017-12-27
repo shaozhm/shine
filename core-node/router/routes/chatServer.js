@@ -1,20 +1,20 @@
 /*eslint no-console: 0, no-unused-vars: 0, new-cap: 0*/
 /*eslint-env node, es6 */
-"use strict";
-var WebSocketServer = require("ws").Server;
-var express = require("express");
+'use strict';
+var WebSocketServer = require('ws').Server;
+var express = require('express');
 
 module.exports = function(server) {
 	var app = express.Router();
 	app.use((req, res) => {
 		var output = `<H1>Node.js Web Socket Examples</H1></br>
 			<a href="/exerciseChat">/exerciseChat</a> - Chat Application for Web Socket Example</br>` +
-			require(global.__base + "utils/exampleTOC").fill();
-		res.type("text/html").status(200).send(output);
+			require(global.__base + 'utils/exampleTOC').fill();
+		res.type('text/html').status(200).send(output);
 	});
 	var wss = new WebSocketServer({
 		server: server,
-		path: "/node/chatServer"
+		path: '/node/chatServer'
 	});
 
 	wss.broadcast = (data) => {
@@ -22,22 +22,22 @@ module.exports = function(server) {
 			try {
 				client.send(data);
 			} catch (e) {
-				console.log("Broadcast Error: %s", e.toString());
+				console.log('Broadcast Error: %s', e.toString());
 			}
 		});
-		console.log("sent: %s", data);
+		console.log('sent: %s', data);
 
 	};
 
-	wss.on("connection", (ws) => {
-		console.log("Connected");
-		ws.on("message", (message) => {
-			console.log("received: %s", message);
+	wss.on('connection', (ws) => {
+		console.log('Connected');
+		ws.on('message', (message) => {
+			console.log('received: %s', message);
 			wss.broadcast(message);
 		});
 		ws.send(JSON.stringify({
-			user: "XS",
-			text: "Hello from Node.js XS Server"
+			user: 'XS',
+			text: 'Hello from Node.js XS Server'
 		}));
 	});
 
