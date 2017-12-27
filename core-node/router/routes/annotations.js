@@ -1,6 +1,6 @@
 /*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, new-cap: 0, quotes: 0*/
-"use strict";
-var express = require("express");
+'use strict';
+var express = require('express');
 var async = require("async");
 var et = require('elementtree');
 var XML = et.XML;
