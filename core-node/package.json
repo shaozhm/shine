@@ -25,13 +25,15 @@
 		"elementtree": "0.1.7"
 	},
 	"devDependencies": {
-		
+		"eslint": "3.5.0",
+		"node-style": "^2.0.0"
 	},
 	"description": "",
 	"files": [],
 	"main": "server.js",
 	"name": "core_node",
 	"scripts": {
+		"lint": "eslint -c .eslintrc --ignore-path .gitignore .",
 		"start": "node server.js",
 		"test": "node ./node_modules/gulp/bin/gulp test",
 		"test-coverage": "node ./node_modules/gulp/bin/gulp test-coverage"
