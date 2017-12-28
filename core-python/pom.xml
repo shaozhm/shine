@@ -5,7 +5,7 @@
     <artifactId>sap-xsac-shine-parent</artifactId>
 	 <version>1.4.6</version>
 </parent>
-<artifactId>sap-xsac-shine-core-node</artifactId>
+<artifactId>sap-xsac-shine-core-python</artifactId>
 <packaging>pom</packaging>
 	<build>
 		<plugins>
