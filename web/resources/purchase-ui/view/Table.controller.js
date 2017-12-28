@@ -51,6 +51,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		if (oEvent.getSource() === this.byId("btnExcel")) {
 			// xsjs will handle the content type and download will trigger automatically
 
+			//window.open("/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=Excel");
 			window.open("/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=Excel");
 			return;
 		}
@@ -58,7 +59,7 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 		//Zip Functionality
 		if (oEvent.getSource() === this.byId("btnZip")) {
 			// xsjs will handle the content type and download will trigger automatically
-			window.open("/sap/hana/democontent/epm/services/poWorklistQuery.xsjs?cmd=Zip");
+			window.open("/python/download/excel");
 			return;
 		}
 

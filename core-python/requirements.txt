@@ -1,0 +1,7 @@
+Flask==0.12.2
+cfenv==0.5.3
+openpyxl==2.4.8
+--extra-index-url http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.releases.pypi/simple/ --trusted-host nexus.wdf.sap.corp
+hdbcli==2.3.6
+xssec==1.0.0
+sap-cf-logging==3.0.0

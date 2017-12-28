@@ -59,8 +59,13 @@
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
-
-
+		</dependency>
+          	<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-core-python</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-user-java</artifactId>
@@ -134,7 +139,13 @@
 											<MTA-Module>shine-core-node</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
-									
+									<manifestSection>
+										<name>core-python/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>shine-core-python</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
 									<manifestSection>
 										<name>core-db/</name>
 										<manifestEntries>

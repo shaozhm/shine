@@ -9,6 +9,11 @@
     "logoutPage": "/"
   },
   "routes": [
+	{
+      "source": "^/python/download/(.*)$",
+      "target": "$1",
+      "destination": "core-python-backend"
+    },
     {
       "source": "/node(.*)",
       "destination": "core-node-backend",
