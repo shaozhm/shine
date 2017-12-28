@@ -16,7 +16,7 @@ env_port = os.getenv("PORT")
 port = int(os.environ.get('PORT', 3000))
 
 hana = env.get_service(label='hana')
-uaa_service = env.get_service(name='myuaa').credentials
+uaa_service = env.get_service(name='shine-uaa').credentials
 
 flask_logging.init(app, logging.INFO)
 
