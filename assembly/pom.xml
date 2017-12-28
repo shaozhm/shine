@@ -59,8 +59,7 @@
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
-		</dependency>
-          	<dependency>
+		<dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-core-python</artifactId>
 			<version>${project.version}</version>
