@@ -147,14 +147,13 @@ modules:
       - name: secureStore
 
   - name: shine-core-python
-    type: custom
+    type: python
     path: core-python
     provides:
      - name: core_python_api
        properties:
           url: ${default-url}
     parameters:
-      buildpack: sap_python_buildpack
       host: shine-core-python
       register-service-url: true
       service-name: shine-core-python
