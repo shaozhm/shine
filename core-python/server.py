@@ -21,7 +21,7 @@ uaa_service = env.get_service(name='shine-uaa').credentials
 flask_logging.init(app, logging.INFO)
 
 
-def getPOWorklistData():
+def get_po_work_list_data():
     conn = dbapi.connect(address=hana.credentials['host'], port=int(hana.credentials['port']),
                          user=hana.credentials['user'], password=hana.credentials['password'],
                          CURRENTSCHEMA=hana.credentials['schema'])
@@ -53,7 +53,7 @@ def home():
 
 
 @app.route('/excel')
-def downloadPurchaseOrderExcel():
+def download_purchase_order_excel():
     logger = logging.getLogger('cli.logger')
     if 'authorization' not in request.headers:
         abort(403)
@@ -64,7 +64,7 @@ def downloadPurchaseOrderExcel():
         logger.error('Unauthorised')
         abort(403)
     logger.info('Generating WorkBook')
-    return send_file(getPOWorklistData(), mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    return send_file(get_po_work_list_data(), mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                      attachment_filename='PurchaseOrder.xlsx', as_attachment=True)
 
 
