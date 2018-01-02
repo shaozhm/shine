@@ -25,7 +25,18 @@ modules:
         group: SERVICE_REPLACEMENTS
         properties:
           key: hdi-user-service
-          service: ~{user-container-name} 
+          service: ~{user-container-name}
+      - name: CrossSchemaSys
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-sys-service
+          service: ~{sys-service-name}
+
+      - name: CrossSchemaSysRt
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: hdi-sys-rt-service
+          service: ~{sys-rt-service-name} 
 
   - name: shine-core-xsjs
     type: javascript.nodejs
@@ -168,7 +179,14 @@ modules:
         properties: 
            name: uaa 
            url: ~{url} 
-           forwardAuthToken: true 
+           forwardAuthToken: true
+
+      - name: ui5Service 
+        group: destinations 
+        properties: 
+           name: ui5Service 
+           url: ~{url} 
+           forwardAuthToken: true  
     parameters: 
        host: shine-web 
        register-service-url: true 
@@ -300,10 +318,49 @@ resources:
     properties:
       url: "${xs-api-url}"
 
+  - name: CrossSchemaSys
+    type: org.cloudfoundry.user-provided-service
+    parameters: 
+      service-name: CROSS_SCHEMA_SYS
+      config: 
+        host:  ${default-domain}
+        tenant_name: XSA
+        tags: hana
+        port: 30015
+        user: SYSTEM
+        password: Toor1234
+        driver: com.sap.db.jdbc.Driver
+        schema: SYS
+    properties:
+     sys-service-name: ${service-name}
+
+  - name: CrossSchemaSysRt
+    type: org.cloudfoundry.user-provided-service
+    parameters: 
+      service-name: CROSS_SCHEMA_SYS_RT
+      config: 
+        host:  ${default-domain}
+        port: 30015
+        user: SYSTEM
+        password: Toor1234
+        tenant_name: XSA
+        tags: hana
+        driver: com.sap.db.jdbc.Driver
+        schema: _SYS_RT
+    properties:
+     sys-rt-service-name: ${service-name}
+
   - name: sapui5-provider
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-      version: ">=1.44.8"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: ">=1.49.0-SNAPSHOT"
+
+
+  - name: ui5Service
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: ">=1.49.0-SNAPSHOT"
 
 

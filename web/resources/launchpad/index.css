@@ -73,6 +73,12 @@
 	background-repeat: no-repeat;
 	background-position: center;
 }
+.fulltextschedulingClass{
+ 	background-image: url('thumbnails/FullText.JPG');
+	background-size: 192px;
+	background-repeat: no-repeat;
+	background-position: center;
+ }
 
 .poClass{
 	background-image: url('thumbnails/poworklist.png');

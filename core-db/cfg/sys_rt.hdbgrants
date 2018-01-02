@@ -1,0 +1,32 @@
+{  
+  "hdi-sys-rt-service": {
+    "object_owner": {
+      "object_privileges":[  
+        {  "schema":"_SYS_RT",
+          "name":"ESH_MODEL",
+          "privileges":["SELECT"],
+            "privileges_with_grant_option":["SELECT"]
+          },
+           {  "schema":"_SYS_RT",
+          "name":"ESH_MODEL_PROPERTY",
+          "privileges":["SELECT"],
+            "privileges_with_grant_option":["SELECT"]
+          }
+      ]
+    },
+    "application_user": {
+      "object_privileges":[  
+        { "schema":"_SYS_RT",
+          "name":"ESH_MODEL",
+          "privileges":["SELECT"],
+          "privileges_with_grant_option":["SELECT"]
+        },
+        { "schema":"_SYS_RT",
+          "name":"ESH_MODEL_PROPERTY",
+          "privileges":["SELECT"],
+          "privileges_with_grant_option":["SELECT"]
+        }
+      ]
+    }
+  }	
+}

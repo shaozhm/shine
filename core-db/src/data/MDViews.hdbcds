@@ -63,19 +63,50 @@ context MDViews {
             }
          }
       };
-
+   @Search.searchable: true
+   @EnterpriseSearch.enabled: true
    define view BuyerView as
       select from MD.BusinessPartner
       {
+         @EnterpriseSearch.key: true
+         @EnterpriseSearch.presentationMode: [ #HIDDEN ]
          PARTNERID                   as "Id",
+
+         @EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          EMAILADDRESS                as "EmailAddress",
+
+         @EnterpriseSearch.presentationMode: [ #TITLE ]
+         @EnterpriseSearch.usageMode: [ #SUGGESTION, #AUTO_FACET ]
+         @Search.defaultSearchElement: true
          COMPANYNAME                 as "CompanyName",
+
+	@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          ADDRESSES.CITY              as "City",
+
+@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          ADDRESSES.POSTALCODE        as "PostalCode",
+
+@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          ADDRESSES.STREET            as "Street",
+
+@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          ADDRESSES.BUILDING          as "Building",
+
+@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          ADDRESSES.COUNTRY           as "Country",
+
+@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          ADDRESSES.REGION            as "Region",
+
+@EnterpriseSearch.presentationMode: [ #DETAIL ]
+ 	@Search.defaultSearchElement: true
          HISTORY.CREATEDBY.LOGINNAME as "CreatedBy"
       }
       where
@@ -474,7 +505,7 @@ context MDViews {
                               }
          SUPPLIER.ADDRESSES.COUNTRY    as "Supplier_Country"
       };
-
+   
    define view ProductValuesView as
       select from MDViews.ProductView
       {
@@ -485,15 +516,23 @@ context MDViews {
       group by
          "Product_Id",
          PO_ORDERS."CurrencyCode";
-
+   @EnterpriseSearch.enabled : true
    @Search.searchable : true
    define view texts as
       select from Util.Texts as B
       {
+         @EnterpriseSearch.key: true
+         @EnterpriseSearch.presentationMode: [ #HIDDEN ]
          B.TEXTID,
-         B.LANGUAGE,
-         B.ISOLANGUAGE,
+         @EnterpriseSearch.presentationMode: [ #TITLE ]
+         @EnterpriseSearch.usageMode: [ #SUGGESTION, #AUTO_FACET ]
+         @Search.defaultSearchElement : true
 
+         B.LANGUAGE,
+         @EnterpriseSearch.presentationMode: [ #DETAIL ]
+         @Search.defaultSearchElement : true
+         B.ISOLANGUAGE,
+         @EnterpriseSearch.presentationMode: [ #DETAIL ]
          @Search.defaultSearchElement : true
          B.TEXT
       };
@@ -510,9 +549,11 @@ context MDViews {
       into
       {
          @EnterpriseSearch.key : true
+         @EnterpriseSearch.presentationMode: [ #HIDDEN ]
          A.PRODUCTID,
 
-         @EnterpriseSearch.usageMode  : [ #AUTO_FACET ]
+         @EnterpriseSearch.presentationMode: [ #TITLE ]
+         @EnterpriseSearch.usageMode: [ #SUGGESTION, #AUTO_FACET ]
          @Search.defaultSearchElement : true
          A.CATEGORY,
 
