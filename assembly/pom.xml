@@ -31,13 +31,13 @@
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-core-js</artifactId>
+			<artifactId>sap-xsac-shine-core-xsjs</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-user-js</artifactId>
+			<artifactId>sap-xsac-shine-user-xsjs</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
@@ -50,6 +50,18 @@
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-user-db</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+          	<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-core-node</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-core-python</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
@@ -106,17 +118,31 @@
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>core-js/</name>
+										<name>core-xsjs/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-core-js</MTA-Module>
+											<MTA-Module>shine-core-xsjs</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>
-										<name>user-js/</name>
+										<name>user-xsjs/</name>
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-user-js</MTA-Module>
+											<MTA-Module>shine-user-xsjs</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
+									<manifestSection>
+										<name>core-node/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>shine-core-node</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
+									<manifestSection>
+										<name>core-python/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>shine-core-python</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>

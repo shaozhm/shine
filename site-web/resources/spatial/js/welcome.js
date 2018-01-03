@@ -239,11 +239,34 @@ sap.account.WelcomeDialog.prototype.open = function() {
 		            	userId = myJSON.session[0].UserName ;
 		            
 		            	 location.reload();
-		            	  oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.session);
+		            	  
 					       var appIdKey = userId+":appId";
 					       var appCodeKey = userId+":appCode";
-					        oStorage.put(appIdKey, entry.APP_ID);
-					        oStorage.put(appCodeKey, entry.APP_CODE);
+					        
+		            },
+		            error: function(err)
+		            {
+		            	sap.ui.commons.MessageBox.alert("Unexpected Error"+err+"Please check the application logs for more details");
+		            }
+		        });
+                         var secureStore = {};
+		        secureStore.appIdKey = appIdKey;
+		        secureStore.appCodeKey = appCodeKey;
+		        secureStore.appId = entry.APP_ID;
+		        secureStore.appCode = entry.APP_CODE;
+		        
+		        
+		        jQuery.ajax({
+		            url: "/sap/hana/democontent/epm/services/secureStore.xsjs?cmd=store",
+		            method: 'POST',
+		            data: JSON.stringify(secureStore),
+		            dataType: 'json',
+		            headers: {
+								'x-csrf-token': xsrf_token
+								 },
+		            async: false,
+		            success: function(myJSON) {
+		            		sap.ui.commons.MessageBox.alert("The credentials are stored succesfully in Hana secure store");
 		            },
 		            error: function(err)
 		            {

@@ -11,9 +11,9 @@
 
 	<properties>
 	<javax.version>3.0.1</javax.version>
-    <sap.gateway.version>1.2.2</sap.gateway.version>
+    <sap.gateway.version>1.5.0</sap.gateway.version>
     <slf4j.version>1.7.7</slf4j.version>
-    <java-container-security.version>0.22.2</java-container-security.version>
+    <java-container-security.version>0.26.12</java-container-security.version>
   </properties>
 
 	<dependencies>
@@ -102,4 +102,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!--Un-comment this section if the WebIDE is not able to fetch the jars from the Maven Central repository -->
+	<repositories>
+		<repository>
+			<id>SAP repository</id>
+			<url>http://nexus.wdf.sap.corp:8081/nexus/content/groups/build.milestones</url>
+		</repository>
+	</repositories>
 </project>

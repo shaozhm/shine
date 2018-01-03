@@ -64,8 +64,8 @@
         </fileSet>
 
 		<fileSet>
-            <directory>../core-js</directory>
-            <outputDirectory>core-js</outputDirectory>
+            <directory>../core-xsjs</directory>
+            <outputDirectory>core-xsjs</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
@@ -77,8 +77,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../user-js</directory>
-            <outputDirectory>user-js</outputDirectory>
+            <directory>../user-xsjs</directory>
+            <outputDirectory>user-xsjs</outputDirectory>
             <excludes>
 			<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
@@ -121,5 +121,19 @@
 				<exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
+          	<fileSet>
+            <directory>../core-node</directory>
+            <outputDirectory>core-node</outputDirectory>
+            <excludes>
+			<exclude>node_modules/</exclude>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+				<exclude>.cfignore</exclude>
+				<exclude>test/</exclude>
+            </excludes>
+        </fileSet>
+     	
     </fileSets>
 </assembly>

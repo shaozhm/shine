@@ -16,7 +16,7 @@
 											activeIcon="sap-icon://monitor-payments" press="handlePress"/>
 										<StandardTile id="jobscheduling" class="jobschedulingClass" title="Runtime Job Scheduling" icon="sap-icon://time-entry-request"
 											activeIcon="sap-icon://time-entry-request" press="handlePress"/>
-										<StandardTile id="so" class="soClass" title="Sales Dashboard" icon="sap-icon://sales-orde" activeIcon="sap-icon://sales-order"
+										<StandardTile id="so" class="soClass" title="Sales Dashboard" icon="sap-icon://sales-order" activeIcon="sap-icon://sales-order"
 											press="handlePress"/>
 										<StandardTile id="uc" class="ucClass" title="User CRUD" icon="sap-icon://account" activeIcon="sap-icon://account" press="handlePress"/>
 										<StandardTile id="spatial" class="spatialClass" title="Spatial Demo" icon="sap-icon://map" activeIcon="sap-icon://map" press="handlePress"/>
