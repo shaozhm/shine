@@ -71,10 +71,6 @@
 			"scope": "$XSAPPNAME.JOBSCHEDULER"
 		},
 		{
-			"source": "/user/xsodata/(.*)",
-		        "destination": "user-backend"
-		},
-		{
 			"source": "/user/(.*)",
 			"destination": "user-backend",
 			"authenticationType": "xsuaa"
