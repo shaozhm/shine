@@ -66,11 +66,11 @@
 					<Collection>
 						<Record Type="UI.CollectionFacet">
 							<PropertyValue Property="ID" String="UserInformation"/>
-							<PropertyValue Property="Label" String="{@i18n&gt;@UserInfoFacetLabel}"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;UserInfoFacetLabel}"/>
 							<PropertyValue Property="Facets">
 								<Collection>
 									<Record Type="UI.ReferenceFacet">
-										<PropertyValue Property="Label" String="{@i18n&gt;@UserInfoFacetLabel}"/>
+										<PropertyValue Property="Label" String="{@i18n&gt;UserInfoFacetLabel}"/>
 										<PropertyValue Property="Target" AnnotationPath="@UI.LineItem"/>
 									</Record>
 								</Collection>
