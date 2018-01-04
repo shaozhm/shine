@@ -18,16 +18,16 @@
 				"type": "OData",
 				"settings": {
 					"annotations": [
-						"localAnnotations_1"
+						"annotations"
 					],
 					"localUri": "localService/metadata.xml"
 				}
 			},
 			"localAnnotations_1": {
-				"uri": "annotations/localAnnotations_1.xml",
+				"uri": "annotations/annotations.xml",
 				"type": "ODataAnnotation",
 				"settings": {
-					"localUri": "annotations/localAnnotations_1.xml"
+					"localUri": "annotations/annotations.xml"
 				}
 			}
 		},
@@ -70,7 +70,9 @@
 		},
 		"resources": {
 			"js": [],
-			"css": []
+			"css": [{
+				"uri": "css/style.css"
+			 }]
 		},
 		"dependencies": {
 			"minUI5Version": "1.32.1",
