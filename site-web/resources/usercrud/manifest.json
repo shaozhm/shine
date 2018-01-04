@@ -23,7 +23,7 @@
 					"localUri": "localService/metadata.xml"
 				}
 			},
-			"localAnnotations_1": {
+			"annotations": {
 				"uri": "annotations/annotations.xml",
 				"type": "ODataAnnotation",
 				"settings": {
