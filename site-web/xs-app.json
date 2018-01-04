@@ -32,10 +32,7 @@
 			"source": "/sap/hana/democontent/epm/(.*)",
 			"destination": "core-xsjs-backend"
 		},
-		{
-			"source": "/user/xsodata/(.*)",
-		        "destination": "user-backend"
-		},
+		
 		{
 			"source": "/user/odata/v4/(.*)",
 			"destination": "user-java-backend"
@@ -72,6 +69,10 @@
 			"destination": "core-node-backend",
 			"authenticationType": "basic",
 			"scope": "$XSAPPNAME.JOBSCHEDULER"
+		},
+		{
+			"source": "/user/xsodata/(.*)",
+		        "destination": "user-backend"
 		},
 		{
 			"source": "/user/(.*)",
