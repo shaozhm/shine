@@ -26,14 +26,18 @@ module.exports = function() {
 		var totalRecords = encodeURI((req.body.noRec)) * 1000;
 		var id = req.body.id;
 		var query;
-		var aStartDate = encodeURI(req.body.startdate);
+	    function convertDate(d){
+	    	console.log("inside func");
+            var parts = d.split(" ");
+            var months = {Jan: "01",Feb: "02",Mar: "03",Apr: "04",May: "05",Jun: "06",Jul: "07",Aug: "08",Sep: "09",Oct: "10",Nov: "11",Dec: "12"};
+            
+            return parts[2]+"."+months[parts[1]]+"."+parts[3];
+        }
+		var aStartDate = req.body.startdate;
+		aStartDate = convertDate(aStartDate);
 		var aStr  = aStartDate.replace(/%20/g, ' ');
-		var t = new Date(aStr);
-		aStartDate = t.getDate()+'.'+t.getMonth()+'.'+t.getFullYear();
-		var aEndDate = encodeURI(req.body.enddate);
-		var aEnd = aEndDate.replace(/%20/g, ' ');
-		var d = new Date(aEnd);
-		aEndDate =  d.getDate()+'.'+d.getMonth()+'.'+d.getFullYear();
+		var aEndDate = req.body.enddate;
+		aEndDate = convertDate(aEndDate);
 		if(id === 'PurchaseOrderId')
 		{
 			query = "CALL \"load_data_PO\"(START_DATE => '"+aStartDate+"',END_DATE => '"+aEndDate+"',ANOREC => "+totalRecords+",RES => ?)";
