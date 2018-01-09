@@ -8,21 +8,26 @@ The application consists of the following packages:
 - core-db - This is the core db package contains Core data models artifacts required to create the tables and other database artifacts (for example, .hdbcds, .hdbsequence, and so on).
 
 
-- core-js -This package has the Node.js implementation of Data Generator, PO Worklist, Sales Dashboard (back end).
+- core-node - This package has the Node.js implementation of Data Generator, Job Scheduler.
 
+- core-python - This package has the python implementation of Excel Download in Purchase Order Worklist.
 
-- user-db - This package contains the artifacts contains the db artificats for User Creation 
+- core-xsjs - This package has the Node.js implementation of PO Worklist, Sales Dashboard, Spatial Demo using xsodata libraries.
 
-
-- user-js - This package contains the User CRUD implementation in nodejs using xsodata libraries.
-
-- user-java - This package contains the User CRUD implementation in Java using Java oData V4 libraries.
-
-- web - This package contains the user interface for the SHINE Launchpad, Data Generator, and Purchase Order Worklist, Sales Dashboard, User CRUD pplications implemented in SAP UI5.
+- site-content - This package contains the JSON configurations for the Fiori as a Service module.
 
 - site-web - This package contains the user interface for Fiori as a Service for the SHINE Launchpad. Currently User CRUD application has been implemented
 
-- site-content - This package contains the JSON configurations for the Fiori as a Service module.
+- user-db - This package contains the artifacts contains the db artificats for User Creation 
+
+- user-java - This package contains the User CRUD implementation in Java using Java oData V4 libraries.
+
+- user-xsjs - This package contains the User CRUD implementation in nodejs using xsodata libraries.
+
+- web - This package contains the user interface for the SHINE Launchpad, Data Generator, and Purchase Order Worklist, Sales Dashboard, User CRUD pplications implemented in SAP UI5.
+
+
+
 
 ## Prerequisites
 The following components should be installed before SHINE installation on XSA:
