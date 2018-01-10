@@ -119,6 +119,7 @@
 				<exclude>.project</exclude>
 				<exclude>.settings/</exclude>
 				<exclude>pom.xml</exclude>
+		                <exclude>vulas-custom.properties</exclude>
             </excludes>
         </fileSet>
           	<fileSet>
