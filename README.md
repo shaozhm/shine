@@ -16,9 +16,9 @@ The application consists of the following packages:
 
 - site-content - This package contains the JSON configurations for the Fiori as a Service module.
 
-- site-web - This package contains the user interface for Fiori as a Service for the SHINE Launchpad. Currently User CRUD application has been implemented
+- site-web - This package contains the user interface for Fiori as a Service for the SHINE Launchpad.
 
-- user-db - This package contains the artifacts contains the db artificats for User Creation 
+- user-db - This package contains the artifacts contains the db artificats for User Creation. 
 
 - user-java - This package contains the User CRUD implementation in Java using Java oData V4 libraries.
 
@@ -40,8 +40,8 @@ If not installed,please download the latest version from milestone [here](http:/
 If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/).
 
 
-- sapui5_fesv3   
-If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones/com/sap/ui5/dist/sapui5-dist-xsa/1.44.8/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-dist-xsa/1.44.8/).
+- sapui5_fesv4   
+If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones/com/sap/ui5/dist/sapui5-dist-xsa/1.52.2/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-dist-xsa/1.52.2/).
 
 ## Installation via Product Installer 
 
