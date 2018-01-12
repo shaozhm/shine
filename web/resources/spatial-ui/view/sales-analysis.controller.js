@@ -46,7 +46,7 @@
  				evt.currentPointer.viewportY);
  			var length = polyLineGroup.getObjects().length;
  			if (!polyLineStrip && length === 1) {
-     	if(oController.polygon){
+     if(oController.polygon){
  					oController.removePolygon();
  				}
  				polyLineStrip = new H.geo.Strip();
@@ -89,8 +89,8 @@
  						}
  					});
       if(oController.polygon){
- 						oController.removePolygon();
- 					}
+ 					   oController.removePolygon();
+ 				 }
  					oController.map.addObject(oController.polygon);
  					oController.isPolygonDisplayed = true;
  					oController.bpMarkers.removeAll();

@@ -46,8 +46,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../core-js</directory>
-            <outputDirectory>core-js</outputDirectory>
+            <directory>../core-xsjs</directory>
+            <outputDirectory>core-xsjs</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -56,8 +56,8 @@
             </excludes>
         </fileSet>
 		<fileSet>
-            <directory>../user-js</directory>
-            <outputDirectory>user-js</outputDirectory>
+            <directory>../user-xsjs</directory>
+            <outputDirectory>user-xsjs</outputDirectory>
             <excludes>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
@@ -65,6 +65,28 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
+       <fileSet>
+            <directory>../core-node</directory>
+            <outputDirectory>core-node</outputDirectory>
+            <excludes>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
+		 <fileSet>
+            <directory>../core-python</directory>
+            <outputDirectory>core-python</outputDirectory>
+            <excludes>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
+
+
         <fileSet>
             <directory>../core-db</directory>
             <outputDirectory>core-db</outputDirectory>

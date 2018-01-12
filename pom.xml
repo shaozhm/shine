@@ -4,24 +4,26 @@
      <parent>
         <groupId>com.sap.xs.maven</groupId>
         <artifactId>mta-parent</artifactId>
-        <version>1.2.1</version>
+        <version>1.4.4</version>
     </parent>
 
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-    <version>1.3.4</version>
+    <version>1.5.0</version>
     <packaging>pom</packaging>
 	
    <modules>
 		<module>web</module>
-        <module>site-web</module>
-        <module>site-content</module>
-        <module>core-js</module>
-		<module>user-js</module>
+		<module>site-web</module>
+		<module>site-content</module>
+		<module>core-python</module>
+		<module>core-xsjs</module>
+		<module>user-xsjs</module>
+		<module>core-node</module>
 		<module>core-db</module>
 		<module>user-db</module>
-        <module>user-java</module>
+		<module>user-java</module>
 		<module>src</module>
-        <module>assembly</module>
-    </modules>
+		<module>assembly</module>
+   </modules>
 </project>
