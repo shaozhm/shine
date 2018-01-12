@@ -223,7 +223,8 @@ sap.account.WelcomeDialog.prototype.open = function() {
 	            var entry = {};
 	            var appIdInputValue = appIdInput.getValue();
 	            var appCodeInputValue = appCodeInput.getValue();
-	            
+	            var appIdKey;
+		    var appCodeKey;
 	            entry.APP_ID = btoa(appIdInputValue);
 	            entry.APP_CODE = btoa(appCodeInputValue);
 	            
@@ -240,8 +241,8 @@ sap.account.WelcomeDialog.prototype.open = function() {
 		            
 		            	 location.reload();
 		            	  
-					       var appIdKey = userId+":appId";
-					       var appCodeKey = userId+":appCode";
+					        appIdKey = userId+":appId";
+					        appCodeKey = userId+":appCode";
 					        
 		            },
 		            error: function(err)
