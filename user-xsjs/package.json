@@ -12,7 +12,7 @@
 	},
 	"files": [],
 	"main": "server.js",
-	"name": "user-xsjs",
+	"name": "shine-user-xsjs",
 	"scripts": {
 		"start": "node server.js"
 	},
