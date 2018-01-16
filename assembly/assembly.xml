@@ -75,17 +75,7 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
-		 <fileSet>
-            <directory>../core-python</directory>
-            <outputDirectory>core-python</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-            </excludes>
-        </fileSet>
-
+		
 
         <fileSet>
             <directory>../core-db</directory>

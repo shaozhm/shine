@@ -100,22 +100,7 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
 
-  - name: shine-core-python
-    type: custom
-    path: core-python
-    provides:
-     - name: core_python_api
-       properties:
-          url: ${default-url}
-    parameters:
-      buildpack: sap_python_buildpack
-      host: shine-core-python
-      register-service-url: true
-      service-name: shine-core-python
-      service-url: '${default-url}'            
-    requires:
-      - name: shine-uaa
-      - name: shine-container
+  
       
   - name: shine-web
     type: javascript.nodejs
@@ -130,13 +115,7 @@ modules:
         properties:
           sapui5url: ~{url}
           
-      - name: core_python_api
-        group: destinations
-        properties:
-          name: core-python-backend
-          url: '~{url}'
-          forwardAuthToken: true
-          
+                
       - name: core_node_api
         group: destinations
         properties:
@@ -187,12 +166,7 @@ modules:
           name: controller
           url: ~{url}
           forwardAuthToken: true
-      - name: core_python_api
-        group: destinations
-        properties:
-          name: core-python-backend
-          url: '~{url}'
-          forwardAuthToken: true
+      
       - name: core_node_api
         group: destinations
         properties:
