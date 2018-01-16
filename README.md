@@ -10,7 +10,6 @@ The application consists of the following packages:
 
 - core-node - This package has the Node.js implementation of Data Generator, Job Scheduler.
 
-- core-python - This package has the python implementation of Excel Download in Purchase Order Worklist.
 
 - core-xsjs - This package has the Node.js implementation of PO Worklist, Sales Dashboard, Spatial Demo using xsodata libraries.
 
