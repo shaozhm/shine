@@ -16,7 +16,7 @@
 		<module>web</module>
 		<module>site-web</module>
 		<module>site-content</module>
-		<module>core-python</module>
+		
 		<module>core-xsjs</module>
 		<module>user-xsjs</module>
 		<module>core-node</module>

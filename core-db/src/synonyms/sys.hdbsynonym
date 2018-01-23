@@ -34,5 +34,11 @@
       "object": "SERIES_GENERATE_TIMESTAMP",
       "schema": "SYS"
     }
+  },
+  "ESH_SEARCH": {
+    "target": {
+      "object": "ESH_SEARCH",
+      "schema": "SYS"
+    }
   }
 }

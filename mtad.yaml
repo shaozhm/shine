@@ -25,7 +25,8 @@ modules:
         group: SERVICE_REPLACEMENTS
         properties:
           key: hdi-user-service
-          service: ~{user-container-name} 
+          service: ~{user-container-name}
+     
 
   - name: shine-core-xsjs
     type: javascript.nodejs
@@ -100,22 +101,7 @@ modules:
       - name: shine-user-db
       - name: shine-user-container
 
-  - name: shine-core-python
-    type: custom
-    path: core-python
-    provides:
-     - name: core_python_api
-       properties:
-          url: ${default-url}
-    parameters:
-      buildpack: sap_python_buildpack
-      host: shine-core-python
-      register-service-url: true
-      service-name: shine-core-python
-      service-url: '${default-url}'            
-    requires:
-      - name: shine-uaa
-      - name: shine-container
+ 
       
   - name: shine-web
     type: javascript.nodejs
@@ -130,12 +116,7 @@ modules:
         properties:
           sapui5url: ~{url}
           
-      - name: core_python_api
-        group: destinations
-        properties:
-          name: core-python-backend
-          url: '~{url}'
-          forwardAuthToken: true
+  
           
       - name: core_node_api
         group: destinations
@@ -168,7 +149,14 @@ modules:
         properties: 
            name: uaa 
            url: ~{url} 
-           forwardAuthToken: true 
+           forwardAuthToken: true
+
+      - name: ui5Service 
+        group: destinations 
+        properties: 
+           name: ui5Service 
+           url: ~{url} 
+           forwardAuthToken: true  
     parameters: 
        host: shine-web 
        register-service-url: true 
@@ -187,12 +175,7 @@ modules:
           name: controller
           url: ~{url}
           forwardAuthToken: true
-      - name: core_python_api
-        group: destinations
-        properties:
-          name: core-python-backend
-          url: '~{url}'
-          forwardAuthToken: true
+      
       - name: core_node_api
         group: destinations
         properties:
@@ -300,10 +283,19 @@ resources:
     properties:
       url: "${xs-api-url}"
 
+  
+
   - name: sapui5-provider
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-      version: ">=1.44.8"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: ">=1.49.0-SNAPSHOT"
+
+
+  - name: ui5Service
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: ">=1.49.0-SNAPSHOT"
 
 
