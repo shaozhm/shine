@@ -9,6 +9,20 @@
     "logoutPage": "/"
   },
   "routes": [
+     {
+      "source": "/resources/es/(.*)",
+      "destination": "core-node-backend"
+    },
+
+    {
+      "source": "/resources/sap/(.*)",
+      "destination": "ui5Service"
+    },
+
+     {
+      "source": "/resources/(.*)",
+      "destination": "ui5Service"
+    },
 	
     {
       "source": "/node(.*)",

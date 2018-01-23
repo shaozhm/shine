@@ -98,6 +98,12 @@ modules:
       - name: sapui5-provider
         properties:
           sapui5url: '~{url}'
+      - name: ui5Service 
+        group: destinations 
+        properties: 
+          name: ui5Service 
+          url: ~{url} 
+          forwardAuthToken: true 
       - name: core_python_api
         group: destinations
         properties:
@@ -225,7 +231,11 @@ resources:
   - name: uaa 
     properties: 
       url: "https://mo-1dd8df5cd.mo.sap.corp:30032/uaa-security"
-      
+  - name: ui5Service
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: "1.52.2"    
   - name: controller
     properties:
       url: 'https://mo-1dd8df5cd.mo.sap.corp:30030'

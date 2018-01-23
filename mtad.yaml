@@ -115,7 +115,12 @@ modules:
         properties:
           sapui5url: ~{url}
           
-                
+      - name: ui5Service 
+        group: destinations 
+        properties: 
+          name: ui5Service 
+          url: ~{url} 
+          forwardAuthToken: true           
       - name: core_node_api
         group: destinations
         properties:
@@ -277,7 +282,13 @@ resources:
   - name: sapui5-provider
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV3:sapui5_fesv3
-      version: ">=1.44.8"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: "1.52.2"
+  
+  - name: ui5Service
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: "1.52.2"
 
 
