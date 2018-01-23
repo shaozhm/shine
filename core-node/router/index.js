@@ -21,7 +21,6 @@ module.exports = (app, server) => {
 	app.use('/schedules', require('./routes/schedules')());
 	app.use('/replicate', require('./routes/datagen')());
 	app.use('/reset', require('./routes/reset')());
-	app.use('/get', require('./routes/get')());
        app.use('/resources/es/odata/callbuildin.xsjs', function (req, res, next) {
          console.log("inside call");
          var client = req.db;

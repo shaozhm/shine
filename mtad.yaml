@@ -26,17 +26,7 @@ modules:
         properties:
           key: hdi-user-service
           service: ~{user-container-name}
-      - name: CrossSchemaSys
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sys-service
-          service: ~{sys-service-name}
-
-      - name: CrossSchemaSysRt
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: hdi-sys-rt-service
-          service: ~{sys-rt-service-name} 
+     
 
   - name: shine-core-xsjs
     type: javascript.nodejs
@@ -293,37 +283,7 @@ resources:
     properties:
       url: "${xs-api-url}"
 
-  - name: CrossSchemaSys
-    type: org.cloudfoundry.user-provided-service
-    parameters: 
-      service-name: CROSS_SCHEMA_SYS
-      config: 
-        host:  ${default-domain}
-        tenant_name: XSA
-        tags: hana
-        port: 30015
-        user: SYSTEM
-        password: Toor1234
-        driver: com.sap.db.jdbc.Driver
-        schema: SYS
-    properties:
-     sys-service-name: ${service-name}
-
-  - name: CrossSchemaSysRt
-    type: org.cloudfoundry.user-provided-service
-    parameters: 
-      service-name: CROSS_SCHEMA_SYS_RT
-      config: 
-        host:  ${default-domain}
-        port: 30015
-        user: SYSTEM
-        password: Toor1234
-        tenant_name: XSA
-        tags: hana
-        driver: com.sap.db.jdbc.Driver
-        schema: _SYS_RT
-    properties:
-     sys-rt-service-name: ${service-name}
+  
 
   - name: sapui5-provider
     type: configuration
