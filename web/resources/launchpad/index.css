@@ -87,6 +87,12 @@
 .sapMStdTileTitle{
 	color: #007CC0 !important;
 }
+.fulltextschedulingClass{
+ 	background-image: url('thumbnails/FullText.JPG');
+	background-size: 192px;
+	background-repeat: no-repeat;
+	background-position: center;
+ }
 /* CSS for moving the top row appear in bottom 
 .relocateItems > .sapMTileContent > .sapMStdTileTopRow {
 	position: absolute !important;
