@@ -156,6 +156,7 @@
 .welcomeDlg .sapUiDlgCont {
 	background-color: #FFFFFF !important;
 	padding: 10px 25px 12px;
+	overflow-x: hidden;
 }
 .welcomeHeaderTextAlign {
 	font-size: 22px !important;
