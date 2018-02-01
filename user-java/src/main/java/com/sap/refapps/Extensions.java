@@ -80,7 +80,7 @@ public class Extensions {
 				Entity result = rs.next() ? createEntityFromResultSet(rs) : null;
 				dpCtx.setResultEntity(result);
 				LOGGER.debug("Data Successfully inserted");
-			//}
+			}
 			conn.close();
 			
 			
