@@ -175,12 +175,13 @@ getServiceUrl:function(state){
                  'Accept': "application/json"
             },
             success: function(){
-                sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USER_CREATED"));
+                sap.m.MessageToast.show(oThis.getView().getModel("i18n").getProperty("USER_CREATED"));
                 oThis.loadJobsTable();
                 oThis.resetUserModel();
             },
             error: function(error) {
-               sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USR_CRT_ERROR"));
+	        sap.m.MessageToast.show(oThis.getView().getModel("i18n").getProperty("USR_CRT_ERROR"));
+              
                 
             }
         });
