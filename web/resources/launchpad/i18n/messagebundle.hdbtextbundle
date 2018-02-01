@@ -139,4 +139,4 @@ ERROR_ROLECREATION=An error occured while creating roles. Please contact your sy
 SUCCESS_ROLECOLLECTION=Role Collections have been successfully created. please logout of the application for the changes to be reflected.
 ERROR_CSRFTOKEN=An error occured while checking your authorization. Please assign the XS_AUTHORIZATION_ADMIN role collection to your user and retry.
 ERROR_APPLICATION_NOT_FOUND=Couldnt find the required application for authorization. Please contact your system administrator for further investigation.
-GDPR_MESSAGE=<b><font color="red"> Note : No real data should be entered. </font></b>
+GDPR_MESSAGE=<div><b><font color="red"> Note : No real data should be entered. </font></b></div>
