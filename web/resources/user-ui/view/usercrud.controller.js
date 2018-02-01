@@ -350,12 +350,12 @@ getServiceUrl:function(state){
                     'x-csrf-token': xsrf_token
                 },
                 success: function(){
-                    sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USER_DELETED_SUCCESS"));
+		    sap.m.MessageToast.show(oThis.getView().getModel("i18n").getProperty("USER_DELETED_SUCCESS"));
                     oThis.loadJobsTable();
                 },
                 error: function(error) {
-                    sap.ui.commons.MessageBox.alert(oThis.getView().getModel("i18n").getProperty("USER_DELETE_FAILURE"));
-                    //console.log(error);
+		     sap.m.MessageToast.show(oThis.getView().getModel("i18n").getProperty("USER_DELETE_FAILURE"));
+                 
                 }
             });
 
