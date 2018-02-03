@@ -66,9 +66,9 @@ public class Extensions {
 				
 				PreparedStatement pstmt = conn.prepareStatement(INSERT);
 				pstmt.setString(1, keyVal.toString());
-				pstmt.setString(1, (String) requestEntity.getProperty("FirstName").getValue());
-				pstmt.setString(2, (String) requestEntity.getProperty("LastName").getValue());
-				pstmt.setString(3, (String) requestEntity.getProperty("Email").getValue());
+				pstmt.setString(2, (String) requestEntity.getProperty("FirstName").getValue());
+				pstmt.setString(3, (String) requestEntity.getProperty("LastName").getValue());
+				pstmt.setString(4, (String) requestEntity.getProperty("Email").getValue());
 				pstmt.execute();
 				
 				//LOGGER.debug("Inserted record for Id > " + keyVal);
