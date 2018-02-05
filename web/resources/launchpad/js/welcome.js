@@ -110,27 +110,28 @@ sap.account.WelcomeDialog.prototype.open = function() {
     oRow.addCell(oCell);
     oContentMatrix.addRow(oRow);
 	
-   //GDPR warning message
+	//Adding the button check pre-requisites....
+     oContentMatrix.addRow(createDividerRow());
 	
-    oRow = new sap.ui.commons.layout.MatrixLayoutRow();
+   //GDPR warning message
+	oRow = new sap.ui.commons.layout.MatrixLayoutRow();
 
     oCell = new sap.ui.commons.layout.MatrixLayoutCell({
         hAlign: sap.ui.commons.layout.HAlign.Center,
         width: '100%'
     });
     oTextView = new sap.ui.commons.TextView({
-    	text: sap.app.i18n.getText("GDPR_MESSAGE"),
+        text: sap.app.i18n.getText("GDPR_MESSAGE"),
         design: sap.ui.commons.TextViewDesign.Standard,
-        width: '100%'
     });
     oCell.addContent(oTextView);
     oRow.addCell(oCell);
     oContentMatrix.addRow(oRow);
 
     // vspace
-    oContentMatrix.addRow(new sap.ui.commons.layout.MatrixLayoutRow({
-        height: '2px'
-    }));
+    // oContentMatrix.addRow(new sap.ui.commons.layout.MatrixLayoutRow({
+    //     height: '2px'
+    // }));
 	
 	
 	
