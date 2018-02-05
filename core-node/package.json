@@ -15,7 +15,7 @@
 		"express-ws": "3.0.0",
 		"passport": "0.4.0",
 		"async": "2.6.0",
-		"ws": "3.3.3",
+		"ws": "4.0.0",
 		"accept-language-parser": "1.4.1",
 		"node-xlsx": "0.11.2",
 		"node-zip": "1.1.1",
