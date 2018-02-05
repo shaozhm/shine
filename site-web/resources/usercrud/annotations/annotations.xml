@@ -32,7 +32,11 @@
 			<Annotations Target="sap.hana.democontent.epm.services.UsersType">
 				<Annotation Term="UI.LineItem">
 					<Collection>
-						
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UserId"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;USERID}"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="FirstName"/>
 							<PropertyValue Property="Label" String="{@i18n&gt;FIRST_NAME}"/>
