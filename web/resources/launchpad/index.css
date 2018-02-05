@@ -165,3 +165,7 @@
 .dialogTextColor{
 	color: #007CC0 !important;
 }
+#__view4{
+	font-weight: bold;
+    color: red;
+}
