@@ -138,7 +138,13 @@
 											<MTA-Module>shine-core-node</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
-									
+									<manifestSection>
+										<name>tests/</name>
+										<manifestEntries>
+											<Content-Type>text/directory</Content-Type>
+											<MTA-Module>shine-test</MTA-Module>
+										</manifestEntries>
+									</manifestSection>
 									<manifestSection>
 										<name>core-db/</name>
 										<manifestEntries>
