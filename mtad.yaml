@@ -31,6 +31,7 @@ modules:
     type: javascript.nodejs
     path: core-xsjs/
     parameters:
+      port: 51512
       host: shine-core-xsjs
       register-service-url: true
       service-name: shine-core-xsjs
@@ -52,6 +53,7 @@ modules:
     type: javascript.nodejs
     path: user-xsjs/
     parameters:
+      port: 51511
       host: shine-user-xsjs
       register-service-url: true
       service-name: shine-user-xsjs
@@ -73,6 +75,7 @@ modules:
     properties: 
       SAP_JWT_TRUST_ACL: "[{\"clientid\":\"sb-jobscheduler\",\"identityzone\":\"*\"}]"
     parameters:
+      port: 51510
       host: shine-core-node
       register-service-url: true
       service-name: shine-core-node
