@@ -75,7 +75,16 @@
                 <exclude>pom.xml</exclude>
             </excludes>
         </fileSet>
-		
+		<fileSet>
+            <directory>../tests</directory>
+            <outputDirectory>tests</outputDirectory>
+            <excludes>
+                <exclude>node/</exclude>
+                <exclude>target/</exclude>
+                <exclude>etc/</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
+        </fileSet>
 
         <fileSet>
             <directory>../core-db</directory>

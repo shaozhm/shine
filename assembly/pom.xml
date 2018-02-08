@@ -53,13 +53,18 @@
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
-          	<dependency>
+        <dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-core-node</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
 		</dependency>
-		
+		<dependency>
+			<groupId>com.sap.refapps</groupId>
+			<artifactId>sap-xsac-shine-tests</artifactId>
+			<version>${project.version}</version>
+			<type>pom</type>
+		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-user-java</artifactId>

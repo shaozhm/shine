@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+  	"@sap/xsjs": "1.16.3",
+    "@sap/xsenv": "1.2.7",
+	"@sap/xssec": "2.1.1",
+	"@sap/hdbext": "4.4.3",
+	"@sap/logging": "3.1.0",
+    "express": "4.15.3",
+	"passport": "0.3.2",
+	"request" :"2.83.0",
+	"superagent": "^2.3.0",
+	"mocha": "^3.1.0",
+	"mochawesome":"3.0.0",
+	"chai": "^3.5.0",
+	"chai-http": "^3.0.0",
+	"fs": "^0.0.1-security",
+	"path": "^0.12.7"
+  	
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-replace": "0.5.4",
+    "jasmine-reporters": "2.1.1",
+    "gulp-jasmine": "2.4.1",
+    "gulp-istanbul": "1.1.1"
+  },
+  "files": [],
+  "main": "server.js",
+  "name": "test",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ./node_modules/gulp/bin/gulp test",
+    "test-coverage": "node ./node_modules/gulp/bin/gulp test-coverage"
+  },
+  "engines": {
+    "node": "6.x"
+  },
+  "version": "1.0.0"
+}
