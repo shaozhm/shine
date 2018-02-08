@@ -6,7 +6,7 @@ var should = chai.should();
 
 var config = require('./../config.js');
 
-var url=config.core_js;
+var url=config.core_xsjs;
 var jwt = "Bearer "+config.jwt;
 
 chai.use(chaiHttp);
