@@ -3,25 +3,8 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
 var config = require('./../config.js');
-		
 
-/*var path = require('path')
-var fs = require('fs')
-var assert = require('assert')
-var argv = require('optimist').demand('config').argv
-var configFilePath = argv.config
-assert.ok(fs.existsSync(configFilePath), 'config file not found at path: ' + configFilePath)
-var config = require('nconf').env().argv().file({file: configFilePath})
-var apiConfig = config.get('api')*/
-//var apiKey = apiConfig.key;
-//var host = "mo-c339014a4.mo.sap.corp";
-//var port = "51030";
-//var url="https://"+host + ":" +port;
-//var should = require('should');
-
-//var url="https://mo-d5a730025.mo.sap.corp:51510";
-//console.log(url);
-var url=config.user_js;//"https://"+setup.config.host + ":" +setup.config.port;
+var url=config.user_xsjs;
 chai.use(chaiHttp);
 var userId;
 var jwt = "Bearer "+config.jwt;
