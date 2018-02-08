@@ -219,7 +219,7 @@ modules:
       NODE_TLS_REJECT_UNAUTHORIZED: "0"
       
   - name: shine-test
-    type: nodejs
+    type: javascript.nodejs
     path: tests/
     provides:
      - name: test_api
