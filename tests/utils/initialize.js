@@ -20,9 +20,9 @@ module.exports = {
 			var url = xsuaa.url;
 			var host = url.split(":3")[0];
 			
-			config.set_core_node(host+":51510");
-			config.set_core_xsjs(host+":51512");
-			config.set_user_xsjs(host+":51511");
+			config.set_core_node(host+":56001");
+			config.set_core_xsjs(host+":56002");
+			config.set_user_xsjs(host+":56003");
 			
 			var auth = "Basic " + new Buffer(clientid + ":" + clientsecret).toString("base64");
 			
