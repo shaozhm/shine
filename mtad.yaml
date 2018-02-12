@@ -230,8 +230,6 @@ modules:
           url: ${default-url}
     requires:
       - name: shine-uaa
-      - name: shine-container
-      - name: shine-user-container
       - name: core_node_api
         group: destinations
         properties:
