@@ -10,6 +10,7 @@ https.globalAgent.options.ca = xsenv.loadCertificates();
 global.__base = __dirname + '/';
 
 //Initialize Express App for XSA UAA and HDBEXT Middleware
+var passport = require('passport');
 var xssec = require('@sap/xssec');
 var xsHDBConn = require('@sap/hdbext');
 var express = require('express');
@@ -20,19 +21,33 @@ var appContext = logging.createAppContext();
 
 //Initialize Express App for XS UAA and HDBEXT Middleware
 var app = express();
+
+passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices({
+	uaa: {
+		tag: 'xsuaa'
+	}
+}).uaa));
 app.use(logging.expressMiddleware(appContext));
+app.use(passport.initialize());
 var hanaOptions = xsenv.getServices({
 	hana: {
 		tag: 'hana'
 	}
 });
-
+//hanaOptions.hana.rowsWithMetadata = true;
+app.use('/jobactivity',
+			xsHDBConn.middleware(hanaOptions.hana));
 app.use('/',
+	passport.authenticate('JWT', {
+		session: false
+	}),
 	xsHDBConn.middleware(hanaOptions.hana)
 );
 
 //Setup Routes
 var router = require('./router')(app, server);
+
+
 
 global.__base = __dirname + "/";
 var init = require(global.__base + "utils/initialize");
