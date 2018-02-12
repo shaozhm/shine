@@ -224,6 +224,9 @@ modules:
   - name: shine-test
     type: javascript.nodejs
     path: tests/
+    properties: 
+      HANA_SERVICE_NAME: shine-container
+      UAA_SERVICE_NAME: shine-uaa
     provides:
      - name: test_api
        properties:
