@@ -46,8 +46,7 @@ modules:
       - name: shine-auditlog
       - name: shine-container
       - name: shine-core-db
-    parameters:
-      port: 51510
+   
       
   - name: shine-user-xsjs
     type: nodejs
@@ -67,8 +66,7 @@ modules:
       - name: shine-uaa
       - name: shine-user-container
       - name: shine-user-db
-    parameters:
-      port: 51511
+
 
   - name: shine-user-java
     type: java
@@ -155,8 +153,6 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: secureStore
-    parameters:
-      port: 51512
 
   - name: shine-core-python
     type: python
