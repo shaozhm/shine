@@ -22,11 +22,14 @@ module.exports = {
 			var host = url.split(":3")[0];
 		
 			//Getting app ports
-			var data = util.getFullApplicationUrl();
+			var data = util.getFullApplicationPort();
+			var coreXsjsPort = data.coreXsjsPort;
+			var userXsjsPort = data.userXsjsPort;
+			var coreNodePort = data.coreNodePort;
 		
-			config.set_core_node(host+":56001");
-			config.set_core_xsjs(host+":56002");
-			config.set_user_xsjs(host+":56003");
+			config.set_core_node(host+coreNodePort);
+			config.set_core_xsjs(host+coreXsjsPort);
+			config.set_user_xsjs(host+userXsjsPort);
 			
 			var auth = "Basic " + new Buffer(clientid + ":" + clientsecret).toString("base64");
 			
