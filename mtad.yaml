@@ -31,7 +31,6 @@ modules:
     type: javascript.nodejs
     path: core-xsjs/
     parameters:
-      port: 56002
       host: shine-core-xsjs
       register-service-url: true
       service-name: shine-core-xsjs
@@ -53,7 +52,6 @@ modules:
     type: javascript.nodejs
     path: user-xsjs/
     parameters:
-      port: 56003
       host: shine-user-xsjs
       register-service-url: true
       service-name: shine-user-xsjs
@@ -75,7 +73,6 @@ modules:
     properties: 
       SAP_JWT_TRUST_ACL: "[{\"clientid\":\"sb-jobscheduler\",\"identityzone\":\"*\"}]"
     parameters:
-      port: 56001
       host: shine-core-node
       register-service-url: true
       service-name: shine-core-node
@@ -90,6 +87,38 @@ modules:
       - name: shine-core-db
       - name: shine-container
       - name: shine-scheduler
+   
+  - name: shine-test
+    type: javascript.nodejs
+    path: tests/
+    properties: 
+      HANA_SERVICE_NAME: shine-container
+      UAA_SERVICE_NAME: shine-uaa
+    provides:
+     - name: test_api
+       properties:
+          url: ${default-url}
+    requires:
+      - name: shine-uaa
+      - name: shine-container
+      - name: core_node_api
+        group: destinations
+        properties:
+          name: core-node-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: '~{url}'
+          forwardAuthToken: true          
+      - name: user_xsjs_api
+        group: destinations
+        properties:
+          name: user-backend
+          url: '~{url}'
+          forwardAuthToken: true
    
   - name: shine-user-java
     type: java.tomee
@@ -221,37 +250,7 @@ modules:
     properties:
       NODE_TLS_REJECT_UNAUTHORIZED: "0"
       
-  - name: shine-test
-    type: javascript.nodejs
-    path: tests/
-    properties: 
-      HANA_SERVICE_NAME: shine-container
-      UAA_SERVICE_NAME: shine-uaa
-    provides:
-     - name: test_api
-       properties:
-          url: ${default-url}
-    requires:
-      - name: shine-uaa
-      - name: shine-container
-      - name: core_node_api
-        group: destinations
-        properties:
-          name: core-node-backend
-          url: '~{url}'
-          forwardAuthToken: true
-      - name: core_xsjs_api
-        group: destinations
-        properties:
-          name: core-xsjs-backend
-          url: '~{url}'
-          forwardAuthToken: true          
-      - name: user_xsjs_api
-        group: destinations
-        properties:
-          name: user-backend
-          url: '~{url}'
-          forwardAuthToken: true
+  
         
 resources:
   - name: shine-container
