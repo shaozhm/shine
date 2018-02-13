@@ -6,7 +6,8 @@ module.exports = {
 			var request = require ("request");
 			var xsenv = require("@sap/xsenv");
 			var config = require('./config.js');
-			
+			var util = require("./util");
+		
 			var Mocha = require('mocha'),
 				   fs = require('fs'),
 				 path = require('path'),
@@ -19,7 +20,10 @@ module.exports = {
 			var clientsecret = xsuaa.clientsecret;
 			var url = xsuaa.url;
 			var host = url.split(":3")[0];
-			
+		
+			//Getting app ports
+			var data = util.getFullApplicationUrl();
+		
 			config.set_core_node(host+":56001");
 			config.set_core_xsjs(host+":56002");
 			config.set_user_xsjs(host+":56003");
