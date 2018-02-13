@@ -27,9 +27,9 @@ module.exports = {
 			var userXsjsPort = data.userXsjsPort;
 			var coreNodePort = data.coreNodePort;
 		
-			config.set_core_node(host+coreNodePort);
-			config.set_core_xsjs(host+coreXsjsPort);
-			config.set_user_xsjs(host+userXsjsPort);
+			config.set_core_node(host+':'+coreNodePort);
+			config.set_core_xsjs(host+':'+coreXsjsPort);
+			config.set_user_xsjs(host+':'+userXsjsPort);
 			
 			var auth = "Basic " + new Buffer(clientid + ":" + clientsecret).toString("base64");
 			
