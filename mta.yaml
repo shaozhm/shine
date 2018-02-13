@@ -203,7 +203,7 @@ resources:
     type: configuration
     parameters:
       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: "1.52.2"
+      version: ">=1.52.2"
   - name: sap-portal-services-host-com.sap.refapps.shine
     parameters:
        config:
