@@ -1,7 +1,7 @@
 /*eslint no-console: 0, no-unused-vars: 0*/
 "use strict";
 module.exports = {
-	getFullApplicationUrl: function() {	
+	getFullApplicationPort: function() {	
 		//parsing VCAP services
 		var testUrl,testPort,coreNodePort,coreXsjsPort,userXsjsPort;
 		var data;
