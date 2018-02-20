@@ -5,7 +5,7 @@ var path    = require("path");
 var fs		= require("fs");
 var Mocha = require('mocha');
 var results = require('./../../utils/results.js');
-
+var data = {};
 module.exports = function() {
 	var app = express.Router();
 
@@ -34,6 +34,7 @@ module.exports = function() {
 		});
 				
 		mocha.run().on('end', function() {
+		    data = this.testResults;
 		    results.test=this.testResults;
 		});
 		
@@ -41,7 +42,7 @@ module.exports = function() {
 		
 		
 		var results = require('./../../utils/results.js');
-			res.send(results.test);
+		res.send(data);
 		res.end();
 	});
 	return app;
