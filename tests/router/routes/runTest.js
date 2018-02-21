@@ -11,6 +11,10 @@ module.exports = function() {
 
 	app.get("/", function(req, res) {
 		
+		global.__base = __dirname + "/";
+		var init = require(global.__base + "../../utils/initialize");
+		init.runTest();
+		
 		// Instantiate a Mocha instance.
 		var mocha = new Mocha({
 		  reporter: 'json'/*,
