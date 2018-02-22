@@ -155,8 +155,9 @@ sap.ui.controller("shine.democontent.epm.usercrud.ext.controller.ListReportExt",
 			});
 				that.clearUIFields();
 				that.dialog.close();
-				that.resetUserModel();
 				that.extensionAPI.refreshTable();
+				that.resetUserModel();
+				
 				sap.ui.core.BusyIndicator.hide();
 				
 			},
