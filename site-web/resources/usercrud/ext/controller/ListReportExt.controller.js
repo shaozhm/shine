@@ -113,7 +113,7 @@ sap.ui.controller("shine.democontent.epm.usercrud.ext.controller.ListReportExt",
 		// 		"Error");
 		// 	return false;
 		// }
-		sap.ui.core.BusyIndicator.show();
+		//sap.ui.core.BusyIndicator.show();
 		var xsrf_token;
 		$.ajax({
 			type: "GET",
