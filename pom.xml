@@ -19,7 +19,6 @@
 		<module>core-xsjs</module>
 		<module>user-xsjs</module>
 		<module>core-node</module>
-		<module>tests</module>
 		<module>core-db</module>
 		<module>user-db</module>
 		<module>user-java</module>
