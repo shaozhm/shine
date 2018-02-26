@@ -1,4 +1,4 @@
-SHINE XSA 1.5.1
+SHINE XSA 1.5.2
 ===============
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
