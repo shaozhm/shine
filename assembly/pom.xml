@@ -61,12 +61,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-tests</artifactId>
-			<version>${project.version}</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.refapps</groupId>
 			<artifactId>sap-xsac-shine-user-java</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
@@ -138,13 +132,7 @@
 											<MTA-Module>shine-core-node</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
-									<manifestSection>
-										<name>tests/</name>
-										<manifestEntries>
-											<Content-Type>text/directory</Content-Type>
-											<MTA-Module>shine-test</MTA-Module>
-										</manifestEntries>
-									</manifestSection>
+
 									<manifestSection>
 										<name>core-db/</name>
 										<manifestEntries>
