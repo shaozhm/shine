@@ -1,6 +1,7 @@
 _schema-version: '2.0'
 ID: com.sap.refapps.shine
 version: 1.5.2
+
 modules:
   - name: shine-user-db
     type: hdb
@@ -46,6 +47,7 @@ modules:
       - name: shine-auditlog
       - name: shine-container
       - name: shine-core-db
+   
       
   - name: shine-user-xsjs
     type: nodejs
@@ -65,6 +67,7 @@ modules:
       - name: shine-uaa
       - name: shine-user-container
       - name: shine-user-db
+
 
   - name: shine-user-java
     type: java
@@ -169,6 +172,35 @@ modules:
       - name: shine-container
       
             
+
+  - name: shine-test
+    type: nodejs
+    path: tests
+    provides:
+     - name: test_api
+       properties:
+          url: ${default-url}
+    requires:
+      - name: shine-uaa
+      - name: core_node_api
+        group: destinations
+        properties:
+          name: core-node-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: '~{url}'
+          forwardAuthToken: true          
+      - name: user_xsjs_api
+        group: destinations
+        properties:
+          name: user-backend
+          url: '~{url}'
+          forwardAuthToken: true
+
 resources:
   - name: shine-user-container
     properties:
@@ -231,6 +263,7 @@ resources:
   - name: uaa 
     properties: 
       url: "https://<host>:3##32/uaa-security"
+
   - name: ui5Service
     type: configuration
     parameters:

@@ -2,6 +2,7 @@ _schema-version: "3.1.0"
 ID: XSAC_SHINE
 version: 1.5.2
 
+
 modules:
   - name: shine-user-db
     type: com.sap.xs.hdi
@@ -87,6 +88,38 @@ modules:
       - name: shine-core-db
       - name: shine-container
       - name: shine-scheduler
+   
+  - name: shine-test
+    type: javascript.nodejs
+    path: tests/
+    properties: 
+      HANA_SERVICE_NAME: shine-container
+      UAA_SERVICE_NAME: shine-uaa
+    provides:
+     - name: test_api
+       properties:
+          url: ${default-url}
+    requires:
+      - name: shine-uaa
+      - name: shine-container
+      - name: core_node_api
+        group: destinations
+        properties:
+          name: core-node-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: '~{url}'
+          forwardAuthToken: true          
+      - name: user_xsjs_api
+        group: destinations
+        properties:
+          name: user-backend
+          url: '~{url}'
+          forwardAuthToken: true
    
   - name: shine-user-java
     type: java.tomee
@@ -216,7 +249,9 @@ modules:
        - name: sap-portal-services-client
        - name: shine-uaa
     properties:
-      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+      
+  
         
 resources:
   - name: shine-container
