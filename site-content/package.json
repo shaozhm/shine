@@ -3,7 +3,7 @@
     "node": ">=4.0.0"
   },
   "name": "shine-site-content",
-  "version": "1.4.2",
+  "version": "1.4.6",
   "dependencies": {
     "@sap/site-content-deployer": "1.9.7"
   },
