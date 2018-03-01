@@ -9,11 +9,11 @@
 		"express": "4.14.0",
 		"passport": "0.2.1",
 		"winston": "1.0.0",
-		"@sap/xssec": "1.0.2",
+		"@sap/xssec": "2.1.6",
 		"@sap/xsenv": "1.2.6",
 		"@sap/logging": "2.2.0",
 		"@sap/hdbext": "4.3.2",
-		"@sap/xsjs": "1.14.1",
+		"@sap/xsjs": "3.3.0",
 		"@sap/jobs-client": "1.1.0",
 		"body-parser": "1.13.2"
 	},
