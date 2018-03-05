@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-		<version>1.2.4</version>
+		<version>1.2.5</version>
 	</parent>
 	<artifactId>sap-xsac-shine-user-java</artifactId>
 	<packaging>war</packaging>
@@ -13,7 +13,7 @@
 	<javax.version>3.0.1</javax.version>
     <sap.gateway.version>1.0.5</sap.gateway.version>
     <slf4j.version>1.7.7</slf4j.version>
-    <java-container-security.version>0.21.4</java-container-security.version>
+    <java-container-security.version>0.27.3</java-container-security.version>
   </properties>
 
 	<dependencies>
