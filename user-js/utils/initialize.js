@@ -4,7 +4,7 @@ module.exports = {
 	initExpress: function() {
 		var xsenv = require("sap-xsenv");
 		var passport = require("passport");
-		var xssec = require("sap-xssec");
+		var xssec = require("@sap/xssec");
 		var xsHDBConn = require("sap-hdbext");
 		var express = require("express");
 		var bodyParser = require('body-parser');
@@ -37,7 +37,7 @@ module.exports = {
 	},
 
 	initXSJS: function(app) {
-		var xsjs = require("sap-xsjs");
+		var xsjs = require("@sap/xsjs");
 		var xsenv = require("sap-xsenv");
 		var options = {// anonymous : true, // remove to authenticate calls
 			redirectUrl: "/index.xsjs"
