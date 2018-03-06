@@ -3,7 +3,7 @@
 var https= require('https');
 var express = require('express');
 var passport = require('passport');
-var xssec = require('sap-xssec');
+var xssec = require('@sap/xssec');
 var routes = require('./routes/index');
 var hdbext = require('sap-hdbext');
 var bodyParser = require('body-parser');
