@@ -6,7 +6,11 @@ from hdbcli import dbapi
 import logging
 from openpyxl import Workbook
 import os
-import StringIO
+try:
+  from StringIO import StringIO
+except ImportError:
+  from io import StringIO
+
 import xssec
 
 app = Flask(__name__)
@@ -41,7 +45,7 @@ def get_po_work_list_data():
         worksheet.append(po)
     cursor.close()
     conn.close()
-    out = StringIO.StringIO()
+    out = StringIO()
     workbook.save(out)
     out.seek(0)
     return out
