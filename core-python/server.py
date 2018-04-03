@@ -7,8 +7,7 @@ import logging
 from openpyxl import Workbook
 import os
 from io import BytesIO
-
-import xssec
+from sap import xssec
 
 app = Flask(__name__)
 env = AppEnv()
