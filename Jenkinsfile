@@ -36,9 +36,9 @@ node('kirushinexsa'){
   sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
   def SHINESCA=readFile('Zipfile').trim() 
   sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed 's/<SCHEMA_NAME1>/SHINE_CORE/' shine.mtaext"
-  sh "sed 's/<SCHEMA_NAME2>/SHINE_USER/' shine.mtaext"
-  sh "xs install $output -e shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
+  sh "sed 's/<SCHEMA_NAME1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
+  sh "sed 's/<SCHEMA_NAME2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
+  sh "xs install $output -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
 
 
 }
