@@ -3,7 +3,7 @@ stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
-  sh "rm Zipfile"
+ 
   sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
   
 
