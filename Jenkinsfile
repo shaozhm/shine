@@ -18,8 +18,9 @@ node('kirushinexsa'){
 stage('MavenBuild'){
 println("Performing the maven build")
 node('kirushinexsa'){
+  cd "/home/i302582/Shine"
   sh "chmod 777 -R /home/i302582/Shine"
-  sh "mvn clean install -f  /home/i302582/Shine -c /home/i302582/Shine/cfg/settings.xml"
+  sh "mvn clean install -c cfg/settings.xml"
   
 
 }
