@@ -27,3 +27,15 @@ node('kirushinexsa'){
 }
 
 }
+
+stage('InstallShine'){
+println("Start Installation of SHINE")
+node('kirushinexsa'){
+  
+  sh "xs login -u $HOST -p Toor1234"
+  
+
+}
+
+}
+
