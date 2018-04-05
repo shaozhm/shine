@@ -1,5 +1,14 @@
 #!groovy
+stage('InstallShine'){
+println("Start Installation of SHINE")
+node('kirushinexsa'){
+  
+  sh "xs login -u $HOST -p Toor1234"
+  
 
+}
+
+}
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('kirushinexsa'){
