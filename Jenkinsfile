@@ -1,34 +1,4 @@
 #!groovy
-
-
-stage('GitClone'){
-println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
-node('kirushinexsa'){
-
-  sh "rm -rf /tmp/Shine"
-  sh "pwd"
-  sh "mkdir /tmp/Shine" 
-
-  sh "git clone https://github.wdf.sap.corp/refapps/shine.git /tmp/Shine"
-  sh "ls"
-
-}
-
-}
-
-stage('MavenBuild'){
-println("Performing the maven build")
-node('kirushinexsa'){
-  
-  sh "chmod 777 -R /tmp/Shine"
-  dir('/tmp/Shine') {
-  sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
-  }
-
-}
-
-}
-
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
@@ -36,12 +6,15 @@ node('kirushinexsa'){
   sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
   def SHINESCA=readFile('Zipfile').trim() 
   sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed 's/<SCHEMA_NAME1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed 's/<SCHEMA_NAME2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "xs install $output -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
+  sh "sed 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
+  sh "sed 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
+  sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
 
 
 }
 
 }
+
+
+
 
