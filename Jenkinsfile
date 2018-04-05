@@ -2,7 +2,9 @@
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
-  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 --skip-ssl-validation"
+  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
+  String x = sh "find /tmp/Shine/assembly/target -name XSACSHINE*"
+  println('x',x)
   
 
 }
@@ -40,8 +42,7 @@ node('kirushinexsa'){
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
-  
-  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 --skip-ssl-validation"
+  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
   
 
 }
