@@ -21,7 +21,7 @@ node('kirushinexsa'){
 
 }
 
-}
+
 
 
 stage('InstallShine'){
