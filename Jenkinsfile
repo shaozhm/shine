@@ -3,12 +3,12 @@
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('kirushinexsa'){
-  sh "cd /home/i302582/"
-  sh "rm -rf Shine"
+
+  sh "rm -rf /home/i302582/Shine"
   sh "pwd"
-  sh "mkdir Shine" 
-  sh "cd Shine"
-  sh "git clone https://github.wdf.sap.corp/refapps/shine.git"
+  sh "mkdir /home/i302582/Shine" 
+
+  sh "git clone https://github.wdf.sap.corp/refapps/shine.git /home/i302582/Shine"
   sh "ls"
 
 }
