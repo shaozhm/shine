@@ -2,7 +2,6 @@
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
-  sh "su xsaadm "
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030"
   
 
@@ -41,7 +40,7 @@ node('kirushinexsa'){
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
-  sh "su xsaadm "
+  
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030"
   
 
