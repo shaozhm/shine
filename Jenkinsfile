@@ -21,7 +21,7 @@ node('kirushinexsa'){
   
   sh "chmod 777 -R /home/i302582/Shine"
   dir('/home/i302582/Shine') {
-  sh "mvn -f /home/i302582/Shine/pom.xml  clean install"
+  sh "mvn -f  /home/i302582/Shine/pom.xml clean install -s /home/i302582/Shine/cfg/settings.xml"
   }
 
 }
