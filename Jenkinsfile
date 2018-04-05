@@ -3,9 +3,12 @@ stage('InstallShine'){
 println("Start Installation of SHINE")
 node('kirushinexsa'){
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
-  String x = sh "find /tmp/Shine/assembly/target -name XSACSHINE*"
-  println('x',x)
+  sh "rm Zipfile"
+  sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
   
+
+def output=readFile('Zipfile').trim()
+echo "output=$output";
 
 }
 
