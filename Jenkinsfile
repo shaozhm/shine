@@ -4,11 +4,12 @@ println("Start Installation of SHINE")
 node('kirushinexsa'){
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
  
-  sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
+  sh "def SHINESCA=$(find /tmp/Shine/assembly/target -name XSACSHINE*)"
   
 
-def output=readFile('Zipfile').trim()
-echo "output=$output";
+
+echo "Z=$SHINESCA";
+  
 
 }
 
