@@ -1,11 +1,12 @@
 #Simple Python service to generate Excel for PO List from Hana DB
 from cfenv import AppEnv
-from cf_logging import flask_logging
-from flask import abort,Flask,send_file,request
+from sap.cf_logging import flask_logging
+from flask import abort,Flask,send_file,request,g
 from hdbcli import dbapi
 import logging
 from openpyxl import Workbook
 import os
+import check
 from io import BytesIO
 from sap import xssec
 
@@ -16,9 +17,13 @@ env_port = os.getenv("PORT")
 port = int(os.environ.get('PORT', 3000))
 
 hana = env.get_service(label='hana')
-uaa_service = env.get_service(name='shine-uaa').credentials
+uaa_credentials = env.get_service(name='shine-uaa').credentials
 
 flask_logging.init(app, logging.INFO)
+
+@app.before_request
+def before_request():
+    g._uaa_credentials = uaa_credentials 
 
 
 def get_po_work_list_data():
@@ -53,16 +58,9 @@ def home():
 
 
 @app.route('/excel')
+@check.authenticated
 def download_purchase_order_excel():
     logger = logging.getLogger('cli.logger')
-    if 'authorization' not in request.headers:
-        abort(403)
-    access_token = request.headers.get('authorization')[7:]
-    security_context = xssec.create_security_context(access_token, uaa_service)
-    isAuthorized = security_context.check_scope('openid')
-    if not isAuthorized:
-        logger.error('Unauthorised')
-        abort(403)
     logger.info('Generating WorkBook')
     return send_file(get_po_work_list_data(), mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                      attachment_filename='PurchaseOrder.xlsx', as_attachment=True)
@@ -70,3 +68,4 @@ def download_purchase_order_excel():
 
 if __name__ == '__main__':
     app.run(port=port)
+
