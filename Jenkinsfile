@@ -72,7 +72,7 @@ catch(Exception ex)
   node('kirushinexsa'){
       sh "rm -rf /tmp/Shine"
       sh "xs t -s PROD"
-      sh "xs uninstall XSAC_SHINE --delete-services"
+      sh "xs uninstall -f XSAC_SHINE --delete-services"
     }
   }
 }
@@ -85,7 +85,7 @@ finally
   node('kirushinexsa'){
       sh "rm -rf /tmp/Shine"
       sh "xs t -s PROD"
-      sh "xs uninstall XSAC_SHINE --delete-services"
+      sh "xs uninstall -f XSAC_SHINE --delete-services"
     }
   }
 }
