@@ -17,7 +17,7 @@ node('kirushinexsa'){
 stage('UpdateConf'){
 println("Update conf.js")
 node('kirushinexsa'){
-  def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false)
+  def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   sh "sed -i 's/<USER_NAME>/$XSAUSER/' /tmp/Vyper/conf.js"
   sh "sed -i 's/<PASSWORD>/$XSAPASSWORD/' /tmp/Vyper/conf.js"
   sh "sed -i 's/<SHINEURL>/$SHINEURL/' /tmp/Vyper/conf.js"
