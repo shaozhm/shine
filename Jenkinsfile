@@ -26,13 +26,6 @@ node('kirushinexsa'){
 
 
 stage('UI5BrokerInstall'){
-  
-def isUI5BrokerInstalled() {
-    Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
-    echo "Installed: $Installed"
-    (Installed == 0) ? true : false
-    
-}
 
 println("Check for UI5 service broker dependency")
 node('kirushinexsa'){
@@ -45,6 +38,12 @@ node('kirushinexsa'){
 
 }
 
+  def isUI5BrokerInstalled() {
+    Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
+    echo "Installed: $Installed"
+    (Installed == 0) ? true : false
+    
+}
 
 stage('InstallShine'){
 println("Start Installation of SHINE")
