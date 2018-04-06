@@ -20,9 +20,8 @@ node('kirushinexsa'){
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   sh "sed -i 's/<USER_NAME>/$XSAUSER/' /tmp/Vyper/conf.js"
   sh "sed -i 's/<PASSWORD>/$XSAPASSWORD/' /tmp/Vyper/conf.js"
-  def https = 'https:\/\/'
-  def fullurl = $https$SHINEURL
-  sh "sed -i 's/<SHINEURL>/$fullurl/' /tmp/Vyper/conf.js"
+
+  sh "sed -i 's,<SHINEURL>,$SHINEURL,' /tmp/Vyper/conf.js"
   
   }
 }
