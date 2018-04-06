@@ -5,6 +5,7 @@ node('kirushinexsa'){
   sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz"
   withEnv(['PATH+NODEHOME=tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
+          sh "/tmp/Vyper/SetUp.sh "
   }
 
   }
