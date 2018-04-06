@@ -12,9 +12,10 @@ node('kirushinexsa'){
           echo "PATH is: $PATH"
           environment {
     PATH = "tmp/node-v8.11.1-linux-x64/bin:$PATH"
+            sh "node -v"
   }
           sh "chmod -R 777 /tmp/VyperSrc/"
-          sh "node -v"
+          
           sh "sudo -i"
           sh "/tmp/VyperSrc/SetUp.sh "
   }
