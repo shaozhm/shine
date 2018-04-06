@@ -62,7 +62,7 @@ node('kirushinexsa'){
 }
 
   
-catch()
+catch(Exception ex)
 {
   stage('CleanUp'){
   println("Cleaning up the installation")
