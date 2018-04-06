@@ -74,7 +74,7 @@ catch(Exception ex)
   }
 }
 
-finally()
+finally
 
 {
   stage('CleanUp'){
