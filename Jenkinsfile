@@ -1,4 +1,7 @@
 #!groovy
+
+try
+{
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('kirushinexsa'){
@@ -56,3 +59,34 @@ node('kirushinexsa'){
 }
 
 }
+}
+
+  
+catch()
+{
+  stage('CleanUp'){
+  println("Cleaning up the installation")
+  node('kirushinexsa'){
+      sh "rm -rf /tmp/Shine"
+      sh "xs t -s PROD"
+      sh "xs uninstall XSAC_SHINE --delete-services"
+    }
+  }
+}
+}
+finally()
+
+{
+  stage('CleanUp'){
+  println("Cleaning up the installation")
+  node('kirushinexsa'){
+      sh "rm -rf /tmp/Shine"
+      sh "xs t -s PROD"
+      sh "xs uninstall XSAC_SHINE --delete-services"
+    }
+  }
+}
+  
+}
+
+
