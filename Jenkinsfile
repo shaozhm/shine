@@ -56,7 +56,7 @@ node('kirushinexsa'){
 
 }
   
-   def isUI5BrokerInstalled() {
+   def isUI5BrokerInstalled =  {
     Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
     echo "Installed: $Installed"
     (Installed == 0) ? true : false
