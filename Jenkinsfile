@@ -10,12 +10,12 @@ stage('UI5BrokerInstall'){
 
 println("Check for UI5 service broker dependency")
 node('kirushinexsa'){
- 
+    
     Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
     echo "Installed: $Installed"
-    (Installed == 0) ? true : false
-  
-    if(!Installed)
+ 
+    echo "Installed: $Installed"
+    if(Installed!=0)
   {
     sh "wget https://nexus.wdf.sap.corp:8443/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-sb-xsa/1.0.1/sapui5-sb-xsa-1.0.1.zip -P /tmp/"
     sh "xs t -s SAP"
