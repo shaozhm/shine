@@ -107,12 +107,6 @@ modules:
           name: ui5Service 
           url: ~{url} 
           forwardAuthToken: true 
-      - name: core_python_api
-        group: destinations
-        properties:
-          name: core-python-backend
-          url: '~{url}'
-          forwardAuthToken: true
       - name: core_node_api
         group: destinations
         properties:
