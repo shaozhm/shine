@@ -10,10 +10,7 @@ node('kirushinexsa'){
   sh "git clone https://github.wdf.sap.corp/TechnologyTestCenter-Framework-Tools/Vyper4All-Internal.git /tmp/VyperSrc"
   withEnv(['PATH+NODEHOME=tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
-          environment {
-    PATH = "tmp/node-v8.11.1-linux-x64/bin:$PATH"
-            sh "node -v"
-  }
+          
           sh "chmod -R 777 /tmp/VyperSrc/"
           
           sh "sudo -i"
