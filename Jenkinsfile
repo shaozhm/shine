@@ -5,7 +5,7 @@ try
 
 stage('InstallVyper'){
 println("Install Nodejs and Vyperfor Vyper")
-node('kirushinexsa'){
+node('VyperLinux'){
   sh "rm /tmp/node-v8.11.1-linux-x64.tar.xz"
   sh "rm -rf /tmp/node-v8.11.1-linux-x64"
   sh "rm -rf /tmp/VyperSrc"
@@ -32,7 +32,7 @@ node('kirushinexsa'){
   
 stage('VyperGitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch")
-node('kirushinexsa'){
+node('VyperLinux'){
   sh "rm -rf /tmp/Vyper"
   sh "pwd"
   sh "mkdir /tmp/Vyper" 
@@ -43,7 +43,7 @@ node('kirushinexsa'){
 }
 
 
-stage('UpdateConf'){
+stage('VyperLinux'){
 println("Update conf.js")
 node('kirushinexsa'){
   sh "xs t -s PROD"
