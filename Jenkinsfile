@@ -4,28 +4,7 @@ try
 {
 
 
-stage('InstallVyper'){
-println("Install Nodejs and Vyperfor Vyper")
-node('kirushinexsa'){
-  sh "rm /tmp/node-v8.11.1-linux-x64.tar.xz"
-  sh "rm -rf /tmp/node-v8.11.1-linux-x64"
-  sh "rm -rf /tmp/VyperSrc"
-  sh "wget https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz -P /tmp/"
-  sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz -C /tmp/"
-  sh "pwd"
-  sh "ls"
-  sh "mkdir /tmp/VyperSrc"
-  sh "git clone https://github.wdf.sap.corp/TechnologyTestCenter-Framework-Tools/Vyper4All-Internal.git /tmp/VyperSrc"
-  withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
-          echo "PATH is: $PATH"
-          sh "chmod -R 777 /tmp/VyperSrc/"
-          sh "npm install --save  https://github.com/SAP/ui5-automation-framework"
-        
-        
-  }
 
-  }
-}
 
 
 
@@ -36,7 +15,8 @@ node('kirushinexsa'){
   sh "pwd"
   sh "mkdir /tmp/Vyper" 
   sh "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /tmp/Vyper"
-  sh "sed -i 's/<USER_NAME>/$XSAUSER/' /tmp/Vyper/conf.js"
+  
+  
   
   }
 }
@@ -50,6 +30,15 @@ node('kirushinexsa'){
   sh "sed -i 's/<PASSWORD>/$XSAPASSWORD/' /tmp/Vyper/conf.js"
 
   sh "sed -i 's,<SHINEURL>,$SHINEURL,' /tmp/Vyper/conf.js"
+  withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
+          echo "PATH is: $PATH"
+          sh "set HTTP_PROXY=http://proxy.wdf.sap.corp:8080"
+          sh "set HTTPS_PROXY=http://proxy.wdf.sap.corp:8080"
+          sh "node %Vyper% > log.log"
+
+      
+
+  }
   
   }
 }
