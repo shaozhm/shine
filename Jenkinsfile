@@ -11,7 +11,7 @@ node('kirushinexsa'){
   sh "rm -rf /tmp/node-v8.11.1-linux-x64"
   sh "rm -rf /tmp/VyperSrc"
   sh "wget https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz -P /tmp/"
-  sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz"
+  sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz -C /tmp/node-v8.11.1-linux-x64"
   sh "pwd"
   sh "ls"
   sh "mkdir /tmp/VyperSrc"
