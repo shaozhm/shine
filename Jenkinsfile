@@ -44,12 +44,7 @@ node('VyperLinux'){
 stage('VyperLinux'){
 println("Update conf.js")
 node('kirushinexsa'){
-  sh "xs t -s PROD"
-  def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
-  sh "sed -i 's/<USER_NAME>/$XSAUSER/' /tmp/Vyper/conf.js"
-  sh "sed -i 's/<PASSWORD>/$XSAPASSWORD/' /tmp/Vyper/conf.js"
 
-  sh "sed -i 's,<SHINEURL>,$SHINEURL,' /tmp/Vyper/conf.js"
   withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh  "node /tmp/VyperSrc/protractor/bin/protractor /tmp/Vyper/conf.js"
