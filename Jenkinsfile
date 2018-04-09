@@ -104,30 +104,5 @@ node('kirushinexsa'){
 
 catch(Exception ex)
 {
-  stage('CleanUp'){
-  println("Cleaning up the installation")
-  node('kirushinexsa'){
-      sh "rm -rf /tmp/Shine"
-      sh "xs t -s PROD"
-      sh "xs uninstall  XSAC_SHINE -f  --delete-services "
-    }
-  }
-}
-
-finally
-
-{
-  stage('CleanUp'){
-  println("Cleaning up the installation")
-  node('kirushinexsa'){
-      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
-      if(SHINEStillInstalled==0)
-    {
-      
-      sh "xs t -s PROD"
-      sh "xs uninstall  XSAC_SHINE -f  --delete-services " 
-      sh "rm -rf /tmp/Shine"
-    }
-    }
-  }
+  println("Exception")
 }
