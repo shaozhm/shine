@@ -14,7 +14,7 @@ node('kirushinexsa'){
   sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz"
   sh "mkdir /tmp/VyperSrc"
   sh "git clone https://github.wdf.sap.corp/TechnologyTestCenter-Framework-Tools/Vyper4All-Internal.git /tmp/VyperSrc"
-  withEnv(['PATH+NODEHOME=tmp/node-v8.11.1-linux-x64/bin']) {
+  withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "chmod -R 777 /tmp/VyperSrc/"
           sh "node -v"
