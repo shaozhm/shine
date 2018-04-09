@@ -30,7 +30,7 @@ node('kirushinexsa'){
   sh "sed -i 's,<SHINEURL>,$SHINEURL,' /tmp/Vyper/conf.js"
   withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
-          sh "node /tmp/Vyper conf.js"
+          sh "sh "node /tmp/VyperSrc/protractor/bin/protractor /tmp/Vyper/conf.js""
          
          
           
