@@ -12,6 +12,7 @@ node('kirushinexsa'){
   sh "rm -rf /tmp/VyperSrc"
   sh "wget https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz -P /tmp/"
   sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz"
+  sh "pwd"
   sh "ls"
   sh "mkdir /tmp/VyperSrc"
   sh "git clone https://github.wdf.sap.corp/TechnologyTestCenter-Framework-Tools/Vyper4All-Internal.git /tmp/VyperSrc"
