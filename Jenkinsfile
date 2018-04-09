@@ -6,9 +6,7 @@ try
 stage('InstallVyper'){
 println("Install Nodejs and Vyperfor Vyper")
 node('VyperLinux'){
-  sh "rm /tmp/node-v8.11.1-linux-x64.tar.xz"
-  sh "rm -rf /tmp/node-v8.11.1-linux-x64"
-  sh "rm -rf /tmp/VyperSrc"
+  
   sh "git clone https://github.wdf.sap.corp/I302582/Vyper4All-Internal.git /tmp/VyperSrc"
   sh "wget https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz -P /tmp/"
   sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz -C /tmp/"
@@ -33,7 +31,7 @@ node('VyperLinux'){
 stage('VyperGitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch")
 node('VyperLinux'){
-  sh "rm -rf /tmp/Vyper"
+
   sh "pwd"
   sh "mkdir /tmp/Vyper" 
   sh "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /tmp/Vyper"
