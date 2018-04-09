@@ -3,66 +3,7 @@
 try
 {
 
-stage('GitClone'){
-println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
-node('kirushinexsa'){
-  sh "rm -rf /tmp/Shine"
-  sh "pwd"
-  sh "mkdir /tmp/Shine" 
-  sh "git clone https://github.wdf.sap.corp/refapps/shine.git /tmp/Shine"
-  sh "ls"
-  }
-}
 
-stage('MavenBuild'){
-println("Performing the maven build")
-node('kirushinexsa'){
-  sh "chmod 777 -R /tmp/Shine"
-  dir('/tmp/Shine') {
-    sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
-    }
-  }
-}
-
-
-stage('UI5BrokerInstall'){
-
-println("Check for UI5 service broker dependency")
-node('kirushinexsa'){
-    
-    Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
-    echo "Installed: $Installed"
- 
-    echo "Installed: $Installed"
-    if(Installed!=0)
-  {
-    sh "wget https://nexus.wdf.sap.corp:8443/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-sb-xsa/1.0.1/sapui5-sb-xsa-1.0.1.zip -P /tmp/"
-    sh "xs t -s SAP"
-    sh "xs install sapui5-sb-xsa-1.0.1.zip -o ALLOW_SC_SAME_VERSION" 
-  }
-  
-  }
-
-}
-
-
-
-stage('InstallShine'){
-println("Start Installation of SHINE")
-node('kirushinexsa'){
-  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
-  sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
-  def SHINESCA=readFile('Zipfile').trim() 
-  sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
-
-
-}
-
-}
- 
 stage('InstallVyper'){
 println("Install Nodejs and Vyperfor Vyper")
 node('kirushinexsa'){
@@ -76,6 +17,7 @@ node('kirushinexsa'){
   withEnv(['PATH+NODEHOME=tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "chmod -R 777 /tmp/VyperSrc/"
+          sh "node -v"
           sh "sudo -i"
           sh "/tmp/VyperSrc/SetUp.sh "
   }
