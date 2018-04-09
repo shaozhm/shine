@@ -13,7 +13,7 @@ node('kirushinexsa'){
   sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz -C /tmp/"
   sh "pwd"
   sh "ls"
-  mkdir ""
+
   withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "chmod -R 777 /tmp/VyperSrc/"
