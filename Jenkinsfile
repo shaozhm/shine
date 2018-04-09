@@ -19,9 +19,9 @@ node('kirushinexsa'){
   withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "chmod -R 777 /tmp/VyperSrc/"
-          sh "node -v"
-          sh "sudo -i"
-          sh "/tmp/VyperSrc/SetUp.sh "
+          sh "npm install --save  https://github.com/SAP/ui5-automation-framework"
+        
+        
   }
 
   }
