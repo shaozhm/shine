@@ -8,7 +8,7 @@ def shell(command) {
 println("Install Nodejs and Vyperfor Vyper")
 node('WinVyper'){
  shell ("rm -rf /c/Users/i302582/shine-test")
- shell( "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /c:/Users/i302582/")
+ shell( "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /c:/Users/i302582/shine-test")
  shell("sed -i 's/<USER_NAME>/$XSAUSER/' /c/Users/i302582/shine-test/conf.js")
  shell("sed -i 's/<PASSWORD>/$XSAPASSWORD/' /c/Users/i302582/shine-test/conf.js")   
 // shell("sed -i 's,<SHINEURL>,$SHINEURL,' /c/Users/i302582/shine-test/conf.js")    
