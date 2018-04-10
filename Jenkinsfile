@@ -69,8 +69,8 @@ node('XSASystem'){
 }
 
 
- def shell(command) = {
-    bat(returnStdout: true, script: "sh -x -c \"${command}\"").trim()
+ def shell = {
+    bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
 }
 
  stage('WinVyp'){
