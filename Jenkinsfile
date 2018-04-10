@@ -12,7 +12,7 @@ node('WinVyper'){
  shell("sed -i 's/<USER_NAME>/$XSAUSER/' /c/Users/i302582/shine-test/conf.js")
  shell("sed -i 's/<PASSWORD>/$XSAPASSWORD/' /c/Users/i302582/shine-test/conf.js")   
 // shell("sed -i 's,<SHINEURL>,$SHINEURL,' /c/Users/i302582/shine-test/conf.js")    
- shell("node /c:/Users/i302582/Vyper4All/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js") 
+ shell("node /c/Users/i302582/Vyper4All/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js") 
 
  
  
