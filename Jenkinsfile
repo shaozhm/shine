@@ -7,7 +7,7 @@ def shell(command) {
  stage('WinVyp'){
 println("Install Nodejs and Vyperfor Vyper")
 node('WinVyper'){
- shell(ls)
+ shell("ls")
 }
    
  }
