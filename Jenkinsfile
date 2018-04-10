@@ -1,5 +1,22 @@
 #!groovy
 
+ environment {
+        SHINE_URL = ''
+    }
+
+
+ stage('shineurl'){
+println("SHineurl")
+node('kirushinexsa'){
+def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
+ env.SHINE_URL = SHINEURL
+    println("SHINE URL = {$SHINEURL}") 
+ 
+ 
+}
+   
+ }
+
 def shell(command) {
     return bat(returnStdout: true, script: "sh -x -c \"${command}\"").trim()
 }
