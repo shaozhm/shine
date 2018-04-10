@@ -8,6 +8,7 @@
  stage('shineurl'){
 println("SHineurl")
 node('XSASystem'){
+sh "xs login -u -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s PROD --skip-ssl-validation"
 def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
  env.SHINE_URL = SHINEURL
     println("SHINE URL = {$SHINEURL}") 
