@@ -7,7 +7,7 @@
 
  stage('shineurl'){
 println("SHineurl")
-node('kirushinexsa'){
+node('XSASystem'){
 def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
  env.SHINE_URL = SHINEURL
     println("SHINE URL = {$SHINEURL}") 
