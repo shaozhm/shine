@@ -7,7 +7,7 @@ def shell(command) {
  stage('WinVyp'){
 println("Install Nodejs and Vyperfor Vyper")
 node('WinVyper'){
- bat "rm -rf C:\Users\i302582\shine-test"
+ shell ("rm -rf C:\Users\i302582\shine-test")
  bat "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch"
  shell("sed -i 's/<USER_NAME>/$XSAUSER/' c/Users/i302582/shine-test/conf.js")
  shell("sed -i 's/<PASSWORD>/$XSAPASSWORD/' c/Users/i302582/shine-test/conf.js")   
