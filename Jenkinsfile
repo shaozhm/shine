@@ -1,7 +1,6 @@
 #!groovy
 
-try
-{
+
 
  stage('WinVyp'){
 println("Install Nodejs and Vyperfor Vyper")
@@ -13,10 +12,3 @@ def shell(command) {
    
  }
   
-
-}
-
-catch(Exception ex)
-{
-  println("Exception")
-}
