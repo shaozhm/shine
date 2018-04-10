@@ -67,20 +67,20 @@ node('XSASystem'){
 }
 
 }
- 
- shell(command) {
-    return bat(returnStdout: true, script: "sh -x -c \"${command}\"").trim()
-}
+
 
  stage('WinVyp'){
 println("Install Nodejs and Vyperfor Vyper")
 node('WinVyper'){
- shell ("rm -rf /c/Users/i302582/shine-test")
- shell( "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /c/Users/i302582/shine-test")
- shell("sed -i 's/<USER_NAME>/$XSAUSER/' /c/Users/i302582/shine-test/conf.js")
- shell("sed -i 's/<PASSWORD>/$XSAPASSWORD/' /c/Users/i302582/shine-test/conf.js")   
- shell("sed -i 's,<SHINEURL>,${env.SHINE_URL},' /c/Users/i302582/shine-test/conf.js")    
- shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js") 
+ bat(returnStdout: true, script: "sh -x -c \"${rm -rf /c/Users/i302582/shine-test}\"").trim()
+ bat(returnStdout: true, script: "sh -x -c \"${git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /c/Users/i302582/shine-test}\"").trim()
+ bat(returnStdout: true, script: "sh -x -c \"${sed -i 's/<USER_NAME>/$XSAUSER/' /c/Users/i302582/shine-test/conf.js}\"").trim()
+ bat(returnStdout: true, script: "sh -x -c \"${sed -i 's/<PASSWORD>/$XSAPASSWORD/' /c/Users/i302582/shine-test/conf.js}\"").trim()
+ bat(returnStdout: true, script: "sh -x -c \"${sed -i 's,<SHINEURL>,${env.SHINE_URL},' /c/Users/i302582/shine-test/conf.js}\"").trim()
+ bat(returnStdout: true, script: "sh -x -c \"${node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js}\"").trim()
+
+ 
+ 
 
  
  
@@ -93,30 +93,11 @@ node('WinVyper'){
 
 catch(Exception ex)
 {
-  stage('CleanUp'){
-  println("Cleaning up the installation")
-  node('XSASystem'){
-      sh "rm -rf /tmp/Shine"
-      sh "xs t -s PROD"
-      sh "xs uninstall  XSAC_SHINE -f  --delete-services "
-    }
-  }
+  
 }
 
 finally
 
 {
-  stage('CleanUp'){
-  println("Cleaning up the installation")
-  node('XSASystem'){
-      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
-      if(SHINEStillInstalled==0)
-    {
-      
-      sh "xs t -s PROD"
-      sh "xs uninstall  XSAC_SHINE -f  --delete-services " 
-      sh "rm -rf /tmp/Shine"
-    }
-    }
-  }
+ 
 }
