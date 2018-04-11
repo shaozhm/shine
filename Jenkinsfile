@@ -38,7 +38,7 @@ node('WinVyper'){
  shell("sed -i 's,<SHINEURL>,${env.SHINE_URL},' /c/Users/i302582/shine-test/conf.js")    
  shell ("rm -rf /c/Users/i302582/VyperResults.log")
  shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js > /c/Users/i302582/VyperResults.log") 
- def Status = shell("grep '^Total' test.log")
+ def Status = shell("grep '^Total' VyperResults.log")
  println("Status of Vyper tests is $Status")
  
  
