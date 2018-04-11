@@ -23,7 +23,7 @@ node('WinVyper'){
  def failed = Status[6]
  def total_failed = failed.toInteger()
  println("$total_failed")
- if( $total_failed > 0)
+ if( total_failed > 0)
  {
   exit 1
  }
