@@ -25,7 +25,7 @@ node('WinVyper'){
  println("$total_failed")
  if( total_failed > 0)
  {
-  exit 1
+  System.exit(1)
  }
  else
  {
