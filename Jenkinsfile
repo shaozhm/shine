@@ -17,7 +17,7 @@ try
 println("Install Nodejs and Vyperfor Vyper")
 node('WinVyper'){
 
- def Status = shell("grep '^Total' VyperResults.log")
+ def Status = shell("grep '^Total' /c/Users/i302582/VyperResults.log")
  println("Status of Vyper tests is $Status")
  
  
