@@ -21,7 +21,7 @@ node('WinVyper'){
  println("$St")
  Status = St.split();
 
- println($Status)
+ println("$Status")
 
  
  
