@@ -16,10 +16,12 @@ try
  stage('VyperTests'){
 println("Trigger Vyper tests")
 node('WinVyper'){
- def St = shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
+ def St = "Total : 34 specs, 31 Passed, 3 failures"
+  //shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
  println("$St")
- 
- 
+ String[] Status = St.split(" ");
+ def Failed = Status[6]
+ println($Failed)
 
  
  
@@ -27,20 +29,6 @@ node('WinVyper'){
    
  }
 
- stage('VyperResults'){
-println("Install Nodejs and Vyperfor Vyper")
-node('WinVyper'){
-
- def Status = shell("grep '^Total' /c/Users/i302582/VyperResults.log")
- println("Status of Vyper tests is $Status")
- 
- 
-
- 
- 
-}
-   
- }
 
 }
 
