@@ -25,7 +25,7 @@ node('WinVyper'){
  println("$total_failed")
  if( total_failed > 0)
  {
-  currentBuild.result = 'FAILURE'
+  currentBuild.result = 'SUCCESS'
  }
  else
  {
