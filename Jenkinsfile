@@ -20,8 +20,8 @@ node('WinVyper'){
   //shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
  println("$St")
  Status = St.split();
-
- println("$Status[6]")
+ def failed = Status[6]
+ println("$failed")
 
  
  
