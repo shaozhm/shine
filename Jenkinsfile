@@ -34,7 +34,7 @@ node('WinVyper'){
 
 catch(Exception ex)
 {
-  
+  println($ex)
 }
 
 finally
