@@ -16,7 +16,7 @@ try
  stage('VyperTests'){
 println("Trigger Vyper tests")
 node('WinVyper'){
- def St = shell("echo hi")
+ def St = shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
  println("$St")
  
  
