@@ -17,8 +17,7 @@ try
 println("Trigger Vyper tests")
 node('WinVyper'){
  shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js > /c/Users/i302582/VyperResults.log")
- def Status = shell("grep '^Total' /c/Users/i302582/VyperResults.log")
- println("Status of Vyper tests is $Status")
+
  
  
 
