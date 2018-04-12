@@ -41,7 +41,7 @@ node('WinVyper'){
  println("$St")
  Status = St.split();
  println("Status $Status")
- def failed = Status[6]
+ def failed = Status[16]
  def total_failed = failed.toInteger()
  println("$total_failed")
  if( total_failed > 0)
