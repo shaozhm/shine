@@ -87,6 +87,7 @@ node('WinVyper'){
  def St = shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
  println("$St")
  Status = St.split();
+ println("Status $Status")
  def failed = Status[6]
  def total_failed = failed.toInteger()
  println("$total_failed")
