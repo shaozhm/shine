@@ -50,7 +50,6 @@ node('XSASystem'){
 }
 
 
-
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('XSASystem'){
@@ -68,34 +67,6 @@ node('XSASystem'){
 }
 
 }
-
-
-
-
-
-
-
-
-
-}
-
-catch(Exception ex)
-{
-  println(ex)
-}
-
-finally
-
-{
-
-}
-
-
-}
-
-}
-
-
 
  def shell = {
     bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
