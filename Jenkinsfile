@@ -116,6 +116,18 @@ catch(Exception ex)
 finally
 
 {
-
+stage('CleanUp'){
+  println("Cleaning up the installation")
+  node('kirushinexsa'){
+      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
+      if(SHINEStillInstalled==0)
+    {
+      
+      sh "xs t -s PROD"
+      sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
+      sh "rm -rf /tmp/Shine"
+    }
+    }
+  }
   
 }
