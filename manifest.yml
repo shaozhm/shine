@@ -1,0 +1,7 @@
+---
+applications:
+- name: shine-test
+  memory: 512M
+  command: node server.js
+  services:
+    - shine-uaa
