@@ -9,7 +9,7 @@
 stage('GitClone'){
 println("install node")
 node('XSASystem'){
-    sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure > integrationTestResult "
+    sh "curl https://mo-7a5424181.mo.sap.corp:51197/integrationTestResult -P /tmp/ --insecure > integrationTestResult "
    sh (script: 'rm -rf /tmp/node-v6.1.0-linux-x64',returnStdout: false,returnStatus: false)
    sh (script: 'rm -f /tmp/node-v6.1.0-linux-x64.tar.gz',returnStdout: false,returnStatus: false)
   sh (script: 'rm -rf /tmp/tests',returnStdout: false,returnStatus: false)
