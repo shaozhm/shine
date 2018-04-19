@@ -13,7 +13,7 @@ node('XSASystem'){
 
   withEnv(['PATH+NODEHOME=/tmp/node-v6.1.0-linux-x64/bin']) {
           
-          def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult',returnStdout: true,returnStatus: false)
+          def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult',returnStdout: true,returnStatus: false).trim()
           println("$total_failed")
           if( total_failed.matches("0") )
    {
