@@ -35,7 +35,7 @@ node('XSASystem'){
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
           def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
           sh (script: 'rm -f /tmp/integrationTestResult',returnStdout: false,returnStatus: false)
-          sh "wget $TEST_URL/integrationTestResult --no-check-certificate /tmp/"
+          sh "wget -N $TEST_URL/integrationTestResult -P /tmp/ --no-check-certificate "
           def total_failed = sh (script: 'jq ".stats.failures" integrationTestResult',returnStdout: true,returnStatus: false).trim()
           
           if($total_failed > 0 )
