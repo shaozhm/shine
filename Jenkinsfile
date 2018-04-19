@@ -14,6 +14,13 @@ node('XSASystem'){
   sh (script: 'rm -rf /tmp/tests',returnStdout: false,returnStatus: false)
 
    sh "git clone https://github.wdf.sap.corp/refapps/shine.git -b shine-test --single-branch /tmp/tests"
+   sh "xs t -s PROD"
+   def COREXSJS_URL = sh (script: 'xs app shine-core-xsjs --urls',returnStdout: true,returnStatus: false).trim()
+   def USERXSJS_URL = sh (script: 'xs app shine-user-xsjs --urls',returnStdout: true,returnStatus: false).trim()
+   def CORENODE_URL = sh (script: 'xs app shine-core-node --urls',returnStdout: true,returnStatus: false).trim()
+   sh "sed -i 's/<CORE_XSJS_URL>/$COREXSJS_URL/' /tmp/shine/shine.json"
+   sh "sed -i 's/<USER_XSJS_URL>/$USERXSJS_URL/' /tmp/shine/shine.json"
+   sh "sed -i 's/<CORE_NODE_URL>/$CORENODE_URL/' /tmp/shine/shine.json"
    sh "wget https://nodejs.org/download/release/v6.1.0/node-v6.1.0-linux-x64.tar.gz -P /tmp/"
   sh "tar -xf /tmp/node-v6.1.0-linux-x64.tar.gz -C /tmp/"
   sh "pwd"
