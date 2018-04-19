@@ -33,10 +33,20 @@ node('XSASystem'){
           sh "npm --prefix /tmp/tests install /tmp/tests"
           sh "xs t -s PROD"
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
-          def response = httpRequest 'https://mo-7a5424181.mo.sap.corp:51197/integrationTestResult'
-          println("Status: "+response.status)
-          println("Content: "+response.content)
-        
+          def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
+          sh (script: 'rm -f /tmp/integrationTestResult',returnStdout: false,returnStatus: false)
+          sh "wget $TEST_URL/integrationTestResult --no-check-certificate /tmp/"
+          def total_failed = sh (script: 'jq ".stats.failures" integrationTestResult',returnStdout: true,returnStatus: false).trim()
+          
+          if($total_failed > 0 )
+   {
+     println ("Integration tests failed")
+     currentBuild.result = 'FAILURE'
+   }
+   else
+   {
+     println ("Integration tests passed")
+   }
           
 
   }
