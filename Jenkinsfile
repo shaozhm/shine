@@ -39,7 +39,7 @@ node('XSASystem'){
           sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure > integrationTestResult "
           def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult',returnStdout: true,returnStatus: false).trim()
           
-          if($total_failed > 0 )
+          if( total_failed > 0 )
    {
      println ("Integration tests failed")
      currentBuild.result = 'FAILURE'
