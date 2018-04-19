@@ -15,7 +15,7 @@ node('XSASystem'){
 
    sh "git clone https://github.wdf.sap.corp/refapps/shine.git -b shine-test --single-branch /tmp/tests"
    sh "wget https://nodejs.org/download/release/v6.1.0/node-v6.1.0-linux-x64.tar.gz -P /tmp/"
-  sh "tar -xf /tmp/node-v8.11.1-linux-x64.tar.xz -C /tmp/"
+  sh "tar -xf /tmp/node-v6.1.0-linux-x64.tar.xz -C /tmp/"
   sh "pwd"
   sh "ls"
 
