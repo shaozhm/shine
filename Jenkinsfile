@@ -33,6 +33,10 @@ node('XSASystem'){
           sh "npm --prefix /tmp/tests install /tmp/tests"
           sh "xs t -s PROD"
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
+          def response = httpRequest 'https://mo-7a5424181.mo.sap.corp:51197/integrationTestResult'
+          println("Status: "+response.status)
+          println("Content: "+response.content)
+        
           
 
   }
