@@ -18,7 +18,7 @@ node('XSASystem'){
   withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "node -v"
-          sh "java -jar /tmp/tests/mta_new.jar --build-target=XSA --mtar=/tmp/tests/shine-test.mtar build"
+          sh "java -jar /tmp/tests/mta.jar --build-target=XSA --mtar=/tmp/tests/shine-test.mtar build"
           
 
   }
