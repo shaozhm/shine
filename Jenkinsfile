@@ -22,6 +22,7 @@ node('XSASystem'){
   withEnv(['PATH+NODEHOME=/tmp/node-v8.11.1-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "node -v"
+          sh "chmod 777 /tmp/tests/test/"
           sh "npm --prefix /tmp/tests/test/ install /tmp/tests/test"
    
           sh "xs push -f /tmp/tests/test/manifest.yml -p /tmp/tests/test"
