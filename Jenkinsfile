@@ -15,7 +15,7 @@ node('XSASystem'){
           
           def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult',returnStdout: true,returnStatus: false)
           println("$total_failed")
-          if( $total_failed > 0 )
+          if( total_failed.matches("0") )
    {
      println ("Integration tests failed")
      currentBuild.result = 'FAILURE'
