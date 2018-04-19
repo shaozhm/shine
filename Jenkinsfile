@@ -17,12 +17,13 @@ node('XSASystem'){
           println("$total_failed")
           if( total_failed.matches("0") )
    {
-     println ("Integration tests failed")
-     currentBuild.result = 'FAILURE'
+     println ("Integration tests passed")
+   
    }
    else
    {
-     println ("Integration tests passed")
+       println ("Integration tests failed")
+     currentBuild.result = 'FAILURE'
    }
           
 
