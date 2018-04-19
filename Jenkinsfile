@@ -7,6 +7,47 @@ try
     }
 
 
+stage('GitClone'){
+println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
+node('XSASystem'){
+  sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
+  sh "pwd"
+  sh "mkdir /tmp/Shine" 
+  sh "git clone https://github.wdf.sap.corp/refapps/shine.git /tmp/Shine"
+  sh "ls"
+  }
+}
+
+stage('MavenBuild'){
+println("Performing the maven build")
+node('XSASystem'){
+  sh "chmod 777 -R /tmp/Shine"
+  dir('/tmp/Shine') {
+    sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
+    }
+  }
+}
+
+
+stage('UI5BrokerInstall'){
+
+println("Check for UI5 service broker dependency")
+node('XSASystem'){
+    
+    Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
+    echo "Installed: $Installed"
+ 
+    echo "Installed: $Installed"
+    if(Installed!=0)
+  {
+    sh "wget https://nexus.wdf.sap.corp:8443/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-sb-xsa/1.0.1/sapui5-sb-xsa-1.0.1.zip -P /tmp/"
+    sh "xs t -s SAP"
+    sh "xs install sapui5-sb-xsa-1.0.1.zip -o ALLOW_SC_SAME_VERSION" 
+  }
+  
+  }
+
+}
 
 
 stage('InstallShine'){
