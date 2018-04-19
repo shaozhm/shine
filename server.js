@@ -11,7 +11,6 @@ global.__base = __dirname + '/';
 
 //Initialize Express App for XSA UAA and HDBEXT Middleware
 var xssec = require('@sap/xssec');
-var xsHDBConn = require('@sap/hdbext');
 var express = require('express');
 
 //logging
