@@ -37,7 +37,7 @@ node('XSASystem'){
           def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
           
           sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure > integrationTestResult "
-          def total_failed = sh (script: 'jq ".stats.failures" integrationTestResult',returnStdout: true,returnStatus: false).trim()
+          def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult',returnStdout: true,returnStatus: false).trim()
           
           if($total_failed > 0 )
    {
