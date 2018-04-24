@@ -179,6 +179,7 @@ stage('CleanUp'){
       sh "xs t -s shine-test"
       sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
       sh "rm -rf /tmp/Shine"
+      sh "xs delete -f shine-test"
       sh "xs delete-space -f shine-test"
     }
     }
