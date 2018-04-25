@@ -153,7 +153,7 @@ node('WinVyper'){
  else
  {
   println ("Vyper tests passed")
-  println("Detailed report at C:\Users\i302582\workspace\shinekiru\results of the slave machine")
+
  }
 
 
