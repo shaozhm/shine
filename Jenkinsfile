@@ -70,44 +70,7 @@ node('XSASystem'){
 
 }
 
-
-
- def shell = {
-    bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
-}
-
-stage('VyperTests'){
-println("Trigger Vyper tests")
-node('WinVyper'){
- shell ("rm -rf /c/Users/i302582/shine-test")
- shell( "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /c/Users/i302582/shine-test")
- shell("sed -i 's/<USER_NAME>/$XSAUSER/' /c/Users/i302582/shine-test/conf.js")
- shell("sed -i 's/<PASSWORD>/$XSAPASSWORD/' /c/Users/i302582/shine-test/conf.js")   
- shell("sed -i 's,<SHINEURL>,${env.SHINE_URL},' /c/Users/i302582/shine-test/conf.js")    
- shell ("rm -rf /c/Users/i302582/VyperResults.log")
- def St = shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
- println("$St")
- Status = St.split();
- println("Status $Status")
- def failed = Status[15]
- def total_failed = failed.toInteger()
- println("$total_failed")
- if( total_failed > 0)
- {
-  currentBuild.result = 'FAILURE'
- }
- else
- {
-  println ("Vyper tests passed")
- }
-
-
  
- 
-}
-   
- }
-
 stage('IntegrationTests'){
 println("Run integration tests")
 node('XSASystem'){
@@ -146,18 +109,61 @@ node('XSASystem'){
                  if( total_failed.matches("0") )
    {
      println ("Integration tests passed")
+     println("Detailed report can be found at $TEST_URL/integrationTestResult or /tmp/integrationTestResult in the slave machine")
    
    }
    else
    {
-       println ("Integration tests failed")
+     println ("Integration tests failed")
+     println("Detailed report can be found at $TEST_URL/integrationTestResult or /tmp/integrationTestResult in the slave machine") 
      currentBuild.result = 'FAILURE'
+     
    }
           
 
   }
   }
+} 
+
+
+ def shell = {
+    bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
 }
+
+stage('VyperTests'){
+println("Trigger Vyper tests")
+node('WinVyper'){
+ shell ("rm -rf /c/Users/i302582/shine-test")
+ shell( "git clone https://github.wdf.sap.corp/refapps/shine-test.git -b NewSHINE --single-branch /c/Users/i302582/shine-test")
+ shell("sed -i 's/<USER_NAME>/$XSAUSER/' /c/Users/i302582/shine-test/conf.js")
+ shell("sed -i 's/<PASSWORD>/$XSAPASSWORD/' /c/Users/i302582/shine-test/conf.js")   
+ shell("sed -i 's,<SHINEURL>,${env.SHINE_URL},' /c/Users/i302582/shine-test/conf.js")    
+ shell ("rm -rf /c/Users/i302582/VyperResults.log")
+ def St = shell("node /c/Users/i302582/Vyper4All-Internal/protractor/bin/protractor /c/Users/i302582/shine-test/conf.js | grep '^Total'")
+ println("$St")
+ Status = St.split();
+ println("Status $Status")
+ def failed = Status[15]
+ def total_failed = failed.toInteger()
+ println("$total_failed")
+ if( total_failed > 0)
+ {
+  currentBuild.result = 'FAILURE'
+ }
+ else
+ {
+  println ("Vyper tests passed")
+  println("Detailed report at C:\Users\i302582\workspace\shinekiru\results of the slave machine")
+ }
+
+
+ 
+ 
+}
+   
+ }
+
+
 
 }
 
