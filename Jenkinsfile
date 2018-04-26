@@ -65,6 +65,8 @@ node('XSASystem'){
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
+  sh "xs mtas"
+  sh "xs lc"
   sh 'sudo /usr/sap/XSA/HDB00/exe/hdbsql -i 00 -n localhost:30013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
 
@@ -175,22 +177,22 @@ catch(Exception ex)
 finally
 
 {
-stage('CleanUp'){
-  println("Cleaning up the installation")
-  node('kirushinexsa'){
-      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
-      if(SHINEStillInstalled==0)
-    {
+//stage('CleanUp'){
+//  println("Cleaning up the installation")
+ // node('kirushinexsa'){
+   //   SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
+    //  if(SHINEStillInstalled==0)
+    //{
       
-      sh "xs t -s shine-test"
-      sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
-      sh "rm -rf /tmp/Shine"
+     // sh "xs t -s shine-test"
+      //sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
+      //sh "rm -rf /tmp/Shine"
      
-      sh "xs delete -f shine-test"
-      sh "xs delete-space -f shine-test"
-    }
-    }
-  }
+    //  sh "xs delete -f shine-test"
+     // sh "xs delete-space -f shine-test"
+    //}
+    //}
+  //}
  
   
 }
