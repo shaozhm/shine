@@ -32,8 +32,4 @@
 	<listener>
 		<listener-class>com.sap.gateway.v4.rt.core.web.ODataApplicationInitializer</listener-class>
 	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	
 </web-app>
