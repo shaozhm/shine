@@ -6,24 +6,7 @@ try
         SHINE_URL = ''
     }
 
- stage('CleanUp'){
-  println("Cleaning up the installation")
-  node('kirushinexsa'){
-      
-      sh (script: 'xs t -s shine-test',returnStdout: false,returnStatus: false)
-      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
-      if(SHINEStillInstalled==0)
-    {
-      
-      sh "xs t -s shine-test"
-      sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
-      sh "rm -rf /tmp/Shine"
-     
-      sh "xs delete -f shine-test"
-      sh "xs delete-space -f shine-test"
-    }
-    }
-  }
+
 
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
@@ -195,22 +178,22 @@ catch(Exception ex)
 finally
 
 {
-//stage('CleanUp'){
-//  println("Cleaning up the installation")
- // node('kirushinexsa'){
-   //   SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
-    //  if(SHINEStillInstalled==0)
-    //{
+stage('CleanUp'){
+  println("Cleaning up the installation")
+  node('kirushinexsa'){
+      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
+      if(SHINEStillInstalled==0)
+    {
       
-     // sh "xs t -s shine-test"
-      //sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
-      //sh "rm -rf /tmp/Shine"
+      sh "xs t -s shine-test"
+      sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
+      sh "rm -rf /tmp/Shine"
      
-    //  sh "xs delete -f shine-test"
-     // sh "xs delete-space -f shine-test"
-    //}
-    //}
-  //}
+      sh "xs delete -f shine-test"
+      sh "xs delete-space -f shine-test"
+    }
+    }
+  }
  
   
 }
