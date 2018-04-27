@@ -282,10 +282,10 @@ resources:
       url: "${xs-api-url}"
 
   - name: sapui5-provider
-    type: org.cloudfoundry.managed-service
+    type: configuration
     parameters:
-      service: sapui5_sb
-      service-plan: sapui5-1.52
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: "1.52.2"
   
   - name: ui5Service
     type: configuration
