@@ -11,13 +11,7 @@
     <artifactId>sap-xsac-shine-parent</artifactId>
     <version>1.5.3</version>
     <packaging>pom</packaging>
-    <properties> 
-   		<node.version>8.10.0</node.version>
-   		<npm.version>5.3.0</npm.version>
-	        <filter.node.package.version>1.3.0</filter.node.package.version>
-	        <filter.node.package.phase>generate-resources</filter.node.package.phase>
-
-    </properties>	
+   	
    <modules>
 		<module>web</module>
 		<module>site-web</module>
