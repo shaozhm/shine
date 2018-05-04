@@ -32,7 +32,7 @@ The following components should be installed before SHINE installation on XSA. I
 
 - XSAC_PORTAL_SERVICES
 
-- SAPUI5_FESV3
+- SAPUI5_FESV4
 
 - Auditlog service   
 
@@ -92,13 +92,13 @@ Please note, the audit log service needs to be bound manually to the shine-core-
 application. This can be done by doing a dummy run of the core-js module and after it fails
 execute following command in the CLI of the XSA system:
 
-`xs bs <WEBIDE_USERNAME>…<PROJECTNAME>-core-js shine-auditlog`
+`xs bs <WEBIDE_USERNAME>…<PROJECTNAME>-core-node shine-auditlog`
 
-The core-js application deployed via SAP WebIDE for SAP HANA will be of the format  
+The core-node application deployed via SAP WebIDE for SAP HANA will be of the format  
 
-`<WEBIDE_USERNAME>…. <PROJECTNAME>-core-js`
+`<WEBIDE_USERNAME>…. <PROJECTNAME>-core-node`
 
-Rerun the core-js after executing the above command. 
+Rerun the core-node after executing the above command. 
 
 ## Deploy SHINE for XSA application with FLP  ##
 
@@ -123,7 +123,7 @@ After doing the above steps,
 
 1. If the SHINE installation message fails with the message, 
 Error resolving merged descriptor properties and parameters: No configuration entries were found matching the filter specified in resource "sapui5-provider" 
-Install SAPUI5_FESV3 version 1.44.8 and reinstall SHINE.
+Install SAPUI5_FESV4 version 1.52 and reinstall SHINE.
 
 2. If the build of any module fails with the error message that looks like:   
    **No compatible version found: @sap/jobs-client@1.1.1**
