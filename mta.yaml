@@ -212,7 +212,7 @@ resources:
  
   - name: uaa 
     properties: 
-      url: "https://mo-b2f0977c8.mo.sap.corp:30032/uaa-security"
+      url: "https:///<hostname>:3##32/uaa-security"
       
   - name: sapui5-provider
     type: configuration
@@ -229,5 +229,5 @@ resources:
       
   - name: controller
     properties:
-      url: 'https://mo-b2f0977c8.mo.sap.corp:30030'
+      url: 'https://<hostname>:3##30'
   
