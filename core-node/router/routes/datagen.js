@@ -60,6 +60,7 @@ module.exports = function() {
 						}
 				}
 			});
+		client.close();
 	});
 
 // method will pick records from SOShadow.Header and add to SO.Header
@@ -130,6 +131,7 @@ module.exports = function() {
 					});
 				}
 			});
+		client.close();
 		});
 	});
 
@@ -197,6 +199,7 @@ module.exports = function() {
 					});
 				}
 			});
+		client.close();
 		});
 	});
 	return app;
