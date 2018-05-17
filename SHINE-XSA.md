@@ -4,18 +4,23 @@ SHINE for XS Advanced SAP HANA 2.0 SPS03
 The new and changed features included in this release of SHINE for XS Advanced are as follows:
  
 1. Fiori Elements
+
 The User CRUD tile in Fiori Launchpad is now implemented using the Fiori elements.
 
 2. Full Text Search
+
 SAP Search UI on SAP HANA provides an easy way to perform full text search on content stored in tables or exposed via views. Just like searching on the Internet, full-text search finds terms irrespective of the sequence of characters and words. Here the search is performed on the Product Categories and also on the Business Partners.
 
 3. Hana Secure Store
+
 Hana Secure store is used to store the credentials of HERE maps securely.
 
 4. CDS enhancements
+
 Comments field in CDS artifacts and usage of table functions in CDS views.
 
 5. Data Generator code push down
+
 Time based data generation implemented entirely in HANA procedures
 
 6. ES6 standards enhancements
