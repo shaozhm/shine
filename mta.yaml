@@ -47,6 +47,7 @@ modules:
       - name: shine-auditlog
       - name: shine-container
       - name: shine-core-db
+      - name: shine-scheduler
    
       
   - name: shine-user-xsjs
@@ -155,6 +156,66 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: secureStore
+      
+  - name: shine-site-web
+    type: siteentry
+    path: site-web
+    requires:
+      - name: shine-uaa
+      - name: sap-portal-services-host
+      - name: controller
+        group: destinations
+        properties:
+          name: controller
+          url: ~{url}
+          forwardAuthToken: true
+      
+      - name: core_node_api
+        group: destinations
+        properties:
+          name: core-node-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: user_xsjs_api
+        group: destinations
+        properties:
+          name: user-backend
+          url: ~{url}
+          forwardAuthToken: true
+       
+      - name: user_java_api
+        group: destinations
+        properties:
+          name: user-java-backend
+          url: ~{url}
+          forwardAuthToken: true
+      - name: uaa 
+        group: destinations 
+        properties: 
+           name: uaa 
+           url: ~{url} 
+           forwardAuthToken: true
+      - name: sapui5-provider
+        
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
+        
+  - name: shine-site-content
+    type: sitecontent
+    path: site-content
+    parameters:
+       memory: 64M
+    requires:
+       - name: sap-portal-services-client
+       - name: shine-uaa
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"     
            
 resources:
   - name: shine-user-container
