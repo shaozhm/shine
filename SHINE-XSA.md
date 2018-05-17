@@ -59,6 +59,10 @@ If the services are stopped, please contact the system administrator to start th
 - Create Auditlog service by executing the following command:   
 
     `xs cs auditlog free shine-auditlog`
+    
+- Create HANA Secure store service by executing the following command:   
+
+    `xs cs hana securestore secureStore`    
 
 - 	After all these services are created, build and run all modules like core-db, user-db, core-node, core-xsjs, user-xsjs, user-java and web.
 
