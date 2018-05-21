@@ -247,6 +247,7 @@ module.exports = function() {
 									client.exec(query, function(error, rows) {
 										if (error) {
 											logger.error('Error occured' + error);
+											client.close();
 											util.callback(error, res, 'Job fetching failed');
 
 										} else {
@@ -256,6 +257,7 @@ module.exports = function() {
 											res.end(JSON.stringify({
 												'message': 'Schedule for job ' + jobName + ' is deleted'
 											}));
+											client.close();
 										}
 									});
 								}
@@ -267,7 +269,7 @@ module.exports = function() {
 		}catch(error){
 			logger.error(error);
 		}finally{
-			client.close();
+			
 		}
 
 	});
