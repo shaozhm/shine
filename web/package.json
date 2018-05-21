@@ -1,7 +1,7 @@
 {
   "name": "html-approuter",
   "engines": {
-    "node": "<8.0.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
     "@sap/approuter": "5.2.0"
