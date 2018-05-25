@@ -1,5 +1,8 @@
 /*eslint-env node, es6 */
 'use strict';
+var logging = require('@sap/logging');
+var appContext = logging.createAppContext();
+var logger;
 module.exports = (app, server) => {
 	app.use('/node', require('./routes/myNode')());
 	app.use('/node/excAsync', require('./routes/exerciseAsync')(server));
@@ -24,8 +27,11 @@ module.exports = (app, server) => {
 	app.use('/get', require('./routes/get')());
        app.use('/resources/es/odata/callbuildin.xsjs', function (req, res, next) {
          var client = req.db;
+		  var reqContext = appContext.createRequestContext(req);
+         logger = reqContext.getLogger('/router/routes/index.js');
          client.on('error', function (err) {
-			console.error('Network connection error', err);
+			logger.error('Network connection error');
+			//console.error('Network connection error', err);
 	});
         client.connect(function (err) {
 	if (err){
