@@ -22,7 +22,8 @@
 		"xmldoc": "1.1.0",
 		"winston": "2.4.0",
 		"body-parser": "1.18.2",
-		"elementtree": "0.1.7"
+		"elementtree": "0.1.7",
+		"promise": "8.0.1"
 	},
 	"devDependencies": {
 		"eslint": "3.5.0",
