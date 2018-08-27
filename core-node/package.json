@@ -39,5 +39,5 @@
 		"test": "node ./node_modules/gulp/bin/gulp test",
 		"test-coverage": "node ./node_modules/gulp/bin/gulp test-coverage"
 	},
-"version": "1.5.3"
+"version": "1.6.0"
 }
