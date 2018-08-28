@@ -20,8 +20,8 @@ module.exports = function() {
 	winston.level = process.env.winston_level || 'error';
 	//Generate time based Data
 	app.post('/timebasedPO', jsonParser, (req, res) => {
-		var reqContext = appContext.createRequestContext(req);
-		logger = reqContext.getLogger('/replicate/timebasedPO');
+		//var reqContext = appContext.createRequestContext(req);
+		logger = req.loggingContext.getLogger('/replicate/timebasedPO');
 		logger.info('Time based Sales Data generation initiated');
 		var totalRecords = encodeURI((req.body.noRec)) * 1000;
 		var id = req.body.id;
@@ -93,8 +93,8 @@ module.exports = function() {
 	app.post('/sales', (req, res) => {
 		var usrName = req.user.id;
 		var client = req.db;
-		var reqContext = appContext.createRequestContext(req);
-		logger = reqContext.getLogger('/replicate/sales');
+		//var reqContext = appContext.createRequestContext(req);
+		logger = req.loggingContext.getLogger('/replicate/sales');
 		logger.info('Sales Data generation initiated');
 		var msg = auditLog.update('Sales order generation initialted ').attribute('Data generation initiation', true).by(usrName);
 		msg.log(function(err, id) {
@@ -176,9 +176,9 @@ module.exports = function() {
 	// method will pick records from POShadow.Header and add to PO.Header
 	// and POShadow.Item to PO.Item
 	app.post('/purchase', (req, res) => {
-		var reqContext = appContext.createRequestContext(req);
+		//var reqContext = appContext.createRequestContext(req);
 		var usrName = req.user.id;
-		logger = reqContext.getLogger('/replicate/purchase');
+		logger = req.loggingContext.getLogger('/replicate/purchase');
 		logger.info('Purchase Data generation initiated');
 		var msg = auditLog.update('Purchase order generation initiated ')
 			.attribute('Data generation initiation', true)
