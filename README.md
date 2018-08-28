@@ -1,4 +1,4 @@
-SHINE XSA 1.5.2
+SHINE XSA 1.6.0
 ===============
 SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA extended application services advanced model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
 The application consists of the following packages:
@@ -16,7 +16,7 @@ The application consists of the following packages:
 
 - site-web - This package contains the user interface for Fiori as a Service for the SHINE Launchpad.
 
-- user-db - This package contains the artifacts contains the db artificats for User Creation. 
+- user-db - This package contains the artifacts contains the db artificats for User Creation.
 
 - user-java - This package contains the User CRUD implementation in Java using Java oData V4 libraries.
 
@@ -41,7 +41,7 @@ If not installed,please download the latest version to be installed from milesto
 - sapui5_fesv4   
 If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones/com/sap/ui5/dist/sapui5-dist-xsa/1.52.2/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases/com/sap/ui5/dist/sapui5-dist-xsa/1.52.2/).
 
-## Installation via Product Installer 
+## Installation via Product Installer
 
 Below are three ways to install SHINE:
 
@@ -50,15 +50,15 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 
 - Open **sap-xsac-shine-1.3.xx.mtaext** file.
 
-- Also change the < SCHEMA_NAME > to any schema name like SHINE_USER_SCHEMA. 
+- Also change the < SCHEMA_NAME > to any schema name like SHINE_USER_SCHEMA.
 
 -  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
 
     `xs login -u <USERNAME> -p <PASSWORD>`   
 
      `xs target –o <orgname> -s <customer spacename>`
-     
-- Install shine by running the following command 
+
+- Install shine by running the following command
 
 
      `xs install XSACSHINE02_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.2.xx.mtaext`
@@ -105,7 +105,7 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
     `xs login -u <USERNAME> -p <PASSWORD>`   
 
      `xs target –o <orgname> -s <customer spacename>`
-     
+
 - Navigate to the folder which contains the SCA and run the following command to install SHINE
 
      `xs install XSACSHINE01_XX.ZIP -e sap-xsac-shine-1.2.xx.mtaext `
@@ -115,10 +115,10 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 
 
 
-## Create a service for the HDI container 
+## Create a service for the HDI container
 
-This step is optional and required only if you want to deploy app via cf push 
- 
+This step is optional and required only if you want to deploy app via cf push
+
 
 
     cf create-service hana hdi-shared shine-container
@@ -132,4 +132,3 @@ This step is optional and required only if you want to deploy app via cf push
 ```
 cf create-service xsuaa default shine-uaa -c xs-security.json
 ```
-
