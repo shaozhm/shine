@@ -109,9 +109,9 @@ node('XSASystem'){
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
           def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
           
-          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o integrationTestResult.json "
+          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o /tmp/integrationTestResult.json "
           sleep 100
-          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o integrationTestResult.json "
+          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o /tmp/integrationTestResult.json "
           def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult.json',returnStdout: true,returnStatus: false).trim()
           
                  if( total_failed.matches("0") )
@@ -123,7 +123,7 @@ node('XSASystem'){
    else
    {
      println ("Integration tests failed")
-     println("Detailed report can be found at $TEST_URL/integrationTestResult or /tmp/integrationTestResult in the slave machine") 
+     println("Detailed report can be found at $TEST_URL/integrationTestResult or /tmp/integrationTestResult.json in the slave machine") 
      currentBuild.result = 'FAILURE'
      
    }
