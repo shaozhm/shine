@@ -30,7 +30,7 @@ node('XSASystem'){
 }
 
 
-stage('UI5BrokerInstall'){
+/*stage('UI5BrokerInstall'){
 
 println("Check for UI5 service broker dependency")
 node('XSASystem'){
@@ -49,7 +49,7 @@ node('XSASystem'){
   
   }
 
-}
+} */
 
 
 stage('InstallShine'){
