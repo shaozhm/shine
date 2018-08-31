@@ -74,7 +74,7 @@ node('XSASystem'){
   sh 'sudo /usr/sap/XSA/HDB00/exe/hdbsql -i 00 -n localhost:30013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
 
-} */
+} 
 
  
 stage('IntegrationTests'){
