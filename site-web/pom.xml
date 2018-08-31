@@ -3,7 +3,7 @@
 <parent>
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-	 <version>1.5.0</version>
+    <version>1.6.0</version>
 </parent>
 <artifactId>sap-xsac-shine-site-web</artifactId>
 <packaging>pom</packaging>

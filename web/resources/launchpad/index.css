@@ -4,8 +4,8 @@
 .sapUiUfdShellSearch{
 	max-width: 650px !important;	
 }
-#__view0{
-    width: 85%;
+#__view0 {
+    width: 87%; 
 }
 #__tile11-info{
 	white-space: normal !important;
@@ -37,7 +37,7 @@
 
 .fulltextsearchClass{
 	background-image: url('thumbnails/ui5search.JPG');
-    background-size: 192px;
+        background-size: 192px;
 	background-repeat: no-repeat;
 	background-position: center;	
 }
@@ -87,6 +87,12 @@
 .sapMStdTileTitle{
 	color: #007CC0 !important;
 }
+.fulltextschedulingClass{
+ 	background-image: url('thumbnails/FullText.JPG');
+	background-size: 192px;
+	background-repeat: no-repeat;
+	background-position: center;
+ }
 /* CSS for moving the top row appear in bottom 
 .relocateItems > .sapMTileContent > .sapMStdTileTopRow {
 	position: absolute !important;
@@ -150,6 +156,8 @@
 .welcomeDlg .sapUiDlgCont {
 	background-color: #FFFFFF !important;
 	padding: 10px 25px 12px;
+	overflow-x: hidden;
+	max-height: 500px; 
 }
 .welcomeHeaderTextAlign {
 	font-size: 22px !important;
@@ -157,4 +165,8 @@
 }		
 .dialogTextColor{
 	color: #007CC0 !important;
+}
+#__view4{
+	font-weight: bold;
+    color: red;
 }

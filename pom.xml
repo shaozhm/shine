@@ -9,14 +9,13 @@
 
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
     <packaging>pom</packaging>
-	
+   	
    <modules>
 		<module>web</module>
 		<module>site-web</module>
 		<module>site-content</module>
-		<module>core-python</module>
 		<module>core-xsjs</module>
 		<module>user-xsjs</module>
 		<module>core-node</module>

@@ -9,11 +9,21 @@
     "logoutPage": "/"
   },
   "routes": [
-	{
-      "source": "^/python/download/(.*)$",
-      "target": "$1",
-      "destination": "core-python-backend"
+     {
+      "source": "/resources/es/(.*)",
+      "destination": "core-node-backend"
     },
+
+    {
+      "source": "/resources/sap/(.*)",
+      "destination": "ui5Service"
+    },
+
+     {
+      "source": "/resources/(.*)",
+      "destination": "ui5Service"
+    },
+	
     {
       "source": "/node(.*)",
       "destination": "core-node-backend",
@@ -112,7 +122,7 @@
       "destination": "core-xsjs-backend",
       "authenticationType": "xsuaa"
     },
-    {
+     {
       "source": "/(.*)",
       "localDir": "resources",
       "authenticationType": "xsuaa",
@@ -122,9 +132,11 @@
           "index.html",
           "odataTest.html"
         ],
-        "vars": [
-          "sapui5url"
-        ]
+        "services": {
+          "sapui5_sb":{
+          "tag":"ui5"
+}
+        }
       }
     }
   ]

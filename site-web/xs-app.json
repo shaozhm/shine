@@ -13,11 +13,7 @@
 			"csrfProtection": true,
 			"authenticationType": "xsuaa"
 		},
-		{
-		      "source": "^/python/download/(.*)$",
-		      "target": "$1",
-		      "destination": "core-python-backend"
-		},
+		
 		{
 			"source": "/sap/rest/(.*)",
 			"destination": "uaa"
@@ -67,7 +63,7 @@
 		{
 			"source": "/jobactivity/(.*)",
 			"destination": "core-node-backend",
-			"authenticationType": "basic",
+			"authenticationType": "none",
 			"scope": "$XSAPPNAME.JOBSCHEDULER"
 		},
 		{
