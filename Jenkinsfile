@@ -55,7 +55,7 @@ node('XSASystem'){
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('XSASystem'){
-  sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
+  //sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
   sh "xs create-space shine-test"
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s shine-test --skip-ssl-validation"
   sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
