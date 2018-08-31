@@ -8,7 +8,7 @@ try
 
 
 
-stage('GitClone'){
+/*stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('XSASystem'){
   sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
@@ -27,7 +27,7 @@ node('XSASystem'){
     sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
     }
   }
-}
+} */
 
 
 /*stage('UI5BrokerInstall'){
@@ -57,15 +57,15 @@ println("Start Installation of SHINE")
 node('XSASystem'){
   //sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation"
-  sh "xs create-space shine-test"
+ // sh "xs create-space shine-test"
   sh "xs t -s shine-test"
   
-  sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
-  def SHINESCA=readFile('Zipfile').trim() 
-  sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
+ // sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
+//  def SHINESCA=readFile('Zipfile').trim() 
+ // sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
+ // sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
+  //sh "sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
+  //sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
@@ -74,7 +74,7 @@ node('XSASystem'){
   sh 'sudo /usr/sap/XSA/HDB00/exe/hdbsql -i 00 -n localhost:30013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
 
-}
+} */
 
  
 stage('IntegrationTests'){
@@ -109,15 +109,15 @@ node('XSASystem'){
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
           def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
           
-          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure > integrationTestResult "
+          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o integrationTestResult.json "
           sleep 100
-          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure > integrationTestResult "
-          def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult',returnStdout: true,returnStatus: false).trim()
+          sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o integrationTestResult.json "
+          def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult.json',returnStdout: true,returnStatus: false).trim()
           
                  if( total_failed.matches("0") )
    {
      println ("Integration tests passed")
-     println("Detailed report can be found at $TEST_URL/integrationTestResult or /tmp/integrationTestResult in the slave machine")
+     println("Detailed report can be found at $TEST_URL/integrationTestResult or /tmp/integrationTestResult.json in the slave machine")
    
    }
    else
