@@ -101,7 +101,9 @@ node('XSASystem'){
   withEnv(['PATH+NODEHOME=/tmp/node-v6.1.0-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "node -v"
-          
+          sh "npm config set @sap:registry http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones.npm/"
+          sh "npm config set registry http://registry.npmjs.org/"
+          sh "npm config set strict-ssl false"
           sh "npm --prefix /tmp/tests install /tmp/tests"
           sh "xs t -s shine-test"
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
