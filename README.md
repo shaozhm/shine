@@ -114,7 +114,6 @@ SHINE for XSA (XSACSHINE02_x)can be found in the folder XSA_CONT of HANA Media a
 ## Deploying SHINE on CF
 
 
-
 ## Create a service for the HDI container
 
 This step is optional and required only if you want to deploy app via cf push
