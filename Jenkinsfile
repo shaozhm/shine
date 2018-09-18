@@ -180,7 +180,7 @@ catch(Exception ex)
   println(ex)
 }
 
-finally
+/*finally
 
 {
 
@@ -195,10 +195,10 @@ stage('CleanUp'){
       sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
       sh "rm -rf /tmp/Shine"
       sh "rm -rf /tmp/tests"
-      sh "xs delete -f shine-test"
+      sh "xs delete -f shine-test" 
       sh "xs delete-space -f shine-test"
     }
     }
   }
   
-}
+}*/
