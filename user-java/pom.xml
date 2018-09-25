@@ -15,18 +15,6 @@
 	    <slf4j.version>1.7.25</slf4j.version>
 	    <java-container-security.version>0.31.8</java-container-security.version>
 	 </properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.sap.xs2.security</groupId>
-				<artifactId>parent</artifactId>
-				<version>${java-container-security.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
