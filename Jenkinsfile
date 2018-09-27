@@ -180,7 +180,7 @@ catch(Exception ex)
   println(ex)
 }
 
-/*finally
+finally
 
 {
 
@@ -201,4 +201,4 @@ stage('CleanUp'){
     }
   }
   
-}*/
+}
