@@ -23,6 +23,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -33,6 +35,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -43,6 +47,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -53,6 +59,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -63,6 +71,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
        <fileSet>
@@ -73,6 +83,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -83,6 +95,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 
@@ -94,6 +108,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -104,6 +120,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>

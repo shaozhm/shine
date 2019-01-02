@@ -26,25 +26,28 @@
             <directory>../web</directory>
             <outputDirectory>web</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+				<exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>sapui5/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
             <directory>../site-content</directory>
             <outputDirectory>site-content</outputDirectory>
             <excludes>
-		<exclude>node_modules/</exclude>
+			    <exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-		<exclude>sapui5/</exclude>
-		<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
+				<exclude>sapui5/</exclude>
             </excludes>
         </fileSet>
 
@@ -53,13 +56,14 @@
             <directory>../site-web</directory>
             <outputDirectory>site-web</outputDirectory>
             <excludes>
-		<exclude>node_modules/</exclude>
+				<exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
-		<exclude>sapui5/</exclude>
-		<exclude>.che/</exclude>
+				<exclude>sapui5/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 
@@ -67,72 +71,84 @@
             <directory>../core-xsjs</directory>
             <outputDirectory>core-xsjs</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+				<exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
 				<exclude>test/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
             <directory>../user-xsjs</directory>
             <outputDirectory>user-xsjs</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+			    <exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
          <fileSet>
             <directory>../core-db</directory>
             <outputDirectory>core-db</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+			    <exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
             <directory>../user-db</directory>
             <outputDirectory>user-db</outputDirectory>
             <excludes>
+			    <exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
             <directory>../user-java</directory>
             <outputDirectory>user-java</outputDirectory>
             <excludes>
+			    <exclude>.che/</exclude>
                 <exclude>target/</exclude>
                 <exclude>.classpath</exclude>
 				<exclude>.project</exclude>
 				<exclude>.settings/</exclude>
 				<exclude>pom.xml</exclude>
-		                <exclude>vulas-custom.properties</exclude>
+		        <exclude>vulas-custom.properties</exclude>
             </excludes>
         </fileSet>
           	<fileSet>
             <directory>../core-node</directory>
             <outputDirectory>core-node</outputDirectory>
             <excludes>
-			<exclude>node_modules/</exclude>
+				<exclude>.che/</exclude>
+				<exclude>node_modules/</exclude>
                 <exclude>node/</exclude>
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
 				<exclude>.cfignore</exclude>
 				<exclude>test/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
      	
