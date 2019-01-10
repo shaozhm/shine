@@ -108,13 +108,13 @@ module.exports = function() {
 				}
 			})
 		})
-		.catch(error){
+		.catch((error) => {
 			res.json({
 				status: 401,
 				message: 'ERR',
 				data: error
 			});
-		}
+		});
 	});
 
 	// method will pick records from SOShadow.Header and add to SO.Header
