@@ -10,7 +10,7 @@
     "@sap/logging": "4.0.2",
     "@sap/audit-logging": "2.3.0",
     "@sap/jobs-client": "1.3.6",
-    "@sap/cds": "2.9.1",
+    "@sap/cds": "2.10.3",
     "express": "4.16.4",
     "express-ws": "4.0.0",
     "passport": "0.4.0",
