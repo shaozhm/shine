@@ -67,6 +67,7 @@ modules:
       - name: shine-uaa
       - name: shine-user-container
       - name: shine-user-db
+      - name: shine-auditlog
 
 
   - name: shine-user-java
@@ -148,6 +149,7 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: secureStore
+      - name: shine-auditlog
            
 resources:
   - name: shine-user-container
