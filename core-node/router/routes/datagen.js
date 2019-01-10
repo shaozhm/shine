@@ -1,7 +1,7 @@
 /*eslint-env node, es6*/
 /*eslint no-console: 0, no-unused-vars: 0, no-shadow: 0, quotes: 0, no-use-before-define: 0, new-cap:0, no-undef:0 */
 module.exports = function() {
-	var DataGeneratorDB = require('./DataGeneratorDBPromises');
+	//var DataGeneratorDB = require('./DataGeneratorDBPromises');
 	var express = require('express');
 	var winston = require('winston');
 	var util = require('./util');
