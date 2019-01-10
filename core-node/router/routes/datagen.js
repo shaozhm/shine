@@ -339,7 +339,7 @@ module.exports = function() {
 					logger.error('PO header Query execution error: ' + error);
 					util.callback(error, response, res, "");
 				})
-			
+			});
 			/*			
 			var dg = new DataGeneratorDB(req);
 			
