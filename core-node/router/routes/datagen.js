@@ -59,7 +59,8 @@ module.exports = function() {
 			query = "CALL \"load_data_SO\"(START_DATE => '" + aStartDate + "',END_DATE => '" + aEndDate + "',ANOREC => " + totalRecords +
 				",RES => ?)";
 		}
-		var dg = new DataGeneratorDB(req);
+		
+		/*var dg = new DataGeneratorDB(req);
 
 		dg.executeQuery(query)
 			.then((status) => {
@@ -85,7 +86,31 @@ module.exports = function() {
 					message: 'ERR',
 					data: err
 				});
+			});*/
+		try{
+			const dbClass = require(global.__base + "utils/dbPromises");
+			let db = new dbClass(req.db);
+			const statement = await db.preparePromisified(query);
+			const results = await db.statementExecPromisified(statement, []);
+			if (id === 'PurchaseOrderId') {
+				res.json({
+					status: 200,
+					message: 'Purchase orders generated successfully, records added: ' + totalRecords
+				});
+			} else {
+				res.json({
+					status: 200,
+					message: 'Sales orders generated successfully, records added: ' + totalRecords
+				});
+			}
+			
+		}catch(error){
+			res.json({
+				status: 401,
+				message: 'ERR',
+				data: error
 			});
+		}
 	});
 
 	// method will pick records from SOShadow.Header and add to SO.Header
@@ -114,7 +139,67 @@ module.exports = function() {
 				' "NOTEID", "PARTNER.PARTNERID",	"CURRENCY",	"GROSSAMOUNT",' + '	"NETAMOUNT", "TAXAMOUNT", "LIFECYCLESTATUS", "BILLINGSTATUS",' +
 				'	"DELIVERYSTATUS" FROM "shadow::SOShadow.Header"';
 
-			var dg = new DataGeneratorDB(req);
+				
+			const dbClass = require(global.__base + "utils/dbPromises");
+			let db = new dbClass(req.db);
+			db.preparePromisified(query)
+			.then(statement => {
+				db.statementExecPromisified(statement,[])
+				.then(results => {
+					logger.info('SO header query executed successfully');
+					var salesOrdersAdded = results;
+					var query = 'insert into "SO.Item" ' + 'SELECT ' + "(\"SALESORDERID\" + " + tableSize + ') AS "SALESORDERID",' +
+						' "SALESORDERITEM", "PRODUCT.PRODUCTID", "NOTEID",' + ' "CURRENCY", "GROSSAMOUNT", "NETAMOUNT", "TAXAMOUNT",' +
+						' "ITEMATPSTATUS", "OPITEMPOS", "QUANTITY", "QUANTITYUNIT",' + ' "DELIVERYDATE" FROM "shadow::SOShadow.Item"' +
+						' WHERE "SALESORDERID" < 500001000';
+					db.preparePromisified(query)
+					.then(statement => {
+						db.statementExecPromisified(statement,[])
+						.then(results => {
+							logger.info('SO Item query executed successfully');
+							msg = auditLog.update('Sales order generation successful')
+								.attribute('Data generation of 1000 records', true)
+								.by(usrName);
+							msg.log(function(err, id) {
+								// Place all of the remaining logic here
+								if (err) {
+									logger.info('ERROR: ' + err.toString());
+								}
+								logger.info('Log Entry Saved as: ' + id);
+							});
+						})
+						.then(() =>{
+							util.callback(error, response, res,
+								'Sales orders replicated successfully, records added: ' + salesOrdersAdded);
+						})
+						.catch((error) => {
+							dg.closeDB();
+							logger.error('SO Item Query execution error: ' + error);
+							msg = auditLog.update('Purchase order generation failed')
+								.attribute('Data generation', false)
+								.by(usrName);
+							msg.log(function(err, id) {
+								if (err) {
+									res.type("text/plain").status(500).send("ERROR: " + err.toString());
+									return;
+								}
+								res.type("application/json").status(200).send(JSON.stringify('Log Entry Saved as: ' + id));
+							});
+
+						})
+					})
+					
+				})
+				.catch((error) => {
+					logger.error('SO header Query execution error: ' + error);
+					util.callback(error, response, res, "");
+
+				})
+			})
+			
+			
+			
+			/*var dg = new DataGeneratorDB(req);
 
 			dg.executeQuery(query)
 				.then((response) => {
@@ -168,7 +253,7 @@ module.exports = function() {
 							util.callback(error, response, res, "");
 						});
 
-				});
+				});*/
 
 		});
 	});
@@ -198,7 +283,60 @@ module.exports = function() {
 				' "HISTORY.CREATEDBY.EMPLOYEEID",	"HISTORY.CREATEDAT",' + ' "HISTORY.CHANGEDBY.EMPLOYEEID",	"HISTORY.CHANGEDAT",' +
 				' "NOTEID", "PARTNER.PARTNERID",	"CURRENCY",	"GROSSAMOUNT",' + '	"NETAMOUNT", "TAXAMOUNT", "LIFECYCLESTATUS", "APPROVALSTATUS",' +
 				' "CONFIRMSTATUS", "ORDERINGSTATUS",' + '	"INVOICINGSTATUS" FROM "shadow::POShadow.Header"';
+			
+			const dbClass = require(global.__base + "utils/dbPromises");
+			let db = new dbClass(req.db);
+			
+			db.preparePromisified(query)
+			.then(statement => {
+				db.statementExecPromisified(statement,[])
+				.then(results => {
+					logger.info('PO header Query execution successful');
+					var purchaseOrdersAdded = results;
+					var query = 'insert into "PO.Item" ' + 'SELECT ' + "(\"PURCHASEORDERID\" + " + tableSize + ') AS "PURCHASEORDERID",' +
+					' "PURCHASEORDERITEM", "PRODUCT.PRODUCTID", "NOTEID",' + ' "CURRENCY", "GROSSAMOUNT", "NETAMOUNT", "TAXAMOUNT",' +
+					' "QUANTITY", "QUANTITYUNIT",' + ' "DELIVERYDATE" FROM "shadow::POShadow.Item"';
+					
+					db.preparePromisified(query)
+					.then(statement => {
+						db.statementExecPromisified(statement,[])
+						.then(results => {
+							logger.info('PO Item query executed successfully');
+							msg = auditLog.update('Purchase order generation successful')
+							.attribute('Data generation 1000 records', true)
+							.by(usrName);
+							msg.log(function(err, id) {
+								if (err) {
+									logger.info('ERROR: ' + err.toString());
+								}
+								logger.info('Log Entry Saved as: ' + id);
+							});
+						})
+						.then(() => {
+							util.callback(error, response, res,
+									'Purchase orders replicated successfully, records added: ' + purchaseOrdersAdded);
+						})
+						.catch((error) => {
+							logger.error('PO Item Query execution error: ' + error);
+							msg = auditLog.update('Purchase order generation successful')
+								.attribute('Data generation', false)
+								.by(usrName);
+							msg.log(function(err, id) {
+								if (err) {
+									logger.info('ERROR: ' + err.toString());
+								}
+								logger.info('Log Entry Saved as: ' + id);
+							});
+						});
+					})
 				
+				})
+				.catch((error) => {
+					logger.error('PO header Query execution error: ' + error);
+					util.callback(error, response, res, "");
+				})
+			
+			/*			
 			var dg = new DataGeneratorDB(req);
 			
 			dg.executeQuery(query)
@@ -248,7 +386,7 @@ module.exports = function() {
 				dg.closeDB();
 				logger.error('PO header Query execution error: ' + error);
 				util.callback(error, response, res, "");
-			});
+			});*/
 		});
 	});
 	return app;
