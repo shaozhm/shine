@@ -87,24 +87,28 @@ module.exports = function() {
 					data: err
 				});
 			});*/
-		try{
-			const dbClass = require(global.__base + "utils/dbPromises");
-			let db = new dbClass(req.db);
-			const statement = await db.preparePromisified(query);
-			const results = await db.statementExecPromisified(statement, []);
-			if (id === 'PurchaseOrderId') {
-				res.json({
-					status: 200,
-					message: 'Purchase orders generated successfully, records added: ' + totalRecords
-				});
-			} else {
-				res.json({
-					status: 200,
-					message: 'Sales orders generated successfully, records added: ' + totalRecords
-				});
-			}
-			
-		}catch(error){
+		
+		const dbClass = require(global.__base + "utils/dbPromises");
+		let db = new dbClass(req.db);
+		
+		db.preparePromisified(query)
+		.then((statment) => {
+			db.statementExecPromisified(statement, [])
+			.then((results) => {
+				if (id === 'PurchaseOrderId') {
+					res.json({
+						status: 200,
+						message: 'Purchase orders generated successfully, records added: ' + totalRecords
+					});
+				} else {
+					res.json({
+						status: 200,
+						message: 'Sales orders generated successfully, records added: ' + totalRecords
+					});
+				}
+			})
+		})
+		.catch(error){
 			res.json({
 				status: 401,
 				message: 'ERR',
