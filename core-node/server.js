@@ -35,6 +35,7 @@ var hanaOptions = xsenv.getServices({
 	}
 });
 //hanaOptions.hana.rowsWithMetadata = true;
+hanaOptions.hana.pooling = true;
 app.use('/jobactivity',
 			xsHDBConn.middleware(hanaOptions.hana));
 app.use('/',
