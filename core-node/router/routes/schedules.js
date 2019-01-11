@@ -102,11 +102,11 @@ module.exports = function() {
 				const dbClass = require(global.__base + "utils/dbPromises");
 				let db = new dbClass(req.db);
 				
-				var query = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
+				var query = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES('" + jobid.toString() + "', '" + jname + "', '" + startTime + "', '" + endTime + "', '" + cron + "', '" + scheduleId + "')";
 				
 				db.preparePromisified(query)
 				.then(statement => {
-					db.statementExecPromisified(statement, params)
+					db.statementExecPromisified(statement, [])
 					.then(results => {
 						res.status(200).send(JSON.stringify({
 							JobId: jobid,
@@ -124,9 +124,8 @@ module.exports = function() {
 					})
 				})
 				.catch((error) => {
-					js.closeDB();
 					logger.error('Error occured' + error);
-					util.callback(error, res, 'Unable to insert new job details to db');
+					util.callback(error, res, 'Unable to prepare statement to insert new job details to db');
 				})
 				
 				/*js.createJobSchedule(params)
