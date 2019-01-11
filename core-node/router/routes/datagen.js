@@ -25,7 +25,9 @@ module.exports = function() {
 		logger.info('Time based Sales Data generation initiated');
 		var totalRecords = encodeURI((req.body.noRec)) * 1000;
 		var id = req.body.id;
-		var query;
+		//var query;
+		var procedure;
+		var inputParams;
 
 		function convertDate(d) {
 			console.log("inside func");
@@ -53,15 +55,26 @@ module.exports = function() {
 		var aEndDate = req.body.enddate;
 		aEndDate = convertDate(aEndDate);
 		if (id === 'PurchaseOrderId') {
-			query = "CALL \"load_data_PO\"(START_DATE => '" + aStartDate + "',END_DATE => '" + aEndDate + "',ANOREC => " + totalRecords +
-				",RES => ?)";
+			//query = "CALL \"load_data_PO\"(START_DATE => '" + aStartDate + "',END_DATE => '" + aEndDate + "',ANOREC => " + totalRecords +
+			//	",RES => ?)";
+			procedure = "load_data_PO";
+			inputParams = {
+				"START_DATE":aStartDate,
+				"END_DATE": aEndDate,
+				"ANOREC": totalRecords
+			}
 		} else {
-			query = "CALL \"load_data_SO\"(START_DATE => '" + aStartDate + "',END_DATE => '" + aEndDate + "',ANOREC => " + totalRecords +
-				",RES => ?)";
+			//query = "CALL \"load_data_SO\"(START_DATE => '" + aStartDate + "',END_DATE => '" + aEndDate + "',ANOREC => " + totalRecords +
+				//",RES => ?)";
+			procedure = "load_data_SO";
+			inputParams = {
+				"START_DATE":aStartDate,
+				"END_DATE": aEndDate,
+				"ANOREC": totalRecords
+			}
 		}
 		
 		/*var dg = new DataGeneratorDB(req);
-
 		dg.executeQuery(query)
 			.then((status) => {
 				if (id === 'PurchaseOrderId') {
@@ -90,11 +103,12 @@ module.exports = function() {
 		
 		const dbClass = require(global.__base + "utils/dbPromises");
 		let db = new dbClass(req.db);
+		let hdbext = require("@sap/hdbext");
 		
-		db.preparePromisified(query)
-		.then((statment) => {
-			db.statementExecPromisified(statement, [])
-			.then((results) => {
+		db.loadProcedurePromisified(hdbext, null, procedure)
+		.then(sp => {
+			db.callProcedurePromisified(sp,inputParams)
+			.then(({parameters,results}) => {
 				if (id === 'PurchaseOrderId') {
 					res.json({
 						status: 200,
@@ -107,14 +121,22 @@ module.exports = function() {
 					});
 				}
 			})
+			.catch((error) => {
+				res.json({
+					status: 500,
+					message: 'ERR while calling procedure',
+					data: error
+				});
+			})
 		})
 		.catch((error) => {
 			res.json({
-				status: 401,
-				message: 'ERR',
+				status: 500,
+				message: 'ERR while loading procedure',
 				data: error
 			});
-		});
+		})
+		
 	});
 
 	// method will pick records from SOShadow.Header and add to SO.Header
@@ -204,7 +226,6 @@ module.exports = function() {
 			
 			
 			/*var dg = new DataGeneratorDB(req);
-
 			dg.executeQuery(query)
 				.then((response) => {
 					logger.info('SO header query executed successfully');
@@ -213,7 +234,6 @@ module.exports = function() {
 						' "SALESORDERITEM", "PRODUCT.PRODUCTID", "NOTEID",' + ' "CURRENCY", "GROSSAMOUNT", "NETAMOUNT", "TAXAMOUNT",' +
 						' "ITEMATPSTATUS", "OPITEMPOS", "QUANTITY", "QUANTITYUNIT",' + ' "DELIVERYDATE" FROM "shadow::SOShadow.Item"' +
 						' WHERE "SALESORDERID" < 500001000';
-
 					dg.executeQuery(query)
 						.then((status) => {
 							logger.info('SO Item query executed successfully');
@@ -246,7 +266,6 @@ module.exports = function() {
 								}
 								res.type("application/json").status(200).send(JSON.stringify('Log Entry Saved as: ' + id));
 							});
-
 						})
 						.then(() => {
 							dg.closeDB();
@@ -256,7 +275,6 @@ module.exports = function() {
 							logger.error('SO header Query execution error: ' + error);
 							util.callback(error, response, res, "");
 						});
-
 				});*/
 
 		});
