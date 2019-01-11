@@ -226,7 +226,7 @@ module.exports = function() {
 		const dbClass = require(global.__base + "utils/dbPromises");
 		let db = new dbClass(req.db);
 		
-		var query = 'SELECT "ID","NAME", "TIMESTAMP" FROM "Jobs.Data" WHERE NAME =?';
+		var query = 'SELECT "ID","NAME", "TIMESTAMP" FROM "Jobs.Data" WHERE NAME = "'+name+'"';
 		
 		db.preparePromisified(query)
 		.then(statement => {
