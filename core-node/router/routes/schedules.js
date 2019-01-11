@@ -168,13 +168,20 @@ module.exports = function() {
 		.then(statement => {
 			db.statementExecPromisified(statement, [])
 			.then(rows => {
-				jobObj = {
-					'JobId': rows[i].JOBID,
-					'JobName': rows[i].NAME,
-					'StartTime': rows[i].STARTTIME,
-					'EndTime': rows[i].ENDTIME,
-					'Cron': rows[i].CRON
-				};
+				for (var i in rows) {
+					jobObj = {
+						'JobId': rows[i].JOBID,
+						'JobName': rows[i].NAME,
+						'StartTime': rows[i].STARTTIME,
+						'EndTime': rows[i].ENDTIME,
+						'Cron': rows[i].CRON
+					};
+					jobArray.push(jobObj);
+				}
+				res.writeHead(200, {
+					'Content-Type': 'application/json'
+				});
+				res.end(JSON.stringify(jobArray));
 			})
 			.catch((error) => {
 				logger.error('Error occured' + error);
