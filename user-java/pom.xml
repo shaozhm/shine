@@ -113,7 +113,7 @@
 					<autoDetectProxySettings>true</autoDetectProxySettings>
 					<forceCheckAllDependencies>true</forceCheckAllDependencies>
 					<forceUpdate>true</forceUpdate>
-					<productVersion>1.6</productVersion>
+					<productVersion>1.7</productVersion>
 				</configuration>
 			</plugin>
 		</plugins>
