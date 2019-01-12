@@ -97,9 +97,41 @@ module.exports = function() {
 						'active': true
 					}
 				};
-				var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
+				//var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
 				
-				const dbClass = require(global.__base + "utils/dbPromises");
+				
+				var sql = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
+				try{
+					client.prepare(sql, function(error, stmt) {
+						if (error) {
+							logger.error('Error occured' + error);
+							util.callback(error, res, 'Unable to insert new job details to db');
+						} else {
+							var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
+							stmt.exec(params, function(err, rows) {
+								if (err) {
+									logger.error('Error occured' + err);
+									util.callback(err, res, 'Unable to insert new job details to db');
+								} else {
+									res.status(200).send(JSON.stringify({
+										JobId: jobid,
+										JobName: jname,
+										Desc: description,
+										StartTime: startTime,
+										EndTime: endTime,
+										Cron: cron,
+										ScheduleId: scheduleId
+									}));
+								}
+							});
+						}
+					});
+				}catch(err){
+					logger.error('ERROR : '+err);
+				}
+				
+				
+				/*const dbClass = require(global.__base + "utils/dbPromises");
 				let db = new dbClass(req.db);
 				
 				var query = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES('" + jobid.toString() + "', '" + jname + "', '" + startTime + "', '" + endTime + "', '" + cron + "', '" + scheduleId + "')";
@@ -127,7 +159,7 @@ module.exports = function() {
 					logger.error('Error occured' + error);
 					util.callback(error, res, 'Unable to prepare statement to insert new job details to db');
 				})
-				
+				*/
 				/*js.createJobSchedule(params)
 					.then((status) => {
 						res.status(200).send(JSON.stringify({
