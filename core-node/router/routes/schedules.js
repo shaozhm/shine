@@ -160,6 +160,7 @@ module.exports = function() {
 					})
 				})
 				.catch((error) => {
+					logger.error(error);
 					logger.error('Error occured : ' + JSON.stringify(error));
 					util.callback(error, res, 'Unable to prepare statement to insert new job details to db');
 				})
