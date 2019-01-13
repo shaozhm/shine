@@ -103,7 +103,11 @@ module.exports = function() {
 						'active': true
 					}
 				};
-				//var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
+				
+				
+				startTime = startTime.split(" ")[0] + " "+ startTime.split(" ")[1];
+				endTime = endTime.split(" ")[0] + " "+ endTime.split(" ")[1];
+				var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
 				
 				
 				/*var sql = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
@@ -138,11 +142,11 @@ module.exports = function() {
 				
 				
 				
-				var query = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES('" + jobid.toString() + "', '" + jname + "', '" + startTime + "', '" + endTime + "', '" + cron + "', '" + scheduleId + "')";
-				
+				//var query = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES('" + jobid.toString() + "', '" + jname + "', '" + startTime + "', '" + endTime + "', '" + cron + "', '" + scheduleId + "')";
+				var query = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
 				db.preparePromisified(query)
 				.then(statement => {
-					db.statementExecPromisified(statement, [])
+					db.statementExecPromisified(statement, params)
 					.then(results => {
 						res.status(200).send(JSON.stringify({
 							JobId: jobid,
