@@ -101,7 +101,7 @@ module.exports = function() {
 				//var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
 				
 				
-				var sql = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
+				/*var sql = 'INSERT INTO \"Jobs.ScheduleDetails\" VALUES(?,?,?,?,?,?)';
 				try{
 					client.prepare(sql, function(error, stmt) {
 						if (error) {
@@ -129,10 +129,10 @@ module.exports = function() {
 					});
 				}catch(err){
 					logger.error('ERROR : '+err);
-				}
+				}*/
 				
 				
-				/*const dbClass = require(global.__base + "utils/dbPromises");
+				const dbClass = require(global.__base + "utils/dbPromises");
 				let db = new dbClass(req.db);
 				
 				var query = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES('" + jobid.toString() + "', '" + jname + "', '" + startTime + "', '" + endTime + "', '" + cron + "', '" + scheduleId + "')";
@@ -152,15 +152,15 @@ module.exports = function() {
 						}));
 					})
 					.catch((error) => {
-						logger.error('Error occured' + error);
+						logger.error('Error occured: ' + error.toString());
 						util.callback(error, res, 'Unable to insert new job details to db');
 					})
 				})
 				.catch((error) => {
-					logger.error('Error occured' + error);
+					logger.error('Error occured : ' + error.toString());
 					util.callback(error, res, 'Unable to prepare statement to insert new job details to db');
 				})
-				*/
+				
 				/*js.createJobSchedule(params)
 					.then((status) => {
 						res.status(200).send(JSON.stringify({
