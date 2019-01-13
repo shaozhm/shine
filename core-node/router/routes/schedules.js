@@ -155,12 +155,12 @@ module.exports = function() {
 						}));
 					})
 					.catch((error) => {
-						logger.error('Error occured: ' + error.toString());
+						logger.error('Error occured: ' + JSON.stringify(error));
 						util.callback(error, res, 'Unable to insert new job details to db');
 					})
 				})
 				.catch((error) => {
-					logger.error('Error occured : ' + error.toString());
+					logger.error('Error occured : ' + JSON.stringify(error));
 					util.callback(error, res, 'Unable to prepare statement to insert new job details to db');
 				})
 				
