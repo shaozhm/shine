@@ -75,6 +75,7 @@ module.exports = function() {
 			}]
 		};
 		//var js = new JobSchedulerDB(req);
+		var client = req.db;
 		var scheduler = new jobsc.Scheduler(options);
 		var scJob = {
 			job: myJob
