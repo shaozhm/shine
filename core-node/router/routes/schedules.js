@@ -75,7 +75,12 @@ module.exports = function() {
 			}]
 		};
 		//var js = new JobSchedulerDB(req);
-		var client = req.db;
+		//var client = req.db;
+		
+		const dbClass = require(global.__base + "utils/dbPromises");
+		let db = new dbClass(req.db);
+				
+		
 		var scheduler = new jobsc.Scheduler(options);
 		var scJob = {
 			job: myJob
@@ -132,8 +137,6 @@ module.exports = function() {
 				}*/
 				
 				
-				const dbClass = require(global.__base + "utils/dbPromises");
-				let db = new dbClass(req.db);
 				
 				var query = "INSERT INTO \"Jobs.ScheduleDetails\" VALUES('" + jobid.toString() + "', '" + jname + "', '" + startTime + "', '" + endTime + "', '" + cron + "', '" + scheduleId + "')";
 				
