@@ -37,6 +37,7 @@ module.exports = function() {
 			
 			if (req.headers.authorization) {
 				accessToken = req.headers.authorization.split(' ')[1];
+				console.log("AccessToken++++++++ " +accessToken);
 			}else {
 				logger.error('Authorization header not found');
 				res.status(401).json({message: 'Authorization header not found'});
@@ -44,6 +45,7 @@ module.exports = function() {
 			}
 			xssec.createSecurityContext(accessToken, xsuaaCredentials, function(error, securityContext) {
 			if (error) {
+				console.log(error);
 				logger.error('Invalid access token');
 				res.status(401).json({message: 'Invalid access token'});
 				return;
