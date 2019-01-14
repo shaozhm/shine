@@ -50,7 +50,31 @@ module.exports = function() {
 			}
 
 			if (securityContext.checkScope(SCOPE)) {
-				const dbClass = require(global.__base + "utils/dbPromises");
+				var client = req.db;
+				client.exec(query, function(error, rows) {
+						if (error) {
+							logger.error('Error occured' + error);
+						} else {
+							jobid = rows[0].NJOBID;
+							timestamp = new Date().toISOString();
+							query = "INSERT INTO \"Jobs.Data\" VALUES('" + jobid.toString() + "','" + jname + "','" + timestamp +
+								"')";
+							client.exec(query, function(error, status) {
+								if (error) {
+									logger.error('Error occured' + error);
+									res.status(401).json({message: 'couldnt insert record to SHINE'});
+
+								} else {
+									logger.info("+++ Record inserted into Jobs.Data table +++");
+									res.status(200).json({status: 'record inserted into shine'});
+								}
+							});
+
+						}
+					});
+			
+			
+				/*const dbClass = require(global.__base + "utils/dbPromises");
 				let db = new dbClass(req.db);
 				var query = 'select "jobId".NEXTVAL as nJobId from "DUMMY"';
 				
@@ -89,7 +113,7 @@ module.exports = function() {
 				.catch((error) => {
 					logger.error('Error occured' + error);
 					res.status(500).json({message: 'error in prepare statement'});
-				})
+				})*/
 				
 				
 				
