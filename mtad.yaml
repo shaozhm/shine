@@ -292,7 +292,7 @@ resources:
   - name: ui5Service
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: ">=1.52.2"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV5:sapui5_fesv5
+      version: ">=1.60.2"
 
 
