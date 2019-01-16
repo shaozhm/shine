@@ -6,7 +6,7 @@
     "@sap/approuter": "5.10.1"
   },
   "engines": {
-    "node": "8.x"
+    "node": ">=8.x"
   },
   "scripts": {
     "start": "node node_modules/@sap/approuter/approuter.js"
