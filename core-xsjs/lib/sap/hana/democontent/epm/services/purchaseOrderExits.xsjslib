@@ -18,9 +18,9 @@ function po_create_before_exit(param) {
 	
    
     try {
-		//getting POID
-        pStmt = param.connection.prepareStatement('select "purchaseOrderSeqId".NEXTVAL from "DUMMY"');
-                   //.prepareStatement('SELECT max(PURCHASEORDERID + 1) from "PO.Header"');
+	//getting POID
+       // pStmt = param.connection.prepareStatement('select "purchaseOrderSeqId".NEXTVAL from "DUMMY"');
+        pStmt = param.connection.prepareStatement('SELECT max(PURCHASEORDERID + 1) from "PO.Header"');
         rs = pStmt.executeQuery();
         while (rs.next()) {
            	poid = rs.getString(1);
