@@ -3,7 +3,7 @@
   "description": "SHINE User Database Container Artifacts",
   "version": "1.7.0",
   "dependencies": {
-    "@sap/hdi-deploy": "3.8.2"
+    "@sap/hdi-deploy": "3.9.0"
   },
   "private": true,
   "scripts": {
