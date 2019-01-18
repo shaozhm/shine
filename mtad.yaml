@@ -90,7 +90,7 @@ modules:
       - name: shine-core-db
       - name: shine-container
       - name: shine-scheduler
-   
+      - name: secureStore
    
   - name: shine-user-java
     type: java.tomee
@@ -116,8 +116,6 @@ modules:
     requires:
       - name: shine-uaa
       - name: sapui5-provider
-        
-          
       - name: ui5Service 
         group: destinations 
         properties: 
