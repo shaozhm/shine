@@ -7,11 +7,10 @@ module.exports = class {
 	static createConnection() {
 		return new Promise((resolve, reject) => {
 			const xsenv = require("@sap/xsenv");
-			let options = xsenv.getServices({
-				hana: {
-					tag: "hana"
-				}
-			});
+			var options = xsenv.filterCFServices({
+				plan: 'hdi-shared'
+			})[0].credentials;
+			options =  { 'hana': options };
 			var hdbext = require("@sap/hdbext");
 			options.hana.pooling = true;
 			hdbext.createConnection(options.hana, (error, client) => {
