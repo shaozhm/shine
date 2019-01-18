@@ -10,12 +10,13 @@ module.exports = (app, server) => {
 	app.use('/node/zip', require('./routes/zip')());
 	app.use('/node/cds', require('./routes/cds')());
 	app.use('/node/auditLog', require('./routes/auditLog')());
-
 	app.use('/sap/bc/lrep', require('./routes/lrep')());
 	app.use('/node/annotations', require('./routes/annotations')());
 	app.use('/node/JavaScriptBasics', require('./routes/JavaScriptBasics')());
 	app.use('/node/promises', require('./routes/promises')());
 	app.use('/node/es6', require('./routes/es6')());
+	app.use("/node/secureStore", require("./routes/secureStore")());
+	
 	app.use('/jobactivity', require('./routes/jobactivity')());
 	app.use('/jobs', require('./routes/jobs')());
 	app.use('/schedules', require('./routes/schedules')());
