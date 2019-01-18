@@ -4,12 +4,10 @@
 var hdb = require('@sap/hdbext');
 var xsenv = require('@sap/xsenv');
 var async = require('async');
-var hanaOptions = xsenv.getServices({
-	hana: {
-		tag: 'hana'
-	}
-});
-
+var hanaOptions = xsenv.filterCFServices({
+	plan: 'hdi-shared'
+})[0].credentials;
+hanaOptions =  { 'hana': hanaOptions };
 hanaOptions.hana.pooling = true;
 
 module.exports = {
