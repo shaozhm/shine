@@ -95,8 +95,13 @@ module.exports = () => {
 					res.type("text/plain").status(500).send(`ERROR: ${err.message.toString()}`);
 					return;
 				}
-				console.log(`Results: ${parameters.VALUE.toString("utf8")} `);
-				res.type("application/json").status(200).send(`Entry in secure store successsfully retrieved for key: ${key} and value: ${parameters.VALUE.toString("utf8")} `);
+				if(parameters.VALUE != null){
+					console.log(`Results: ${parameters.VALUE.toString("utf8")} `);
+					res.type("application/json").status(200).send(`Entry in secure store successsfully retrieved for key: ${key} and value: ${parameters.VALUE.toString("utf8")} `);
+					return;
+				}
+				console.log("Results: "+parameters.VALUE);
+				res.status(200).send(`Entry in secure store successsfully retrieved for key: ${key} and value: ${parameters.VALUE}`);
 			});
 		});
 	});
