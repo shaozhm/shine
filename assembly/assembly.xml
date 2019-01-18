@@ -85,6 +85,8 @@
                 <exclude>pom.xml</exclude>
 				<exclude>.che/</exclude>
 				<exclude>whitesource.config.json</exclude>
+				<exclude>.eslintrc</exclude>
+				<exclude>.eslintrc.ext</exclude>
             </excludes>
         </fileSet>
 		<fileSet>

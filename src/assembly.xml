@@ -149,6 +149,8 @@
 				<exclude>.cfignore</exclude>
 				<exclude>test/</exclude>
 				<exclude>whitesource.config.json</exclude>
+				<exclude>.eslintrc</exclude>
+				<exclude>.eslintrc.ext</exclude>
             </excludes>
         </fileSet>
      	
