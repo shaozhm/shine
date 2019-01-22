@@ -18,8 +18,6 @@ The application consists of the following packages:
 
 - user-db - This package contains the artifacts contains the db artificats for User Creation.
 
-- user-java - This package contains the User CRUD implementation in Java using Java oData V4 libraries.
-
 - user-xsjs - This package contains the User CRUD implementation in nodejs using xsodata libraries.
 
 - web - This package contains the user interface for the SHINE Launchpad, Data Generator, and Purchase Order Worklist, Sales Dashboard, User CRUD pplications implemented in SAP UI5.
