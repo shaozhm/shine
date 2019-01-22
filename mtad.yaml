@@ -91,20 +91,6 @@ modules:
       - name: shine-container
       - name: shine-scheduler
       - name: secureStore
-   
-  - name: shine-user-java
-    type: java.tomee
-    path: sap-xsac-shine-user-java.war
-    provides: 
-      - name: user_java_api
-        properties:
-          url: "${default-url}"
-    requires:
-      - name: shine-uaa
-      - name: shine-user-db
-      - name: shine-user-container
-
-  
       
   - name: shine-web
     type: javascript.nodejs
@@ -139,13 +125,6 @@ modules:
         group: destinations
         properties:
           name: user-backend
-          url: ~{url}
-          forwardAuthToken: true
-       
-      - name: user_java_api
-        group: destinations
-        properties:
-          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
@@ -189,13 +168,6 @@ modules:
         group: destinations
         properties:
           name: user-backend
-          url: ~{url}
-          forwardAuthToken: true
-       
-      - name: user_java_api
-        group: destinations
-        properties:
-          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
