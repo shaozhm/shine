@@ -23,18 +23,11 @@ module.exports = (app, server) => {
 	app.use('/replicate', require('./routes/datagen')());
 	app.use('/reset', require('./routes/reset')());
 	app.use('/get', require('./routes/get')());
-       app.use('/resources/es/odata/callbuildin.xsjs', function (req, res, next) {
+       	app.use('/resources/es/odata/callbuildin.xsjs', function (req, res, next) {
          console.log("inside call");
          var client = req.db;
          console.log("inside builtin"+client);
-         client.on('error', function (err) {
-   			 console.error('Network connection error', err);
-	});
-        client.connect(function (err) {
-   	 if (err) {
-        		return console.error('Connect error', err);
-    		}
-	});
+        
         
     client.prepare('call esh_search (?, ?)', function (err, statement) {
         if (err) {
