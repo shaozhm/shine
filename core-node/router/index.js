@@ -55,7 +55,8 @@ module.exports = (app, server) => {
                 } else {
                     res.set('Content-Type', 'application/json');
                 }
-                res.send(new Buffer(rows[0].RESPONSE));
+		 res.send(parameters[0].RESPONSE);
+                //res.send(new Buffer(rows[0].RESPONSE));
             });
     });
 });	
