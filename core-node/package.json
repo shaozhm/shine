@@ -29,7 +29,7 @@
   "devDependencies": {
     "eslint": "3.5.0",
     "node-style": "2.0.0",
-    "gulp": "4.0.0",
+    "gulp": "3.9.1",
     "supertest": "3.4.1",
     "gulp-replace": "1.0.0",
     "jasmine-reporters": "2.3.2",
