@@ -35,7 +35,7 @@ describe(__filename, () => {
 	}, {
 		"VIEW_NAME": "MDViews.productCategoryVH"
 	}, {
-		"VIEW_NAME": "MDViews.productTexts"
+		"VIEW_NAME": "MDViews.ProductTexts"
 	}, {
 		"VIEW_NAME": "MDViews.texts"
 	}, {
