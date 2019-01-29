@@ -8,11 +8,12 @@ module.exports = {
 		return new Promise((resolve, reject) => {
 			let hdb = require("@sap/hdbext");
 			let xsenv = require("@sap/xsenv");
-			let hanaOptions = xsenv.getServices({
-				hana: {
-					tag: 'hana'
-				}
-			});
+			let hanaOptions = xsenv.filterCFServices({
+				plan: 'hdi-shared'
+			})[0].credentials;
+			hanaOptions = {
+				'hana': hanaOptions
+			};
 			//	let pool = hdb.getPool(hanaOptions.hana);
 			hanaOptions.hana.pooling = true;
 			hdb.createConnection(hanaOptions.hana, (error, client) => {
