@@ -533,7 +533,7 @@ context MDViews {
    @Search.searchable        : true
 	@EnterpriseSearch.enabled : true
    define view ProductTexts as
-        select from MD.Products as P left outer join MDViews.texts as T on P.NAMEID = T.TEXTID 
+        select from MD.Products as P join MDViews.texts as T on P.NAMEID = T.TEXTID 
         {
         	@EnterpriseSearch.key              : true
         	P.PRODUCTID,
