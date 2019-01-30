@@ -43,6 +43,7 @@ module.exports = (app, server) => {
         if (parameters) {
             request = request + '/?' + parameters;
         }
+	request = encodeURI(request);
         statement.exec({
                 REQUEST: '["' + request + '"]'
             },
