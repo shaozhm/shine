@@ -1,6 +1,6 @@
 _schema-version: "3.1.0"
 ID: XSAC_SHINE
-version: 1.6.0
+version: 1.7.0
 
 
 modules:
@@ -47,6 +47,7 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: secureStore
+      - name: shine-auditlog
      
       
   - name: shine-user-xsjs
@@ -65,6 +66,7 @@ modules:
       - name: shine-uaa
       - name: shine-user-db
       - name: shine-user-container
+      - name: shine-auditlog
       
 
       
@@ -88,21 +90,7 @@ modules:
       - name: shine-core-db
       - name: shine-container
       - name: shine-scheduler
-   
-   
-  - name: shine-user-java
-    type: java.tomee
-    path: sap-xsac-shine-user-java.war
-    provides: 
-      - name: user_java_api
-        properties:
-          url: "${default-url}"
-    requires:
-      - name: shine-uaa
-      - name: shine-user-db
-      - name: shine-user-container
-
-  
+      - name: secureStore
       
   - name: shine-web
     type: javascript.nodejs
@@ -114,8 +102,6 @@ modules:
     requires:
       - name: shine-uaa
       - name: sapui5-provider
-        
-          
       - name: ui5Service 
         group: destinations 
         properties: 
@@ -139,13 +125,6 @@ modules:
         group: destinations
         properties:
           name: user-backend
-          url: ~{url}
-          forwardAuthToken: true
-       
-      - name: user_java_api
-        group: destinations
-        properties:
-          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
@@ -189,13 +168,6 @@ modules:
         group: destinations
         properties:
           name: user-backend
-          url: ~{url}
-          forwardAuthToken: true
-       
-      - name: user_java_api
-        group: destinations
-        properties:
-          name: user-java-backend
           url: ~{url}
           forwardAuthToken: true
       - name: uaa 
@@ -290,7 +262,7 @@ resources:
   - name: ui5Service
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: ">=1.52.2"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV5:sapui5_fesv5
+      version: ">=1.60.2"
 
 

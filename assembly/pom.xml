@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.sap.refapps</groupId>
 		<artifactId>sap-xsac-shine-parent</artifactId>
-     <version>1.6.0</version>
+     <version>1.7.0</version>
 	</parent>
 	<artifactId>sap-xsac-shine</artifactId>
 	<packaging>pom</packaging>
@@ -57,12 +57,6 @@
 			<artifactId>sap-xsac-shine-core-node</artifactId>
 			<version>${project.version}</version>
 			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.refapps</groupId>
-			<artifactId>sap-xsac-shine-user-java</artifactId>
-			<version>${project.version}</version>
-			<type>war</type>
 		</dependency>
 	</dependencies>
 	<build>
@@ -144,13 +138,6 @@
 										<manifestEntries>
 											<Content-Type>text/directory</Content-Type>
 											<MTA-Module>shine-user-db</MTA-Module>
-										</manifestEntries>
-									</manifestSection>
-									<manifestSection>
-										<name>sap-xsac-shine-user-java.war</name>
-										<manifestEntries>
-											<Content-Type>application/zip</Content-Type>
-											<MTA-Module>shine-user-java</MTA-Module>
 										</manifestEntries>
 									</manifestSection>
 									<manifestSection>

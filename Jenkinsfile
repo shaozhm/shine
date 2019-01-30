@@ -8,7 +8,7 @@ try
 
 
 
-/*stage('GitClone'){
+stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('XSASystem'){
   sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
@@ -27,7 +27,7 @@ node('XSASystem'){
     sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
     }
   }
-} */
+} 
 
 
 /*stage('UI5BrokerInstall'){
@@ -55,17 +55,17 @@ node('XSASystem'){
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('XSASystem'){
-  //sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
+  sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation"
- // sh "xs create-space shine-test"
+  sh "xs create-space shine-test"
   sh "xs t -s shine-test"
   
- // sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
-//  def SHINESCA=readFile('Zipfile').trim() 
- // sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
- // sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
-  //sh "sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
-  //sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
+  sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
+  def SHINESCA=readFile('Zipfile').trim() 
+  sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
+  sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
+  sh "sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
+  sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
@@ -110,7 +110,7 @@ node('XSASystem'){
           def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
           
           sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o /tmp/integrationTestResult.json "
-          sleep 100
+          sleep 30
           sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o /tmp/integrationTestResult.json "
           def total_failed = sh (script: 'jq ".stats.failures" /tmp/integrationTestResult.json',returnStdout: true,returnStatus: false).trim()
           
@@ -184,6 +184,21 @@ finally
 
 {
 
- 
+stage('CleanUp'){
+  println("Cleaning up the installation")
+  node('XSASystem'){
+      SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
+      if(SHINEStillInstalled==0)
+    {
+      
+      sh "xs t -s shine-test"
+      sh "xs uninstall  XSAC_SHINE -f  --delete-services --ignore-lock" 
+      sh "rm -rf /tmp/Shine"
+      sh "rm -rf /tmp/tests"
+      sh "xs delete -f shine-test" 
+      sh "xs delete-space -f shine-test"
+    }
+    }
+  }
   
 }

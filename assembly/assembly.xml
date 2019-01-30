@@ -23,6 +23,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -33,6 +35,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -43,6 +47,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -53,6 +59,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -63,6 +71,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
        <fileSet>
@@ -73,6 +83,10 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
+				<exclude>.eslintrc</exclude>
+				<exclude>.eslintrc.ext</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -83,6 +97,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 
@@ -94,6 +110,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
 		<fileSet>
@@ -104,6 +122,8 @@
                 <exclude>target/</exclude>
                 <exclude>etc/</exclude>
                 <exclude>pom.xml</exclude>
+				<exclude>.che/</exclude>
+				<exclude>whitesource.config.json</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -114,13 +134,4 @@
             </includes>
         </fileSet>
     </fileSets>
-    <dependencySets>
-        <dependencySet>
-            <includes>
-                <include>com.sap.refapps:sap-xsac-shine-user-java</include>
-            </includes>
-            <outputDirectory>/</outputDirectory>
-            <outputFileNameMapping>sap-xsac-shine-user-java.war</outputFileNameMapping>
-        </dependencySet>
-    </dependencySets>
 </assembly>

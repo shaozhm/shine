@@ -1,11 +1,11 @@
 {
   "engines": {
-    "node": "8.x"
+    "node": "8.x || 10.x"
   },
   "name": "shine-site-content",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "dependencies": {
-   "@sap/site-content-deployer": "1.9.7"
+    "@sap/site-content-deployer": "1.9.8"
   },
   "scripts": {
     "start": "node --harmony node_modules/@sap/site-content-deployer/deploy.js"

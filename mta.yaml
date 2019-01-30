@@ -1,6 +1,6 @@
 _schema-version: '2.0'
 ID: com.sap.refapps.shine
-version: 1.6.0
+version: 1.7.0
 
 modules:
   - name: shine-user-db
@@ -47,6 +47,7 @@ modules:
       - name: shine-auditlog
       - name: shine-container
       - name: shine-core-db
+      - name: secureStore
    
       
   - name: shine-user-xsjs
@@ -67,23 +68,8 @@ modules:
       - name: shine-uaa
       - name: shine-user-container
       - name: shine-user-db
+      - name: shine-auditlog
 
-
-  - name: shine-user-java
-    type: java
-    path: user-java
-    provides:
-      - name: user_java_api
-        properties:
-          url: '${default-url}'
-           
-    requires:
-      - name: shine-uaa
-      - name: shine-user-container
-        properties:
-          JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml: {"service_name_for_DefaultDB" : "~{user-container-name}"}]'
-      - name: shine-user-db
-      
   - name: shine-web
     type: html5
     path: web
@@ -125,12 +111,7 @@ modules:
           name: user-backend
           url: '~{url}'
           forwardAuthToken: true
-      - name: user_java_api
-        group: destinations
-        properties:
-          name: user-java-backend
-          url: '~{url}'
-          forwardAuthToken: true
+
 
   - name: shine-core-xsjs
     type: nodejs
@@ -148,6 +129,7 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: secureStore
+      - name: shine-auditlog
            
 resources:
   - name: shine-user-container
@@ -182,8 +164,9 @@ resources:
   - name: sapui5-provider
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: ">=1.52.2"
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV5:sapui5_fesv5
+      version: ">=1.60.2"
+  
   - name: sap-portal-services-host-com.sap.refapps.shine
     parameters:
        config:
@@ -215,8 +198,8 @@ resources:
   - name: ui5Service
     type: configuration
     parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: ">=1.52.2"    
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV5:sapui5_fesv5
+      version: ">=1.60.2"    
   - name: controller
     properties:
       url: 'https://<host>:3##30'
