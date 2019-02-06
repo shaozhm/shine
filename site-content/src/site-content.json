@@ -371,18 +371,7 @@
 						"action": "show",
 						"parameters": []
 					}
-				}/*,{
-					"id": "spatial",
-					"appId": "spatial",
-					"title": "{{group1.spatial.title}}",
-					"description": "{{group1.spatial.desc}}",
-                    			"icon": "sap-icon://map",						
-					"target": {
-						"semanticObject": "spatial",
-						"action": "show",
-						"parameters": []
-					}
-				}*/]
+				}]
 			}
 		}
 	}
