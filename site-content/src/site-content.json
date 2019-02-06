@@ -371,7 +371,7 @@
 						"action": "show",
 						"parameters": []
 					}
-				},{
+				}/*,{
 					"id": "spatial",
 					"appId": "spatial",
 					"title": "{{group1.spatial.title}}",
@@ -382,7 +382,7 @@
 						"action": "show",
 						"parameters": []
 					}
-				}]
+				}*/]
 			}
 		}
 	}
