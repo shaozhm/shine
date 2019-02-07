@@ -257,7 +257,7 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: sapui5_sb
-      service-plan: sapui5-1.52
+      service-plan: sapui5-1.60
   
   - name: ui5Service
     type: configuration
