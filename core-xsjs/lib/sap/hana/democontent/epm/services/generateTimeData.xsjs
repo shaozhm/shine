@@ -36,7 +36,12 @@ try{
 	rs = connection.executeQuery(query);
 	var currentSchema = rs[0].CURRENT_SCHEMA;
 	
-	query = 'MDX UPDATE TIME DIMENSION HOUR 2017 2019 MONDAY TARGET_TABLE \"Core.SHINE_TIME_DIM\" TARGET_SCHEMA "'+currentSchema+'"';
+	//selecting current year
+	query = 'SELECT YEAR(CURRENT_DATE) as CURRENT_YEAR FROM DUMMY';
+	rs = connection.executeQuery(query);
+	var currentYear = rs[0].CURRENT_YEAR;
+	
+	query = 'MDX UPDATE TIME DIMENSION HOUR 2017 '+currentYear+' MONDAY TARGET_TABLE \"Core.SHINE_TIME_DIM\" TARGET_SCHEMA "'+currentSchema+'"';
 	rs = connection.executeQuery(query);
 	connection.commit();
 	connection.close();
