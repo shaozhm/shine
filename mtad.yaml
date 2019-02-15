@@ -179,7 +179,9 @@ modules:
       - name: sapui5-provider
         
     properties:
-      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+      httpHeaders: "[{\"Content-Security-Policy\" : \"style-src 'self' 'unsafe-inline' https://sapui5.hana.ondemand.com  https://*.api.here.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://sapui5.hana.ondemand.com https://*.api.here.com; connect-src 'self' https://sapui5.hana.ondemand.com  https://*.api.here.com\"}]"
+ 
         
   - name: shine-site-content
     type: com.sap.portal.site-content
