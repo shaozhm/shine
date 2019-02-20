@@ -7,7 +7,6 @@ The application consists of the following packages:
 
 - core-db - This is the core db package contains Core data models artifacts required to create the tables and other database artifacts (for example, .hdbcds, .hdbsequence, and so on).
 
-
 - core-node - This package has the Node.js implementation of Data Generator, Job Scheduler.
 
 - core-xsjs - This package has the Node.js implementation of PO Worklist, Sales Dashboard, Spatial Demo using xsodata libraries.
@@ -44,11 +43,11 @@ SAPUI5 Service broker should be installed for SHINE to run. SHINE depends on SAP
 Below are three ways to install SHINE:
 
 ## Install from HANA Media
-SHINE for XSA (XSACSHINE06_xx)can be found in the folder XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.3.x-XSACSHINE03_x.mtaext.template
+SHINE for XSA (XSACSHINE06_xx)can be found in the folder XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.7.x-XSACSHINE07_x.mtaext.template
 
-- Rename **sap-xsac-shine-1.6.xx.mtaext.template** to **sap-xsac-shine-1.6.xx.mtaext**(.template removed from name)
+- Rename **sap-xsac-shine-1.7.xx.mtaext.template** to **sap-xsac-shine-1.7.xx.mtaext**(.template removed from name)
 
-- Open **sap-xsac-shine-1.6.xx.mtaext** file.
+- Open **sap-xsac-shine-1.7.xx.mtaext** file.
 
 - Also change the < SCHEMA_NAME > to any schema name like SHINE_USER_SCHEMA.
 
@@ -61,11 +60,9 @@ SHINE for XSA (XSACSHINE06_xx)can be found in the folder XSA_CONT of HANA Media 
 - Install shine by running the following command
 
 
-     `xs install XSACSHINE06_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.6.xx.mtaext`
+     `xs install XSACSHINE07_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.7.xx.mtaext`
 
 ### Build the Source code and Install
-
-
 
 
 - Navigate to the shine folder in the system which contains the source code.
