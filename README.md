@@ -105,7 +105,7 @@ SHINE for XSA (XSACSHINE06_xx)can be found in the folder XSA_CONT of HANA Media 
 
 - Navigate to the folder which contains the SCA and run the following command to install SHINE
 
-     `xs install XSACSHINE06_XX.ZIP -e sap-xsac-shine-1.6.xx.mtaext `
+     `xs install XSACSHINE06_XX.ZIP -e sap-xsac-shine-1.7.xx.mtaext `
 
 
 ## Deploying SHINE on CF
