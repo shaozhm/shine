@@ -8,16 +8,10 @@ var cds = require('@sap/cds');
 var winston = require('winston');
 //var util = require(global.__base + "utils/datagen");
 var util = require('./util');
-var logging = require('@sap/logging');
-var appContext = logging.createAppContext();
-var logger;
 var app = express.Router();
 winston.level = process.env.winston_level || 'error';
 app.post('/soheader', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/soheader");
-	logger.info('reset so header triggered');
-    //console.log('reset so header triggered');
+    console.log('reset so header triggered');
     util.resetTable(
         req,
 		res,
@@ -28,10 +22,7 @@ app.post('/soheader', function (req, res) {
 });
 
 app.post('/soitem', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/soitem");
-    logger.info('reset so item triggered');
-    //console.log('reset so item triggered');
+    console.log('reset so item triggered');
     util.resetTable(
         req,
 		res,
@@ -42,10 +33,7 @@ app.post('/soitem', function (req, res) {
 });
 
 app.post('/poheader', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/poheader");
-    logger.info('reset po header triggered');
-    //console.log('reset po header triggered');
+    console.log('reset po header triggered');
     util.resetTable(
         req,
 		res,
@@ -56,10 +44,7 @@ app.post('/poheader', function (req, res) {
 });
 
 app.post('/poitem', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/poitem");
-    logger.info('reset po item triggered');
-    //console.log('reset po item triggered');
+    console.log('reset po item triggered');
     util.resetTable(
         req,
 		res,
@@ -70,10 +55,7 @@ app.post('/poitem', function (req, res) {
 });
 
 app.post('/addresses', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/addresses");
-    logger.info('reset addresses triggered');
-    //console.log('reset addresses triggered');
+    console.log('reset addresses triggered');
     util.resetTable(
         req,
 		res,
@@ -84,10 +66,7 @@ app.post('/addresses', function (req, res) {
 });
 
 app.post('/partners', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/partners");
-    logger.info('reset business partners triggered');
-    //console.log('reset business partners triggered');
+    console.log('reset business partners triggered');
     util.resetTable(
         req,
 		res,
@@ -98,10 +77,7 @@ app.post('/partners', function (req, res) {
 });
 
 app.post('/employees', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/reset/employees");
-    logger.info('reset employees triggered');
-    //console.log('reset employees triggered');
+    console.log('reset employees triggered');
     util.resetTable(
         req,
 		res,
@@ -112,10 +88,7 @@ app.post('/employees', function (req, res) {
 });
 
 app.post('/products', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/products");
-    logger.info('reset products triggered');
-    //console.log('reset products triggered');
+    console.log('reset products triggered');
     util.resetTable(
         req,
 		res,
@@ -126,10 +99,7 @@ app.post('/products', function (req, res) {
 });
 
 app.post('/constants', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/reset/constants");
-    logger.info('reset constants triggered');
-    //console.log('reset constants triggered');
+    console.log('reset constants triggered');
     util.resetTable(
         req,
 		res,
@@ -140,10 +110,7 @@ app.post('/constants', function (req, res) {
 });
 
 app.post('/texts', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-	logger = reqContext.getLogger("/reset/texts");
-    logger.info('reset texts triggered');
-    //console.log('reset texts triggered');
+    console.log('reset texts triggered');
     util.resetTable(
         req,
 		res,
@@ -154,10 +121,7 @@ app.post('/texts', function (req, res) {
 });
 
 app.post('/notes', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/reset/notes");
-    logger.info('reset notes triggered');
-    //console.log('reset notes triggered');
+    console.log('reset notes triggered');
     util.resetTable(
         req,
 		res,
@@ -168,10 +132,7 @@ app.post('/notes', function (req, res) {
 });
 
 app.post('/attachments', function (req, res) {
-	var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/reset/attachments");
-    logger.info('reset attachments triggered');
-    //console.log('reset attachments triggered');
+    console.log('reset attachments triggered');
     util.resetTable(
         req,
 		res,

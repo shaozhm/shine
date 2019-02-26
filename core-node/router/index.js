@@ -1,8 +1,5 @@
 /*eslint-env node, es6 */
 'use strict';
-var logging = require('@sap/logging');
-var appContext = logging.createAppContext();
-var logger;
 module.exports = (app, server) => {
 	app.use('/node', require('./routes/myNode')());
 	app.use('/node/excAsync', require('./routes/exerciseAsync')(server));
@@ -26,18 +23,18 @@ module.exports = (app, server) => {
 	app.use('/reset', require('./routes/reset')());
 	app.use('/get', require('./routes/get')());
        app.use('/resources/es/odata/callbuildin.xsjs', function (req, res, next) {
+         console.log("inside call");
          var client = req.db;
-		  var reqContext = appContext.createRequestContext(req);
-         logger = reqContext.getLogger('/router/routes/index.js');
+         console.log("inside builtin"+client);
          client.on('error', function (err) {
-			logger.error('Network connection error');
-			//console.error('Network connection error', err);
+   			 console.error('Network connection error', err);
 	});
         client.connect(function (err) {
-	if (err){
-				return console.error('Connect error', err);
-			}
+   	 if (err) {
+        		return console.error('Connect error', err);
+    		}
 	});
+        
     client.prepare('call esh_search (?, ?)', function (err, statement) {
         if (err) {
             return console.error('Prepare error:', err);
@@ -46,8 +43,8 @@ module.exports = (app, server) => {
         var parameters = '';
         for (var n in req.query) {
             var separator;
-            separator = (parameters.length === 0 ? '' : '&');
-            parameters = parameters + separator + n + '=' + req.query[n];
+            separator = (parameters.length === 0 ? "" : "&");
+            parameters = parameters + separator + n + "=" + req.query[n];
         }
         if (parameters) {
             request = request + '/?' + parameters;
@@ -67,5 +64,5 @@ module.exports = (app, server) => {
                 res.send(new Buffer(rows[0].RESPONSE));
             });
     });
-});
+});	
 };

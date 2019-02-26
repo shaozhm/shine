@@ -1,6 +1,6 @@
 _schema-version: '2.0'
 ID: com.sap.refapps.shine
-version: 1.5.2
+version: 1.6.1
 
 modules:
   - name: shine-user-db
@@ -47,7 +47,6 @@ modules:
       - name: shine-auditlog
       - name: shine-container
       - name: shine-core-db
-      - name: shine-scheduler
    
       
   - name: shine-user-xsjs
@@ -132,13 +131,6 @@ modules:
           name: user-java-backend
           url: '~{url}'
           forwardAuthToken: true
-          
-      - name: uaa 
-        group: destinations 
-        properties: 
-           name: uaa 
-           url: ~{url} 
-           forwardAuthToken: true 
 
   - name: shine-core-xsjs
     type: nodejs
@@ -156,66 +148,6 @@ modules:
       - name: shine-uaa
       - name: shine-container
       - name: secureStore
-      
-  - name: shine-site-web
-    type: siteentry
-    path: site-web
-    requires:
-      - name: shine-uaa
-      - name: sap-portal-services-host
-      - name: controller
-        group: destinations
-        properties:
-          name: controller
-          url: ~{url}
-          forwardAuthToken: true
-      
-      - name: core_node_api
-        group: destinations
-        properties:
-          name: core-node-backend
-          url: ~{url}
-          forwardAuthToken: true
-      - name: core_xsjs_api
-        group: destinations
-        properties:
-          name: core-xsjs-backend
-          url: ~{url}
-          forwardAuthToken: true
-      - name: user_xsjs_api
-        group: destinations
-        properties:
-          name: user-backend
-          url: ~{url}
-          forwardAuthToken: true
-       
-      - name: user_java_api
-        group: destinations
-        properties:
-          name: user-java-backend
-          url: ~{url}
-          forwardAuthToken: true
-      - name: uaa 
-        group: destinations 
-        properties: 
-           name: uaa 
-           url: ~{url} 
-           forwardAuthToken: true
-      - name: sapui5-provider
-        
-    properties:
-      NODE_TLS_REJECT_UNAUTHORIZED: "0"  
-        
-  - name: shine-site-content
-    type: sitecontent
-    path: site-content
-    parameters:
-       memory: 64M
-    requires:
-       - name: sap-portal-services-client
-       - name: shine-uaa
-    properties:
-      NODE_TLS_REJECT_UNAUTHORIZED: "0"     
            
 resources:
   - name: shine-user-container
@@ -247,6 +179,11 @@ resources:
   - name: shine-auditlog
     type: com.sap.xs.auditlog
 
+  - name: sapui5-provider
+    type: configuration
+    parameters:
+      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
+      version: ">=1.52.2"
   - name: sap-portal-services-host-com.sap.refapps.shine
     parameters:
        config:
@@ -273,22 +210,14 @@ resources:
  
   - name: uaa 
     properties: 
-      url: "https:///<hostname>:3##32/uaa-security"
-      
-  - name: sapui5-provider
-    type: configuration
-    parameters:
-      provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: ">=1.52.2"
-
+      url: "https://<host>:3##32/uaa-security"
 
   - name: ui5Service
     type: configuration
     parameters:
       provider-id: com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV4:sapui5_fesv4
-      version: ">=1.52.2"  
-      
+      version: ">=1.52.2"    
   - name: controller
     properties:
-      url: 'https://<hostname>:3##30'
+      url: 'https://<host>:3##30'
   
