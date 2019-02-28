@@ -16,5 +16,5 @@
   "scripts": {
     "start": "node server.js"
   },
-  "version": "1.7.2"
+  "version": "1.7.3"
 }
