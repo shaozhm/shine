@@ -1,7 +1,7 @@
 {
   "name": "shine-web",
   "description": "Web Moduele of SHINE",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "dependencies": {
     "@sap/approuter": "5.12.0"
   },
