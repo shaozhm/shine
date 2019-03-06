@@ -9,7 +9,7 @@ The new and changed features included in this release of SHINE for XS Advanced a
 
 2. Full Text Search
 
-   SAP Search UI on SAP HANA provides an easy way to perform full text search on content stored in tables or exposed via          views. Just like searching on the Internet, full-text search finds terms irrespective of the sequence of characters and        words. Here the search is performed on the Product Categories and also on the Business Partners.
+   SAP Search UI on SAP HANA provides an easy way to perform full text search on content stored in tables or exposed via views. Just like searching on the Internet, full-text search finds terms irrespective of the sequence of characters and        words. Here the search is performed on the Product Categories and also on the Business Partners.
 
 3. Hana Secure Store
 
