@@ -1,4 +1,4 @@
-SHINE for XS Advanced SAP HANA 2.0 SPS03
+SHINE for XS Advanced SAP HANA 2.0 SPS03 FR1
 ===============
 
 The new and changed features included in this release of SHINE for XS Advanced are as follows:
