@@ -136,9 +136,35 @@ modules:
           url: '~{url}'
           forwardAuthToken: true
   
+  - name: shine-core-xsjs
+    type: nodejs
+    path: core-xsjs
+    provides:
+     - name: core_xsjs_api
+       properties:
+          url: ${default-url}
+    parameters:
+      host: shine-core-xsjs
+      register-service-url: true
+      service-name: shine-core-xsjs
+      service-url: '${default-url}'            
+    requires:
+      - name: shine-uaa
+      - name: shine-container
+      - name: secureStore
+
+  - name: shine-site-content
+    type: sitecontent
+    path: site-content
+    requires:
+       - name: sap-portal-services-client
+       - name: shine-uaa
+    properties:
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"     
+
   - name: shine-site-web
-    type: javascript.nodejs
-    path: site-web/
+    type: siteentry
+    path: site-web
     requires:
       - name: shine-uaa
       - name: sap-portal-services-host
@@ -185,31 +211,6 @@ modules:
     properties:
       NODE_TLS_REJECT_UNAUTHORIZED: "0"  
         
-  - name: shine-site-content
-    type: com.sap.portal.site-content
-    path: site-content/
-    requires:
-       - name: sap-portal-services-client
-       - name: shine-uaa
-    properties:
-      NODE_TLS_REJECT_UNAUTHORIZED: "0"
-  
-  - name: shine-core-xsjs
-    type: nodejs
-    path: core-xsjs
-    provides:
-     - name: core_xsjs_api
-       properties:
-          url: ${default-url}
-    parameters:
-      host: shine-core-xsjs
-      register-service-url: true
-      service-name: shine-core-xsjs
-      service-url: '${default-url}'            
-    requires:
-      - name: shine-uaa
-      - name: shine-container
-      - name: secureStore
            
 resources:
   - name: shine-user-container
@@ -273,7 +274,7 @@ resources:
  
   - name: uaa 
     properties: 
-      url: "https://hxehost:39032/uaa-security"
+      url: "https://mo-1f9ef82eb.mo.sap.corp:39032/uaa-security"
 
   - name: ui5Service
     type: configuration
@@ -282,5 +283,5 @@ resources:
       version: ">=1.52.2"    
   - name: controller
     properties:
-      url: 'https://hxehost:39030'
+      url: 'https://mo-1f9ef82eb.mo.sap.corp:39030'
   
