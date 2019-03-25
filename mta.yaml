@@ -274,7 +274,7 @@ resources:
  
   - name: uaa 
     properties: 
-      url: "https://mo-1f9ef82eb.mo.sap.corp:39032/uaa-security"
+      url: "https://<hostname>:3##32/uaa-security"
 
   - name: ui5Service
     type: configuration
@@ -283,5 +283,5 @@ resources:
       version: ">=1.52.2"    
   - name: controller
     properties:
-      url: 'https://mo-1f9ef82eb.mo.sap.corp:39030'
+      url: 'https://<hostname>:3##30'
   
