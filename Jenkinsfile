@@ -21,7 +21,7 @@ node('XSASystem'){
 
 stage('MavenBuild'){
 println("Performing the maven build")
-node('XSASystem'){
+node('shine'){
   sh "chmod 777 -R /tmp/Shine"
   dir('/tmp/Shine') {
     sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
@@ -33,7 +33,7 @@ node('XSASystem'){
 /*stage('UI5BrokerInstall'){
 
 println("Check for UI5 service broker dependency")
-node('XSASystem'){
+node('shine'){
     
     Installed = sh (script: 'xs m | grep -q sapui5_sb',returnStdout: true,returnStatus: true)
     echo "Installed: $Installed"
@@ -54,7 +54,7 @@ node('XSASystem'){
 
 stage('InstallShine'){
 println("Start Installation of SHINE")
-node('XSASystem'){
+node('shine'){
   sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation"
   sh "xs create-space shine-test"
@@ -79,7 +79,7 @@ node('XSASystem'){
  
 stage('IntegrationTests'){
 println("Run integration tests")
-node('XSASystem'){
+node('shine'){
     
    sh (script: 'rm -rf /tmp/node-v6.1.0-linux-x64',returnStdout: false,returnStatus: false)
    sh (script: 'rm -f /tmp/node-v6.1.0-linux-x64.tar.gz',returnStdout: false,returnStatus: false)
@@ -138,7 +138,7 @@ node('XSASystem'){
     bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
 }
 
-stage('VyperTests'){
+/*stage('VyperTests'){
 println("Trigger Vyper tests")
 node('WinVyper'){
  shell ("rm -rf /c/Users/i302582/shine-test")
@@ -170,7 +170,7 @@ node('WinVyper'){
 }
    
  }
-
+*/
 
 
 }
@@ -186,7 +186,7 @@ finally
 
 stage('CleanUp'){
   println("Cleaning up the installation")
-  node('XSASystem'){
+  node('shine'){
       SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
       if(SHINEStillInstalled==0)
     {
