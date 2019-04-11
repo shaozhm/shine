@@ -1,13 +1,12 @@
-SHINE for XS Advanced SAP HANA 2.0 SPS03 FR1
+SHINE for XS Advanced SAP HANA 2.0 SPS04
 ===============
 
 The new and changed features included in this release of SHINE for XS Advanced are as follows:
  
-1. Node.js enhancements
+1. Unit tests for tables,views,functions,procedures in Node.js
 
-2. SQL scripts enhancements
+2. SecureStore in Node.js
 
-3. Using SAP UI5 service broker
 
 
 This release of the application consists of the following packages:
@@ -25,8 +24,6 @@ This release of the application consists of the following packages:
 - site-web - This package contains the user interface for Fiori as a Service for the SHINE Launchpad.
 
 - user-db - This package contains the artifacts contains the db artificats for User Creation. 
-
-- user-java - This package contains the User CRUD implementation in Java using Java oData V4 libraries.
 
 - user-xsjs - This package contains the User CRUD implementation in nodejs using xsodata libraries.
 
