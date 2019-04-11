@@ -1,130 +1,130 @@
-SHINE XSA 1.7.4
-================
-SAP HANA Interactive Education, or SHINE, is a demo application that makes it easy to learn how to build applications on SAP HANA Extended Application Services Advanced Model. This demo application is delivered as a package that contains sample data and design-time developer objects for the applications database tables, views, OData and user interface.
-The application consists of the following packages:
+# SHINE-ML
+
+SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL library. This application has a dependency on SHINE or SAP HANA Interactive Education and hence using cross containerized mta approach.
+
+### Prerequisite
+
+- Install the `Application Function Library (AFL)`, which includes the PAL.
+  - For information on how to install or update AFL, see "Installing or Updating SAP HANA Components" in SAP HANA Server Installation and Update Guide
+  - To confirm that the PAL functions were installed successfully, you can check the following three public views:
+      - sys.afl_areas
+      - sys.afl_packages
+      - sys.afl_function
+  
+    These views are granted to the PUBLIC role and can be accessed by anyone.
+
+    To check the views, run the following SQL statements:
+    
+    ```
+    SELECT * FROM "SYS"."AFL_AREAS" WHERE AREA_NAME = 'AFLPAL';
+    SELECT * FROM "SYS"."AFL_PACKAGES" WHERE AREA_NAME = 'AFLPAL';
+    SELECT * FROM "SYS"."AFL_FUNCTIONS" WHERE AREA_NAME = 'AFLPAL'; 
+    ```
+    
+    The result will tell you whether the PAL functions were successfully installed on your system.
+    
+- Enable the `Script Server` in HANA instance.
+    - If the Script server is not enabled, run the below command as a system user to enable it.
+    
+      ```
+      ALTER DATABASE <Tenant Database> ADD 'scriptserver';
+      ```
+    - To check the script server , run the below command against tenant database.
+      ```
+      SELECT * FROM SYS.M_SERVICES;
+      ```
 
+- `SHINE` application must be installed. 
+  - If SHINE is not install please install it. Steps to install SHINE can be found [here](https://github.com/SAP/hana-shine-xsa).
+   > Important: <b>*Please use this [**shine.mtaext**](documents/shine.mtaext) file for installation of SHINE.`*</b>
+   
+## Download and Installation
 
+The below steps describes you to run SHINE for application programming model using 2 approaches. Choose the one that best fits you.
 
-- core-db - This is the core db package contains Core data models artifacts required to create the tables and other database artifacts (for example, .hdbcds, .hdbsequence, and so on).
+1. [Running in SAP Web IDE for SAP HANA](#running-in-sap-web-ide-for-sap-hana)
+2. [Generating MTAR using WebIDE and deploy manually to XSA system](#generating-mtar-using-webide-and-deploy-manually-to-xsa-system)
 
-- core-node - This package has the Node.js implementation of Data Generator, Job Scheduler.
+> Important: <b>*Please install SHINE-ML in the same space where SHINE is installed.`*</b>
 
-- core-xsjs - This package has the Node.js implementation of PO Worklist, Sales Dashboard, Spatial Demo using xsodata libraries.
+### Running in SAP Web IDE for SAP HANA
 
-- site-content - This package contains the JSON configurations for the Fiori as a Service module.
+1.  Launch SAP Web IDE for SAP HANA. By default, in SAP HANA, express edition, SAP Web IDE for SAP HANA can be accessed using https://hxehost:53075/
+2.  Right click on the `Workspace` folder in WebIDE and choose `Git` -> `Clone Repository`
+3.  Enter the URL of the repository as https://github.com/SAP/hana-shine-xsa.git
+4.  Click `Clone` Button. Clone should completed successfully. `Ignore` any error like `Unable to run module` for the web module.
+5.  Right click on the project hana-shine-apm and navigate to Git -> Create Local Branch.
+6.  In Create a New Local Branch wizard, choose origin/shine-ml from the Source Branch dropdown and click Ok
+7.  Right click on project and navigate to `Project`  ->  `Project Settings`
+8.  Under Project Settings window navigate to `Space` and choose a desired space from the dropdown. Then click `Install Builder` if not installed
+9.  Click `Save` and then `Close`
+10.  Under project `shine-ml` right click on `db` module navigate to `Build` ->  `Build` to build the module. The build should be successful.
+11. Right click on `xsjs` module navigate to `Run` ->  `Run as Node.js Application` to run the service
+12. Right click on `web` module navigate to `Run` ->  `Run as Web Application` to run web module
+13. Login to SHINE web application using any user e.g. XSA_ADMIN user can be used to login with his credentials.
 
-- site-web - This package contains the user interface for Fiori as a Service for the SHINE Launchpad.
+### Generating MTAR using WebIDE and deploy manually to XSA system
+#### Generate MTAR using SAP Web IDE for SAP HANA
+1.  Launch SAP Web IDE for SAP HANA
+2.  Navigate to `File`  ->  `Git` ->  `Clone Repository`
+3.  Enter the URL of the repository as https://github.com/SAP/hana-shine-xsa.git
+4.  Click `Clone` Button. Clone should completed successfully. `Ignore` any error like `Unable to run module` for the web module.
+5.  Right click on the project hana-shine-apm and navigate to Git -> Create Local Branch.
+6.  In Create a New Local Branch wizard, choose origin/shine-ml from the Source Branch dropdown and click Ok
+5.  Right click on project and navigate to `Project`  ->  `Project Settings`
+6.  Under Project Settings window navigate to `Space` and choose a desired space from the dropdown. Then click `Install Builder` if not installed
+7.  Click `Save` and then `Close`
+8.  Right click on the project `shine-ml` and navigate to `Build` ->  `Build`
+9.  After build get completed successfully, under Workspace navigate to folder `mta_archives` ->  `shine-ml`  and right click on `shine-ml_0.0.1.mtar` then click on `Export`.
+10. After shine-ml_0.0.1.mtar` get successfully exported to your local system, copy/move the file to desired XSA system
 
-- user-db - This package contains the artifacts contains the db artificats for User Creation.
+#### Deploy the MTAR
+To deploy the mtar, login to the XSA system via CLI and deploy the mtar file using the following command:
 
-- user-xsjs - This package contains the User CRUD implementation in nodejs using xsodata libraries.
+  `xs deploy shine-ml_0.0.1.mtar`
 
-- web - This package contains the user interface for the SHINE Launchpad, Data Generator, and Purchase Order Worklist, Sales Dashboard, User CRUD pplications implemented in SAP UI5.
 
+### Business scenario
+In this scenario we want to predict sales order that can be faux/illegitimate Sales Order and manually vett it before its processed. All orders are automatically moved to In process state except the one's which needs to undergo a manual vetting. 
 
+Here we have used linear regression algorithm for binary classification. The algorithm will predict the lifecycle status of the sales order based on the previous history of salesorder. If algorithm predict salesorder as a valid salesorder, sales order will be created with 'P' status otherwise with 'N' status which can be accepted or rejected by admin.
 
+please follow below steps to perform the prediction.
 
-## Prerequisites
-The following components should be installed before SHINE installation on XSA:
+**step 1: Regenerate the training data**
 
-- XSAC_MONITORING   
-If not installed,please download the latest version from milestone [here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases/com/sap/xsa/admin/sap-xsac-admin) or release [here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones/com/sap/xsa/admin/sap-xsac-admin/).
+To generate the training data click on **"Generate data"** button.
 
+![Alt text](./documents/dg1.JPG "Generate Data")
 
-- XSAC_SERVICES   
-If not installed,please download the latest version to be installed from milestone[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/ "here") or release[here](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.releases.xmake/com/sap/xs/jobscheduler/jobscheduler-assembly/).
+Provide number of records needs to be generated.
 
+![Alt text](./documents/dg2.JPG "Generate Data")
 
-- sapui5_sb  
-SAPUI5 Service broker should be installed for SHINE to run. SHINE depends on SAPUI5 Service broker to provide the SAPUI5 bootstrap URL.
+confirmation pop-up will come up. select OK.
 
-## Installation via Product Installer
+![Alt text](./documents/dg3.JPG "Generate Data")
 
-Below are three ways to install SHINE:
+**Step2: Train model**
 
-## Install from HANA Media
-SHINE for XSA (XSACSHINE06_xx)can be found in the folder XSA_CONT of HANA Media and SHINE for XSA needs an MTA extension descriptor this can be found in the folder XSA_CONT/extension_descriptors/sap-xsac-shine-1.7.x-XSACSHINE07_x.mtaext.template
+For generating the training model, click on **Train model**.
 
-- Rename **sap-xsac-shine-1.7.xx.mtaext.template** to **sap-xsac-shine-1.7.xx.mtaext**(.template removed from name)
+![Alt text](./documents/traindata1.JPG "Train Model")
 
-- Open **sap-xsac-shine-1.7.xx.mtaext** file.
+![Alt text](./documents/traindata2.JPG "Train Model")
 
-- Also change the < SCHEMA_NAME > to any schema name like SHINE_USER_SCHEMA.
+**Step 3: Create new sales order**
 
--  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](https://help.sap.com/doc/13ff61e61a8f442090e27050dc61f019/2.0.03/en-US/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_en_HANA2SPS03.pdf)
+Click on **"+"** sign to create new sales order. The lifecycle status will be predicted based on the trained model.
 
-    `xs login -u <USERNAME> -p <PASSWORD>`   
+![Alt text](./documents/createrec1.JPG "Salesorder Creation")
 
-     `xs target –o <orgname> -s <customer spacename>`
+![Alt text](./documents/createrec2.JPG "Salesorder Creation")
 
-- Install shine by running the following command
+**Step 4: Sales order approval**
 
+The admin can approve or reject all the sales oder with new status from admin screen. User should have `shine-admin` role in order to access this screen.
 
-     `xs install XSACSHINE07_XX.ZIP -e <path to mta extension descriptor>/sap-xsac-shine-1.7.xx.mtaext`
+![Alt text](./documents/admin1.JPG "Salesorder approval")
 
-### Build the Source code and Install
-
-
-- Navigate to the shine folder in the system which contains the source code.
-
-
-
-- Execute the following command to run a maven build
-
-    `mvn clean install -s cfg/settings.xml`
-
-- Once the maven build is completed successfully,navigate to the assembly/target folder.
-
-- Open **shine.mtaext** file.
-
-- Also change the < SCHEMA_NAME > to any schema name like SHINE__USER.
--  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
-
-    `xs login -u <USERNAME> -p <PASSWORD>`   
-
-     `xs target –o <orgname> -s <customer spacename>`
-
-- Install shine by running the following command from the /assembly/target folder.
-
-
-     `xs install XSACSHINE06_XX.ZIP -e shine.mtaext`
-
-### Install from nexus
-- Download the latest SHINE SCA from one of the following two nexus repositories:
-  1. [Milestone nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.milestones.xmake/com/sap/refapps/sap-xsac-shine/)
-  2. [Release nexus](http://nexus.wdf.sap.corp:8081/nexus/content/repositories/deploy.releases.xmake/com/sap/refapps/sap-xsac-shine/)
-
-- Open **sap-xsac-shine-1.6.x.mtaext** file.
-
-
--  Login with a user who has the `XS_AUTHORIZATION_ADMIN` and `XS_CONTROLLER_USER` role collections and also has the spacedeveloper role into the customer space.For more details on how to assign roles to a user, please refer Chapter 3 of [SHINE documentation](http://help.sap.com/hana/SAP_HANA_Interactive_Education_SHINE_for_SAP_HANA_XS_Advanced_Model_en.pdf)
-
-    `xs login -u <USERNAME> -p <PASSWORD>`   
-
-     `xs target –o <orgname> -s <customer spacename>`
-
-- Navigate to the folder which contains the SCA and run the following command to install SHINE
-
-     `xs install XSACSHINE06_XX.ZIP -e sap-xsac-shine-1.7.xx.mtaext `
-
-
-## Deploying SHINE on CF
-
-
-## Create a service for the HDI container
-
-This step is optional and required only if you want to deploy app via cf push
-
-
-
-    cf create-service hana hdi-shared shine-container
-
-#
-    cf create-service hana hdi-shared shine-user-container
-
-## Create a service for the UAA
-This step is optional and required only if you want to deploy app via cf push
-
-```
-cf create-service xsuaa default shine-uaa -c xs-security.json
-```
+![Alt text](./documents/admin2.JPG "Salesorder approval")

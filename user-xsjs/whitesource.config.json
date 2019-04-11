@@ -1,9 +1,0 @@
-{ 
-  "apiKey": "6971b2eec2d3420bad0caf173ec629f6a3c7d3ba63f3445ab99ffdbf1acfb1d0",
-  "userKey": "cd66760b26904be0a9cbbcb508b013e998f988bde65547c1be9352d55a1b75e0",
-  "productName": "SHC - SAP HANA DEMO MODEL ADV. 1",
-  "devDep": "false",
-  "forceUpdate": true,
-  "checkPolicies": true,
-  "productVer":"1.7"
-}
