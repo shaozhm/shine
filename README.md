@@ -54,7 +54,7 @@ The below steps describes you to run SHINE for application programming model usi
 3.  Enter the URL of the repository as https://github.com/SAP/hana-shine-xsa.git
 4.  Click `Clone` Button. Clone should completed successfully. `Ignore` any error like `Unable to run module` for the web module.
 5.  Right click on the project hana-shine-apm and navigate to Git -> Create Local Branch.
-6.  In Create a New Local Branch wizard, choose origin/shine-ml from the Source Branch dropdown and click Ok
+6.  In Create a New Local Branch wizard, choose origin/ml from the Source Branch dropdown and click Ok
 7.  Right click on project and navigate to `Project`  ->  `Project Settings`
 8.  Under Project Settings window navigate to `Space` and choose a desired space from the dropdown. Then click `Install Builder` if not installed
 9.  Click `Save` and then `Close`
@@ -70,7 +70,7 @@ The below steps describes you to run SHINE for application programming model usi
 3.  Enter the URL of the repository as https://github.com/SAP/hana-shine-xsa.git
 4.  Click `Clone` Button. Clone should completed successfully. `Ignore` any error like `Unable to run module` for the web module.
 5.  Right click on the project hana-shine-apm and navigate to Git -> Create Local Branch.
-6.  In Create a New Local Branch wizard, choose origin/shine-ml from the Source Branch dropdown and click Ok
+6.  In Create a New Local Branch wizard, choose origin/ml from the Source Branch dropdown and click Ok
 5.  Right click on project and navigate to `Project`  ->  `Project Settings`
 6.  Under Project Settings window navigate to `Space` and choose a desired space from the dropdown. Then click `Install Builder` if not installed
 7.  Click `Save` and then `Close`
