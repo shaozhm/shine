@@ -14,7 +14,6 @@ This release of the application consists of the following packages:
 
 - core-db - This is the core db package contains Core data models artifacts required to create the tables and other database artifacts (for example, .hdbcds, .hdbsequence, and so on).
 
-
 - core-node - This package has the Node.js implementation of Data Generator, Job Scheduler.
 
 - core-xsjs - This package has the Node.js implementation of PO Worklist, Sales Dashboard, Spatial Demo using xsodata libraries.
