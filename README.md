@@ -1,6 +1,6 @@
 # SHINE-ML
 
-SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL (Predictive Analysis Library). This application is developed as an extension on SHINE for SAP HANA XS Advanced  application.
+SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL (Predictive Analysis Library). This application is developed as an extension on top of SHINE for SAP HANA XS Advanced  application.
 
 ### Prerequisite
 
