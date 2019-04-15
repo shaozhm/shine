@@ -13,7 +13,7 @@ SHINE-ML is a demo application which makes it easy to learn how to build applica
   
     These views are granted to the PUBLIC role and can be accessed by anyone.
 
-    To check the views, run the following SQL statements:
+    To check the views, run the following SQL statements either in webide sql console or in hana studio:
     
     ```
     SELECT * FROM "SYS"."AFL_AREAS" WHERE AREA_NAME = 'AFLPAL';
