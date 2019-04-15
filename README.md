@@ -1,6 +1,6 @@
 # SHINE-ML
 
-SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL library. This application has a dependency on SHINE or SAP HANA Interactive Education and hence using cross containerized mta approach.
+SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL library. This application is developed as an extension on SHINE for SAP HANA XS Advanced  application.
 
 ### Prerequisite
 
@@ -40,7 +40,7 @@ SHINE-ML is a demo application which makes it easy to learn how to build applica
    
 ## Download and Installation
 
-The below steps describes you to run SHINE for application programming model using 2 approaches. Choose the one that best fits you.
+The below steps describes you to run SHINE for application programming model using 2 approaches. Choose the one that best fits .
 
 1. [Running in SAP Web IDE for SAP HANA](#running-in-sap-web-ide-for-sap-hana)
 2. [Generating MTAR using WebIDE and deploy manually to XSA system](#generating-mtar-using-webide-and-deploy-manually-to-xsa-system)
@@ -53,12 +53,13 @@ The below steps describes you to run SHINE for application programming model usi
 2.  Right click on the `Workspace` folder in WebIDE and choose `Git` -> `Clone Repository`
 3.  Enter the URL of the repository as https://github.com/SAP/hana-shine-xsa.git
 4.  Click `Clone` Button. Clone should completed successfully. `Ignore` any error like `Unable to run module` for the web module.
-5.  Right click on the project hana-shine-apm and navigate to Git -> Create Local Branch.
+5.  Right click on the project hana-shine-xsa and navigate to Git -> Create Local Branch.
 6.  In Create a New Local Branch wizard, choose origin/ml from the Source Branch dropdown and click Ok
 7.  Right click on project and navigate to `Project`  ->  `Project Settings`
 8.  Under Project Settings window navigate to `Space` and choose a desired space from the dropdown. Then click `Install Builder` if not installed
 9.  Click `Save` and then `Close`
-10.  Under project `shine-ml` right click on `db` module navigate to `Build` ->  `Build` to build the module. The build should be successful.
+`Please note SHINE for XS Advanced MTA should be installed before you perfrom the below steps as mentioned in the pre requisite steps above`
+10.  Under project `shine-ml` right click on `db` module navigate to `Build` ->  `Build` to build the module. The build should be successful. 
 11. Right click on `xsjs` module navigate to `Run` ->  `Run as Node.js Application` to run the service
 12. Right click on `web` module navigate to `Run` ->  `Run as Web Application` to run web module
 13. Login to SHINE web application using any user e.g. XSA_ADMIN user can be used to login with his credentials.
@@ -85,7 +86,7 @@ To deploy the mtar, login to the XSA system via CLI and deploy the mtar file usi
 
 
 ### Business scenario
-In this scenario we want to predict sales order that can be faux/illegitimate Sales Order and manually vett it before its processed. All orders are automatically moved to In process state except the one's which needs to undergo a manual vetting. 
+Sales Orders genrally created in SHINE application are automatically set to status `In Process`. There are possibilities that some Sales Orders gets evntually cancelled by a Customer or rejected by a Sales Manager of Itelo company(dummy company showcased in SHINE). This could be due to many reasons like Sales Order created for fraudulent purpose, bad payment history of the customer creating sales order etc. In this scenario we want to predict if a new sales order can get eventually cancelled. Those Sales Orders which the system flags as having a high chance of getting eventually cancelled will get manually vetted before its being furtherprocessed. All orders are automatically moved to In process state except the one's which needs to undergo a manual vetting. The Sales Orders which needs to be vetted will rmeain in `New`status and Sales Manager can manually vett it.
 
 Here we have used linear regression algorithm for binary classification. The algorithm will predict the lifecycle status of the sales order based on the previous history of salesorder. If algorithm predict salesorder as a valid salesorder, sales order will be created with 'P' status otherwise with 'N' status which can be accepted or rejected by admin.
 
