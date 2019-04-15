@@ -1,6 +1,6 @@
 ID: XSAC_SHINE_ML
 _schema-version: '2.1'
-version: 0.0.1
+version: 1.0.0
 
 modules:
  - name: shine-ml-db
