@@ -1,6 +1,6 @@
 # SHINE-ML
 
-SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL library. This application is developed as an extension on SHINE for SAP HANA XS Advanced  application.
+SHINE-ML is a demo application which makes it easy to learn how to build application using HANA PAL (Predictive Analysis Library). This application is developed as an extension on SHINE for SAP HANA XS Advanced  application.
 
 ### Prerequisite
 
@@ -108,7 +108,7 @@ confirmation pop-up will come up. select OK.
 
 **Step2: Train model**
 
-For generating the training model, click on **Train model**.  Here we have used Logistic regression algorithm of Hana PAL. Once `Train model` buttton is clicked, it will call `train` procedure which will internally call `LOGISTICREGRESSION` procedure of HANA PAL library. For training the model we are considering the previous sales order of the customers and providing it as a input to the procedure.
+For generating the training model, click on **Train model**.  Here we have used Logistic regression algorithm of Hana PAL. Once `Train model` button is clicked, it will call `train` procedure which will internally call `LOGISTICREGRESSION` procedure of HANA PAL library. For training the model we are considering the previous sales order of the customers and providing it as a input to the procedure.
 
 ![Alt text](./documents/traindata1.JPG "Train Model")
 
@@ -116,7 +116,7 @@ For generating the training model, click on **Train model**.  Here we have used 
 
 **Step 3: Predict status for new sales order**
 
-Click on **"+"** sign to create new sales order. Once you generate new sales order, the status of the sales order will be predicted based on the model generated in above step. 
+Click on **"+"** sign to create new sales order. Once you generate new sales order, the status of the sales order will be predicted based on the model generated in above step. The procedure which we have used here is `predict` procedure which will intern call `FORECASTWITHLOGISTICR` procedure of hana PAL.
 
 ![Alt text](./documents/createrec1.JPG "Salesorder Creation")
 
