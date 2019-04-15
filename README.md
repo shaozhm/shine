@@ -82,7 +82,7 @@ The below steps describes you to run SHINE for application programming model usi
 #### Deploy the MTAR
 To deploy the mtar, login to the XSA system via CLI and deploy the mtar file using the following command:
 
-  `xs deploy shine-ml_0.0.1.mtar`
+  `xs deploy xsac_shine_ml_1.0.0.mtar`
 
 
 ### Business scenario
