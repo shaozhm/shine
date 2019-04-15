@@ -86,15 +86,15 @@ To deploy the mtar, login to the XSA system via CLI and deploy the mtar file usi
 
 
 ### Business scenario
-Sales Orders genrally created in SHINE application are automatically set to status `In Process`. There are possibilities that some Sales Orders gets evntually cancelled by a Customer or rejected by a Sales Manager of Itelo company(dummy company showcased in SHINE). This could be due to many reasons like Sales Order created for fraudulent purpose, bad payment history of the customer creating sales order etc. In this scenario we want to predict if a new sales order can get eventually cancelled. Those Sales Orders which the system flags as having a high chance of getting eventually cancelled will get manually vetted before its being furtherprocessed. All orders are automatically moved to In process state except the one's which needs to undergo a manual vetting. The Sales Orders which needs to be vetted will rmeain in `New`status and Sales Manager can manually vett it.
+Sales Orders generally created in SHINE application are automatically set to status `In Process`. There are possibilities that some Sales Orders gets eventually cancelled by a Customer or rejected by a Sales Manager of Itelo company(dummy company showcased in SHINE). This could be due to many reasons like Sales Order created for fraudulent purpose, bad payment history of the customer creating sales order etc. In this scenario we want to predict if a new sales order can get eventually cancelled. Those Sales Orders which the system flags as having a high chance of getting eventually cancelled will get manually vetted before its being further processed. All orders are automatically moved to `In process` state except the one's which needs to undergo a manual vetting. The Sales Orders which needs to be vetted will remain in `New` status and Sales Manager can manually vet it.
 
-Here we have used linear regression algorithm for binary classification. The algorithm will predict the lifecycle status of the sales order based on the previous history of salesorder. If algorithm predict salesorder as a valid salesorder, sales order will be created with 'P' status otherwise with 'N' status which can be accepted or rejected by admin.
+Here we have used `linear regression` algorithm for binary classification. The algorithm will predict the lifecycle status of the sales order based on the previous history of salesorder. If algorithm predict salesorder as a valid salesorder, sales order will be created with 'P' status otherwise with 'N' status which can be accepted or rejected by sales manager.
 
-please follow below steps to perform the prediction.
+Please follow below steps to perform the prediction.
 
-**step 1: Regenerate the training data**
+**step 1: Generate training data**
 
-To generate the training data click on **"Generate data"** button.
+To generate the training data click on **"Generate data"** button. It will generate the random sales order. Alongwith the random salesorder some records will be generated with some pattern, which will be used to train model for status prediction.
 
 ![Alt text](./documents/dg1.JPG "Generate Data")
 
@@ -108,15 +108,15 @@ confirmation pop-up will come up. select OK.
 
 **Step2: Train model**
 
-For generating the training model, click on **Train model**.
+For generating the training model, click on **Train model**.  Here we have used Logistic regression algorithm of Hana PAL. Once `Train model` buttton is clicked, it will call `train` procedure which will internally call `LOGISTICREGRESSION` procedure of HANA PAL library. For training the model we are considering the previous sales order of the customers and providing it as a input to the procedure.
 
 ![Alt text](./documents/traindata1.JPG "Train Model")
 
 ![Alt text](./documents/traindata2.JPG "Train Model")
 
-**Step 3: Create new sales order**
+**Step 3: Predict status for new sales order**
 
-Click on **"+"** sign to create new sales order. The lifecycle status will be predicted based on the trained model.
+Click on **"+"** sign to create new sales order. Once you generate new sales order, the status of the sales order will be predicted based on the model generated in above step. 
 
 ![Alt text](./documents/createrec1.JPG "Salesorder Creation")
 
@@ -124,7 +124,7 @@ Click on **"+"** sign to create new sales order. The lifecycle status will be pr
 
 **Step 4: Sales order approval**
 
-The admin can approve or reject all the sales oder with new status from admin screen. User should have `shine-admin` role in order to access this screen.
+The sales manager can approve or reject all the sales oder with new status from admin screen. User should have `shine-admin` role in order to access this screen.
 
 ![Alt text](./documents/admin1.JPG "Salesorder approval")
 
