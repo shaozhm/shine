@@ -76,8 +76,8 @@ The below steps describes you to run SHINE for application programming model usi
 6.  Under Project Settings window navigate to `Space` and choose a desired space from the dropdown. Then click `Install Builder` if not installed
 7.  Click `Save` and then `Close`
 8.  Right click on the project `shine-ml` and navigate to `Build` ->  `Build`
-9.  After build get completed successfully, under Workspace navigate to folder `mta_archives` ->  `shine-ml`  and right click on `shine-ml_0.0.1.mtar` then click on `Export`.
-10. After shine-ml_0.0.1.mtar` get successfully exported to your local system, copy/move the file to desired XSA system
+9.  After build get completed successfully, under Workspace navigate to folder `mta_archives` ->  `shine-ml`  and right click on `xsac_shine_ml_1.0.0.mtar` then click on `Export`.
+10. After `xsac_shine_ml_1.0.0.mtar` get successfully exported to your local system, copy/move the file to desired XSA system
 
 #### Deploy the MTAR
 To deploy the mtar, login to the XSA system via CLI and deploy the mtar file using the following command:
