@@ -42,7 +42,7 @@ node('shinehxe'){
  sh "echo $PATH"
   sh "chmod 777 -R /tmp/Shine"
   dir('/tmp/Shine') {
-    sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
+    sh "/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin/mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
     }
   }
 } 
