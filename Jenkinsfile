@@ -11,7 +11,6 @@ stage ('Initialize') {
                 sh '''
                     wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
-                    chmod 777 -R /usr/sap/HXE/HDB90/apache-maven-3.3.9
                     export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                 ''' 
