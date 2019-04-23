@@ -30,6 +30,7 @@ node('shinehxe'){
                     pwd
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     pwd
+                    rm apache-maven-3.3.9-bin.tar.gz
                     export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                     ls
