@@ -31,45 +31,32 @@ println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shin
 node('shinehxe'){
   sh (script: 'rm -rf shine',returnStdout: false,returnStatus: false)
   sh '''
-  pwd
-  ls
-  git clone https://github.wdf.sap.corp/refapps/shine.git
-  ls
-  chmod 777 -R shine
- cd shine
- ls
- wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-  pwd
-                    tar -zxvf apache-maven-3.3.9-bin.tar.gz
-                    pwd
-                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
-                    echo "PATH = ${PATH}"
-                mvn -f pom.xml clean install -s cfg/settings.xml
-                ls
-                ''' 
- 
-
+     pwd
+     ls
+     git clone https://github.wdf.sap.corp/refapps/shine.git
+     ls
+     chmod 777 -R shine
+     cd shine
+     export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
+     echo "PATH = ${PATH}"
+     mvn -f pom.xml clean install -s cfg/settings.xml
+      ls
+      ''' 
   }
 }
 
 stage('MavenBuild'){
 println("Performing the maven build")
 node('shinehxe'){
-  /*sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
-  sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"*/
- sh "pwd"
  sh '''
-                    wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-                    tar -zxvf apache-maven-3.3.9-bin.tar.gz
-                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
-                    echo "PATH = ${PATH}"
-                ''' 
-  sh "chmod 777 -R /tmp/Shine"
-  dir('/shine') {
-   sh "echo \"path is: \""
-   sh "pwd"
-    sh "/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin/mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
-    }
+     pwd
+     ls
+     cd shine
+      export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
+     echo "PATH = ${PATH}"
+     mvn -f pom.xml clean install -s cfg/settings.xml
+      ls
+     '''
   }
 } 
 
