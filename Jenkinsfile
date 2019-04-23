@@ -29,14 +29,13 @@ stage ('Initialize') {
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('shinehxe'){
-  sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
+  sh (script: 'rm -rf shine',returnStdout: false,returnStatus: false)
   sh "pwd"
   sh "ls"
   /*sh "mkdir /tmp/Shine" */
   sh "git clone https://github.wdf.sap.corp/refapps/shine.git"
   sh "ls"
  sh "cd /shine"
-  dir ('/shine')
   sh "ls"
  export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
   sh "mvn -f pom.xml clean install -s cfg/settings.xml"
