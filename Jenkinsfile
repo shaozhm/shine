@@ -25,7 +25,7 @@ node('shine'){
   sh "wget http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
   sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"
  sh "pwd"
-  sh " PATH=\"$PATH::/usr/sap/XSA/HDB00/apache-maven-3.3.9/bin\""
+  sh " PATH=\"$PATH::/home/i302407/workspace/shinepipeline/apache-maven-3.3.9/bin\""
   sh "chmod 777 -R /tmp/Shine"
   dir('/tmp/Shine') {
     sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
