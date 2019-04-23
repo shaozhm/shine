@@ -43,7 +43,10 @@ node('shinehxe'){
  
  sh "export PATH=\"$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin\""
  
-  sh "./home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin/mvn -f pom.xml clean install -s cfg/settings.xml"
+ sh "cd /home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
+ 
+  //sh "./home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin/mvn -f pom.xml clean install -s cfg/settings.xml"
+ sh "ls"
   }
 }
 
