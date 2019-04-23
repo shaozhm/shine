@@ -32,9 +32,12 @@ node('shinehxe'){
   sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
   sh "pwd"
   sh "ls"
-  sh "mkdir /tmp/Shine" 
-  sh "git clone https://github.wdf.sap.corp/refapps/shine.git /tmp/Shine"
+  /*sh "mkdir /tmp/Shine" */
+  sh "git clone https://github.wdf.sap.corp/refapps/shine.git"
   sh "ls"
+  sh "cd shine"
+  sh "ls"
+  sh "mvn -f pom.xml clean install -s cfg/settings.xml"
   }
 }
 
