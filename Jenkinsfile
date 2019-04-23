@@ -42,7 +42,6 @@ node('shinehxe'){
                     echo "PATH = ${PATH}"
                 ''' 
   sh "chmod 777 -R /tmp/Shine"
-  sh "chmod 777 -R /usr/sap/HXE/HDB90/apache-maven-3.3.9"
   dir('/tmp/Shine') {
    sh "echo \"path is: \""
    sh "pwd"
