@@ -14,7 +14,6 @@ stage ('Initialize') {
                     chmod 777 -R /usr/sap/HXE/HDB90/apache-maven-3.3.9
                     export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
-                    unset M2_HOME
                 ''' 
             }
         }
@@ -42,7 +41,6 @@ node('shinehxe'){
  '''
  sh "echo $PATH"
   sh "chmod 777 -R /tmp/Shine"
-  sh "chmod 777 -R /usr/sap/HXE/HDB90/apache-maven-3.3.9"
   dir('/tmp/Shine') {
     sh "/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin/mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
     }
