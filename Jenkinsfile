@@ -13,7 +13,9 @@ stage ('Initialize') {
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
-                    ./usr/sap/HXE/HDB90/apache-maven-3.3.9/bin/mvn
+                    cd /usr/sap/HXE/HDB90/apache-maven-3.3.9/bin
+                    ls
+                   
                 ''' 
             }
         }
