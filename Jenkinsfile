@@ -22,6 +22,9 @@ node('shine'){
 stage('MavenBuild'){
 println("Performing the maven build")
 node('shine'){
+  sh "wget http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
+  sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"
+  sh " PATH='$PATH::/usr/sap/XSA/HDB00/apache-maven-3.3.9/bin'"
   sh "chmod 777 -R /tmp/Shine"
   dir('/tmp/Shine') {
     sh "mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
