@@ -35,10 +35,12 @@ node('shinehxe'){
   /*sh "mkdir /tmp/Shine" */
   sh "git clone https://github.wdf.sap.corp/refapps/shine.git"
   sh "ls"
- sh "cd /shine"
+ dir ("/shine")
+ {
   sh "ls"
  export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
   sh "mvn -f pom.xml clean install -s cfg/settings.xml"
+ }
   }
 }
 
@@ -55,7 +57,7 @@ node('shinehxe'){
                     echo "PATH = ${PATH}"
                 ''' 
   sh "chmod 777 -R /tmp/Shine"
-  dir('/tmp/Shine') {
+  dir('/shine') {
    sh "echo \"path is: \""
    sh "pwd"
     sh "/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin/mvn -f  /tmp/Shine/pom.xml clean install -s /tmp/Shine/cfg/settings.xml"
