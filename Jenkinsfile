@@ -11,10 +11,9 @@ stage ('Initialize') {
                 sh '''
                     wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
-                    export M2_HOME="/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
-                    export PATH="$PATH::$M2_HOME"
+                    export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
+                    unset M2_HOME
                 ''' 
             }
         }
@@ -37,6 +36,9 @@ node('shinehxe'){
   /*sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
   sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"*/
  sh "pwd"
+ sh '''
+ export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
+ '''
  sh "echo $PATH"
   sh "chmod 777 -R /tmp/Shine"
   dir('/tmp/Shine') {
