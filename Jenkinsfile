@@ -9,8 +9,8 @@ try
 stage ('Initialize') {
             node('shinehxe') {
                 sh '''
-                    sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
-                    sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"
+                    wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+                    tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     export M2_HOME="/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     export PATH="$PATH::$M2_HOME"
                     echo "PATH = ${PATH}"
