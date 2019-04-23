@@ -10,7 +10,7 @@ try
 
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
-node('shine'){
+node('shinehxe'){
   sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
   sh "pwd"
   sh "mkdir /tmp/Shine" 
@@ -21,11 +21,10 @@ node('shine'){
 
 stage('MavenBuild'){
 println("Performing the maven build")
-node('shine'){
+node('shinehxe'){
   /*sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
   sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"*/
  sh "pwd"
-  sh "export PATH=\"$PATH::/home/i302407/workspace/shinepipeline/apache-maven-3.3.9/bin\""
  sh "echo $PATH"
   sh "chmod 777 -R /tmp/Shine"
   dir('/tmp/Shine') {
@@ -59,7 +58,7 @@ node('shine'){
 
 stage('InstallShine'){
 println("Start Installation of SHINE")
-node('shine'){
+node('shinehxe'){
   sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
   sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation"
   sh "xs create-space shine-test"
@@ -84,7 +83,7 @@ node('shine'){
  
 stage('IntegrationTests'){
 println("Run integration tests")
-node('shine'){
+node('shinehxe'){
     
    sh (script: 'rm -rf /tmp/node-v6.1.0-linux-x64',returnStdout: false,returnStatus: false)
    sh (script: 'rm -f /tmp/node-v6.1.0-linux-x64.tar.gz',returnStdout: false,returnStatus: false)
