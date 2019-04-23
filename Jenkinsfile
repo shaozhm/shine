@@ -7,7 +7,7 @@ try
     }
 
 stage ('Initialize') {
-            node('shinexse') {
+            node('shinehxe') {
                 sh '''
                     sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
                     sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"
