@@ -36,9 +36,11 @@ node('shinehxe'){
   sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"*/
  sh "pwd"
  sh '''
- export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
- '''
- sh "echo $PATH"
+                    wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+                    tar -zxvf apache-maven-3.3.9-bin.tar.gz
+                    export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
+                    echo "PATH = ${PATH}"
+                ''' 
   sh "chmod 777 -R /tmp/Shine"
   sh "chmod 777 -R /usr/sap/HXE/HDB90/apache-maven-3.3.9"
   dir('/tmp/Shine') {
