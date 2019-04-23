@@ -13,17 +13,15 @@ stage ('Initialize') {
                     pwd
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     pwd
-                    export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
+                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
+                    mvn
                     ls
                     cd apache-maven-3.3.9/bin
                     ls
-                    ./mvn
-                   
+                                      
                 ''' 
-             dir('/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin') {
-             sh "ls"
-             }
+            
             }
         }
 
@@ -33,6 +31,7 @@ println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shin
 node('shinehxe'){
   sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
   sh "pwd"
+  sh "ls"
   sh "mkdir /tmp/Shine" 
   sh "git clone https://github.wdf.sap.corp/refapps/shine.git /tmp/Shine"
   sh "ls"
@@ -48,7 +47,7 @@ node('shinehxe'){
  sh '''
                     wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
-                    export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
+                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                 ''' 
   sh "chmod 777 -R /tmp/Shine"
