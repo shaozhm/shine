@@ -40,7 +40,7 @@ node('shinehxe'){
  cd shine
  ls
  '''
- dir ("/shine")
+ dir ("shine")
  {
   sh "ls"
  export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
