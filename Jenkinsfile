@@ -16,6 +16,9 @@ stage ('Initialize') {
                     export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                     ls
+                    cd apache-maven-3.3.9/bin
+                    ls
+                    ./mvn
                    
                 ''' 
              dir('/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin') {
