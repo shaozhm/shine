@@ -15,7 +15,6 @@ stage ('Initialize') {
                     pwd
                     export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
-                    
                     ls
                     cd apache-maven-3.3.9/bin
                     ls
@@ -52,7 +51,7 @@ node('shinehxe'){
      pwd
      ls
      cd shine
-      export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
+     export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
      echo "PATH = ${PATH}"
      mvn -f pom.xml clean install -s cfg/settings.xml
       ls
