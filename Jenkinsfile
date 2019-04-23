@@ -35,6 +35,7 @@ node('shinehxe'){
   /*sh "mkdir /tmp/Shine" */
   sh "git clone https://github.wdf.sap.corp/refapps/shine.git"
   sh "ls"
+ sh "chmod 777 -R shine"
  dir ("/shine")
  {
   sh "ls"
