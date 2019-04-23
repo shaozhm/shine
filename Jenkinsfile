@@ -15,7 +15,7 @@ stage ('Initialize') {
                     pwd
                     export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
-                    mvn
+                    
                     ls
                     cd apache-maven-3.3.9/bin
                     ls
