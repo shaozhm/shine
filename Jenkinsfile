@@ -22,8 +22,8 @@ node('shine'){
 stage('MavenBuild'){
 println("Performing the maven build")
 node('shine'){
-  sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
-  sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"
+  /*sh "wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
+  sh "tar -zxvf apache-maven-3.3.9-bin.tar.gz"*/
  sh "pwd"
   sh " PATH=\"$PATH::/home/i302407/workspace/shinepipeline/apache-maven-3.3.9/bin\""
  sh "echo $PATH"
