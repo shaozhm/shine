@@ -41,11 +41,21 @@ node('shinehxe'){
  ls
  '''
  
- sh "export PATH=\"$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin\""
+  sh '''
+                    wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+                    pwd
+                    tar -zxvf apache-maven-3.3.9-bin.tar.gz
+                    pwd
+                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
+                    echo "PATH = ${PATH}"
+                                      
+                ''' 
  
- sh "cd /home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
+ //sh "export PATH=\"$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin\""
  
-  //sh "./home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin/mvn -f pom.xml clean install -s cfg/settings.xml"
+ //sh "cd /home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
+ 
+  sh "./apache-maven-3.3.9/bin/mvn -f pom.xml clean install -s cfg/settings.xml"
  sh "ls"
   }
 }
