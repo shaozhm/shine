@@ -5,15 +5,12 @@ try
  environment {
         SHINE_URL = ''
     }
- 
- tools { 
-        maven 'Maven 3.3.9' 
-        jdk 'jdk8' 
-    }
 
 stage ('Initialize') {
             steps {
                 sh '''
+                    M2_HOME="/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
+                    PATH="$PATH::$M2_HOME"
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
