@@ -10,13 +10,17 @@ stage ('Initialize') {
             node('shinehxe') {
                 sh '''
                     wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+                    pwd
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
+                    pwd
                     export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
-                    cd /usr/sap/HXE/HDB90/apache-maven-3.3.9/bin
                     ls
                    
                 ''' 
+             dir('/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin') {
+             sh "ls"
+             }
             }
         }
 
