@@ -31,7 +31,7 @@ node('shinehxe'){
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     pwd
                     rm apache-maven-3.3.9-bin.tar.gz
-                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
+                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                     ls
                     mvn -f pom.xml clean install -s cfg/settings.xml
