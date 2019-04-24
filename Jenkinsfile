@@ -76,9 +76,9 @@ node('shinehxe'){
  xs t -s shine-test
  find /tmp/Shine/shine/assembly/target -name XSACSHINE* > Zipfile 
   mv /tmp/Shine/shine/assembly/target/shine.mtaext.template /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/shine_schema/SHINE_CORE/' /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/shine_user_schema/SHINE_USER/' /tmp/Shine/shine/assembly/target/shine.mtaext
-  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
+  sed -i 's/<SCHEMA_NAME_2>/SHINE_CORE/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+  sed -i 's/<SCHEMA_NAME_1>/SHINE_USER/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION 
   '''
  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o HANAExpress -s SAP --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
@@ -86,7 +86,7 @@ node('shinehxe'){
   println("SHINE URL =  ${env.SHINE_URL}") 
   sh "xs mtas"
   sh "xs lc"
-  sh 'sudo /usr/sap/XSA/HDB00/exe/hdbsql -i 00 -n localhost:39013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
+  sh 'sudo /usr/sap/HXE/HDB90/exe/hdbsql -i 00 -n localhost:39013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
 
 } 
