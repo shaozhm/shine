@@ -69,9 +69,9 @@ node('shine'){
 stage('InstallShine'){
 println("Start Installation of SHINE")
 node('shinehxe'){
-  sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
  sh '''
  xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation
+ xs delete-space -f shine-test --quiet
  xs create-space shine-test
  xs t -s shine-test
  find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile 
