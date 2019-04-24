@@ -10,7 +10,7 @@ try
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('shinehxe'){
-  sh (script: 'rm -rf /tmp/Shine/shine',returnStdout: false,returnStatus: false)
+  sh (script: 'rm -rf /tmp/Shine',returnStdout: false,returnStatus: false)
   sh '''
      pwd
      ls
