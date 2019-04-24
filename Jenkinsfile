@@ -70,11 +70,13 @@ stage('InstallShine'){
 println("Start Installation of SHINE")
 node('shinehxe'){
   sh (script: 'xs delete-space -f shine-test --quiet',returnStdout: false,returnStatus: false)
-  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation"
-  sh "xs create-space shine-test"
-  sh "xs t -s shine-test"
-  
-  sh "find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile"
+ sh '''
+ PATH=$PATH::/disk1/hana/shared/HXE/xs/bin:/usr/sap/HXE/HDB90/exe/krb5/bin:/usr/sap/HXE/HDB90/exe/krb5/sbin:/usr/sap/HXE/HDB90/mo-1f9ef82eb.mo.sap.corp:/usr/sap/HXE/HDB90:/usr/sap/HXE/HDB90/exe:/usr/sap/HXE/HDB90/exe/mdc:/usr/sap/HXE/HDB90/exe/Python/bin:/usr/sap/HXE/HDB90/exe/dat_bin_dir:/usr/sap/HXE/home:/usr/sap/HXE/home/bin:/usr/local/bin:/usr/bin:/bin:/usr/games
+ xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation
+ xs create-space shine-test
+ xs t -s shine-test
+ find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile
+ '''
   def SHINESCA=readFile('Zipfile').trim() 
   sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
   sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
