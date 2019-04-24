@@ -7,7 +7,7 @@ try
     }
 
 
-/*stage('GitClone'){
+stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('shinehxe'){
   sh (script: 'rm -rf /tmp/Shine/shine',returnStdout: false,returnStatus: false)
@@ -41,7 +41,7 @@ node('shinehxe'){
                     ls
      '''
   }
-} */
+}
 
 
 /*stage('UI5BrokerInstall'){
