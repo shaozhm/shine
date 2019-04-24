@@ -25,13 +25,14 @@ stage('MavenBuild'){
 println("Performing the maven build")
 node('shinehxe'){
  sh '''
-                    cd shine
                     wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
                     pwd
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     pwd
                     rm apache-maven-3.3.9-bin.tar.gz
-                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/shine/apache-maven-3.3.9/bin"
+                    cd shine
+                    
+                    export PATH="$PATH::/home/c5244525/workspace/shinepipeline/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                     ls
                     mvn -f pom.xml clean install -s cfg/settings.xml
