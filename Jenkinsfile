@@ -14,7 +14,8 @@ node('shinehxe'){
   sh '''
      pwd
      ls
-     cd /usr/sap/HXE/HDB90/
+     mkdir /tmp/Shine
+     cd /tmp/Shine
      git clone https://github.wdf.sap.corp/refapps/shine.git
      ls
      chmod 777 -R shine
@@ -26,14 +27,14 @@ stage('MavenBuild'){
 println("Performing the maven build")
 node('shinehxe'){
  sh '''
-                    cd /usr/sap/HXE/HDB90/
+                    cd /tmp/Shine
                     wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
                     pwd
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     pwd
                     rm apache-maven-3.3.9-bin.tar.gz
-                    cd shine
-                    export PATH="$PATH::/usr/sap/HXE/HDB90/apache-maven-3.3.9/bin"
+                    cd /tmp/Shine/shine
+                    export PATH="$PATH::/tmp/Shine/shine/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                     ls
                     mvn -f pom.xml clean install -s cfg/settings.xml
