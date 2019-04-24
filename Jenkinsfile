@@ -189,7 +189,7 @@ finally
 
 stage('CleanUp'){
   println("Cleaning up the installation")
-  node('shine'){
+  node('shinehxe'){
       SHINEStillInstalled = sh (script: 'xs a | grep -q shine',returnStdout: true,returnStatus: true)
       if(SHINEStillInstalled==0)
     {
