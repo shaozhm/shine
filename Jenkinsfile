@@ -4,16 +4,12 @@ try
 {
  environment {
         SHINE_URL = ''
-    }
-
-
+             }
 stage('GitClone'){
 println("Cloning from GitHub repository https://github.wdf.sap.corp/refapps/shine.git")
 node('shinehxe'){
   sh (script: 'rm -rf /tmp/Shine/shine',returnStdout: false,returnStatus: false)
   sh '''
-     pwd
-     ls
      mkdir /tmp/Shine
      cd /tmp/Shine
      git clone https://github.wdf.sap.corp/refapps/shine.git
@@ -26,19 +22,15 @@ node('shinehxe'){
 stage('MavenBuild'){
 println("Performing the maven build")
 node('shinehxe'){
- sh '''
-                    cd /tmp/Shine
-                    wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-                    pwd
-                    tar -zxvf apache-maven-3.3.9-bin.tar.gz
-                    pwd
-                    rm apache-maven-3.3.9-bin.tar.gz
-                    cd /tmp/Shine/shine
-                    export PATH="$PATH::/tmp/Shine/apache-maven-3.3.9/bin"
-                    echo "PATH = ${PATH}"
-                    ls
-                    mvn -f pom.xml clean install -s cfg/settings.xml
-                    ls
+sh '''
+    cd /tmp/Shine
+    wget -nc http://apache.mirror.digitalpacific.com.au/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+    tar -zxvf apache-maven-3.3.9-bin.tar.gz
+    rm apache-maven-3.3.9-bin.tar.gz
+    cd /tmp/Shine/shine
+    export PATH="$PATH::/tmp/Shine/apache-maven-3.3.9/bin"
+    echo "PATH = ${PATH}"
+    mvn -f pom.xml clean install -s cfg/settings.xml
      '''
   }
 }
@@ -75,13 +67,13 @@ node('shinehxe'){
  xs create-space shine-test
  xs t -s shine-test
  find /tmp/Shine/shine/assembly/target -name XSACSHINE* > Zipfile 
-  mv /tmp/Shine/shine/assembly/target/shine.mtaext.template /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/<SCHEMA_NAME_2>/SHINE_COREJAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/<SCHEMA_NAME_1>/SHINE_USERJAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/XSAC_SHINE-CONFIG1/XSAC_SHINE-JAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
-  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
+ mv /tmp/Shine/shine/assembly/target/shine.mtaext.template /tmp/Shine/shine/assembly/target/shine.mtaext
+ sed -i 's/<SCHEMA_NAME_2>/SHINE_COREJAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+ sed -i 's/<SCHEMA_NAME_1>/SHINE_USERJAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+ sed -i 's/XSAC_SHINE-CONFIG1/XSAC_SHINE-JAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+ xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
   '''
- sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o HANAExpress -s SAP --skip-ssl-validation"
+  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o HANAExpress -s SAP --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
@@ -89,18 +81,14 @@ node('shinehxe'){
   sh "xs lc"
   sh 'sudo /usr/sap/HXE/HDB90/exe/hdbsql -i 00 -n localhost:39013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
-
 } 
-
  
 stage('IntegrationTests'){
 println("Run integration tests")
 node('shinehxe'){
-    
    sh (script: 'rm -rf /tmp/node-v6.1.0-linux-x64',returnStdout: false,returnStatus: false)
    sh (script: 'rm -f /tmp/node-v6.1.0-linux-x64.tar.gz',returnStdout: false,returnStatus: false)
-  sh (script: 'rm -rf /tmp/tests',returnStdout: false,returnStatus: false)
-
+   sh (script: 'rm -rf /tmp/tests',returnStdout: false,returnStatus: false)
    sh "git clone https://github.wdf.sap.corp/refapps/shine.git -b shine-test --single-branch /tmp/tests"
    sh "xs t -s shine-test"
    def COREXSJS_URL = sh (script: 'xs app shine-core-xsjs --urls',returnStdout: true,returnStatus: false).trim()
@@ -110,11 +98,10 @@ node('shinehxe'){
    sh "sed -i 's,<USER_XSJS_URL>,$USERXSJS_URL,' /tmp/tests/shine.json"
    sh "sed -i 's,<CORE_NODE_URL>,$CORENODE_URL,' /tmp/tests/shine.json"
    sh "wget https://nodejs.org/download/release/v6.1.0/node-v6.1.0-linux-x64.tar.gz -P /tmp/"
-  sh "tar -xf /tmp/node-v6.1.0-linux-x64.tar.gz -C /tmp/"
-  sh "pwd"
-  sh "ls"
-
-  withEnv(['PATH+NODEHOME=/tmp/node-v6.1.0-linux-x64/bin']) {
+   sh "tar -xf /tmp/node-v6.1.0-linux-x64.tar.gz -C /tmp/"
+   sh "pwd"
+   sh "ls"
+   withEnv(['PATH+NODEHOME=/tmp/node-v6.1.0-linux-x64/bin']) {
           echo "PATH is: $PATH"
           sh "node -v"
           sh "npm config set @sap:registry http://nexus.wdf.sap.corp:8081/nexus/content/repositories/build.milestones.npm/"
