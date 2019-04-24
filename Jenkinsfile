@@ -33,7 +33,7 @@ node('shinehxe'){
                     tar -zxvf apache-maven-3.3.9-bin.tar.gz
                     pwd
                     rm apache-maven-3.3.9-bin.tar.gz
-                    cd /tmp/Shine/
+                    cd /tmp/Shine/shine
                     export PATH="$PATH::/tmp/Shine/apache-maven-3.3.9/bin"
                     echo "PATH = ${PATH}"
                     ls
