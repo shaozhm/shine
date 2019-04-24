@@ -76,9 +76,10 @@ node('shinehxe'){
  xs t -s shine-test
  find /tmp/Shine/shine/assembly/target -name XSACSHINE* > Zipfile 
   mv /tmp/Shine/shine/assembly/target/shine.mtaext.template /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/<SCHEMA_NAME_2>/SHINE_CORE/g' /tmp/Shine/shine/assembly/target/shine.mtaext
-  sed -i 's/<SCHEMA_NAME_1>/SHINE_USER/g' /tmp/Shine/shine/assembly/target/shine.mtaext
-  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION 
+  sed -i 's/<SCHEMA_NAME_2>/SHINE_COREJAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+  sed -i 's/<SCHEMA_NAME_1>/SHINE_USERJAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+  sed -i 's/XSAC_SHINE-CONFIG1/XSAC_SHINE-JAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
+  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
   '''
  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o HANAExpress -s SAP --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
