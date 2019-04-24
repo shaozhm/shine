@@ -70,7 +70,7 @@ stage('InstallShine'){
 println("Start Installation of SHINE")
 node('shinehxe'){
  sh '''
- xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o myorg -s SAP --skip-ssl-validation
+ xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o HANAExpress -s SAP --skip-ssl-validation
  xs delete-space -f shine-test --quiet
  xs create-space shine-test
  xs t -s shine-test
@@ -80,7 +80,7 @@ node('shinehxe'){
   sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext
   xs install /tmp/Shine/assembly/target/XSACSHINE* -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
   '''
- sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o myorg -s SAP --skip-ssl-validation"
+ sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o HANAExpress -s SAP --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
