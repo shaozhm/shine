@@ -74,13 +74,14 @@ node('shinehxe'){
  xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation
  xs create-space shine-test
  xs t -s shine-test
- find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile
- '''
-  def SHINESCA=readFile('Zipfile').trim() 
-  sh "mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext"
-  sh "xs install $SHINESCA -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock"
+ find /tmp/Shine/assembly/target -name XSACSHINE* > Zipfile 
+  xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation
+  mv /tmp/Shine/assembly/target/shine.mtaext.template /tmp/Shine/assembly/target/shine.mtaext
+  sed -i 's/<SCHEMA_NAME_1>/SHINE_CORE/' /tmp/Shine/assembly/target/shine.mtaext
+  sed -i 's/<SCHEMA_NAME_2>/SHINE_USER/' /tmp/Shine/assembly/target/shine.mtaext
+  xs install /tmp/Shine/assembly/target/XSACSHINE* -e /tmp/Shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
+  '''
+ sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o myorg -s SAP --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
