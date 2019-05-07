@@ -73,7 +73,7 @@ node('shinehxe'){
  sed -i 's/XSAC_SHINE-CONFIG1/XSAC_SHINE-JAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
   '''
-  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o $XSAORG -s SAP --skip-ssl-validation"
+  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o $XSAORG -s shine-test --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
