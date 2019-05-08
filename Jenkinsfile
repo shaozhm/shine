@@ -62,6 +62,8 @@ stage('InstallShine'){
 println("Start Installation of SHINE")
 node('shinehxe'){
  sh '''
+ export PATH=$PATH:$XSPATH
+ echo $PATH
  xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o $XSAORG -s SAP --skip-ssl-validation
  xs delete-space -f shine-test --quiet
  xs create-space shine-test
