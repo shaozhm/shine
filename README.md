@@ -40,7 +40,7 @@ SHINE-ML is a demo application which makes it easy to learn how to build applica
    
 ## Download and Installation
 
-The below steps describes you to run SHINE for application programming model using 2 approaches. Choose the one that best fits .
+The below steps describes you to run SHINE-ML using 2 approaches. Choose the one that best fits .
 
 1. [Running in SAP Web IDE for SAP HANA](#running-in-sap-web-ide-for-sap-hana)
 2. [Generating MTAR using WebIDE and deploy manually to XSA system](#generating-mtar-using-webide-and-deploy-manually-to-xsa-system)
@@ -124,7 +124,7 @@ Click on **"+"** sign to create a new sales order. Once you generate a new sales
 
 **Step 4: Sales order approval**
 
-The sales manager can decide whether to move the sales order in the `In Process` status or cancel it.  all the sales order with `New` status will be available in the admin screen and sales manager can manually vet all these sales orders. User should have `shine-admin` role in order to access this screen.
+The sales manager can decide whether to move the sales order in the `In Process` status or cancel it.  all the sales order with `New` status will be available in the admin screen and sales manager can manually vet all these sales orders. User should have `SHINE_ADMIN` role in order to access this screen.
 
 ![Alt text](./documents/admin1.JPG "Salesorder approval")
 
