@@ -5,7 +5,7 @@ SHINE-ML is a demo application which makes it easy to learn how to build applica
 ### Prerequisite
 
 - Install the `Application Function Library (AFL)`, which includes the PAL.
-  - For information on how to install or update AFL, see "Installing or Updating SAP HANA Components" in SAP HANA Server Installation and Update Guide
+  - For information on how to install or update AFL, see "Installing or Updating SAP HANA Components" in [SAP HANA Server Installation and Update Guide](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.03/en-US/7eb0167eb35e4e2885415205b8383584.html)
   - To confirm that the PAL functions were installed successfully, you can check the following three public views:
       - sys.afl_areas
       - sys.afl_packages
