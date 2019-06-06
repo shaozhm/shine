@@ -81,7 +81,7 @@ node('shinehxe'){
   println("SHINE URL =  ${env.SHINE_URL}") 
   sh "xs mtas"
   sh "xs lc"
-  sh 'sudo /usr/sap/HXE/HDB90/exe/hdbsql -i 90 -n localhost:30013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
+  sh 'sudo /usr/sap/XSA/HDB90/exe/hdbsql -i 90 -n localhost:30013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
 } 
  
