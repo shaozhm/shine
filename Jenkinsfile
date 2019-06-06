@@ -64,7 +64,7 @@ node('shinehxe'){
  sh '''
  export PATH=$PATH:$XSPATH
  echo $PATH
- xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o $XSAORG -s SAP --skip-ssl-validation
+ xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o $XSAORG -s SAP --skip-ssl-validation
  xs delete-space -f shine-test --quiet
  xs create-space shine-test
  xs t -s shine-test
@@ -75,13 +75,13 @@ node('shinehxe'){
  sed -i 's/XSAC_SHINE-CONFIG1/XSAC_SHINE-JAAS/g' /tmp/Shine/shine/assembly/target/shine.mtaext
  xs install /tmp/Shine/shine/assembly/target/XSACSHINE* -e /tmp/Shine/shine/assembly/target/shine.mtaext -o ALLOW_SC_SAME_VERSION --ignore-lock
   '''
-  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:39030 -o $XSAORG -s shine-test --skip-ssl-validation"
+  sh "xs login -u $XSAUSER -p $XSAPASSWORD -a https://localhost:30030 -o $XSAORG -s shine-test --skip-ssl-validation"
   def SHINEURL = sh (script: 'xs app shine-web --urls',returnStdout: true,returnStatus: false).trim()
   env.SHINE_URL = SHINEURL
   println("SHINE URL =  ${env.SHINE_URL}") 
   sh "xs mtas"
   sh "xs lc"
-  sh 'sudo /usr/sap/HXE/HDB90/exe/hdbsql -i 90 -n localhost:39013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
+  sh 'sudo /usr/sap/HXE/HDB90/exe/hdbsql -i 90 -n localhost:30013 -u $XSAUSER -p $XSAPASSWORD "ALTER USER XSA_ADMIN SET PARAMETER XS_RC_SHINE_ADMIN = \'SHINE_ADMIN\'"'
 }
 } 
  
