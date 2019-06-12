@@ -112,6 +112,7 @@ node('shinehxe'){
           sh "npm --prefix /tmp/tests install /tmp/tests"
           sh "xs t -s shine-test"
           sh "xs push -f /tmp/tests/manifest.yml -p /tmp/tests/"
+          installJq()
           def TEST_URL = sh (script: 'xs app shine-test --urls',returnStdout: true,returnStatus: false).trim()
           
           sh "curl $TEST_URL/integrationTestResult -P /tmp/ --insecure -o /tmp/integrationTestResult.json "
@@ -141,6 +142,12 @@ node('shinehxe'){
 
  def shell = {
     bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
+}
+ def installJq() {
+    sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
+    sh 'chmod +x ./jq'
+    sh 'mv jq /usr/local/bin'
+    sh 'jq --version'
 }
 
 /*stage('VyperTests'){
