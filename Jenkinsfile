@@ -1,5 +1,10 @@
 #!groovy
-
+ def installJq() {
+    sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
+    sh 'chmod +x ./jq'
+    sh 'mv jq /usr/local/bin'
+    sh 'jq --version'
+}
 try
 {
  environment {
@@ -143,12 +148,7 @@ node('shinehxe'){
  def shell = {
     bat(returnStdout: true, script: "sh -x -c \"${it}\"").trim()
 }
- def installJq() {
-    sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
-    sh 'chmod +x ./jq'
-    sh 'mv jq /usr/local/bin'
-    sh 'jq --version'
-}
+
 
 /*stage('VyperTests'){
 println("Trigger Vyper tests")
