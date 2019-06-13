@@ -1,8 +1,8 @@
 #!groovy
  def installJq() {
     sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
-    sh 'chmod +x ./jq'
-    sh 'mv jq /usr/local/bin'
+    sh 'sudo chmod +x ./jq'
+    sh 'sudo mv jq /usr/local/bin'
     sh 'jq --version'
 }
 try
