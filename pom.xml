@@ -9,7 +9,7 @@
 
     <groupId>com.sap.refapps</groupId>
     <artifactId>sap-xsac-shine-parent</artifactId>
-    <version>1.7.5</version>
+    <version>1.7.6</version>
     <packaging>pom</packaging>
    	
    <modules>
