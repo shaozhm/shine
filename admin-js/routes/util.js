@@ -1,4 +1,4 @@
-﻿// util.js
+// util.js
 // ========
 module.exports = {
   resetTable: function (req, res, origTable, shadowTable, callback) {
@@ -21,6 +21,7 @@ module.exports = {
   },
   getTableInfo: function(client, tableName, tableSynonym, callback) {
     var queryPrefix = 'SELECT "RECORD_COUNT","TABLE_SIZE" FROM "SYS"."M_TABLES" where "TABLE_NAME"=\'sap.hana.democontent.epm.data::';
+    console.log("inside getTableinfo::",tableName);
     client.exec(queryPrefix + tableName + "'", 
         function(error, response) {
             if (response) {
@@ -31,9 +32,11 @@ module.exports = {
   },
   callback: function(error, response, res, message) {
     if (error) {
+    	console.log(error);
         res.writeHead(500, {'Content-Type': 'application/json'});
         res.end(JSON.stringify(error));
     } else {
+    	console.log(response);
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.end(JSON.stringify({message: message}));
     }

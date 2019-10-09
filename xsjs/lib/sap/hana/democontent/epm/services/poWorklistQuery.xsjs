@@ -5,8 +5,6 @@ var SESSIONINFO = $.sap.hana.democontent.epm.services.session;
 
 function getFilter() {
     function createFilterEntry(rs, attribute, obj) {
-       
-        console.log("add " + rs.getNString(1) + " " + attribute + " obj " + obj);
         return {
             "terms": rs.getNString(1),
             "attribute": attribute,

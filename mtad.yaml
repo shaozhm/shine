@@ -1,6 +1,6 @@
 _schema-version: "2.0.0"
 ID: XSAC_SHINE
-version: 1.1.16
+version: 1.1.17
 
 modules:
   - name: shine-ui
@@ -71,7 +71,8 @@ modules:
       - name: scheduler-refapps
       - name: shine-db
       
-  - name: shine-db
+  - name: shine-
+    path: db/
     type: com.sap.xs.hdi
     requires:
       - name: shine-hdi-container

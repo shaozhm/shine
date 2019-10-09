@@ -3,12 +3,7 @@
 	"logout": {
 		"logoutEndpoint": "/logout"
 	},
-	"routes": [{
-      		"source": "/sap/ui5/1(.*)",
-      		"target": "$1",
-      		"localDir": "sapui5",
-		"cacheControl": "public, max-age=1000,must-revalidate"
-    	}, {
+	"routes": [ {
 		"source": "/sap/hana/democontent/epm/services/",
 		"destination": "xsjs-backend"
 	}, {

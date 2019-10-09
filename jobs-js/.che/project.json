@@ -1,0 +1,13 @@
+{
+	"type": "sap.nodejs",
+	"builders": {
+		"default": "sap.nodejs",
+		"configs": {}
+	},
+	"runners": {
+		"default": "system:/sap.nodejs/default",
+		"configs": {}
+	},
+	"attributes": {},
+	"mixinTypes": ["mtamodule"]
+}

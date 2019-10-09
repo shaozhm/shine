@@ -7,7 +7,7 @@ var passport = require('passport');
 var hdbext = require('@sap/hdbext'); 
 var routes = require('./routes/index');
 var winston = require('winston');
-var xsenv = require('sap-xsenv');
+var xsenv = require('@sap/xsenv');
 
 var PORT = process.env.PORT || 3000;
 var app = express();
@@ -25,9 +25,12 @@ var hanaOptions = xsenv.getServices({ hana: { tag: 'hana' } });
  */
 passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
 
-
+var logging = require('@sap/logging');
+var appContext = logging.createAppContext();
+app.use(logging.middleware({ appContext: appContext, logNetwork: true }));
 //use passport for authentication
 app.use(passport.initialize());
+
 
 /*
  * Use JWT password policy for all routes. 

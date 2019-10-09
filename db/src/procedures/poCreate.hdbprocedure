@@ -41,11 +41,11 @@ else
                       
 
     insert into "sap.hana.democontent.epm.data::PO.Header" 
-             values(lv_purchaseorderid,'33',CURRENT_DATE,'33',CURRENT_DATE,'',lv_partnerid,lv_currency,lv_grossamount,lv_netamount,
+             values('300001000','33',CURRENT_DATE,'33',CURRENT_DATE,'',lv_partnerid,lv_currency,lv_grossamount,lv_netamount,
              		lv_taxamount,'N','I','I','I','I');
          			
 	insert into "sap.hana.democontent.epm.data::PO.Item" 
-             values (lv_purchaseorderid,'10',lv_productid,'',lv_currency,lv_grossamount,lv_netamount, lv_taxamount,
+             values ('300001000','10',lv_productid,'',lv_currency,lv_grossamount,lv_netamount, lv_taxamount,
         			lv_quantity,'EA',lv_date);  
         			
  end if;

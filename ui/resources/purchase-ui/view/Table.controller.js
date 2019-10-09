@@ -121,7 +121,8 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			url: "/sap/hana/democontent/epm/services/poCreate.xsodata",
 			contentType: "application/json",
 			headers: {
-				'x-csrf-token': 'Fetch'
+				'x-csrf-token': 'Fetch',
+				'Accept': "application/json"
 			},
 			success: function(data, textStatus, request) {
 				xsrf_token = request.getResponseHeader('x-csrf-token');
@@ -273,10 +274,11 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			$.ajax({
 				type: "GET",
 				async: false,
-				url: "/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs",
+				url: "/sap/hana/democontent/epm/services/poCreate.xsodata",
 				contentType: "application/json",
 				headers: {
-					'x-csrf-token': 'Fetch'
+					'x-csrf-token': 'Fetch',
+					'Accept': "application/json"
 				},
 				success: function(data, textStatus, request) {
 					xsrf_token = request.getResponseHeader('x-csrf-token');
@@ -308,10 +310,11 @@ sap.ui.controller("shine.democontent.epm.poworklist.view.Table", {
 			$.ajax({
 				type: "GET",
 				async: false,
-				url: "/sap/hana/democontent/epm/services/poWorklistUpdate.xsjs",
+				url: "/sap/hana/democontent/epm/services/poCreate.xsodata",
 				contentType: "application/json",
 				headers: {
-					'x-csrf-token': 'Fetch'
+					'x-csrf-token': 'Fetch',
+					'Accept': "application/json"
 				},
 				success: function(data, textStatus, request) {
 					xsrf_token = request.getResponseHeader('x-csrf-token');

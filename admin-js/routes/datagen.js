@@ -1,20 +1,19 @@
 var express = require('express');
 var async = require('async');
-var cds = require('@sap/cds');
+//var cds = require('@sap/cds');
 var router = express.Router();
 var winston = require('winston');
 var util = require('./util');
-var logging = require('sap-logging');
+var logging = require('@sap/logging');
 var appContext = logging.createAppContext();
 var logger;
 
 
-winston.level = process.env.winston_level || 'error'
+winston.level = process.env.winston_level || 'error';
 // method will pick records from SOShadow.Header and add to SO.Header
 // and SOShadow.Item and add to SO.Item
 router.get('/replicate/sales', function (req, res) {
-    var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/replicate/sales");
+	logger = req.loggingContext.getLogger("/replicate/Sales");
     logger.info('Sales Data generation initiated');
 
     var client = req.db;
@@ -67,8 +66,7 @@ router.get('/replicate/sales', function (req, res) {
 // method will pick records from POShadow.Header and add to PO.Header
 // and POShadow.Item to PO.Item
 router.get('/replicate/purchase', function (req, res) {
-    var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/replicate/purchase");
+    logger = req.loggingContext.getLogger("/replicate/purchase");
     logger.info('Purchase Data generation initiated');
     var client = req.db;
     var origTable = "PO.Header";

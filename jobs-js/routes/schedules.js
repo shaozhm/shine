@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var winston = require('winston');
 var util = require('./util');
-var jobsc = require('sap-jobs-client');
+var jobsc = require('@sap/jobs-client');
 
 var logger;
 
@@ -11,7 +11,7 @@ winston.level = process.env.winston_level || 'error'
 router.post('/schedules/createjobschedule', function(req, res) {
 	logger = req.loggingContext.getLogger("/schedules/createjobschedule");
 	logger.error('info' + req.body);
-var jname = req.body.jobname;
+	var jname = req.body.jobname;
 	if(!(util.isAlphaNumeric(jname))){
 		throw new Error("Invalid Job Name");
 	}
@@ -96,6 +96,8 @@ var jname = req.body.jobname;
 							logger.error('Error occured' + error);
 							util.callback(error, res, "Unable to insert new job details to db");
 						} else {
+							startTime = startTime.split(" ")[0] + " "+ startTime.split(" ")[1];
+							endTime = endTime.split(" ")[0] + " "+ endTime.split(" ")[1];
 							var params = [jobid.toString(), jname, startTime, endTime, cron, scheduleId];
 							stmt.exec(params, function(err, rows) {
 								if (err) {

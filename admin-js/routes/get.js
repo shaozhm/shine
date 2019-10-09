@@ -1,18 +1,18 @@
 var express = require('express');
 var async = require('async');
-var cds = require('@sap/cds');
+//var cds = require('@sap/cds');
 var router = express.Router();
 var winston = require('winston');
 var util = require('./util');
-var logging = require('sap-logging');
+var logging = require('@sap/logging');
 var appContext = logging.createAppContext();
 var logger;
 
-winston.level = process.env.winston_level || 'error'
+winston.level = process.env.winston_level || 'error';
+
 router.get('/get/tablesize', function (req, res) {
-    var reqContext = appContext.createRequestContext(req);
-    logger = reqContext.getLogger("/get/tablesize");
-    	
+    //var reqContext = appContext.createRequestContext(req);
+    logger = req.loggingContext.getLogger("/get/tablesize");
     var client = req.db;
     var tableDict = [{
 		"tableName": "MD.Addresses",
