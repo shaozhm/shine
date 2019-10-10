@@ -57,6 +57,7 @@ modules:
       - name: uaa-refapps
       - name: shine-hdi-container
       - name: shine-db
+      - name: shine-auditlog
       
   - name: shine-jobs-js
     type: javascript.nodejs
@@ -71,7 +72,7 @@ modules:
       - name: scheduler-refapps
       - name: shine-db
       
-  - name: shine-
+  - name: shine-db
     path: db/
     type: com.sap.xs.hdi
     requires:
@@ -88,3 +89,8 @@ resources:
     type: com.sap.xs.uaa-space
     parameters:
      config-path: xs-security.json
+     
+  - name: shine-auditlog
+    type: com.sap.xs.auditlog
+    properties:
+      container-name: ${service-name}
