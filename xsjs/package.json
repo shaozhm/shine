@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@sap/xsenv": "2.0.0",
-    "@sap/xsjs": "5.2.0"
+    "@sap/xsjs": "5.2.1"
   },
   "engines": {
     "node": "~8.x || ~10.x"
