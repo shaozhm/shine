@@ -7,10 +7,10 @@
     "async": "3.1.0",
     "express": "4.17.1",
     "passport": "0.4.0",
-    "@sap/hdbext": "6.0.0",
-    "@sap/logging": "5.0.1",
+    "@sap/hdbext": "6.0.1",
+    "@sap/logging": "5.0.2",
     "@sap/xsenv": "2.0.0",
-    "@sap/xssec": "2.1.7",
+    "@sap/xssec": "2.2.3",
     "should": "^13.2.3",
     "supertest": "^4.0.2",
     "winston": "3.2.1"
@@ -22,7 +22,6 @@
     "start": "node app.js"
   },
   "devDependencies": {
-    "supertest": "^1.2.0",
     "mocha": "2.5.3"
   }
 }
