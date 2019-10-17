@@ -1,7 +1,7 @@
 {
   "name": "launchpad-ui-approuter",
   "dependencies": {
-    "@sap/approuter":"5.14.1"
+    "@sap/approuter":"6.1.0"
   },
   "scripts": {
     "start": "node node_modules/@sap/approuter/approuter.js"
