@@ -26,6 +26,8 @@ modules:
           service: '~{user-container-name}'
       - name: shine-user-db
       
+      
+      
           
   - name: shine-core-node
     type: nodejs
