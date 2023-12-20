@@ -3,7 +3,7 @@
     "node": "8.x"
   },
   "dependencies": {
-    "@sap/xssec": "2.1.16",
+    "@sap/xssec": "3.6.0",
     "@sap/xsenv": "2.0.0",
     "@sap/xsjs": "5.2.0"
   },
